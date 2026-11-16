@@ -56,7 +56,7 @@ hkbench tables                                  # list tables, check the referen
 
 ## How a row is scored
 
-1. **Table checks.** The reference bots must match their pinned hashes, and the engine must reproduce the table's fingerprint: 300 fixed deals and 30 fixed hands, hashed. If either fails, nothing is scored.
+1. **Table checks.** The reference bots must match their pinned hashes, and the engine must reproduce the table's fingerprint: 300 fixed deals and 33 fixed hands, hashed. If either fails, nothing is scored.
 2. **Fair-play check.** The bench takes real decision points, re-shuffles every hidden tile (the other hands and the wall) into a new arrangement that looks the same from the bot's seat, and asks again. A changed answer rejects the bot.
 3. **Duplicate play.** The bot takes one seat, the three field bots fill the others. Every deal is played from all four seats.
 4. **Numbers.** One average per deal, then the mean and a 95% interval over deals. The four games of a deal are not independent, so the deal is the unit.

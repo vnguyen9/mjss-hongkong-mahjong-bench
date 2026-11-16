@@ -5,7 +5,7 @@
 First release.
 
 * Rules engine and scorer, taken from the maintainers' own Hong Kong Mahjong package and cleaned for the bench: no training code, no models, no encoders.
-* Table `hk-hkma-v1` (HKMA Classical): rules, a frozen field of three reference bots (`faan_aware`, `ukeire`, `deficiency`) pinned by source hash, a public deal range, and an engine fingerprint of 300 deals and 30 hands.
+* Table `hk-hkma-v1` (HKMA Classical): rules, a frozen field of three reference bots (`faan_aware`, `ukeire`, `deficiency`) pinned by source hash, a public deal range, and an engine fingerprint of 300 deals and 33 hands.
 * Table `hk-house-v1` (House): defined, marked pending Seven Pairs scoring. It does not score.
 * Duplicate scoring, head-to-head matches with Bradley-Terry ranks and bootstrap intervals, deal-clustered intervals, the hidden-tile fair-play check, public and private deal decks, result and log files.
 * Protocol `hkbench-1`, with example bots in Python and JavaScript.

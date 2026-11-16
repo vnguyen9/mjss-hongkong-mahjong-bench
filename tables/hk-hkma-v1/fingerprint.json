@@ -1,8 +1,8 @@
 {
   "deals": 300,
   "fingerprint_version": 1,
-  "hands": 30,
+  "hands": 33,
   "rules_sha256": "43e4e01c50dce4d3dde5ba4f07d728e533e8c92ddb095372b3d718933ae16882",
-  "sha256": "29f4d1eb5d4203ed965bdf31f531862ffc3a4b09e71573c7a148dff58331e0e6",
+  "sha256": "c52f96dfd4b775dbe3ed6eb8d2eb3dfe2b25c517aec77b0ceeb0f7f5e6997e1e",
   "wins": 131
 }

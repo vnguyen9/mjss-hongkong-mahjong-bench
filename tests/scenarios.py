@@ -172,11 +172,8 @@ def build_multi_claim_position(
     """Return a ``SELF_ACTION`` state where ``discarder`` holds ``tile`` and several seats
     are primed to claim it, so discarding it opens a genuine multi-claimant race.
 
-    Claim priority is the one branch of the engine with no direct coverage: the test that
-    named it was ``assert True``, deferring to "golden claim fixtures" that do not exist.
-    Fuzzing cannot fill the gap — a race needs two seats to be *simultaneously* competent
-    on the same tile, which is the same reason the v7 rob-kong settlement bug survived
-    10,000,000 random actions.
+    Claim priority needs a built position: a race needs two seats to be *simultaneously*
+    ready on the same tile, which random play almost never produces.
 
     ``win_seats`` are made concealed-tenpai on a closed ``(tile-1, tile+1)`` chow wait that
     only ``tile`` completes, each clearing the 3-faan minimum from a *disjoint* group of

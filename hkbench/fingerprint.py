@@ -7,7 +7,7 @@ and scoring refuses to run.
 
 The deals are played by a policy that needs nothing but the engine (see ``_choose``), with every
 choice drawn from a hash of the deal's seed and the step number.
-The hands are the carried-over scoring corpus (``tests/fixtures/golden_hands_v1.json``) plus
+The hands are the scoring corpus (``tests/fixtures/hands.json``) plus
 the limit hands, scored under the table's rules.
 """
 
@@ -28,7 +28,7 @@ from hkbench.seeds import dealer_for_index, wind_for_index
 FINGERPRINT_VERSION = 1
 FINGERPRINT_DEALS = 300
 FINGERPRINT_SEED_START = 9_000_000_000
-HANDS_FILE = Path(__file__).resolve().parent.parent / "tests" / "fixtures" / "golden_hands_v1.json"
+HANDS_FILE = Path(__file__).resolve().parent.parent / "tests" / "fixtures" / "hands.json"
 
 
 def _pick(seed: int, step: int, n: int) -> int:

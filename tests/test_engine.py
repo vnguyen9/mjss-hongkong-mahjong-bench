@@ -53,12 +53,9 @@ class EngineTests(unittest.TestCase):
         A pong needs 2 concealed copies and a kong needs 3. One copy is on the table as the
         discard, leaving 3 — so a kong claimant consumes every remaining copy and no second
         seat can hold the 2 a pong needs. `_resolve_reactions` puts pong and kong in one
-        priority class broken by seat distance , and that tie-break is
+        priority class broken by seat distance, and that tie-break is
         exercised by the win/pong and pong/chow races below; the pong-vs-kong cell of it is
         vacuous. This test pins the arithmetic so the claim is checked rather than asserted.
-
-        Replaces `test_pong_kong_same_priority_class_documented`, which was `assert True` and
-        deferred to "golden claim fixtures" that never existed.
         """
         state = build_multi_claim_position(tile=4, discarder=0, pong_seat=1)
         state.apply_action(discard_action(4))
