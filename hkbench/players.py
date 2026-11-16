@@ -111,20 +111,29 @@ class ProcessPlayer(Player):
             raise BotCrashed("could not start the bot: %s" % exc)
         threading.Thread(target=self._read_stdout, daemon=True).start()
         threading.Thread(target=self._read_stderr, daemon=True).start()
-        self._handshake()
+        try:
+            self._handshake()
+        except BaseException:
+            self.close()
+            raise
 
     # --- plumbing ---
     def _read_stdout(self) -> None:
         try:
             for line in self.proc.stdout:  # type: ignore[union-attr]
                 self._lines.put(line)
+        except (ValueError, OSError):
+            pass
         finally:
             self._lines.put(None)
 
     def _read_stderr(self) -> None:
-        for line in self.proc.stderr:  # type: ignore[union-attr]
-            self._stderr_tail.append(line)
-            del self._stderr_tail[:-20]
+        try:
+            for line in self.proc.stderr:  # type: ignore[union-attr]
+                self._stderr_tail.append(line)
+                del self._stderr_tail[:-20]
+        except (ValueError, OSError):
+            pass
 
     def _send(self, obj: Dict[str, Any]) -> None:
         try:
@@ -219,6 +228,11 @@ class ProcessPlayer(Player):
             except subprocess.TimeoutExpired:
                 proc.kill()
                 proc.wait(timeout=2.0)
+        for pipe in (proc.stdin, proc.stdout, proc.stderr):
+            try:
+                pipe.close()  # type: ignore[union-attr]
+            except Exception:
+                pass
 
 
 def make_player(spec: str, table_id: str, profile, *, decision_timeout_s: float = DEFAULT_DECISION_TIMEOUT_S,

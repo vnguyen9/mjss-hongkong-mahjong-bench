@@ -102,9 +102,32 @@ def _print_result(result) -> None:
              st["average_win_points"] or 0.0, st["average_win_faan"] or 0.0, st["limit_hands"]))
 
 
+HOSTED_SCRUB = ("--bot", "--cwd", "--hash-dir")
+
+
+def scrub_hosted(argv: Sequence[str]) -> List[str]:
+    """The recorded command for a hosted bot: where its program and files live is not published."""
+    out: List[str] = []
+    hide_next = False
+    for a in argv:
+        if hide_next:
+            out.append("<hosted>")
+            hide_next = False
+        elif a in HOSTED_SCRUB:
+            out.append(a)
+            hide_next = True
+        elif any(a.startswith(f + "=") for f in HOSTED_SCRUB):
+            out.append(a.split("=", 1)[0] + "=<hosted>")
+        else:
+            out.append(a)
+    return out
+
+
 def cmd_score(args, argv) -> int:
     table = _table(args)
     priv = private_seed_path(args.private_seeds)
+    if args.kind == "hosted":
+        argv = scrub_hosted(argv)
     meta = bench.bot_meta(args.bot, name=args.name, track=args.track, kind=args.kind, trained_on=args.trained_on,
                           description=args.description, cwd=args.cwd, hash_dir=args.hash_dir,
                           hash_override=args.bot_hash)

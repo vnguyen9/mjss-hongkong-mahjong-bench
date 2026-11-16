@@ -166,6 +166,26 @@ class Tags(unittest.TestCase):
             TABLE.private_deals(str(self.deck), 11)
 
 
+class HostedBots(unittest.TestCase):
+    def test_a_hosted_bots_location_is_not_recorded(self):
+        argv = ["score", "--table", "hk-hkma-v1", "--bot", "/private/h1/run_wrapper --weights /private/h1/w.bin",
+                "--kind", "hosted", "--cwd=/private/h1", "--bot-hash", "ab" * 32, "--deals", "10"]
+        scrubbed = cli.scrub_hosted(argv)
+        self.assertNotIn("private", " ".join(scrubbed))
+        self.assertEqual(scrubbed.count("<hosted>"), 1)
+        self.assertIn("--cwd=<hosted>", scrubbed)
+        self.assertIn("ab" * 32, scrubbed)
+
+    def test_a_hosted_run_hashes_what_the_owner_says(self):
+        r = bench.score(TABLE, "ref:random", bench.bot_meta("ref:random", name="h", track="bots", kind="hosted",
+                                                           trained_on="HKMA Classical", description=None, cwd=None,
+                                                           hash_dir=None, hash_override="cd" * 32),
+                        deals=2, results_dir=Path(tempfile.mkdtemp()), skip_fairplay=True, write=False, quiet=True)
+        self.assertEqual(r["bot"]["sha256"], "cd" * 32)
+        self.assertEqual(r["bot"]["kind"], "hosted")
+        self.assertEqual(r["bot"]["trained_on"], "HKMA Classical")
+
+
 class Gates(unittest.TestCase):
     def test_the_pending_house_table_will_not_score(self):
         code, out, err = run_cli("score", "--table", "hk-house-v1", "--bot", "ref:ukeire", "--deals", "2", "--no-write")
