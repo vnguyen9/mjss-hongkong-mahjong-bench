@@ -1,0 +1,1756 @@
+{
+ "profile_id": "hk-hkma-v1",
+ "note": "Expected values checked by hand against the HKMA rulebook pp.20-24 (scaled by 1/4). Never regenerate without re-reading each case.",
+ "cases": [
+  {
+   "id": "all_pong_self_draw_no_flower",
+   "concealed": [
+    "m1",
+    "m1",
+    "m1",
+    "m3",
+    "m3",
+    "m3",
+    "p5",
+    "p5",
+    "p5",
+    "s7",
+    "s7",
+    "s7",
+    "E",
+    "E"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "four_concealed_pongs",
+      10
+     ]
+    ],
+    "total_faan": 10,
+    "faan": 10,
+    "meets_minimum": true,
+    "limit": true,
+    "payments": [
+     192,
+     -64,
+     -64,
+     -64
+    ]
+   }
+  },
+  {
+   "id": "mixed_one_suit_3",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "m7",
+    "m8",
+    "m9",
+    "C",
+    "C",
+    "C",
+    "E",
+    "E"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 1,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "mixed_one_suit",
+      3
+     ],
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "self_draw",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 6,
+    "faan": 6,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     48,
+     -16,
+     -16,
+     -16
+    ]
+   }
+  },
+  {
+   "id": "pure_one_suit",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "m7",
+    "m7",
+    "m8",
+    "m9",
+    "m9",
+    "m9"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "DISCARD",
+   "discarder": 1,
+   "expect": {
+    "patterns": [
+     [
+      "pure_one_suit",
+      7
+     ],
+     [
+      "common_hand",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 9,
+    "faan": 9,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     96,
+     -96,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "common_hand_insufficient",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "p1",
+    "p2",
+    "p3",
+    "s1",
+    "s2",
+    "s3",
+    "s5",
+    "s5"
+   ],
+   "melds": [],
+   "flowers": [
+    "Fl2"
+   ],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "DISCARD",
+   "discarder": 2,
+   "expect": {
+    "patterns": [
+     [
+      "common_hand",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ]
+    ],
+    "total_faan": 2,
+    "faan": 2,
+    "meets_minimum": false,
+    "limit": false,
+    "payments": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "common_hand_self_draw_no_flower_concealed",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "p1",
+    "p2",
+    "p3",
+    "s1",
+    "s2",
+    "s3",
+    "s5",
+    "s5"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "common_hand",
+      1
+     ],
+     [
+      "self_draw",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 3,
+    "faan": 3,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     12,
+     -4,
+     -4,
+     -4
+    ]
+   }
+  },
+  {
+   "id": "dragon_pong_seat_flower_self_draw",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "p2",
+    "p3",
+    "p4",
+    "C",
+    "C",
+    "C",
+    "s9",
+    "s9"
+   ],
+   "melds": [],
+   "flowers": [
+    "Fl1"
+   ],
+   "seat_wind": 0,
+   "prevailing_wind": 1,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "self_draw",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "seat_flower",
+      0
+     ]
+    ],
+    "total_faan": 3,
+    "faan": 3,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     12,
+     -4,
+     -4,
+     -4
+    ]
+   }
+  },
+  {
+   "id": "thirteen_orphans",
+   "concealed": [
+    "m1",
+    "m9",
+    "s1",
+    "s9",
+    "p1",
+    "p9",
+    "E",
+    "S",
+    "W",
+    "N",
+    "C",
+    "F",
+    "P",
+    "P"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "DISCARD",
+   "discarder": 3,
+   "expect": {
+    "patterns": [
+     [
+      "thirteen_orphans",
+      10
+     ]
+    ],
+    "total_faan": 10,
+    "faan": 10,
+    "meets_minimum": true,
+    "limit": true,
+    "payments": [
+     128,
+     0,
+     0,
+     -128
+    ]
+   }
+  },
+  {
+   "id": "nine_gates_man",
+   "concealed": [
+    "m1",
+    "m1",
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "m7",
+    "m8",
+    "m9",
+    "m9",
+    "m9",
+    "m5"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "nine_gates",
+      10
+     ]
+    ],
+    "total_faan": 10,
+    "faan": 10,
+    "meets_minimum": true,
+    "limit": true,
+    "payments": [
+     192,
+     -64,
+     -64,
+     -64
+    ]
+   }
+  },
+  {
+   "id": "great_dragons",
+   "concealed": [
+    "C",
+    "C",
+    "C",
+    "F",
+    "F",
+    "F",
+    "P",
+    "P",
+    "P",
+    "m2",
+    "m3",
+    "m4",
+    "s5",
+    "s5"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "great_dragons",
+      5
+     ],
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "self_draw",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 10,
+    "faan": 10,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     192,
+     -64,
+     -64,
+     -64
+    ]
+   }
+  },
+  {
+   "id": "small_dragons",
+   "concealed": [
+    "C",
+    "C",
+    "C",
+    "F",
+    "F",
+    "F",
+    "P",
+    "P",
+    "m1",
+    "m2",
+    "m3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "DISCARD",
+   "discarder": 1,
+   "expect": {
+    "patterns": [
+     [
+      "small_dragons",
+      3
+     ],
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 6,
+    "faan": 6,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     32,
+     -32,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "all_honors",
+   "concealed": [
+    "E",
+    "E",
+    "E",
+    "S",
+    "S",
+    "S",
+    "W",
+    "W",
+    "W",
+    "C",
+    "C",
+    "C",
+    "F",
+    "F"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "all_honors",
+      10
+     ]
+    ],
+    "total_faan": 10,
+    "faan": 10,
+    "meets_minimum": true,
+    "limit": true,
+    "payments": [
+     192,
+     -64,
+     -64,
+     -64
+    ]
+   }
+  },
+  {
+   "id": "seat_and_prevailing_wind_double",
+   "concealed": [
+    "E",
+    "E",
+    "E",
+    "m1",
+    "m2",
+    "m3",
+    "p4",
+    "p5",
+    "p6",
+    "s7",
+    "s8",
+    "s9",
+    "C",
+    "C"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "seat_wind",
+      1
+     ],
+     [
+      "prevailing_wind",
+      1
+     ],
+     [
+      "self_draw",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 4,
+    "faan": 4,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     24,
+     -8,
+     -8,
+     -8
+    ]
+   }
+  },
+  {
+   "id": "exposed_pong_all_pong",
+   "concealed": [
+    "m2",
+    "m2",
+    "m2",
+    "p5",
+    "p5",
+    "p5",
+    "s8",
+    "s8",
+    "s8",
+    "W",
+    "W"
+   ],
+   "melds": [
+    {
+     "kind": "PONG",
+     "tiles": [
+      "C",
+      "C",
+      "C"
+     ],
+     "from_seat": 1,
+     "claimed_tile": "C"
+    }
+   ],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 1,
+   "win_source": "DISCARD",
+   "discarder": 2,
+   "expect": {
+    "patterns": [
+     [
+      "all_pong",
+      3
+     ],
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 4,
+    "faan": 4,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     16,
+     0,
+     -16,
+     0
+    ]
+   }
+  },
+  {
+   "id": "payment_3_faan_discard",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "p1",
+    "p2",
+    "p3",
+    "C",
+    "C",
+    "C",
+    "s2",
+    "s2"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 1,
+   "win_source": "DISCARD",
+   "discarder": 1,
+   "expect": {
+    "patterns": [
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 2,
+    "faan": 2,
+    "meets_minimum": false,
+    "limit": false,
+    "payments": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "payment_3_faan_self_draw",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "p1",
+    "p2",
+    "p3",
+    "C",
+    "C",
+    "C",
+    "s2",
+    "s2"
+   ],
+   "melds": [],
+   "flowers": [
+    "Fl2"
+   ],
+   "seat_wind": 0,
+   "prevailing_wind": 1,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "self_draw",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ]
+    ],
+    "total_faan": 3,
+    "faan": 3,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     12,
+     -4,
+     -4,
+     -4
+    ]
+   }
+  },
+  {
+   "id": "no_flower_vs_seat_flower",
+   "concealed": [
+    "m1",
+    "m1",
+    "m1",
+    "m3",
+    "m3",
+    "m3",
+    "p5",
+    "p5",
+    "p5",
+    "s7",
+    "s7",
+    "s7",
+    "N",
+    "N"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "DISCARD",
+   "discarder": 1,
+   "expect": {
+    "patterns": [
+     [
+      "four_concealed_pongs",
+      10
+     ]
+    ],
+    "total_faan": 10,
+    "faan": 10,
+    "meets_minimum": true,
+    "limit": true,
+    "payments": [
+     128,
+     -128,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "all_flowers_set",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "p2",
+    "p3",
+    "p4",
+    "s5",
+    "s6",
+    "s7",
+    "E",
+    "E"
+   ],
+   "melds": [],
+   "flowers": [
+    "Fl1",
+    "Fl2",
+    "Fl3",
+    "Fl4"
+   ],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "common_hand",
+      1
+     ],
+     [
+      "self_draw",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "all_flowers",
+      0
+     ]
+    ],
+    "total_faan": 3,
+    "faan": 3,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     12,
+     -4,
+     -4,
+     -4
+    ]
+   }
+  },
+  {
+   "id": "mixed_orphans",
+   "concealed": [
+    "m1",
+    "m1",
+    "m1",
+    "m9",
+    "m9",
+    "m9",
+    "s1",
+    "s1",
+    "s1",
+    "C",
+    "C",
+    "C",
+    "E",
+    "E"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 1,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "four_concealed_pongs",
+      10
+     ]
+    ],
+    "total_faan": 10,
+    "faan": 10,
+    "meets_minimum": true,
+    "limit": true,
+    "payments": [
+     192,
+     -64,
+     -64,
+     -64
+    ]
+   }
+  },
+  {
+   "id": "small_winds",
+   "concealed": [
+    "E",
+    "E",
+    "E",
+    "S",
+    "S",
+    "S",
+    "W",
+    "W",
+    "W",
+    "N",
+    "N",
+    "m5",
+    "m6",
+    "m7"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "DISCARD",
+   "discarder": 2,
+   "expect": {
+    "patterns": [
+     [
+      "small_winds",
+      10
+     ],
+     [
+      "mixed_one_suit",
+      3
+     ],
+     [
+      "seat_wind",
+      1
+     ],
+     [
+      "prevailing_wind",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 16,
+    "faan": 10,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     128,
+     0,
+     -128,
+     0
+    ]
+   }
+  },
+  {
+   "id": "great_winds_limit",
+   "concealed": [
+    "E",
+    "E",
+    "E",
+    "S",
+    "S",
+    "S",
+    "W",
+    "W",
+    "W",
+    "N",
+    "N",
+    "N",
+    "C",
+    "C"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "great_winds",
+      10
+     ]
+    ],
+    "total_faan": 10,
+    "faan": 10,
+    "meets_minimum": true,
+    "limit": true,
+    "payments": [
+     192,
+     -64,
+     -64,
+     -64
+    ]
+   }
+  },
+  {
+   "id": "last_tile_bonus",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "p1",
+    "p2",
+    "p3",
+    "C",
+    "C",
+    "C",
+    "s2",
+    "s2"
+   ],
+   "melds": [],
+   "flowers": [
+    "Fl2"
+   ],
+   "seat_wind": 0,
+   "prevailing_wind": 1,
+   "win_source": "DISCARD",
+   "discarder": 1,
+   "last_tile": true,
+   "expect": {
+    "patterns": [
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "last_tile",
+      1
+     ]
+    ],
+    "total_faan": 3,
+    "faan": 3,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     8,
+     -8,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "rob_kong",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "p1",
+    "p2",
+    "p3",
+    "C",
+    "C",
+    "C",
+    "s2",
+    "s2"
+   ],
+   "melds": [],
+   "flowers": [
+    "Fl2"
+   ],
+   "seat_wind": 0,
+   "prevailing_wind": 1,
+   "win_source": "ROB_KONG",
+   "discarder": 2,
+   "expect": {
+    "patterns": [
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "rob_kong",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ]
+    ],
+    "total_faan": 3,
+    "faan": 3,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     8,
+     0,
+     -8,
+     0
+    ]
+   }
+  },
+  {
+   "id": "kong_replacement",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "p1",
+    "p2",
+    "p3",
+    "C",
+    "C",
+    "C",
+    "s2",
+    "s2"
+   ],
+   "melds": [],
+   "flowers": [
+    "Fl2"
+   ],
+   "seat_wind": 0,
+   "prevailing_wind": 1,
+   "win_source": "SELF_DRAW",
+   "after_kong": true,
+   "expect": {
+    "patterns": [
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "self_draw",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "kong_replacement",
+      1
+     ]
+    ],
+    "total_faan": 4,
+    "faan": 4,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     24,
+     -8,
+     -8,
+     -8
+    ]
+   }
+  },
+  {
+   "id": "chow_exposed_common",
+   "concealed": [
+    "m4",
+    "m5",
+    "m6",
+    "p1",
+    "p2",
+    "p3",
+    "s2",
+    "s3",
+    "s4",
+    "s8",
+    "s8"
+   ],
+   "melds": [
+    {
+     "kind": "CHOW",
+     "tiles": [
+      "m1",
+      "m2",
+      "m3"
+     ],
+     "from_seat": 3,
+     "claimed_tile": "m3"
+    }
+   ],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "common_hand",
+      1
+     ],
+     [
+      "self_draw",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 2,
+    "faan": 2,
+    "meets_minimum": false,
+    "limit": false,
+    "payments": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "chicken_hand_fail",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "p1",
+    "p2",
+    "p3",
+    "s1",
+    "s2",
+    "s3",
+    "s5",
+    "s5"
+   ],
+   "melds": [],
+   "flowers": [
+    "Fl2"
+   ],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "DISCARD",
+   "discarder": 1,
+   "expect": {
+    "patterns": [
+     [
+      "common_hand",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ]
+    ],
+    "total_faan": 2,
+    "faan": 2,
+    "meets_minimum": false,
+    "limit": false,
+    "payments": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "faan_cap_13",
+   "concealed": [
+    "m1",
+    "m9",
+    "s1",
+    "s9",
+    "p1",
+    "p9",
+    "E",
+    "S",
+    "W",
+    "N",
+    "C",
+    "F",
+    "P",
+    "m1"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "SELF_DRAW",
+   "expect": {
+    "patterns": [
+     [
+      "thirteen_orphans",
+      10
+     ]
+    ],
+    "total_faan": 10,
+    "faan": 10,
+    "meets_minimum": true,
+    "limit": true,
+    "payments": [
+     192,
+     -64,
+     -64,
+     -64
+    ]
+   }
+  },
+  {
+   "id": "payment_8_faan_discard",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "m7",
+    "m7",
+    "m8",
+    "m9",
+    "m9",
+    "m9"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "DISCARD",
+   "discarder": 2,
+   "expect": {
+    "patterns": [
+     [
+      "pure_one_suit",
+      7
+     ],
+     [
+      "common_hand",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 9,
+    "faan": 9,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     96,
+     0,
+     -96,
+     0
+    ]
+   }
+  },
+  {
+   "id": "fully_concealed_discard_win",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "p1",
+    "p2",
+    "p3",
+    "C",
+    "C",
+    "C",
+    "s2",
+    "s2"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 1,
+   "win_source": "DISCARD",
+   "discarder": 1,
+   "expect": {
+    "patterns": [
+     [
+      "dragon_pong",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 2,
+    "faan": 2,
+    "meets_minimum": false,
+    "limit": false,
+    "payments": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "flush_with_all_triplets_caps_at_ten",
+   "concealed": [
+    "m3",
+    "m3",
+    "m3",
+    "m4",
+    "m4",
+    "m4",
+    "m5",
+    "m5"
+   ],
+   "melds": [
+    {
+     "kind": "PONG",
+     "tiles": [
+      "m1",
+      "m1",
+      "m1"
+     ],
+     "from_seat": 1,
+     "claimed_tile": "m1"
+    },
+    {
+     "kind": "PONG",
+     "tiles": [
+      "m2",
+      "m2",
+      "m2"
+     ],
+     "from_seat": 2,
+     "claimed_tile": "m2"
+    }
+   ],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "DISCARD",
+   "discarder": 3,
+   "note": "7 (flush) + 3 (all triplets) = 10, the cap",
+   "expect": {
+    "patterns": [
+     [
+      "pure_one_suit",
+      7
+     ],
+     [
+      "all_pong",
+      3
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 10,
+    "faan": 10,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     128,
+     0,
+     0,
+     -128
+    ]
+   }
+  },
+  {
+   "id": "flush_exposed_chow_discard_win",
+   "concealed": [
+    "m5",
+    "m5",
+    "m5",
+    "m7",
+    "m8",
+    "m9",
+    "m4",
+    "m5",
+    "m6",
+    "m9",
+    "m9"
+   ],
+   "melds": [
+    {
+     "kind": "CHOW",
+     "tiles": [
+      "m1",
+      "m2",
+      "m3"
+     ],
+     "from_seat": 3,
+     "claimed_tile": "m1"
+    }
+   ],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "DISCARD",
+   "discarder": 1,
+   "note": "flush is 7 faan, discarder pays 48 (rulebook 192 / 4)",
+   "expect": {
+    "patterns": [
+     [
+      "pure_one_suit",
+      7
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 7,
+    "faan": 7,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     48,
+     -48,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "flowers_add_nothing",
+   "concealed": [
+    "m2",
+    "m3",
+    "m4",
+    "p5",
+    "p6",
+    "p7",
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "E",
+    "E"
+   ],
+   "melds": [],
+   "flowers": [
+    "Fl1",
+    "Fl2",
+    "Se1",
+    "Se2"
+   ],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "DISCARD",
+   "discarder": 2,
+   "note": "two seat flowers and two seasons, all-sequences + closed hand = 2 faan, below the minimum",
+   "expect": {
+    "patterns": [
+     [
+      "common_hand",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "seat_flower",
+      0
+     ],
+     [
+      "seat_season",
+      0
+     ]
+    ],
+    "total_faan": 2,
+    "faan": 2,
+    "meets_minimum": false,
+    "limit": false,
+    "payments": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "seat_wind_pong_south_seat",
+   "concealed": [
+    "S",
+    "S",
+    "S",
+    "m1",
+    "m2",
+    "m3",
+    "p4",
+    "p5",
+    "p6",
+    "s7",
+    "s8",
+    "s9",
+    "N",
+    "N"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 1,
+   "prevailing_wind": 0,
+   "win_source": "SELF_DRAW",
+   "discarder": null,
+   "note": "South pong in the South seat = 1 faan; self-draw 1; closed hand 1; = 3",
+   "expect": {
+    "patterns": [
+     [
+      "seat_wind",
+      1
+     ],
+     [
+      "self_draw",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 3,
+    "faan": 3,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     12,
+     -4,
+     -4,
+     -4
+    ]
+   }
+  },
+  {
+   "id": "all_sequences_needs_no_value_pair",
+   "concealed": [
+    "m1",
+    "m2",
+    "m3",
+    "p4",
+    "p5",
+    "p6",
+    "s7",
+    "s8",
+    "s9",
+    "m4",
+    "m5",
+    "m6",
+    "C",
+    "C"
+   ],
+   "melds": [],
+   "flowers": [],
+   "seat_wind": 0,
+   "prevailing_wind": 0,
+   "win_source": "SELF_DRAW",
+   "discarder": null,
+   "note": "a dragon pair adds nothing in HKMA; all sequences 1 + self-drawn 1 + closed 1 = 3",
+   "expect": {
+    "patterns": [
+     [
+      "common_hand",
+      1
+     ],
+     [
+      "self_draw",
+      1
+     ],
+     [
+      "fully_concealed",
+      1
+     ],
+     [
+      "no_flowers",
+      0
+     ]
+    ],
+    "total_faan": 3,
+    "faan": 3,
+    "meets_minimum": true,
+    "limit": false,
+    "payments": [
+     12,
+     -4,
+     -4,
+     -4
+    ]
+   }
+  }
+ ]
+}

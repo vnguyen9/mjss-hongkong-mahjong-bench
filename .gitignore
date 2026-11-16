@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+build/
+dist/
+# The scored deal deck is private and never committed.
+private/
+*.private.json
+private-seeds*
