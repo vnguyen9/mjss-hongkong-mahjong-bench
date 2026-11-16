@@ -82,6 +82,17 @@ class Determinism(unittest.TestCase):
         self.assertEqual(r["headline"]["games"], 32)
 
 
+class Workers(unittest.TestCase):
+    def test_a_worker_that_cannot_start_stops_the_run_with_its_error(self):
+        from hkbench.pool import run_specs
+
+        config = {"table": "hk-hkma-v1", "tables_dir": None,
+                  "players": {"bot": "ref:nonexistent", "f0": "ref:random", "f1": "ref:random", "f2": "ref:random"}}
+        with self.assertRaises(RuntimeError) as ctx:
+            run_specs(config, bench.duplicate_specs(TABLE.public_deals(4)), workers=2)
+        self.assertIn("no reference bot called", str(ctx.exception))
+
+
 class Tags(unittest.TestCase):
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp())

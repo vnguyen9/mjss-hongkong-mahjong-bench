@@ -76,7 +76,7 @@ def bot_meta(spec: str, *, name: Optional[str], track: str, kind: Optional[str],
 
 
 def _now() -> str:
-    return datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+    return datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0, tzinfo=None).isoformat() + "Z"
 
 
 def engine_info(table: Table, fp: Dict[str, Any]) -> Dict[str, Any]:

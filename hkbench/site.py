@@ -109,7 +109,7 @@ def build(results_dir: Path, out_dir: Path) -> Path:
         })
     data = {
         "schema": SCHEMA,
-        "generated_utc": datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
+        "generated_utc": datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0, tzinfo=None).isoformat() + "Z",
         "hkbench_version": __version__,
         "tracks": TRACKS,
         "tables": tables,
