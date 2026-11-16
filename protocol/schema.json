@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hkbench-1",
+  "title": "Hong Kong Mahjong Bench protocol, version hkbench-1",
+  "description": "Every message is one JSON object on one line. The bench sends hello, decide, game_over and bye. The bot sends ready and action.",
+  "oneOf": [
+    {"$ref": "#/$defs/hello"},
+    {"$ref": "#/$defs/ready"},
+    {"$ref": "#/$defs/decide"},
+    {"$ref": "#/$defs/action"},
+    {"$ref": "#/$defs/game_over"},
+    {"$ref": "#/$defs/bye"}
+  ],
+  "$defs": {
+    "tile": {
+      "description": "A tile id, 0 to 33. 0-8 characters 1-9, 9-17 bamboo 1-9, 18-26 dots 1-9, 27-30 East South West North, 31-33 Red Green White dragon.",
+      "type": "integer", "minimum": 0, "maximum": 33
+    },
+    "flower": {
+      "description": "A flower id, 0 to 7. 0-3 are the flowers, 4-7 the seasons. Flower n belongs to seat wind n mod 4.",
+      "type": "integer", "minimum": 0, "maximum": 7
+    },
+    "wind": {"description": "0 East, 1 South, 2 West, 3 North.", "type": "integer", "minimum": 0, "maximum": 3},
+    "player": {"description": "Seat relative to you. 0 you, 1 plays after you, 2 across, 3 plays before you.", "type": "integer", "minimum": 0, "maximum": 3},
+    "counts": {"description": "One count per tile id, 34 numbers.", "type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 4}, "minItems": 34, "maxItems": 34},
+    "meld": {
+      "type": "object",
+      "required": ["kind", "tiles", "from"],
+      "properties": {
+        "kind": {"enum": ["chow", "pong", "exposed_kong", "concealed_kong", "added_kong"]},
+        "tiles": {"type": "array", "items": {"$ref": "#/$defs/tile"}, "minItems": 3, "maxItems": 4},
+        "from": {"description": "Who discarded the claimed tile. null for a concealed kong.", "type": ["integer", "null"], "minimum": 0, "maximum": 3}
+      }
+    },
+    "legal_action": {
+      "type": "object",
+      "required": ["id", "kind"],
+      "properties": {
+        "id": {"type": "integer", "minimum": 0, "maximum": 126},
+        "kind": {"enum": ["pass", "win", "discard", "chow", "pong", "kong", "concealed_kong", "added_kong"]},
+        "tile": {"$ref": "#/$defs/tile"},
+        "tiles": {"description": "For a chow: the three tiles of the run, ascending (it includes the offered tile).", "type": "array", "items": {"$ref": "#/$defs/tile"}, "minItems": 3, "maxItems": 3}
+      }
+    },
+    "hello": {
+      "type": "object",
+      "required": ["type", "protocol", "table", "decision_timeout_s"],
+      "properties": {
+        "type": {"const": "hello"},
+        "protocol": {"const": "hkbench-1"},
+        "table": {"type": "string"},
+        "decision_timeout_s": {"type": "number"}
+      }
+    },
+    "ready": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {"const": "ready"},
+        "protocol": {"const": "hkbench-1"},
+        "name": {"type": "string"},
+        "version": {"type": "string"}
+      }
+    },
+    "decide": {
+      "type": "object",
+      "required": ["type", "protocol", "table", "game_id", "seq", "rng_seed", "phase", "prevailing_wind", "dealer",
+                   "wall_remaining", "you", "others", "discards", "offer", "unseen", "legal"],
+      "properties": {
+        "type": {"const": "decide"},
+        "protocol": {"const": "hkbench-1"},
+        "table": {"type": "string"},
+        "game_id": {"type": "string"},
+        "seq": {"description": "Counts every decision in the game, across all seats. Echo it in your answer.", "type": "integer", "minimum": 0},
+        "rng_seed": {"description": "Use this for any randomness. The same view must always get the same answer.", "type": "integer", "minimum": 0, "maximum": 2147483647},
+        "phase": {"description": "turn: you are to act on your own hand. claim: someone discarded (or added to a kong) and you may react.", "enum": ["turn", "claim"]},
+        "prevailing_wind": {"$ref": "#/$defs/wind"},
+        "dealer": {"$ref": "#/$defs/player"},
+        "wall_remaining": {"type": "integer", "minimum": 0, "maximum": 144},
+        "you": {
+          "type": "object",
+          "required": ["seat_wind", "hand", "drawn", "draw_kind", "melds", "flowers"],
+          "properties": {
+            "seat_wind": {"$ref": "#/$defs/wind"},
+            "hand": {"description": "Your concealed tiles as counts, including the tile you just drew.", "$ref": "#/$defs/counts"},
+            "drawn": {"description": "The tile you just drew, on a turn that began with a draw; otherwise null.", "type": ["integer", "null"], "minimum": 0, "maximum": 33},
+            "draw_kind": {"enum": ["wall", "flower_replacement", "kong_replacement", null]},
+            "melds": {"type": "array", "items": {"$ref": "#/$defs/meld"}},
+            "flowers": {"type": "array", "items": {"$ref": "#/$defs/flower"}}
+          }
+        },
+        "others": {
+          "type": "array", "minItems": 3, "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["p", "seat_wind", "hand_size", "melds", "flowers"],
+            "properties": {
+              "p": {"$ref": "#/$defs/player"},
+              "seat_wind": {"$ref": "#/$defs/wind"},
+              "hand_size": {"description": "How many concealed tiles they hold.", "type": "integer", "minimum": 0, "maximum": 14},
+              "melds": {"type": "array", "items": {"$ref": "#/$defs/meld"}},
+              "flowers": {"type": "array", "items": {"$ref": "#/$defs/flower"}}
+            }
+          }
+        },
+        "discards": {
+          "description": "Every discard so far, oldest first.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["p", "tile", "claimed"],
+            "properties": {"p": {"$ref": "#/$defs/player"}, "tile": {"$ref": "#/$defs/tile"}, "claimed": {"description": "True if the tile was later taken into a meld.", "type": "boolean"}}
+          }
+        },
+        "offer": {
+          "description": "On a claim, the tile on offer. null on a turn.",
+          "type": ["object", "null"],
+          "properties": {"tile": {"$ref": "#/$defs/tile"}, "from": {"$ref": "#/$defs/player"}, "kind": {"enum": ["discard", "added_kong"]}}
+        },
+        "unseen": {"description": "How many of each tile are not in your hand, on a meld, or in a river. Derived from the rest of the message.", "$ref": "#/$defs/counts"},
+        "legal": {"type": "array", "items": {"$ref": "#/$defs/legal_action"}, "minItems": 1}
+      }
+    },
+    "action": {
+      "type": "object",
+      "required": ["type", "seq", "id"],
+      "properties": {
+        "type": {"const": "action"},
+        "seq": {"description": "The seq of the decide message you are answering.", "type": "integer"},
+        "id": {"description": "The id of one of the legal actions.", "type": "integer", "minimum": 0, "maximum": 126}
+      }
+    },
+    "game_over": {
+      "type": "object",
+      "required": ["type", "game_id", "cause", "winner", "discarder", "faan", "payment"],
+      "properties": {
+        "type": {"const": "game_over"},
+        "game_id": {"type": "string"},
+        "cause": {"enum": ["win", "exhaustive"]},
+        "winner": {"type": ["integer", "null"]},
+        "discarder": {"type": ["integer", "null"]},
+        "faan": {"type": "integer"},
+        "patterns": {"type": "array"},
+        "payment": {"description": "Your points from this hand.", "type": "integer"}
+      }
+    },
+    "bye": {"type": "object", "required": ["type"], "properties": {"type": {"const": "bye"}}}
+  }
+}
