@@ -1,0 +1,29 @@
+{
+  "id": "hk-house-v1",
+  "version": 1,
+  "status": "pending",
+  "pending_reason": "pending Seven Pairs scoring",
+  "title": "Hong Kong Mahjong, House rules",
+  "rules_track": "House",
+  "summary": "House rules: flowers score, limit hands are graded 6 / 8 / 10 / 13, cap 13, and Seven Pairs is a hand. Not scoring yet: the Seven Pairs scoring is not in the engine.",
+  "rules": null,
+  "rules_sha256": null,
+  "source_profile": "hk_3faan_v2 plus Seven Pairs",
+  "field": [],
+  "seeds": {
+    "public": {
+      "start": 2000000,
+      "count": 100000
+    },
+    "private": "Same rule as hk-hkma-v1."
+  },
+  "timeouts": {
+    "decision_s": 10,
+    "handshake_s": 30
+  },
+  "faults": {
+    "max_per_1000_decisions": 1
+  },
+  "fingerprint": null,
+  "released": null
+}

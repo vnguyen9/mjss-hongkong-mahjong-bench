@@ -1,0 +1,43 @@
+{
+  "id": "hk-hkma-v1",
+  "version": 1,
+  "status": "active",
+  "title": "Hong Kong Mahjong, HKMA Classical",
+  "rules_track": "HKMA Classical",
+  "summary": "13-tile Hong Kong Mahjong. Minimum 3 faan, cap 10, discarder pays the whole hand, flowers do not score. Based on the HKMA rulebook (17 May 2023); RULES.md lists where it differs.",
+  "rules": "rules.json",
+  "rules_sha256": "43e4e01c50dce4d3dde5ba4f07d728e533e8c92ddb095372b3d718933ae16882",
+  "source_profile": "hkma_classical_v1",
+  "field": [
+    {
+      "bot": "faan_aware",
+      "sha256": "4094849829017afed0d6f4dba0d4498b661cfa2c79a7c7ead2cb357c9a3dc07a"
+    },
+    {
+      "bot": "ukeire",
+      "sha256": "06581f9229affdee5fff6ff2771d20e5ece36ee773ff56e0ac7a318f8bb9493a"
+    },
+    {
+      "bot": "deficiency",
+      "sha256": "06581f9229affdee5fff6ff2771d20e5ece36ee773ff56e0ac7a318f8bb9493a"
+    }
+  ],
+  "field_note": "Three scripted bots that read only their own seat view. The scored bot takes one seat and the field fills the other three in this order, starting with the seat after the scored bot.",
+  "seeds": {
+    "public": {
+      "start": 1000000,
+      "count": 100000
+    },
+    "private": "The scored deck is private. Give its path with --private-seeds or the HKBENCH_PRIVATE_SEEDS environment variable. It must not overlap the public range."
+  },
+  "schedule": "deal i has dealer i % 4 and prevailing wind (i // 4) % 4; every deal is played four times, the scored bot taking each seat once",
+  "timeouts": {
+    "decision_s": 10,
+    "handshake_s": 30
+  },
+  "faults": {
+    "max_per_1000_decisions": 1
+  },
+  "fingerprint": "fingerprint.json",
+  "released": "2026-11-16"
+}

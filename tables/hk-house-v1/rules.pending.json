@@ -1,0 +1,144 @@
+{
+  "profile_id": "hk-house-v1",
+  "version": 1,
+  "description": "House rules: flowers score, limit hands are graded, cap 13. Pending: Seven Pairs scoring. This file is a placeholder and is not used to score anything.",
+  "derived_from": {
+    "profile": "hk_3faan_v2",
+    "rules_hash": "0e0ce106e67fbc42",
+    "change": "pending: Seven Pairs scoring is not in this file yet."
+  },
+  "win": {
+    "minimum_faan": 3,
+    "faan_cap": 13,
+    "seven_pairs": false,
+    "multiple_winners": false
+  },
+  "claims": {
+    "priority": [
+      "win",
+      "pong_kong",
+      "chow"
+    ],
+    "pong_kong_same_class": true,
+    "one_winner_seat_order": "after_discarder"
+  },
+  "payments": {
+    "discarder_pays": "all",
+    "self_draw_multiplier": 1.5,
+    "require_zero_sum": true,
+    "table": {
+      "0": 1,
+      "1": 2,
+      "2": 4,
+      "3": 8,
+      "4": 16,
+      "5": 24,
+      "6": 32,
+      "7": 48,
+      "8": 64,
+      "9": 96,
+      "10": 128,
+      "11": 192,
+      "12": 256,
+      "13": 384
+    }
+  },
+  "patterns": {
+    "common_hand": 1,
+    "all_pong": 3,
+    "mixed_one_suit": 3,
+    "pure_one_suit": 7,
+    "mixed_orphans": 1,
+    "small_dragons": 3,
+    "great_dragons": 5,
+    "small_winds": 6,
+    "all_honors": 10,
+    "four_concealed_pongs": 10,
+    "pure_orphans": 10,
+    "nine_gates": 10,
+    "great_winds": 13,
+    "thirteen_orphans": 13,
+    "all_kongs": 13,
+    "heavenly_hand": 13,
+    "earthly_hand": 13,
+    "double_kong": 8,
+    "dragon_pong": 1,
+    "seat_wind": 1,
+    "prevailing_wind": 1,
+    "self_draw": 1,
+    "fully_concealed": 1,
+    "last_tile": 1,
+    "rob_kong": 1,
+    "kong_replacement": 1
+  },
+  "flowers": {
+    "seat_flower": 1,
+    "seat_season": 1,
+    "no_flowers": 1,
+    "all_flowers": 2,
+    "all_seasons": 2,
+    "seven_flowers": 3,
+    "eight_flowers": 13
+  },
+  "flower_rules": {
+    "recursive_replacement": true,
+    "replacement_from": "rear_wall",
+    "check_seven_eight_during_deal": true,
+    "check_seven_eight_during_replacement": true
+  },
+  "exclusions": {
+    "limit_hands": [
+      "all_honors",
+      "four_concealed_pongs",
+      "pure_orphans",
+      "nine_gates",
+      "great_winds",
+      "thirteen_orphans",
+      "all_kongs",
+      "heavenly_hand",
+      "earthly_hand",
+      "eight_flowers"
+    ],
+    "implied": {
+      "four_concealed_pongs": [
+        "all_pong",
+        "fully_concealed"
+      ],
+      "all_kongs": [
+        "all_pong"
+      ],
+      "pure_orphans": [
+        "all_pong",
+        "mixed_orphans"
+      ],
+      "great_winds": [
+        "all_pong"
+      ],
+      "thirteen_orphans": [
+        "fully_concealed"
+      ],
+      "nine_gates": [
+        "pure_one_suit",
+        "fully_concealed"
+      ]
+    },
+    "flower_set_no_stack_seat": true
+  },
+  "wall": {
+    "dead_wall_tiles": 0,
+    "flower_replacement": true,
+    "kong_replacement": true,
+    "replacement_end": "rear"
+  },
+  "scoring": {
+    "pass_winning_tile": true,
+    "wait_sensitive_decomposition": true
+  },
+  "tiles": {
+    "regular_types": 34,
+    "copies_per_regular": 4,
+    "bonus_tiles": 8,
+    "total": 144,
+    "instance_ids": "0-143"
+  }
+}
