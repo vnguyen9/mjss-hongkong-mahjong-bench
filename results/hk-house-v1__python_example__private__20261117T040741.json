@@ -1,0 +1,127 @@
+{
+  "bot": {
+    "description": "examples/bots/python_bot.py",
+    "kind": "external",
+    "name": "python_example",
+    "sha256": "11af7f9fedcf5799134343c6e6a02f5f3aafc5275f55e8d95b218c404b3ac630",
+    "track": "bots",
+    "trained_on": "none (hand-written heuristic)"
+  },
+  "command": "hkbench score --table hk-house-v1 --bot 'python3 examples/bots/python_bot.py' --name python_example --kind external --trained-on 'none (hand-written heuristic)' --description examples/bots/python_bot.py --deals 2000 --workers 9",
+  "created_utc": "2026-11-17T04:07:41Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "40776e78617bb1ec4df7d98caa83e70a9bf3f7b0db5c825007d5fac74aa93637",
+    "hkbench_version": "1.0.0",
+    "python": "3.9.6",
+    "rules_sha256": "6318ed16cdaf40f09692c5873ae58400513b9fbaffe0da7efe1a20464a2872e6"
+  },
+  "fairplay": {
+    "asks": 300,
+    "decision_changes": 0,
+    "faults": 0,
+    "points": 100,
+    "reshuffles": 2,
+    "status": "passed",
+    "view_mismatches": 0
+  },
+  "faults": {
+    "decisions": 200384,
+    "faults": {},
+    "limit_per_1000": 1.0,
+    "ok": true,
+    "per_1000_decisions": 0.0
+  },
+  "headline": {
+    "ci95": [
+      2.1473329864514286,
+      3.2246670135485713
+    ],
+    "deals": 2000,
+    "games": 8000,
+    "metric": "points per hand against the frozen field",
+    "points_per_hand": 2.686,
+    "se": 0.27466875224846976
+  },
+  "kind": "duplicate",
+  "log": "logs/hk-house-v1__python_example__private__20261117T040741.jsonl.gz",
+  "run_id": "hk-house-v1__python_example__private__20261117T040741",
+  "schema": "hkbench-result-1",
+  "seeds": {
+    "deals": 2000,
+    "offset": 0,
+    "public_range": null,
+    "tag": "private"
+  },
+  "stats": {
+    "average_win_faan": 5.057657657657658,
+    "average_win_points": 38.51171171171171,
+    "deal_in_rate": {
+      "ci95": [
+        0.05711307901776303,
+        0.06763692098223696
+      ],
+      "mean": 0.062375,
+      "n": 2000,
+      "se": 0.0026830773636944624
+    },
+    "draw_rate": {
+      "ci95": [
+        0.3854297628490381,
+        0.4085702371509619
+      ],
+      "mean": 0.397,
+      "n": 2000,
+      "se": 0.005899716376798409
+    },
+    "limit_hand_rate": {
+      "ci95": [
+        -4.938927740664393e-05,
+        0.000799389277406644
+      ],
+      "mean": 0.000375,
+      "n": 2000,
+      "se": 0.00021639801651303795
+    },
+    "limit_hands": 3,
+    "self_draw_win_rate": {
+      "ci95": [
+        0.044288689093698506,
+        0.0537113109063015
+      ],
+      "mean": 0.049,
+      "n": 2000,
+      "se": 0.0024023187897911917
+    },
+    "win_rate": {
+      "ci95": [
+        0.13132084783654235,
+        0.14617915216345767
+      ],
+      "mean": 0.13875,
+      "n": 2000,
+      "se": 0.003788158368113888
+    },
+    "wins": 1110
+  },
+  "table": {
+    "field": [
+      {
+        "bot": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+      },
+      {
+        "bot": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      },
+      {
+        "bot": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      }
+    ],
+    "id": "hk-house-v1",
+    "rules_sha256": "6318ed16cdaf40f09692c5873ae58400513b9fbaffe0da7efe1a20464a2872e6",
+    "rules_track": "House"
+  },
+  "verification": "verified"
+}

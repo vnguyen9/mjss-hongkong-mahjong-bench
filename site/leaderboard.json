@@ -1,6 +1,72 @@
 {
-  "generated_utc": "2026-11-17T02:29:42Z",
+  "generated_utc": "2026-11-17T12:29:52Z",
   "head_to_head": [
+    {
+      "bots": [
+        {
+          "ci95": [
+            145.8287860967068,
+            155.1865342934522
+          ],
+          "name": "h1",
+          "rank": 1,
+          "rating": 150.60122992969096
+        },
+        {
+          "ci95": [
+            21.50325104938733,
+            29.153959402949972
+          ],
+          "name": "faan_aware",
+          "rank": 2,
+          "rating": 25.2671279179928
+        },
+        {
+          "ci95": [
+            -12.51300410083449,
+            -6.014318489820272
+          ],
+          "name": "python_example",
+          "rank": 3,
+          "rating": -9.390211204319794
+        },
+        {
+          "ci95": [
+            -45.60887376521943,
+            -39.831483814512175
+          ],
+          "name": "ukeire",
+          "rank": 4,
+          "rating": -42.90288688470747
+        },
+        {
+          "ci95": [
+            -49.005367509486824,
+            -43.38670355689374
+          ],
+          "name": "deficiency",
+          "rank": 4,
+          "rating": -45.92595845251086
+        },
+        {
+          "ci95": [
+            -80.50793169416453,
+            -74.94311335222041
+          ],
+          "name": "random",
+          "rank": 6,
+          "rating": -77.64930130614556
+        }
+      ],
+      "created_utc": "2026-11-17T04:10:52Z",
+      "deals": 300,
+      "result": "results/hk-hkma-v1__h2h__private__20261117T041052.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__h2h__private__20261117T041052",
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "verification": "verified"
+    },
     {
       "bots": [
         {
@@ -62,6 +128,138 @@
       "bots": [
         {
           "ci95": [
+            149.49954050045554,
+            159.04224263553786
+          ],
+          "name": "h1",
+          "rank": 1,
+          "rating": 154.1422060686167
+        },
+        {
+          "ci95": [
+            19.018012981499513,
+            27.278132554552812
+          ],
+          "name": "faan_aware",
+          "rank": 2,
+          "rating": 23.315427615761124
+        },
+        {
+          "ci95": [
+            -18.654351851373658,
+            -11.562768396288668
+          ],
+          "name": "python_example",
+          "rank": 3,
+          "rating": -15.191344039385854
+        },
+        {
+          "ci95": [
+            -43.80664636294897,
+            -37.80105759917834
+          ],
+          "name": "ukeire",
+          "rank": 4,
+          "rating": -40.49894212156085
+        },
+        {
+          "ci95": [
+            -47.28495348970364,
+            -40.95698592402336
+          ],
+          "name": "deficiency",
+          "rank": 4,
+          "rating": -43.99500129692161
+        },
+        {
+          "ci95": [
+            -80.54994781055959,
+            -75.09649705176093
+          ],
+          "name": "random",
+          "rank": 6,
+          "rating": -77.77234622650943
+        }
+      ],
+      "created_utc": "2026-11-17T04:04:06Z",
+      "deals": 300,
+      "result": "results/hk-hkma-v1__h2h__public__20261117T040406.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__h2h__public__20261117T040406",
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "verification": "unverified"
+    },
+    {
+      "bots": [
+        {
+          "ci95": [
+            98.81316331770412,
+            108.77038444235866
+          ],
+          "name": "h1",
+          "rank": 1,
+          "rating": 103.91579883122171
+        },
+        {
+          "ci95": [
+            44.64396658380874,
+            53.28225236907458
+          ],
+          "name": "faan_aware",
+          "rank": 2,
+          "rating": 48.874780259099154
+        },
+        {
+          "ci95": [
+            -11.399741144591522,
+            -3.3002808816446976
+          ],
+          "name": "python_example",
+          "rank": 3,
+          "rating": -7.39529866093185
+        },
+        {
+          "ci95": [
+            -13.014514459597368,
+            -5.47443603474083
+          ],
+          "name": "ukeire",
+          "rank": 3,
+          "rating": -9.263872031866157
+        },
+        {
+          "ci95": [
+            -24.51714906884973,
+            -16.37422654235601
+          ],
+          "name": "deficiency",
+          "rank": 5,
+          "rating": -20.288744764656155
+        },
+        {
+          "ci95": [
+            -119.18016925094538,
+            -112.42948906498465
+          ],
+          "name": "random",
+          "rank": 6,
+          "rating": -115.84266363286666
+        }
+      ],
+      "created_utc": "2026-11-17T04:21:51Z",
+      "deals": 300,
+      "result": "results/hk-house-v1__h2h__private__20261117T042151.json",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__h2h__private__20261117T042151",
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "verification": "verified"
+    },
+    {
+      "bots": [
+        {
+          "ci95": [
             72.00827909931209,
             81.01135633399447
           ],
@@ -114,10 +312,340 @@
       "seed_tag": "public",
       "table": "hk-house-v1",
       "verification": "unverified"
+    },
+    {
+      "bots": [
+        {
+          "ci95": [
+            104.95448856026856,
+            115.45207904088164
+          ],
+          "name": "h1",
+          "rank": 1,
+          "rating": 110.48416574688349
+        },
+        {
+          "ci95": [
+            49.76619115702355,
+            59.02076964762675
+          ],
+          "name": "faan_aware",
+          "rank": 2,
+          "rating": 54.4805939279255
+        },
+        {
+          "ci95": [
+            -13.935353935786143,
+            -5.995910777197387
+          ],
+          "name": "python_example",
+          "rank": 3,
+          "rating": -10.1558231289268
+        },
+        {
+          "ci95": [
+            -14.715410043499716,
+            -6.616753397300347
+          ],
+          "name": "ukeire",
+          "rank": 3,
+          "rating": -10.82640364965907
+        },
+        {
+          "ci95": [
+            -26.212588812026507,
+            -18.484760795200042
+          ],
+          "name": "deficiency",
+          "rank": 5,
+          "rating": -22.30865207768016
+        },
+        {
+          "ci95": [
+            -125.25381066555343,
+            -117.7113059508389
+          ],
+          "name": "random",
+          "rank": 6,
+          "rating": -121.67388081854301
+        }
+      ],
+      "created_utc": "2026-11-17T04:17:15Z",
+      "deals": 300,
+      "result": "results/hk-house-v1__h2h__public__20261117T041715.json",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__h2h__public__20261117T041715",
+      "seed_tag": "public",
+      "table": "hk-house-v1",
+      "verification": "unverified"
     }
   ],
   "hkbench_version": "1.0.0",
   "rows": [
+    {
+      "average_win_faan": 5.522999202339803,
+      "average_win_points": 39.56500930603563,
+      "bot": {
+        "description": "Mahjong Sensei's shipped bot, hosted: its weights and code stay private",
+        "kind": "hosted",
+        "name": "h1",
+        "sha256": "af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54",
+        "trained_on": "HKMA Classical rules (no flower faan, no Seven Pairs)"
+      },
+      "ci95": [
+        16.70044195089777,
+        18.018558049102232
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '<hosted>' --name h1 --kind hosted --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Mahjong Sensei'\"'\"'s shipped bot, hosted: its weights and code stay private' --deals 2000 --workers 9",
+      "created_utc": "2026-11-17T03:35:04Z",
+      "deal_in_rate": 0.03375,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 68,
+      "log": "results/logs/hk-hkma-v1__h1__private__20261117T033504.jsonl.gz",
+      "points_per_hand": 17.3595,
+      "rank": 1,
+      "result": "results/hk-hkma-v1__h1__private__20261117T033504.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__h1__private__20261117T033504",
+      "se": 0.3360566870685087,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.470125
+    },
+    {
+      "average_win_faan": 5.272067714631197,
+      "average_win_points": 40.778718258766624,
+      "bot": {
+        "description": "examples/bots/python_bot.py",
+        "kind": "external",
+        "name": "python_example",
+        "sha256": "11af7f9fedcf5799134343c6e6a02f5f3aafc5275f55e8d95b218c404b3ac630",
+        "trained_on": "none (hand-written heuristic)"
+      },
+      "ci95": [
+        2.0788115765709643,
+        2.956188423429036
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot 'python3 examples/bots/python_bot.py' --name python_example --kind external --trained-on 'none (hand-written heuristic)' --description examples/bots/python_bot.py --deals 2000 --workers 9",
+      "created_utc": "2026-11-17T03:34:50Z",
+      "deal_in_rate": 0.050375,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 107,
+      "log": "results/logs/hk-hkma-v1__python_example__private__20261117T033450.jsonl.gz",
+      "points_per_hand": 2.5175,
+      "rank": 2,
+      "result": "results/hk-hkma-v1__python_example__private__20261117T033450.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__python_example__private__20261117T033450",
+      "se": 0.22368921589485216,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.103375
+    },
+    {
+      "average_win_faan": 3.884988797610157,
+      "average_win_points": 19.056011949215833,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        1.4570144556996913,
+        1.9189855443003085
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot ref:faan_aware --deals 2000 --workers 9 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-17T03:29:39Z",
+      "deal_in_rate": 0.04275,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 6,
+      "log": "results/logs/hk-hkma-v1__faan_aware__private__20261117T032939.jsonl.gz",
+      "points_per_hand": 1.688,
+      "rank": 3,
+      "result": "results/hk-hkma-v1__faan_aware__private__20261117T032939.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__faan_aware__private__20261117T032939",
+      "se": 0.117780576208754,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.167375
+    },
+    {
+      "average_win_faan": 3.602373887240356,
+      "average_win_points": 16.26112759643917,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        -1.2008520356682746,
+        -0.8831479643317255
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot ref:ukeire --deals 2000 --workers 9 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-17T03:04:57Z",
+      "deal_in_rate": 0.0465,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 1,
+      "log": "results/logs/hk-hkma-v1__ukeire__private__20261117T030457.jsonl.gz",
+      "points_per_hand": -1.042,
+      "rank": 4,
+      "result": "results/hk-hkma-v1__ukeire__private__20261117T030457.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__ukeire__private__20261117T030457",
+      "se": 0.08099937314093605,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.042125
+    },
+    {
+      "average_win_faan": 3.7275541795665634,
+      "average_win_points": 17.39938080495356,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        -1.2325877658199185,
+        -0.8884122341800815
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot ref:deficiency --deals 2000 --workers 9 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-17T03:19:31Z",
+      "deal_in_rate": 0.046,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 1,
+      "log": "results/logs/hk-hkma-v1__deficiency__private__20261117T031931.jsonl.gz",
+      "points_per_hand": -1.0605,
+      "rank": 4,
+      "result": "results/hk-hkma-v1__deficiency__private__20261117T031931.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__deficiency__private__20261117T031931",
+      "se": 0.08774833194927353,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.040375
+    },
+    {
+      "average_win_faan": 3.12,
+      "average_win_points": 12.08,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "shallow_search",
+        "sha256": "214c3e4cd0252c1b687845e14965c88f4287f2946391a8da9492d15bda496698",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        -1.933553574392562,
+        -1.1364464256074378
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot ref:shallow_search --deals 400 --workers 9 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-17T03:57:33Z",
+      "deal_in_rate": 0.0475,
+      "deals": 400,
+      "games": 1600,
+      "limit_hands": 0,
+      "log": "results/logs/hk-hkma-v1__shallow_search__private__20261117T035733.jsonl.gz",
+      "points_per_hand": -1.535,
+      "rank": 4,
+      "result": "results/hk-hkma-v1__shallow_search__private__20261117T035733.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__shallow_search__private__20261117T035733",
+      "se": 0.20273057666960884,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.03125
+    },
+    {
+      "average_win_faan": 3.25,
+      "average_win_points": 14.0,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "random",
+        "sha256": "9c1c37dc49ebf5f63bb87cc87f83e332e4e10d7b31b97f77cd7aceacdf56dfd1",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        -1.8962302963408177,
+        -1.6397697036591823
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot ref:random --deals 2000 --workers 9 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-17T02:54:24Z",
+      "deal_in_rate": 0.05125,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 0,
+      "log": "results/logs/hk-hkma-v1__random__private__20261117T025424.jsonl.gz",
+      "points_per_hand": -1.768,
+      "rank": 6,
+      "result": "results/hk-hkma-v1__random__private__20261117T025424.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__random__private__20261117T025424",
+      "se": 0.06538520943460006,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.0005
+    },
+    {
+      "average_win_faan": 5.5111402359108785,
+      "average_win_points": 39.60681520314548,
+      "bot": {
+        "description": "Mahjong Sensei's shipped bot, hosted: its weights and code stay private",
+        "kind": "hosted",
+        "name": "h1",
+        "sha256": "af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54",
+        "trained_on": "HKMA Classical rules (no flower faan, no Seven Pairs)"
+      },
+      "ci95": [
+        16.998907784587473,
+        18.348092215412528
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '<hosted>' --name h1 --kind hosted --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Mahjong Sensei'\"'\"'s shipped bot, hosted: its weights and code stay private' --deals 2000 --workers 9",
+      "created_utc": "2026-11-17T03:18:59Z",
+      "deal_in_rate": 0.030875,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 70,
+      "log": "results/logs/hk-hkma-v1__h1__public__20261117T031859.jsonl.gz",
+      "points_per_hand": 17.6735,
+      "rank": 1,
+      "result": "results/hk-hkma-v1__h1__public__20261117T031859.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__h1__public__20261117T031859",
+      "se": 0.34397762889407485,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.476875
+    },
     {
       "average_win_faan": 5.198547215496368,
       "average_win_points": 41.016949152542374,
@@ -140,7 +668,7 @@
       "limit_hands": 105,
       "log": "results/logs/hk-hkma-v1__python_example__public__20261117T013023.jsonl.gz",
       "points_per_hand": 2.505,
-      "rank": 1,
+      "rank": 2,
       "result": "results/hk-hkma-v1__python_example__public__20261117T013023.json",
       "rules_track": "HKMA Classical",
       "run_id": "hk-hkma-v1__python_example__public__20261117T013023",
@@ -173,7 +701,7 @@
       "limit_hands": 4,
       "log": "results/logs/hk-hkma-v1__faan_aware__public__20261117T012757.jsonl.gz",
       "points_per_hand": 1.4135,
-      "rank": 2,
+      "rank": 3,
       "result": "results/hk-hkma-v1__faan_aware__public__20261117T012757.json",
       "rules_track": "HKMA Classical",
       "run_id": "hk-hkma-v1__faan_aware__public__20261117T012757",
@@ -206,7 +734,7 @@
       "limit_hands": 3,
       "log": "results/logs/hk-hkma-v1__ukeire__public__20261117T012456.jsonl.gz",
       "points_per_hand": -0.9575,
-      "rank": 3,
+      "rank": 4,
       "result": "results/hk-hkma-v1__ukeire__public__20261117T012456.json",
       "rules_track": "HKMA Classical",
       "run_id": "hk-hkma-v1__ukeire__public__20261117T012456",
@@ -239,7 +767,7 @@
       "limit_hands": 3,
       "log": "results/logs/hk-hkma-v1__deficiency__public__20261117T012153.jsonl.gz",
       "points_per_hand": -0.9895,
-      "rank": 3,
+      "rank": 4,
       "result": "results/hk-hkma-v1__deficiency__public__20261117T012153.json",
       "rules_track": "HKMA Classical",
       "run_id": "hk-hkma-v1__deficiency__public__20261117T012153",
@@ -272,7 +800,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-hkma-v1__shallow_search__public__20261117T014159.jsonl.gz",
       "points_per_hand": -1.185,
-      "rank": 3,
+      "rank": 4,
       "result": "results/hk-hkma-v1__shallow_search__public__20261117T014159.json",
       "rules_track": "HKMA Classical",
       "run_id": "hk-hkma-v1__shallow_search__public__20261117T014159",
@@ -305,7 +833,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-hkma-v1__random__public__20261117T011912.jsonl.gz",
       "points_per_hand": -1.7875,
-      "rank": 6,
+      "rank": 7,
       "result": "results/hk-hkma-v1__random__public__20261117T011912.json",
       "rules_track": "HKMA Classical",
       "run_id": "hk-hkma-v1__random__public__20261117T011912",
@@ -315,6 +843,270 @@
       "track": "bots",
       "verification": "unverified",
       "win_rate": 0.0005
+    },
+    {
+      "average_win_faan": 6.031777557100298,
+      "average_win_points": 49.13339953657729,
+      "bot": {
+        "description": "Mahjong Sensei's shipped bot, hosted: its weights and code stay private",
+        "kind": "hosted",
+        "name": "h1",
+        "sha256": "af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54",
+        "trained_on": "HKMA Classical rules (no flower faan, no Seven Pairs)"
+      },
+      "ci95": [
+        15.555755639908561,
+        17.19324436009144
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '<hosted>' --name h1 --kind hosted --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Mahjong Sensei'\"'\"'s shipped bot, hosted: its weights and code stay private' --deals 2000 --workers 9",
+      "created_utc": "2026-11-17T03:57:12Z",
+      "deal_in_rate": 0.04775,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 5,
+      "log": "results/logs/hk-house-v1__h1__private__20261117T035712.jsonl.gz",
+      "points_per_hand": 16.3745,
+      "rank": 1,
+      "result": "results/hk-house-v1__h1__private__20261117T035712.json",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__h1__private__20261117T035712",
+      "se": 0.4174814609777664,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.377625
+    },
+    {
+      "average_win_faan": 5.057657657657658,
+      "average_win_points": 38.51171171171171,
+      "bot": {
+        "description": "examples/bots/python_bot.py",
+        "kind": "external",
+        "name": "python_example",
+        "sha256": "11af7f9fedcf5799134343c6e6a02f5f3aafc5275f55e8d95b218c404b3ac630",
+        "trained_on": "none (hand-written heuristic)"
+      },
+      "ci95": [
+        2.1473329864514286,
+        3.2246670135485713
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot 'python3 examples/bots/python_bot.py' --name python_example --kind external --trained-on 'none (hand-written heuristic)' --description examples/bots/python_bot.py --deals 2000 --workers 9",
+      "created_utc": "2026-11-17T04:07:41Z",
+      "deal_in_rate": 0.062375,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 3,
+      "log": "results/logs/hk-house-v1__python_example__private__20261117T040741.jsonl.gz",
+      "points_per_hand": 2.686,
+      "rank": 2,
+      "result": "results/hk-house-v1__python_example__private__20261117T040741.json",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__python_example__private__20261117T040741",
+      "se": 0.27466875224846976,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.13875
+    },
+    {
+      "average_win_faan": 3.7766830870279144,
+      "average_win_points": 18.817733990147783,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        1.5939287923606522,
+        2.1890712076393477
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot ref:faan_aware --deals 2000 --workers 9 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-17T04:05:46Z",
+      "deal_in_rate": 0.055,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 1,
+      "log": "results/logs/hk-house-v1__faan_aware__private__20261117T040546.jsonl.gz",
+      "points_per_hand": 1.8915,
+      "rank": 2,
+      "result": "results/hk-house-v1__faan_aware__private__20261117T040546.json",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__faan_aware__private__20261117T040546",
+      "se": 0.1517329078105876,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.228375
+    },
+    {
+      "average_win_faan": 3.3364583333333333,
+      "average_win_points": 14.279166666666667,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        -1.2790393247590712,
+        -0.8449606752409289
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot ref:ukeire --deals 2000 --workers 9 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-17T04:01:32Z",
+      "deal_in_rate": 0.06075,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 0,
+      "log": "results/logs/hk-house-v1__ukeire__private__20261117T040132.jsonl.gz",
+      "points_per_hand": -1.062,
+      "rank": 4,
+      "result": "results/hk-house-v1__ukeire__private__20261117T040132.json",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__ukeire__private__20261117T040132",
+      "se": 0.11066933563966813,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.12
+    },
+    {
+      "average_win_faan": 3.3891402714932126,
+      "average_win_points": 14.823529411764707,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        -1.2652225425811643,
+        -0.8677774574188357
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot ref:deficiency --deals 2000 --workers 9 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-17T04:03:45Z",
+      "deal_in_rate": 0.059875,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 0,
+      "log": "results/logs/hk-house-v1__deficiency__private__20261117T040345.jsonl.gz",
+      "points_per_hand": -1.0665,
+      "rank": 4,
+      "result": "results/hk-house-v1__deficiency__private__20261117T040345.json",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__deficiency__private__20261117T040345",
+      "se": 0.10132952536825436,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.1105
+    },
+    {
+      "average_win_faan": 3.110526315789474,
+      "average_win_points": 12.16842105263158,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "shallow_search",
+        "sha256": "214c3e4cd0252c1b687845e14965c88f4287f2946391a8da9492d15bda496698",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        -1.9596630230530447,
+        -0.9553369769469553
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot ref:shallow_search --deals 400 --workers 9 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-17T04:16:38Z",
+      "deal_in_rate": 0.06,
+      "deals": 400,
+      "games": 1600,
+      "limit_hands": 0,
+      "log": "results/logs/hk-house-v1__shallow_search__private__20261117T041638.jsonl.gz",
+      "points_per_hand": -1.4575,
+      "rank": 4,
+      "result": "results/hk-house-v1__shallow_search__private__20261117T041638.json",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__shallow_search__private__20261117T041638",
+      "se": 0.25543316077608286,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.11875
+    },
+    {
+      "average_win_faan": 3.6,
+      "average_win_points": 17.6,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "random",
+        "sha256": "9c1c37dc49ebf5f63bb87cc87f83e332e4e10d7b31b97f77cd7aceacdf56dfd1",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        -2.985038624465026,
+        -2.685961375534974
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot ref:random --deals 2000 --workers 9 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-17T03:59:22Z",
+      "deal_in_rate": 0.065125,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 0,
+      "log": "results/logs/hk-house-v1__random__private__20261117T035922.jsonl.gz",
+      "points_per_hand": -2.8355,
+      "rank": 7,
+      "result": "results/hk-house-v1__random__private__20261117T035922.json",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__random__private__20261117T035922",
+      "se": 0.07625042254616854,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.00125
+    },
+    {
+      "average_win_faan": 6.065035199463627,
+      "average_win_points": 49.406637613141136,
+      "bot": {
+        "description": "Mahjong Sensei's shipped bot, hosted: its weights and code stay private",
+        "kind": "hosted",
+        "name": "h1",
+        "sha256": "af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54",
+        "trained_on": "HKMA Classical rules (no flower faan, no Seven Pairs)"
+      },
+      "ci95": [
+        15.420058008543016,
+        17.093941991456987
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '<hosted>' --name h1 --kind hosted --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Mahjong Sensei'\"'\"'s shipped bot, hosted: its weights and code stay private' --deals 2000 --workers 9",
+      "created_utc": "2026-11-17T03:48:59Z",
+      "deal_in_rate": 0.04925,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 2,
+      "log": "results/logs/hk-house-v1__h1__public__20261117T034859.jsonl.gz",
+      "points_per_hand": 16.257,
+      "rank": 1,
+      "result": "results/hk-house-v1__h1__public__20261117T034859.json",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__h1__public__20261117T034859",
+      "se": 0.4267605157097877,
+      "seed_tag": "public",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.372875
     },
     {
       "average_win_faan": 4.877224199288256,
@@ -338,7 +1130,7 @@
       "limit_hands": 1,
       "log": "results/logs/hk-house-v1__python_example__public__20261117T015843.jsonl.gz",
       "points_per_hand": 2.43,
-      "rank": 1,
+      "rank": 2,
       "result": "results/hk-house-v1__python_example__public__20261117T015843.json",
       "rules_track": "House",
       "run_id": "hk-house-v1__python_example__public__20261117T015843",
@@ -371,7 +1163,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__faan_aware__public__20261117T015619.jsonl.gz",
       "points_per_hand": 1.5485,
-      "rank": 2,
+      "rank": 3,
       "result": "results/hk-house-v1__faan_aware__public__20261117T015619.json",
       "rules_track": "House",
       "run_id": "hk-house-v1__faan_aware__public__20261117T015619",
@@ -404,7 +1196,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__ukeire__public__20261117T015330.jsonl.gz",
       "points_per_hand": -0.921,
-      "rank": 3,
+      "rank": 4,
       "result": "results/hk-house-v1__ukeire__public__20261117T015330.json",
       "rules_track": "House",
       "run_id": "hk-house-v1__ukeire__public__20261117T015330",
@@ -437,7 +1229,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__shallow_search__public__20261117T021115.jsonl.gz",
       "points_per_hand": -0.94,
-      "rank": 3,
+      "rank": 4,
       "result": "results/hk-house-v1__shallow_search__public__20261117T021115.json",
       "rules_track": "House",
       "run_id": "hk-house-v1__shallow_search__public__20261117T021115",
@@ -470,7 +1262,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__deficiency__public__20261117T015041.jsonl.gz",
       "points_per_hand": -1.162,
-      "rank": 3,
+      "rank": 4,
       "result": "results/hk-house-v1__deficiency__public__20261117T015041.json",
       "rules_track": "House",
       "run_id": "hk-house-v1__deficiency__public__20261117T015041",
@@ -503,7 +1295,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__random__public__20261117T014812.jsonl.gz",
       "points_per_hand": -3.0445,
-      "rank": 6,
+      "rank": 7,
       "result": "results/hk-house-v1__random__public__20261117T014812.json",
       "rules_track": "House",
       "run_id": "hk-house-v1__random__public__20261117T014812",
