@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hong Kong Mahjong Bench</title>
+<style>
+:root{--bg:#fbfaf7;--card:#fff;--ink:#1d1d1b;--mute:#6b6a63;--line:#e4e1d8;--accent:#a3261b;--ok:#1f7a3f;--warn:#9a6a00;--chip:#f1eee6}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161614;--card:#1f1f1c;--ink:#ece9e1;--mute:#a09d93;--line:#333128;--accent:#e0584b;--ok:#58c07a;--warn:#e0b04a;--chip:#2a2924}}
+:root[data-theme="dark"]{--bg:#161614;--card:#1f1f1c;--ink:#ece9e1;--mute:#a09d93;--line:#333128;--accent:#e0584b;--ok:#58c07a;--warn:#e0b04a;--chip:#2a2924}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:28px 16px 64px}
+h1{font-size:28px;margin:0 0 4px}
+p.lede{color:var(--mute);margin:0 0 20px;max-width:62ch}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
+button.tab,button.rules{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px 14px;border-radius:999px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:0 0 12px}
+label.chk{color:var(--mute);font-size:14px;display:flex;gap:6px;align-items:center}
+.note{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 14px;color:var(--mute);font-size:14px}
+.note b{color:var(--ink)}
+.scroll{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+th,td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-weight:600;color:var(--mute);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+th:nth-child(1),td:nth-child(1),th:nth-child(2),td:nth-child(2){text-align:left}
+tr:last-child td{border-bottom:0}
+td.rank{color:var(--mute);width:40px}
+td .sub{display:block;color:var(--mute);font-size:12px}
+.pts{font-variant-numeric:tabular-nums;font-weight:600}
+.ci{color:var(--mute);font-variant-numeric:tabular-nums}
+.badge{display:inline-block;font-size:11px;padding:1px 8px;border-radius:999px;background:var(--chip);color:var(--mute);margin-left:6px}
+.badge.verified{background:transparent;color:var(--ok);border:1px solid var(--ok)}
+.badge.unverified{color:var(--warn)}
+.empty{padding:28px 14px;color:var(--mute);text-align:center}
+h2{font-size:18px;margin:28px 0 8px}
+footer{margin-top:28px;color:var(--mute);font-size:13px}
+code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Hong Kong Mahjong Bench</h1>
+  <p class="lede">Points a hand against a frozen field of reference bots, in duplicate play, with a 95% interval. Every row says which rules it was scored under and whether the deals were private.</p>
+  <div class="tabs" id="tracks" role="tablist" aria-label="Track"></div>
+  <div class="tabs" id="rules" aria-label="Rules"></div>
+  <div class="row"><label class="chk"><input type="checkbox" id="verifiedOnly"> Verified rows only</label></div>
+  <div id="note"></div>
+  <div id="board"></div>
+  <div id="h2h"></div>
+  <footer id="foot"></footer>
+</main>
+<script id="data" type="application/json">{"generated_utc": "2026-11-17T00:04:54Z", "head_to_head": [{"bots": [{"ci95": [50.946665961467964, 58.85179303341144], "name": "faan_aware", "rank": 1, "rating": 54.84923075385118}, {"ci95": [11.029435224035375, 17.886617307899584], "name": "python_example", "rank": 2, "rating": 14.58994454657481}, {"ci95": [-11.903986855943316, -6.118838425613418], "name": "ukeire", "rank": 3, "rating": -8.957545624208048}, {"ci95": [-15.833364917562381, -10.039337528629044], "name": "deficiency", "rank": 3, "rating": -12.975162199442634}, {"ci95": [-50.197528737656256, -44.77092122014914], "name": "random", "rank": 5, "rating": -47.50646747677531}], "created_utc": "2026-11-17T00:04:12Z", "deals": 300, "result": "results/hk-hkma-v1__h2h__public__20261117T000412.json", "rules_track": "HKMA Classical", "run_id": "hk-hkma-v1__h2h__public__20261117T000412", "seed_tag": "public", "table": "hk-hkma-v1", "verification": "unverified"}], "hkbench_version": "1.0.0", "rows": [{"average_win_faan": 5.185873605947956, "average_win_points": 41.18463444857497, "bot": {"description": "examples/bots/python_bot.py", "kind": "external", "name": "python_example", "sha256": "11af7f9fedcf5799134343c6e6a02f5f3aafc5275f55e8d95b218c404b3ac630", "trained_on": "none (hand-written heuristic)"}, "ci95": [2.031285468620625, 2.910714531379375], "command": "hkbench score --table hk-hkma-v1 --bot 'python3 examples/bots/python_bot.py' --name python_example --kind external --trained-on 'none (hand-written heuristic)' --description examples/bots/python_bot.py --deals 2000 --workers 4", "created_utc": "2026-11-16T23:48:44Z", "deal_in_rate": 0.050375, "deals": 2000, "games": 8000, "limit_hands": 104, "log": "results/logs/hk-hkma-v1__python_example__public__20261116T234844.jsonl.gz", "points_per_hand": 2.471, "rank": 1, "result": "results/hk-hkma-v1__python_example__public__20261116T234844.json", "rules_track": "HKMA Classical", "run_id": "hk-hkma-v1__python_example__public__20261116T234844", "se": 0.22421243299057758, "seed_tag": "public", "table": "hk-hkma-v1", "track": "bots", "verification": "unverified", "win_rate": 0.100875}, {"average_win_faan": 3.9197299324831207, "average_win_points": 19.486871717929482, "bot": {"description": "", "kind": "reference", "name": "faan_aware", "sha256": "4094849829017afed0d6f4dba0d4498b661cfa2c79a7c7ead2cb357c9a3dc07a", "trained_on": "none (scripted)"}, "ci95": [1.4785153634922963, 1.975484636507704], "command": "hkbench score --table hk-hkma-v1 --bot ref:faan_aware --deals 2000 --workers 4 --trained-on 'none (scripted)'", "created_utc": "2026-11-16T23:46:18Z", "deal_in_rate": 0.042375, "deals": 2000, "games": 8000, "limit_hands": 9, "log": "results/logs/hk-hkma-v1__faan_aware__public__20261116T234618.jsonl.gz", "points_per_hand": 1.727, "rank": 2, "result": "results/hk-hkma-v1__faan_aware__public__20261116T234618.json", "rules_track": "HKMA Classical", "run_id": "hk-hkma-v1__faan_aware__public__20261116T234618", "se": 0.12670344265721661, "seed_tag": "public", "table": "hk-hkma-v1", "track": "bots", "verification": "unverified", "win_rate": 0.166625}, {"average_win_faan": 3.5864864864864865, "average_win_points": 17.027027027027028, "bot": {"description": "", "kind": "reference", "name": "ukeire", "sha256": "06581f9229affdee5fff6ff2771d20e5ece36ee773ff56e0ac7a318f8bb9493a", "trained_on": "none (scripted)"}, "ci95": [-1.0099924243663139, -0.6850075756336862], "command": "hkbench score --table hk-hkma-v1 --bot ref:ukeire --deals 2000 --workers 4 --trained-on 'none (scripted)'", "created_utc": "2026-11-16T23:43:18Z", "deal_in_rate": 0.044375, "deals": 2000, "games": 8000, "limit_hands": 4, "log": "results/logs/hk-hkma-v1__ukeire__public__20261116T234318.jsonl.gz", "points_per_hand": -0.8475, "rank": 3, "result": "results/hk-hkma-v1__ukeire__public__20261116T234318.json", "rules_track": "HKMA Classical", "run_id": "hk-hkma-v1__ukeire__public__20261116T234318", "se": 0.08285562384172214, "seed_tag": "public", "table": "hk-hkma-v1", "track": "bots", "verification": "unverified", "win_rate": 0.04625}, {"average_win_faan": 3.6494252873563218, "average_win_points": 17.586206896551722, "bot": {"description": "", "kind": "reference", "name": "deficiency", "sha256": "06581f9229affdee5fff6ff2771d20e5ece36ee773ff56e0ac7a318f8bb9493a", "trained_on": "none (scripted)"}, "ci95": [-1.0598105915976521, -0.7331894084023478], "command": "hkbench score --table hk-hkma-v1 --bot ref:deficiency --deals 2000 --workers 4 --trained-on 'none (scripted)'", "created_utc": "2026-11-16T23:40:16Z", "deal_in_rate": 0.046875, "deals": 2000, "games": 8000, "limit_hands": 4, "log": "results/logs/hk-hkma-v1__deficiency__public__20261116T234016.jsonl.gz", "points_per_hand": -0.8965, "rank": 3, "result": "results/hk-hkma-v1__deficiency__public__20261116T234016.json", "rules_track": "HKMA Classical", "run_id": "hk-hkma-v1__deficiency__public__20261116T234016", "se": 0.08327281102213226, "seed_tag": "public", "table": "hk-hkma-v1", "track": "bots", "verification": "unverified", "win_rate": 0.0435}, {"average_win_faan": 3.3636363636363638, "average_win_points": 14.690909090909091, "bot": {"description": "", "kind": "reference", "name": "shallow_search", "sha256": "6a94ea394c528da5672f428e9f1edea2610eb1275e62e9c8ea0e3814f5c1916e", "trained_on": "none (scripted)"}, "ci95": [-1.6500147565437282, -0.944985243456272], "command": "hkbench score --table hk-hkma-v1 --bot ref:shallow_search --deals 400 --workers 4 --trained-on 'none (scripted)'", "created_utc": "2026-11-17T00:00:22Z", "deal_in_rate": 0.04625, "deals": 400, "games": 1600, "limit_hands": 0, "log": "results/logs/hk-hkma-v1__shallow_search__public__20261117T000022.jsonl.gz", "points_per_hand": -1.2975, "rank": 3, "result": "results/hk-hkma-v1__shallow_search__public__20261117T000022.json", "rules_track": "HKMA Classical", "run_id": "hk-hkma-v1__shallow_search__public__20261117T000022", "se": 0.17931220410600457, "seed_tag": "public", "table": "hk-hkma-v1", "track": "bots", "verification": "unverified", "win_rate": 0.034375}, {"average_win_faan": 5.333333333333333, "average_win_points": 58.666666666666664, "bot": {"description": "", "kind": "reference", "name": "random", "sha256": "9c1c37dc49ebf5f63bb87cc87f83e332e4e10d7b31b97f77cd7aceacdf56dfd1", "trained_on": "none (scripted)"}, "ci95": [-1.9812351960823844, -1.6917648039176156], "command": "hkbench score --table hk-hkma-v1 --bot ref:random --deals 2000 --workers 4 --trained-on 'none (scripted)'", "created_utc": "2026-11-16T23:37:34Z", "deal_in_rate": 0.049875, "deals": 2000, "games": 8000, "limit_hands": 0, "log": "results/logs/hk-hkma-v1__random__public__20261116T233734.jsonl.gz", "points_per_hand": -1.8365, "rank": 6, "result": "results/hk-hkma-v1__random__public__20261116T233734.json", "rules_track": "HKMA Classical", "run_id": "hk-hkma-v1__random__public__20261116T233734", "se": 0.07380113263757801, "seed_tag": "public", "table": "hk-hkma-v1", "track": "bots", "verification": "unverified", "win_rate": 0.000375}], "schema": "hkbench-leaderboard-1", "tables": [{"field": ["faan_aware", "ukeire", "deficiency"], "headline": true, "id": "hk-hkma-v1", "pending_reason": null, "rules_track": "HKMA Classical", "status": "active", "summary": "13-tile Hong Kong Mahjong. Minimum 3 faan, cap 10, discarder pays the whole hand, flowers do not score. Based on the HKMA rulebook (17 May 2023); RULES.md lists where it differs.", "title": "Hong Kong Mahjong, HKMA Classical"}, {"field": [], "headline": false, "id": "hk-house-v1", "pending_reason": "pending Seven Pairs scoring", "rules_track": "House", "status": "pending", "summary": "House rules: flowers score, limit hands are graded 6 / 8 / 10 / 13, cap 13, and Seven Pairs is a hand. Not scoring yet: the Seven Pairs scoring is not in the engine.", "title": "Hong Kong Mahjong, House rules"}], "tracks": [{"id": "bots", "note": null, "title": "Bots"}, {"id": "llms", "note": "Coming. Language models will play through the same protocol, with cost per hand shown.", "title": "LLMs"}, {"id": "humans", "note": "Coming. People will play the same deals at a table in the browser.", "title": "Humans"}]}</script>
+<script>
+(function(){
+  var D = JSON.parse(document.getElementById("data").textContent);
+  var state = {track:"bots", table:"hk-hkma-v1", verifiedOnly:false};
+  try { var s = JSON.parse(localStorage.getItem("hkbench") || "{}"); if (s.track) state.track = s.track; if (s.table) state.table = s.table; } catch (e) {}
+  function save(){ try { localStorage.setItem("hkbench", JSON.stringify({track:state.track, table:state.table})); } catch (e) {} }
+  function el(tag, attrs, kids){ var e = document.createElement(tag); for (var k in (attrs||{})) { if (k === "text") e.textContent = attrs[k]; else e.setAttribute(k, attrs[k]); } (kids||[]).forEach(function(c){ e.appendChild(c); }); return e; }
+  function f(x, d){ return x == null ? "n/a" : (x >= 0 && d !== 0 ? "+" : "") + x.toFixed(d == null ? 2 : d); }
+  function pct(x){ return x == null ? "n/a" : (100 * x).toFixed(1) + "%"; }
+  function buttons(host, items, key){
+    host.innerHTML = "";
+    items.forEach(function(it){
+      var b = el("button", {"class":"tab", "type":"button", "aria-pressed": String(state[key] === it.id), text: it.title});
+      b.onclick = function(){ state[key] = it.id; save(); render(); };
+      host.appendChild(b);
+    });
+  }
+  function render(){
+    buttons(document.getElementById("tracks"), D.tracks, "track");
+    buttons(document.getElementById("rules"), D.tables.map(function(t){ return {id:t.id, title:t.rules_track + (t.status === "pending" ? " (pending)" : "")}; }), "table");
+    var table = D.tables.filter(function(t){ return t.id === state.table; })[0];
+    var track = D.tracks.filter(function(t){ return t.id === state.track; })[0];
+    var note = document.getElementById("note"); note.innerHTML = "";
+    var board = document.getElementById("board"); board.innerHTML = "";
+    var h2h = document.getElementById("h2h"); h2h.innerHTML = "";
+    if (table) {
+      var n = el("div", {"class":"note"});
+      n.appendChild(el("b", {text: table.title + ". "}));
+      n.appendChild(document.createTextNode(table.status === "pending" ? "Not scoring yet: " + table.pending_reason + "." : table.summary));
+      note.appendChild(n);
+    }
+    if (table && table.status === "pending") { board.appendChild(el("div", {"class":"empty", text:"No rows yet. This table opens when its scoring is in the engine."})); render_foot(); return; }
+    var rows = D.rows.filter(function(r){ return r.track === state.track && r.table === state.table && (!state.verifiedOnly || r.verification === "verified"); });
+    if (!rows.length) {
+      board.appendChild(el("div", {"class":"empty", text: track.note || "No rows yet."}));
+    } else {
+      var head = el("tr"); ["#", "Bot", "Points a hand", "95% interval", "Win", "Deal-in", "Average win", "Games"].forEach(function(h){ head.appendChild(el("th", {text:h})); });
+      var body = el("tbody");
+      rows.forEach(function(r){
+        var tr = el("tr");
+        tr.appendChild(el("td", {"class":"rank", text:String(r.rank)}));
+        var name = el("td"); name.appendChild(document.createTextNode(r.bot.name));
+        name.appendChild(el("span", {"class":"badge " + r.verification, text:r.verification}));
+        name.appendChild(el("span", {"class":"sub", text: r.seed_tag + " deals. Trained on: " + r.bot.trained_on}));
+        tr.appendChild(name);
+        tr.appendChild(el("td", {"class":"pts", text:f(r.points_per_hand)}));
+        tr.appendChild(el("td", {"class":"ci", text: r.ci95 ? "[" + f(r.ci95[0]) + ", " + f(r.ci95[1]) + "]" : "n/a"}));
+        tr.appendChild(el("td", {text:pct(r.win_rate)}));
+        tr.appendChild(el("td", {text:pct(r.deal_in_rate)}));
+        tr.appendChild(el("td", {text: r.average_win_points == null ? "n/a" : r.average_win_points.toFixed(1) + " pts, " + r.average_win_faan.toFixed(1) + " faan"}));
+        tr.appendChild(el("td", {text:String(r.games)}));
+        body.appendChild(tr);
+      });
+      var t = el("table"); var th = el("thead"); th.appendChild(head); t.appendChild(th); t.appendChild(body);
+      var sc = el("div", {"class":"scroll"}); sc.appendChild(t); board.appendChild(sc);
+    }
+    var hh = D.head_to_head.filter(function(h){ return h.table === state.table; });
+    if (state.track === "bots" && hh.length) {
+      h2h.appendChild(el("h2", {text:"Head to head"}));
+      hh.forEach(function(h){
+        var head = el("tr"); ["#", "Bot", "Rating", "95% interval"].forEach(function(x){ head.appendChild(el("th", {text:x})); });
+        var body = el("tbody");
+        h.bots.forEach(function(b){
+          var tr = el("tr"); tr.appendChild(el("td", {"class":"rank", text:String(b.rank)})); tr.appendChild(el("td", {text:b.name}));
+          tr.appendChild(el("td", {"class":"pts", text:f(b.rating, 0)})); tr.appendChild(el("td", {"class":"ci", text:"[" + f(b.ci95[0], 0) + ", " + f(b.ci95[1], 0) + "]"}));
+          body.appendChild(tr);
+        });
+        var t = el("table"); var th = el("thead"); th.appendChild(head); t.appendChild(th); t.appendChild(body);
+        var sc = el("div", {"class":"scroll"}); sc.appendChild(t);
+        h2h.appendChild(el("p", {"class":"ci", text:h.deals + " deals, " + h.seed_tag + " deck, " + h.verification + ". Bradley-Terry rating on the Elo scale."}));
+        h2h.appendChild(sc);
+      });
+    }
+    render_foot();
+  }
+  function render_foot(){
+    document.getElementById("foot").innerHTML = "";
+    var p = el("p", {text:"A rank is shared when 95% intervals overlap. Points are one quarter of the HKMA rulebook's. Unverified rows were played on the public deals; verified rows on private ones, after a hidden-tile fair-play check. Built " + D.generated_utc + " by hkbench " + D.hkbench_version + "."});
+    document.getElementById("foot").appendChild(p);
+  }
+  document.getElementById("verifiedOnly").onchange = function(e){ state.verifiedOnly = e.target.checked; render(); };
+  render();
+})();
+</script>
+</body>
+</html>

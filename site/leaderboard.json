@@ -1,0 +1,307 @@
+{
+  "generated_utc": "2026-11-17T00:04:54Z",
+  "head_to_head": [
+    {
+      "bots": [
+        {
+          "ci95": [
+            50.946665961467964,
+            58.85179303341144
+          ],
+          "name": "faan_aware",
+          "rank": 1,
+          "rating": 54.84923075385118
+        },
+        {
+          "ci95": [
+            11.029435224035375,
+            17.886617307899584
+          ],
+          "name": "python_example",
+          "rank": 2,
+          "rating": 14.58994454657481
+        },
+        {
+          "ci95": [
+            -11.903986855943316,
+            -6.118838425613418
+          ],
+          "name": "ukeire",
+          "rank": 3,
+          "rating": -8.957545624208048
+        },
+        {
+          "ci95": [
+            -15.833364917562381,
+            -10.039337528629044
+          ],
+          "name": "deficiency",
+          "rank": 3,
+          "rating": -12.975162199442634
+        },
+        {
+          "ci95": [
+            -50.197528737656256,
+            -44.77092122014914
+          ],
+          "name": "random",
+          "rank": 5,
+          "rating": -47.50646747677531
+        }
+      ],
+      "created_utc": "2026-11-17T00:04:12Z",
+      "deals": 300,
+      "result": "results/hk-hkma-v1__h2h__public__20261117T000412.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__h2h__public__20261117T000412",
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "verification": "unverified"
+    }
+  ],
+  "hkbench_version": "1.0.0",
+  "rows": [
+    {
+      "average_win_faan": 5.185873605947956,
+      "average_win_points": 41.18463444857497,
+      "bot": {
+        "description": "examples/bots/python_bot.py",
+        "kind": "external",
+        "name": "python_example",
+        "sha256": "11af7f9fedcf5799134343c6e6a02f5f3aafc5275f55e8d95b218c404b3ac630",
+        "trained_on": "none (hand-written heuristic)"
+      },
+      "ci95": [
+        2.031285468620625,
+        2.910714531379375
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot 'python3 examples/bots/python_bot.py' --name python_example --kind external --trained-on 'none (hand-written heuristic)' --description examples/bots/python_bot.py --deals 2000 --workers 4",
+      "created_utc": "2026-11-16T23:48:44Z",
+      "deal_in_rate": 0.050375,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 104,
+      "log": "results/logs/hk-hkma-v1__python_example__public__20261116T234844.jsonl.gz",
+      "points_per_hand": 2.471,
+      "rank": 1,
+      "result": "results/hk-hkma-v1__python_example__public__20261116T234844.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__python_example__public__20261116T234844",
+      "se": 0.22421243299057758,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.100875
+    },
+    {
+      "average_win_faan": 3.9197299324831207,
+      "average_win_points": 19.486871717929482,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "faan_aware",
+        "sha256": "4094849829017afed0d6f4dba0d4498b661cfa2c79a7c7ead2cb357c9a3dc07a",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        1.4785153634922963,
+        1.975484636507704
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot ref:faan_aware --deals 2000 --workers 4 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-16T23:46:18Z",
+      "deal_in_rate": 0.042375,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 9,
+      "log": "results/logs/hk-hkma-v1__faan_aware__public__20261116T234618.jsonl.gz",
+      "points_per_hand": 1.727,
+      "rank": 2,
+      "result": "results/hk-hkma-v1__faan_aware__public__20261116T234618.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__faan_aware__public__20261116T234618",
+      "se": 0.12670344265721661,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.166625
+    },
+    {
+      "average_win_faan": 3.5864864864864865,
+      "average_win_points": 17.027027027027028,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "ukeire",
+        "sha256": "06581f9229affdee5fff6ff2771d20e5ece36ee773ff56e0ac7a318f8bb9493a",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        -1.0099924243663139,
+        -0.6850075756336862
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot ref:ukeire --deals 2000 --workers 4 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-16T23:43:18Z",
+      "deal_in_rate": 0.044375,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 4,
+      "log": "results/logs/hk-hkma-v1__ukeire__public__20261116T234318.jsonl.gz",
+      "points_per_hand": -0.8475,
+      "rank": 3,
+      "result": "results/hk-hkma-v1__ukeire__public__20261116T234318.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__ukeire__public__20261116T234318",
+      "se": 0.08285562384172214,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.04625
+    },
+    {
+      "average_win_faan": 3.6494252873563218,
+      "average_win_points": 17.586206896551722,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "deficiency",
+        "sha256": "06581f9229affdee5fff6ff2771d20e5ece36ee773ff56e0ac7a318f8bb9493a",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        -1.0598105915976521,
+        -0.7331894084023478
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot ref:deficiency --deals 2000 --workers 4 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-16T23:40:16Z",
+      "deal_in_rate": 0.046875,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 4,
+      "log": "results/logs/hk-hkma-v1__deficiency__public__20261116T234016.jsonl.gz",
+      "points_per_hand": -0.8965,
+      "rank": 3,
+      "result": "results/hk-hkma-v1__deficiency__public__20261116T234016.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__deficiency__public__20261116T234016",
+      "se": 0.08327281102213226,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.0435
+    },
+    {
+      "average_win_faan": 3.3636363636363638,
+      "average_win_points": 14.690909090909091,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "shallow_search",
+        "sha256": "6a94ea394c528da5672f428e9f1edea2610eb1275e62e9c8ea0e3814f5c1916e",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        -1.6500147565437282,
+        -0.944985243456272
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot ref:shallow_search --deals 400 --workers 4 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-17T00:00:22Z",
+      "deal_in_rate": 0.04625,
+      "deals": 400,
+      "games": 1600,
+      "limit_hands": 0,
+      "log": "results/logs/hk-hkma-v1__shallow_search__public__20261117T000022.jsonl.gz",
+      "points_per_hand": -1.2975,
+      "rank": 3,
+      "result": "results/hk-hkma-v1__shallow_search__public__20261117T000022.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__shallow_search__public__20261117T000022",
+      "se": 0.17931220410600457,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.034375
+    },
+    {
+      "average_win_faan": 5.333333333333333,
+      "average_win_points": 58.666666666666664,
+      "bot": {
+        "description": "",
+        "kind": "reference",
+        "name": "random",
+        "sha256": "9c1c37dc49ebf5f63bb87cc87f83e332e4e10d7b31b97f77cd7aceacdf56dfd1",
+        "trained_on": "none (scripted)"
+      },
+      "ci95": [
+        -1.9812351960823844,
+        -1.6917648039176156
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot ref:random --deals 2000 --workers 4 --trained-on 'none (scripted)'",
+      "created_utc": "2026-11-16T23:37:34Z",
+      "deal_in_rate": 0.049875,
+      "deals": 2000,
+      "games": 8000,
+      "limit_hands": 0,
+      "log": "results/logs/hk-hkma-v1__random__public__20261116T233734.jsonl.gz",
+      "points_per_hand": -1.8365,
+      "rank": 6,
+      "result": "results/hk-hkma-v1__random__public__20261116T233734.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__random__public__20261116T233734",
+      "se": 0.07380113263757801,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.000375
+    }
+  ],
+  "schema": "hkbench-leaderboard-1",
+  "tables": [
+    {
+      "field": [
+        "faan_aware",
+        "ukeire",
+        "deficiency"
+      ],
+      "headline": true,
+      "id": "hk-hkma-v1",
+      "pending_reason": null,
+      "rules_track": "HKMA Classical",
+      "status": "active",
+      "summary": "13-tile Hong Kong Mahjong. Minimum 3 faan, cap 10, discarder pays the whole hand, flowers do not score. Based on the HKMA rulebook (17 May 2023); RULES.md lists where it differs.",
+      "title": "Hong Kong Mahjong, HKMA Classical"
+    },
+    {
+      "field": [],
+      "headline": false,
+      "id": "hk-house-v1",
+      "pending_reason": "pending Seven Pairs scoring",
+      "rules_track": "House",
+      "status": "pending",
+      "summary": "House rules: flowers score, limit hands are graded 6 / 8 / 10 / 13, cap 13, and Seven Pairs is a hand. Not scoring yet: the Seven Pairs scoring is not in the engine.",
+      "title": "Hong Kong Mahjong, House rules"
+    }
+  ],
+  "tracks": [
+    {
+      "id": "bots",
+      "note": null,
+      "title": "Bots"
+    },
+    {
+      "id": "llms",
+      "note": "Coming. Language models will play through the same protocol, with cost per hand shown.",
+      "title": "LLMs"
+    },
+    {
+      "id": "humans",
+      "note": "Coming. People will play the same deals at a table in the browser.",
+      "title": "Humans"
+    }
+  ]
+}
