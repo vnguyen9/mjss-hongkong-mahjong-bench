@@ -11,7 +11,7 @@ This repository holds the rules engine, the scorer and the harness. It is MIT li
 | Table | Rules | State |
 |---|---|---|
 | `hk-hkma-v1` | HKMA Classical: 3 faan to win, cap 10, discarder pays the whole hand, flowers do not score | scoring |
-| `hk-house-v1` | House: flowers score, limit hands graded, cap 13, Seven Pairs is a hand | pending Seven Pairs scoring |
+| `hk-house-v1` | House: flowers score, limit hands graded, cap 13, Seven Pairs is a hand | scoring |
 
 HKMA Classical is the headline because it has a citable rulebook. `RULES.md` lists every faan value, the payout, and the places where `hk-hkma-v1` is not the rulebook.
 

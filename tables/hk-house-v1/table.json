@@ -1,22 +1,36 @@
 {
   "id": "hk-house-v1",
   "version": 1,
-  "status": "pending",
-  "pending_reason": "pending Seven Pairs scoring",
+  "status": "active",
   "title": "Hong Kong Mahjong, House rules",
   "rules_track": "House",
-  "summary": "House rules: flowers score, limit hands are graded 6 / 8 / 10 / 13, cap 13, and Seven Pairs is a hand. Not scoring yet: the Seven Pairs scoring is not in the engine.",
-  "rules": null,
-  "rules_sha256": null,
+  "summary": "13-tile Hong Kong Mahjong, House rules. Minimum 3 faan, cap 13, the discarder pays the whole hand, flowers score, limit hands are graded 6 / 8 / 10 / 13, and Seven Pairs is a hand (4 faan, concealed only). RULES.md has the full table.",
+  "rules": "rules.json",
+  "rules_sha256": "6318ed16cdaf40f09692c5873ae58400513b9fbaffe0da7efe1a20464a2872e6",
   "source_profile": "hk_3faan_v2 plus Seven Pairs",
-  "field": [],
+  "field": [
+    {
+      "bot": "faan_aware",
+      "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+    },
+    {
+      "bot": "ukeire",
+      "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+    },
+    {
+      "bot": "deficiency",
+      "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+    }
+  ],
+  "field_note": "The same three scripted bots as hk-hkma-v1, which read only their own seat view. They play for sets: they do not aim for Seven Pairs, though they will declare it when it is complete. The scored bot takes one seat and the field fills the other three in this order, starting with the seat after the scored bot.",
   "seeds": {
     "public": {
       "start": 2000000,
       "count": 100000
     },
-    "private": "Same rule as hk-hkma-v1."
+    "private": "The scored deck is private. Give its path with --private-seeds or the HKBENCH_PRIVATE_SEEDS environment variable. It must not overlap the public range."
   },
+  "schedule": "deal i has dealer i % 4 and prevailing wind (i // 4) % 4; every deal is played four times, the scored bot taking each seat once",
   "timeouts": {
     "decision_s": 10,
     "handshake_s": 30
@@ -24,6 +38,6 @@
   "faults": {
     "max_per_1000_decisions": 1
   },
-  "fingerprint": null,
-  "released": null
+  "fingerprint": "fingerprint.json",
+  "released": "2026-11-16"
 }

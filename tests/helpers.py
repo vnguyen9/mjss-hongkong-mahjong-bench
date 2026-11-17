@@ -19,6 +19,16 @@ def hkma_profile():
     return _cache["p"]
 
 
+def house_profile():
+    if "h" not in _cache:
+        _cache["h"] = load_profile(ROOT / "tables" / "hk-house-v1" / "rules.json")
+    return _cache["h"]
+
+
+def house_table():
+    return load_table("hk-house-v1")
+
+
 def hkma_table():
     return load_table("hk-hkma-v1")
 

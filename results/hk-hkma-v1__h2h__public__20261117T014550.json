@@ -14,7 +14,7 @@
       "display": "deficiency",
       "kind": "reference",
       "name": "deficiency",
-      "sha256": "06581f9229affdee5fff6ff2771d20e5ece36ee773ff56e0ac7a318f8bb9493a",
+      "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648",
       "track": "bots",
       "trained_on": "none (scripted)"
     },
@@ -23,7 +23,7 @@
       "display": "ukeire",
       "kind": "reference",
       "name": "ukeire",
-      "sha256": "06581f9229affdee5fff6ff2771d20e5ece36ee773ff56e0ac7a318f8bb9493a",
+      "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648",
       "track": "bots",
       "trained_on": "none (scripted)"
     },
@@ -32,7 +32,7 @@
       "display": "faan_aware",
       "kind": "reference",
       "name": "faan_aware",
-      "sha256": "3a2fbdda4293c217a627e17a6444324dfbabd3028a82495b7df7d755a4ea9ea8",
+      "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6",
       "track": "bots",
       "trained_on": "none (scripted)"
     },
@@ -89,10 +89,10 @@
     }
   },
   "command": "hkbench h2h --table hk-hkma-v1 --bot random=ref:random --bot deficiency=ref:deficiency --bot ukeire=ref:ukeire --bot faan_aware=ref:faan_aware --bot 'python_example=python3 examples/bots/python_bot.py' --deals 300 --workers 4",
-  "created_utc": "2026-11-17T01:01:06Z",
+  "created_utc": "2026-11-17T01:45:50Z",
   "engine": {
     "fingerprint_deals": 300,
-    "fingerprint_sha256": "02537f17f5df3b6f6151ec37eb4bd9e48809f4e70adc4e21f76d0665cd87eb07",
+    "fingerprint_sha256": "c22def21b784b7f30b671ba90c8ed3f4a62277f97f758c312913e2d290a7187c",
     "hkbench_version": "1.0.0",
     "python": "3.11.5",
     "rules_sha256": "43e4e01c50dce4d3dde5ba4f07d728e533e8c92ddb095372b3d718933ae16882"
@@ -142,7 +142,7 @@
     }
   },
   "kind": "h2h",
-  "log": "logs/hk-hkma-v1__h2h__public__20261117T010106.jsonl.gz",
+  "log": "logs/hk-hkma-v1__h2h__public__20261117T014550.jsonl.gz",
   "pairs": [
     {
       "a": "random",
@@ -326,7 +326,7 @@
     }
   ],
   "rank_rule": "rank = 1 + the number of bots whose 95% interval lies entirely above this bot's; overlapping bots share a rank",
-  "run_id": "hk-hkma-v1__h2h__public__20261117T010106",
+  "run_id": "hk-hkma-v1__h2h__public__20261117T014550",
   "schema": "hkbench-h2h-1",
   "seeds": {
     "deals": 300,

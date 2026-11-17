@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from helpers import ROOT, hkma_table
+from helpers import ROOT, hkma_profile, hkma_table, house_profile
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from render_rules import render  # noqa: E402
@@ -31,11 +31,14 @@ class RulesDocument(unittest.TestCase):
                        "Kongs after a claim", "shifting-meld"):
             self.assertIn(phrase, text)
 
-    def test_house_table_is_defined_but_pending(self):
+    def test_house_table_is_active_and_scores_seven_pairs(self):
         t = json.loads((ROOT / "tables" / "hk-house-v1" / "table.json").read_text())
-        self.assertEqual(t["status"], "pending")
-        self.assertEqual(t["pending_reason"], "pending Seven Pairs scoring")
-        self.assertFalse((ROOT / "tables" / "hk-house-v1" / "rules.json").exists())
+        self.assertEqual(t["status"], "active")
+        self.assertNotIn("pending_reason", t)
+        self.assertTrue((ROOT / "tables" / "hk-house-v1" / "rules.json").exists())
+        self.assertFalse((ROOT / "tables" / "hk-house-v1" / "rules.pending.json").exists())
+        self.assertTrue(house_profile().seven_pairs)
+        self.assertFalse(hkma_profile().seven_pairs)
 
 
 class Leaderboard(unittest.TestCase):
@@ -57,7 +60,7 @@ class Leaderboard(unittest.TestCase):
         data = json.loads((out / "leaderboard.json").read_text())
         self.assertEqual(data["schema"], "hkbench-leaderboard-1")
         self.assertEqual([t["id"] for t in data["tracks"]], ["bots", "llms", "humans"])
-        self.assertEqual({t["id"]: t["status"] for t in data["tables"]}, {"hk-hkma-v1": "active", "hk-house-v1": "pending"})
+        self.assertEqual({t["id"]: t["status"] for t in data["tables"]}, {"hk-hkma-v1": "active", "hk-house-v1": "active"})
         self.assertEqual(len(data["rows"]), 2)
         for row in data["rows"]:
             for key in ("rank", "track", "table", "rules_track", "verification", "seed_tag", "ci95", "points_per_hand", "games"):

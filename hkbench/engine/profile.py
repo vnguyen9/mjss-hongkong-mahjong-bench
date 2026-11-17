@@ -34,6 +34,14 @@ class RulesProfile:
         return int(self.data["win"]["faan_cap"])
 
     @property
+    def seven_pairs(self) -> bool:
+        """Whether seven different pairs is a legal, scoring win at this table.
+
+        Read with ``.get`` so a rules file without the key (the HKMA table) plays no Seven Pairs.
+        """
+        return bool(self.data["win"].get("seven_pairs", False))
+
+    @property
     def patterns(self) -> Dict[str, int]:
         return {k: int(v) for k, v in self.data["patterns"].items()}
 

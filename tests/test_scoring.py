@@ -4,7 +4,7 @@ import json
 import unittest
 from pathlib import Path
 
-from helpers import hkma_profile
+from helpers import hkma_profile, house_profile
 
 from hkbench.engine.scorer import score_hand, settle_payments
 from hkbench.engine.tiles import parse_tile as P
@@ -147,16 +147,11 @@ class RulebookFaan(unittest.TestCase):
         self.assertTrue(all(v == 0 for k, v in names.items() if "flower" in k or "season" in k))
 
 
-HOUSE_RULES = Path(__file__).resolve().parent.parent / "tables" / "hk-house-v1" / "rules.pending.json"
-
-
 class LimitHandsKeepTheirWinConditions(unittest.TestCase):
     """A limit hand still counts Self-Drawn, Last Tile, Robbing a Kong and the kong items, then the cap applies."""
 
     def house(self):
-        from hkbench.engine.profile import profile_from_dict
-
-        return profile_from_dict(json.loads(HOUSE_RULES.read_text()))
+        return house_profile()
 
     def score(self, conc, profile, source=WinSource.SELF_DRAW, **flags):
         return score_hand(player(conc), None, source, 0, 0, discarder=None if source == WinSource.SELF_DRAW else 1,

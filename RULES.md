@@ -106,9 +106,9 @@ What matches the rulebook: the faan values of all 14 items worth 1, 3, 5 or 7 fa
 
 The engine comes from the maintainers' own training package. These are the changes made for the bench: a Bless of Heaven hand was accepted but scored as an ordinary hand (it now scores 10 faan); a settlement that does not sum to zero now stops the run instead of being repaired; the deal shuffle is the bench's own and does not depend on the Python version; flower instant wins are off.
 
-## `hk-house-v1`: House (pending Seven Pairs scoring)
+## `hk-house-v1`: House
 
-House rules are the rule set the Mahjong Sensei app plays: flowers score, limit hands are graded, the cap is 13, and Seven Pairs is a hand. The table is **defined but does not score yet**: `hkbench score --table hk-house-v1` refuses to run until the Seven Pairs scoring is in the engine. The values below are the base that the table starts from (`tables/hk-house-v1/rules.pending.json`).
+House rules are the rule set the Mahjong Sensei app plays: flowers score, limit hands are graded, the cap is 13, and Seven Pairs is a hand. The values below are `tables/hk-house-v1/rules.json`.
 
 The House track exists to keep one thing visible: the maintainer's own bot, h1, was trained on HKMA rules, and a bot trained without flower faan and without Seven Pairs is at an advantage on the HKMA table. Scoring every bot on both tables shows how much a rule set suits the bot.
 
@@ -118,6 +118,7 @@ Minimum to win: **3 faan**. Cap: **13 faan**.
 | Faan item | Faan |
 |---|---|
 | All Sequences | 1 |
+| Seven Pairs (seven different pairs, concealed) | 4 |
 | Closed Hand | 1 |
 | Self-Drawn | 1 |
 | Triplet of Dragons (each triplet) | 1 |
@@ -171,7 +172,14 @@ Minimum to win: **3 faan**. Cap: **13 faan**.
 | 13 | 384 | 192 | 576 |
 <!-- rules:hk-house-v1:end -->
 
-* **Seven Pairs.** Value not set yet. This is the pending part.
+* **Seven Pairs.** Seven different pairs, 4 faan. Four of a kind is not two pairs, so a hand holding all four of a tile is not Seven Pairs. It must be fully concealed: a declared meld of any kind, a concealed kong too, rules it out. It stacks with what else the hand has:
+  * One suit with no honours adds Flush (7), so 4 + 7. One suit plus honours adds Semi-Flush (3).
+  * Only terminals and honours adds 4 for All Terminals and Honours, since a Seven Pairs hand holds no triplets.
+  * Only honours (the seven honour tiles) is All Honours, a limit hand: it counts 10, plus Self-Drawn, Last Tile from the Wall, Robbing a Kong and the kong items, then the cap. A self-drawn All Honours by Seven Pairs is 11.
+  * Self-Drawn, Closed Hand, Last Tile from the Wall, Robbing a Kong and the flower items all apply as for any other hand.
+  * Bless of Heaven and Bless of Earth also apply to a Seven Pairs hand, and count as limit hands do for any hand.
+  * The same fourteen tiles can sometimes also be read as four sets and a pair (112233 445566 77 in one suit). Both readings are scored and the one with more faan counts, compared before the cap, so a hand that reaches the cap by either reading is named for the richer one. The payment is the same.
+  * A bot may win with Seven Pairs by self-draw or on a discard like any other hand. The scripted reference bots do not aim for it, which is why their play is the same on both tables.
 * **Payout.** Same as HKMA: the discarder pays the whole hand, self-draw is 1.5 times, split three ways. The table values are the same as `hk-hkma-v1`'s and continue to 13 faan.
 * **Flowers score.** One faan for the player's own seat flower or season, one for having none, two for all four flowers or all four seasons, three for seven, and eight is a limit hand worth 13.
 * **Same engine.** House does not claim to be the rulebook, but the engine behaves the same way: there is no 包, and gaps 2 to 11 above describe it too.

@@ -40,7 +40,7 @@ from hkbench.engine.types import (
     WinSource,
 )
 from hkbench.engine.scorer import can_declare_win, score_hand
-from hkbench.engine.win import can_win_structurally
+from hkbench.engine.win import can_win_structurally, is_seven_pairs
 from hkbench.engine.game_types import (
     ChanceOutcome,
     DrawKind,
@@ -779,7 +779,9 @@ class GameState:
 
     def _can_self_win(self, seat: int) -> bool:
         pl = self.players[seat]
-        if not can_win_structurally(pl.concealed, pl.melds):
+        if not can_win_structurally(pl.concealed, pl.melds) and not (
+            self.profile.seven_pairs and not pl.melds and is_seven_pairs(pl.concealed)
+        ):
             return False
         heavenly = self._is_heavenly(seat)
         return can_declare_win(

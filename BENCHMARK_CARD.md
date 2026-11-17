@@ -21,7 +21,7 @@ Two tables, named on every row. `RULES.md` has every faan value, the cap, the mi
 | Table | What it is | State |
 |---|---|---|
 | `hk-hkma-v1` | The Hong Kong Mahjong Association's classical rules: 3 faan to win, cap 10, the discarder pays the whole hand, flowers do not score. **The headline track.** It is not the rulebook in every detail: `RULES.md` lists the gaps (no 包, a concealed kong keeps a hand closed, and others). | scoring |
-| `hk-house-v1` | House rules: flowers score, limit hands are graded 6, 8, 10 and 13, cap 13, Seven Pairs is a hand. | pending Seven Pairs scoring |
+| `hk-house-v1` | House rules: flowers score, limit hands are graded 6, 8, 10 and 13, cap 13, Seven Pairs is a hand. | scoring |
 
 A table is frozen when it is released. A change to the rules, the engine, the field or the deal schedule makes a new table (`v2`). A released table is never edited.
 
@@ -39,7 +39,7 @@ The field is pinned: `tables/hk-hkma-v1/table.json` holds a hash of each bot's s
 
 Why these three. We ran the maintainers' scripted bots against one strong opponent (4,608 games each) and kept the strongest that read only their own view. `faan_aware` was clearly ahead of the rest. `shallow_search` and `ukeire` finished level within noise, and `shallow_search` costs about 100 times the time, so it is a baseline row and not in the field. `wait_aware` scored higher than any of them but it reads other players' hidden hands, so it is not shipped. `kstep2` plays identically to `ukeire`, so it is not listed.
 
-Baseline rows on the board (public deals, so **unverified**; points a hand against the field with a 95% interval):
+Baseline rows on `hk-hkma-v1` (public deals, so **unverified**; points a hand against the field with a 95% interval):
 
 | Bot | Points a hand | 95% interval | Win | Deal-in | Deals |
 |---|---|---|---|---|---|
@@ -51,6 +51,19 @@ Baseline rows on the board (public deals, so **unverified**; points a hand again
 | `random` | -1.79 | [-1.92, -1.65] | 0.1% | 4.7% | 2,000 |
 
 A bot scored against a field that contains it plays itself, so `faan_aware`, `ukeire` and `deficiency` are rows against two other field bots and a copy of themselves. Head to head, over 300 deals each pair, the ranks are `faan_aware` first, the Python example second, `ukeire` and `deficiency` sharing third, and `random` last. These rows reproduce byte for byte on Python 3.9 and 3.11 (`hkbench score ... --deals 2000`).
+
+Baseline rows on `hk-house-v1`, the same bots and the same 2,000 deals (400 for `shallow_search`):
+
+| Bot | Points a hand | 95% interval | Win | Deal-in | Deals |
+|---|---|---|---|---|---|
+| `python_example` | +2.43 | [+1.92, +2.94] | 14.1% | 6.0% | 2,000 |
+| `faan_aware` | +1.55 | [+1.28, +1.82] | 22.0% | 5.8% | 2,000 |
+| `ukeire` | -0.92 | [-1.09, -0.75] | 12.2% | 5.8% | 2,000 |
+| `shallow_search` | -0.94 | [-1.38, -0.50] | 13.9% | 5.9% | 400 |
+| `deficiency` | -1.16 | [-1.33, -0.99] | 10.5% | 6.1% | 2,000 |
+| `random` | -3.04 | [-3.22, -2.87] | 0.1% | 7.1% | 2,000 |
+
+On House the head-to-head ranks are `faan_aware` first, `ukeire` and the Python example sharing second, `deficiency` fourth and `random` last. Flowers add a faan to nearly every hand (one for holding none, one for each seat flower), so 3 faan is easy to reach and far more hands are won than on HKMA (33% to 46% of games end in a draw, against 59% to 72%). The reference bots do not aim for Seven Pairs, but they declare it when a hand is complete. It ended 6 to 9 games in 8,000 (about 0.1%) in the rows for the field bots and `random`, and 190 in 8,000 (2.4%) in the Python example's row, since that bot keeps pairs.
 
 ## Deals
 
@@ -80,7 +93,7 @@ The check does not stop a bot from being run with more thinking time, tools or h
 * **Single hands.** There is no dealer rotation, no match, no fouls and no table talk. A strategy that depends on the score of a match is not measured.
 * **Points are one quarter of the rulebook's.** Every ratio is the same.
 * **Gaps from the rulebook.** `hk-hkma-v1` has no 包 (liability) and several smaller differences, listed in `RULES.md`. A bot's row on it is a row under those rules.
-* **Most hands are draws, and big hands decide the score.** Between 59% and 72% of baseline games end in a draw, because 3 faan is a high bar. The bots that win do so in 0% to 16% of games. A strong bot's edge is in the few big hands, so intervals are wide at low deal counts. 2,000 deals gave intervals of about plus or minus 0.15 to 0.45 points a hand for the baselines.
+* **On HKMA most hands are draws, and big hands decide the score.** Between 59% and 72% of baseline games end in a draw, because 3 faan is a high bar (on House the figure is 33% to 46%). The bots that win do so in 0% to 16% of games. A strong bot's edge is in the few big hands, so intervals are wide at low deal counts. 2,000 deals gave intervals of about plus or minus 0.15 to 0.45 points a hand for the baselines.
 * **Points a hand and head-to-head ranks can disagree.** The first values big hands. The second counts which team came out ahead. In the baselines the Python example bot collects more points a hand than `faan_aware` against the field (+2.50 against +1.41, because it plays for triplets and gets 105 limit hands against 4), yet head to head `faan_aware` wins more games (450 to 223 out of 1,800) with the points level. Read both.
 * **The example bot beats the field.** A short hand-written bot that keeps pairs and claims dragon and wind pongs finishes ahead of the field's best bot on points a hand. The field is a reference point, not a ceiling.
 * **Time limits depend on hardware.** The limit is wall-clock time per decision (10 seconds). A bot that needs more will be asked to run on our machine with its own limit, which is then recorded.

@@ -66,6 +66,26 @@ def is_thirteen_orphans(concealed: list[int]) -> bool:
     return has_pair
 
 
+def is_seven_pairs(concealed: list[int]) -> bool:
+    """Seven Pairs: fourteen concealed tiles that make seven different pairs.
+
+    Four of a kind is not two pairs, so a tile held four times fails the shape. This only
+    answers the shape. Whether a table scores it is the profile's call
+    (``RulesProfile.seven_pairs``), and the caller must also hold no melds: a declared meld,
+    a concealed kong included, rules Seven Pairs out.
+    """
+    if sum(concealed) != 14:
+        return False
+    pairs = 0
+    for n in concealed:
+        if n == 0:
+            continue
+        if n != 2:
+            return False
+        pairs += 1
+    return pairs == 7
+
+
 def is_nine_gates(concealed: list[int]) -> bool:
     """Concealed 1112345678999 + any same suit."""
     if sum(concealed) != 14:

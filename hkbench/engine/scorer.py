@@ -14,7 +14,13 @@ from hkbench.engine.types import (
     ScoreResult,
     WinSource,
 )
-from hkbench.engine.win import Decomposition, is_nine_gates, is_thirteen_orphans, structural_wins
+from hkbench.engine.win import (
+    Decomposition,
+    is_nine_gates,
+    is_seven_pairs,
+    is_thirteen_orphans,
+    structural_wins,
+)
 
 
 def _all_meld_tiles(decomp: Decomposition, exposed: list[Meld]) -> list[tuple[str, tuple[int, ...]]]:
@@ -113,7 +119,9 @@ def score_hand(
         return _finalize(patterns, True, win_source, winner_seat, discarder, profile, player.melds)
 
     decomps = structural_wins(concealed, exposed)
-    if not decomps:
+    # Seven Pairs is a second way to be complete, only where the table plays it.
+    seven_pairs_win = profile.seven_pairs and not exposed and is_seven_pairs(concealed)
+    if not decomps and not seven_pairs_win:
         return ScoreResult(
             patterns=[],
             total_faan=0,
@@ -153,8 +161,78 @@ def score_hand(
         cand = _finalize(hits[0], hits[1], win_source, winner_seat, discarder, profile, player.melds)
         if best is None or cand.capped_faan > best.capped_faan:
             best = cand
+    if seven_pairs_win:
+        # The same tiles can also read as four sets and a pair (112233 445566 77), so Seven Pairs
+        # competes with the ordinary readings and the richer one wins. It is compared on raw faan,
+        # so two readings that both reach the cap still resolve to the richer one and name it. The
+        # payment is the same either way.
+        hits = _score_seven_pairs(
+            player,
+            win_source,
+            seat_wind,
+            last_tile=last_tile,
+            after_kong=after_kong,
+            after_double_kong=after_double_kong,
+            profile=profile,
+        )
+        cand = _finalize(hits[0], hits[1], win_source, winner_seat, discarder, profile, player.melds)
+        if best is None or cand.total_faan > best.total_faan:
+            best = cand
     assert best is not None
     return best
+
+
+def _score_seven_pairs(
+    player: PlayerState,
+    win_source: WinSource,
+    seat_wind: int,
+    *,
+    last_tile: bool,
+    after_kong: bool,
+    after_double_kong: bool,
+    profile: RulesProfile,
+) -> tuple[list[PatternHit], bool]:
+    """Score a Seven Pairs reading.
+
+    Seven Pairs is worth ``patterns.seven_pairs`` and stacks with everything else that matches:
+    the flush items, then how the hand was won, Fully Concealed and the flowers. There are no
+    sets, so no set patterns apply.
+
+    * One suit and no honours adds Full Flush, one suit plus honours adds Half Flush. They are
+      added to the Seven Pairs value, not instead of it.
+    * Only honours (the seven honour types, the only way to make it) is All Honours, a limit
+      hand: it keeps just how the hand was won, then takes the cap.
+    * Only terminals and honours scores Mixed Orphans at the Mixed Orphans value plus the
+      All Pongs value. A Seven Pairs hand holds no pongs, so the rules file's bare Mixed Orphans
+      value would undercount it; this keeps the value a player reads off the table.
+    * All terminals without honours cannot be seven different pairs (there are only six
+      terminals), so Pure Orphans cannot occur.
+    """
+    tiles = [t for t, n in enumerate(player.concealed) for _ in range(n)]
+    suits = {suit_of(t) for t in tiles if suit_of(t) is not None}
+    has_honor = any(is_honor(t) for t in tiles)
+
+    if all(is_honor(t) for t in tiles):
+        patterns = [PatternHit("all_honors", profile.patterns["all_honors"])]
+        patterns.extend(_condition_hits(win_source, last_tile, after_kong, after_double_kong, profile))
+        return patterns, True
+
+    patterns = [PatternHit("seven_pairs", profile.patterns["seven_pairs"])]
+    if all(is_terminal_or_honor(t) for t in tiles):
+        patterns.append(
+            PatternHit("mixed_orphans", profile.patterns["mixed_orphans"] + profile.patterns["all_pong"])
+        )
+    if len(suits) == 1 and not has_honor:
+        patterns.append(PatternHit("pure_one_suit", profile.patterns["pure_one_suit"]))
+    elif len(suits) == 1 and has_honor:
+        patterns.append(PatternHit("mixed_one_suit", profile.patterns["mixed_one_suit"]))
+    patterns.extend(
+        _win_condition_patterns(
+            player, win_source, seat_wind, last_tile, after_kong, after_double_kong,
+            fully_concealed=True, profile=profile,
+        )
+    )
+    return patterns, False
 
 
 def _score_decomp(
@@ -266,24 +344,44 @@ def _score_decomp(
         if t == 27 + prevailing_wind:
             patterns.append(PatternHit("prevailing_wind", profile.patterns["prevailing_wind"]))
 
-    # Winning conditions
-    if win_source == WinSource.SELF_DRAW:
-        patterns.append(PatternHit("self_draw", profile.patterns["self_draw"]))
-    if win_source == WinSource.ROB_KONG:
-        patterns.append(PatternHit("rob_kong", profile.patterns["rob_kong"]))
-    if fully_concealed:
-        patterns.append(PatternHit("fully_concealed", profile.patterns["fully_concealed"]))
-    if last_tile:
-        patterns.append(PatternHit("last_tile", profile.patterns["last_tile"]))
-    if after_double_kong:
-        patterns.append(PatternHit("double_kong", profile.patterns["double_kong"]))
-    elif after_kong:
-        patterns.append(PatternHit("kong_replacement", profile.patterns["kong_replacement"]))
-
-    # Flowers
-    patterns.extend(_flower_patterns(player.flowers, seat_wind, profile))
+    # Winning conditions and flowers (shared with the Seven Pairs reading)
+    patterns.extend(
+        _win_condition_patterns(
+            player, win_source, seat_wind, last_tile, after_kong, after_double_kong,
+            fully_concealed=fully_concealed, profile=profile,
+        )
+    )
 
     return patterns, is_limit
+
+
+def _win_condition_patterns(
+    player: PlayerState,
+    win_source: WinSource,
+    seat_wind: int,
+    last_tile: bool,
+    after_kong: bool,
+    after_double_kong: bool,
+    *,
+    fully_concealed: bool,
+    profile: RulesProfile,
+) -> List[PatternHit]:
+    """How the win arrived, Fully Concealed, and the flowers: the tail every reading shares."""
+    hits: List[PatternHit] = []
+    if win_source == WinSource.SELF_DRAW:
+        hits.append(PatternHit("self_draw", profile.patterns["self_draw"]))
+    if win_source == WinSource.ROB_KONG:
+        hits.append(PatternHit("rob_kong", profile.patterns["rob_kong"]))
+    if fully_concealed:
+        hits.append(PatternHit("fully_concealed", profile.patterns["fully_concealed"]))
+    if last_tile:
+        hits.append(PatternHit("last_tile", profile.patterns["last_tile"]))
+    if after_double_kong:
+        hits.append(PatternHit("double_kong", profile.patterns["double_kong"]))
+    elif after_kong:
+        hits.append(PatternHit("kong_replacement", profile.patterns["kong_replacement"]))
+    hits.extend(_flower_patterns(player.flowers, seat_wind, profile))
+    return hits
 
 
 def _flower_patterns(flowers: list[int], seat_wind: int, profile: RulesProfile) -> list[PatternHit]:

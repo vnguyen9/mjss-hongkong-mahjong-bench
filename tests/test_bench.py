@@ -198,10 +198,18 @@ class HostedBots(unittest.TestCase):
 
 
 class Gates(unittest.TestCase):
-    def test_the_pending_house_table_will_not_score(self):
-        code, out, err = run_cli("score", "--table", "hk-house-v1", "--bot", "ref:ukeire", "--deals", "2", "--no-write")
+    def test_a_pending_table_will_not_score(self):
+        tmp = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, str(tmp))
+        shutil.copytree(ROOT / "tables" / "hk-house-v1", str(tmp / "hk-house-v1"))
+        path = tmp / "hk-house-v1" / "table.json"
+        data = json.loads(path.read_text())
+        data["status"], data["pending_reason"] = "pending", "waiting on a rule"
+        path.write_text(json.dumps(data))
+        code, out, err = run_cli("score", "--table", "hk-house-v1", "--tables-dir", str(tmp), "--bot", "ref:ukeire",
+                                 "--deals", "2", "--no-write")
         self.assertEqual(code, 2)
-        self.assertIn("pending Seven Pairs scoring", err)
+        self.assertIn("waiting on a rule", err)
 
     def test_the_fingerprint_reproduces(self):
         fp = fingerprint.verify(TABLE)

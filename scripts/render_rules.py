@@ -5,7 +5,7 @@ RULES.md embeds this output between marker comments, and a test checks that they
 document cannot drift from the rules file.
 
     python scripts/render_rules.py hk-hkma-v1
-    python scripts/render_rules.py hk-house-v1      # reads rules.pending.json
+    python scripts/render_rules.py hk-house-v1
 """
 
 import json
@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 NAMES = {
     "common_hand": "All Sequences",
+    "seven_pairs": "Seven Pairs (seven different pairs, concealed)",
     "fully_concealed": "Closed Hand",
     "self_draw": "Self-Drawn",
     "dragon_pong": "Triplet of Dragons (each triplet)",
@@ -50,7 +51,7 @@ NAMES = {
     "eight_flowers": "Eight flowers and seasons (instant win)",
 }
 
-ORDER = ["common_hand", "fully_concealed", "self_draw", "dragon_pong", "seat_wind", "prevailing_wind",
+ORDER = ["common_hand", "seven_pairs", "fully_concealed", "self_draw", "dragon_pong", "seat_wind", "prevailing_wind",
          "mixed_orphans", "rob_kong", "kong_replacement", "last_tile",
          "mixed_one_suit", "all_pong", "small_dragons", "great_dragons", "pure_one_suit",
          "all_honors", "small_winds", "great_winds", "four_concealed_pongs", "all_kongs", "pure_orphans",
@@ -60,10 +61,7 @@ FLOWER_ORDER = ["seat_flower", "seat_season", "no_flowers", "all_flowers", "all_
 
 def render(table_id: str) -> str:
     d = ROOT / "tables" / table_id
-    path = d / "rules.json"
-    if not path.exists():
-        path = d / "rules.pending.json"
-    rules = json.loads(path.read_text(encoding="utf-8"))
+    rules = json.loads((d / "rules.json").read_text(encoding="utf-8"))
     limit = set(rules["exclusions"]["limit_hands"])
     lines = []
     lines.append("Minimum to win: **%d faan**. Cap: **%d faan**." % (rules["win"]["minimum_faan"], rules["win"]["faan_cap"]))
@@ -71,6 +69,8 @@ def render(table_id: str) -> str:
     lines.append("| Faan item | Faan |")
     lines.append("|---|---|")
     for key in ORDER:
+        if key == "seven_pairs" and not rules["win"].get("seven_pairs"):
+            continue
         v = rules["patterns"][key]
         mark = " \\*" if key in limit else ""
         lines.append("| %s%s | %d |" % (NAMES[key], mark, v))

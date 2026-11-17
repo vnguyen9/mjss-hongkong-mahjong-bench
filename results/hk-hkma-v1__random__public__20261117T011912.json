@@ -2,16 +2,16 @@
   "bot": {
     "description": "",
     "kind": "reference",
-    "name": "ukeire",
-    "sha256": "06581f9229affdee5fff6ff2771d20e5ece36ee773ff56e0ac7a318f8bb9493a",
+    "name": "random",
+    "sha256": "9c1c37dc49ebf5f63bb87cc87f83e332e4e10d7b31b97f77cd7aceacdf56dfd1",
     "track": "bots",
     "trained_on": "none (scripted)"
   },
-  "command": "hkbench score --table hk-hkma-v1 --bot ref:ukeire --deals 2000 --workers 4 --trained-on 'none (scripted)'",
-  "created_utc": "2026-11-17T00:39:12Z",
+  "command": "hkbench score --table hk-hkma-v1 --bot ref:random --deals 2000 --workers 4 --trained-on 'none (scripted)'",
+  "created_utc": "2026-11-17T01:19:12Z",
   "engine": {
     "fingerprint_deals": 300,
-    "fingerprint_sha256": "02537f17f5df3b6f6151ec37eb4bd9e48809f4e70adc4e21f76d0665cd87eb07",
+    "fingerprint_sha256": "c22def21b784b7f30b671ba90c8ed3f4a62277f97f758c312913e2d290a7187c",
     "hkbench_version": "1.0.0",
     "python": "3.11.5",
     "rules_sha256": "43e4e01c50dce4d3dde5ba4f07d728e533e8c92ddb095372b3d718933ae16882"
@@ -26,7 +26,7 @@
     "view_mismatches": 0
   },
   "faults": {
-    "decisions": 209515,
+    "decisions": 200215,
     "faults": {},
     "limit_per_1000": 1.0,
     "ok": true,
@@ -34,18 +34,18 @@
   },
   "headline": {
     "ci95": [
-      -1.1193484960216733,
-      -0.7956515039783266
+      -1.924614023672623,
+      -1.6503859763273772
     ],
     "deals": 2000,
     "games": 8000,
     "metric": "points per hand against the frozen field",
-    "points_per_hand": -0.9575,
-    "se": 0.082527281859549
+    "points_per_hand": -1.7875,
+    "se": 0.06991506227535245
   },
   "kind": "duplicate",
-  "log": "logs/hk-hkma-v1__ukeire__public__20261117T003912.jsonl.gz",
-  "run_id": "hk-hkma-v1__ukeire__public__20261117T003912",
+  "log": "logs/hk-hkma-v1__random__public__20261117T011912.jsonl.gz",
+  "run_id": "hk-hkma-v1__random__public__20261117T011912",
   "schema": "hkbench-result-1",
   "seeds": {
     "deals": 2000,
@@ -57,69 +57,69 @@
     "tag": "public"
   },
   "stats": {
-    "average_win_faan": 3.561307901907357,
-    "average_win_points": 16.62125340599455,
+    "average_win_faan": 5.0,
+    "average_win_points": 50.0,
     "deal_in_rate": {
       "ci95": [
-        0.04245400872112787,
-        0.052045991278872134
+        0.04260023320146703,
+        0.05214976679853297
       ],
-      "mean": 0.04725,
+      "mean": 0.047375,
       "n": 2000,
-      "se": 0.0024454976956623507
+      "se": 0.0024346752369165006
     },
     "draw_rate": {
       "ci95": [
-        0.6722388157577476,
-        0.6957611842422525
+        0.7049875793128254,
+        0.7265124206871746
       ],
-      "mean": 0.684,
+      "mean": 0.71575,
       "n": 2000,
-      "se": 0.005997081164303653
+      "se": 0.005487807099687574
     },
     "limit_hand_rate": {
       "ci95": [
-        -4.938927740663905e-05,
-        0.0007993892774066391
+        0.0,
+        0.0
+      ],
+      "mean": 0.0,
+      "n": 2000,
+      "se": 0.0
+    },
+    "limit_hands": 0,
+    "self_draw_win_rate": {
+      "ci95": [
+        -4.9389277406645124e-05,
+        0.0007993892774066451
       ],
       "mean": 0.000375,
       "n": 2000,
-      "se": 0.00021639801651303548
-    },
-    "limit_hands": 3,
-    "self_draw_win_rate": {
-      "ci95": [
-        0.025812517593065333,
-        0.033187482406934664
-      ],
-      "mean": 0.0295,
-      "n": 2000,
-      "se": 0.0018802639964505669
+      "se": 0.00021639801651303857
     },
     "win_rate": {
       "ci95": [
-        0.04135593002382127,
-        0.05039406997617873
+        1.0080182933685329e-05,
+        0.0009899198170663147
       ],
-      "mean": 0.045875,
+      "mean": 0.0005,
       "n": 2000,
-      "se": 0.002304294267999782
+      "se": 0.00024981233576737194
     },
-    "wins": 367
+    "wins": 4
   },
   "table": {
     "field": [
       {
         "bot": "faan_aware",
-        "sha256": "3a2fbdda4293c217a627e17a6444324dfbabd3028a82495b7df7d755a4ea9ea8"
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
       },
       {
         "bot": "ukeire",
-        "sha256": "06581f9229affdee5fff6ff2771d20e5ece36ee773ff56e0ac7a318f8bb9493a"
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
       },
       {
         "bot": "deficiency",
-        "sha256": "06581f9229affdee5fff6ff2771d20e5ece36ee773ff56e0ac7a318f8bb9493a"
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
       }
     ],
     "id": "hk-hkma-v1",

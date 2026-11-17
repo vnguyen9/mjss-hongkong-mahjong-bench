@@ -1,16 +1,16 @@
 {
   "profile_id": "hk-house-v1",
   "version": 1,
-  "description": "House rules: flowers score, limit hands are graded, cap 13. Pending: Seven Pairs scoring. This file is a placeholder and is not used to score anything.",
+  "description": "House rules, 13-tile Hong Kong Mahjong. Minimum 3 faan, cap 13, flowers score, limit hands are graded, and Seven Pairs is a hand: seven different pairs, 4 faan, concealed only, stacking with flushes, Self-Drawn, Fully Concealed and flowers. Points are one quarter of the usual table's. See RULES.md.",
   "derived_from": {
     "profile": "hk_3faan_v2",
     "rules_hash": "0e0ce106e67fbc42",
-    "change": "pending: Seven Pairs scoring is not in this file yet."
+    "change": "win.seven_pairs is true and patterns.seven_pairs is 4: the only change."
   },
   "win": {
     "minimum_faan": 3,
     "faan_cap": 13,
-    "seven_pairs": false,
+    "seven_pairs": true,
     "multiple_winners": false
   },
   "claims": {
@@ -46,6 +46,7 @@
   "patterns": {
     "common_hand": 1,
     "all_pong": 3,
+    "seven_pairs": 4,
     "mixed_one_suit": 3,
     "pure_one_suit": 7,
     "mixed_orphans": 1,
