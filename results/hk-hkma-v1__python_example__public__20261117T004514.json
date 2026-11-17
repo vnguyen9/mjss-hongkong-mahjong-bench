@@ -1,17 +1,17 @@
 {
   "bot": {
-    "description": "",
-    "kind": "reference",
-    "name": "faan_aware",
-    "sha256": "4094849829017afed0d6f4dba0d4498b661cfa2c79a7c7ead2cb357c9a3dc07a",
+    "description": "examples/bots/python_bot.py",
+    "kind": "external",
+    "name": "python_example",
+    "sha256": "11af7f9fedcf5799134343c6e6a02f5f3aafc5275f55e8d95b218c404b3ac630",
     "track": "bots",
-    "trained_on": "none (scripted)"
+    "trained_on": "none (hand-written heuristic)"
   },
-  "command": "hkbench score --table hk-hkma-v1 --bot ref:faan_aware --deals 2000 --workers 4 --trained-on 'none (scripted)'",
-  "created_utc": "2026-11-16T23:46:18Z",
+  "command": "hkbench score --table hk-hkma-v1 --bot 'python3 examples/bots/python_bot.py' --name python_example --kind external --trained-on 'none (hand-written heuristic)' --description examples/bots/python_bot.py --deals 2000 --workers 4",
+  "created_utc": "2026-11-17T00:45:14Z",
   "engine": {
     "fingerprint_deals": 300,
-    "fingerprint_sha256": "c52f96dfd4b775dbe3ed6eb8d2eb3dfe2b25c517aec77b0ceeb0f7f5e6997e1e",
+    "fingerprint_sha256": "02537f17f5df3b6f6151ec37eb4bd9e48809f4e70adc4e21f76d0665cd87eb07",
     "hkbench_version": "1.0.0",
     "python": "3.11.5",
     "rules_sha256": "43e4e01c50dce4d3dde5ba4f07d728e533e8c92ddb095372b3d718933ae16882"
@@ -26,7 +26,7 @@
     "view_mismatches": 0
   },
   "faults": {
-    "decisions": 206687,
+    "decisions": 222546,
     "faults": {},
     "limit_per_1000": 1.0,
     "ok": true,
@@ -34,18 +34,18 @@
   },
   "headline": {
     "ci95": [
-      1.4785153634922963,
-      1.975484636507704
+      2.061899061926681,
+      2.9481009380733187
     ],
     "deals": 2000,
     "games": 8000,
     "metric": "points per hand against the frozen field",
-    "points_per_hand": 1.727,
-    "se": 0.12670344265721661
+    "points_per_hand": 2.505,
+    "se": 0.22593917711605102
   },
   "kind": "duplicate",
-  "log": "logs/hk-hkma-v1__faan_aware__public__20261116T234618.jsonl.gz",
-  "run_id": "hk-hkma-v1__faan_aware__public__20261116T234618",
+  "log": "logs/hk-hkma-v1__python_example__public__20261117T004514.jsonl.gz",
+  "run_id": "hk-hkma-v1__python_example__public__20261117T004514",
   "schema": "hkbench-result-1",
   "seeds": {
     "deals": 2000,
@@ -57,61 +57,61 @@
     "tag": "public"
   },
   "stats": {
-    "average_win_faan": 3.9197299324831207,
-    "average_win_points": 19.486871717929482,
+    "average_win_faan": 5.198547215496368,
+    "average_win_points": 41.016949152542374,
     "deal_in_rate": {
       "ci95": [
-        0.03787002856134878,
-        0.046879971438651226
+        0.04497763579963556,
+        0.054522364200364444
       ],
-      "mean": 0.042375,
+      "mean": 0.04975,
       "n": 2000,
-      "se": 0.0022971053597989665
+      "se": 0.00243345014121822
     },
     "draw_rate": {
       "ci95": [
-        0.5757018583056511,
-        0.600798141694349
+        0.6259857928779222,
+        0.6490142071220777
       ],
-      "mean": 0.58825,
+      "mean": 0.6375,
       "n": 2000,
-      "se": 0.00639835433678923
+      "se": 0.005871146411058919
     },
     "limit_hand_rate": {
       "ci95": [
-        0.0003910412920898954,
-        0.0018589587079101044
+        0.010630556403048093,
+        0.015619443596951907
       ],
-      "mean": 0.001125,
+      "mean": 0.013125,
       "n": 2000,
-      "se": 0.0003742488725558275
+      "se": 0.0012719280986140907
     },
-    "limit_hands": 9,
+    "limit_hands": 105,
     "self_draw_win_rate": {
       "ci95": [
-        0.06172594205369618,
-        0.07252405794630383
+        0.03636246470174327,
+        0.04488753529825673
       ],
-      "mean": 0.067125,
+      "mean": 0.040625,
       "n": 2000,
-      "se": 0.002753004123380836
+      "se": 0.0021734860727306553
     },
     "win_rate": {
       "ci95": [
-        0.1587076593280305,
-        0.1745423406719695
+        0.09663008527989705,
+        0.10986991472010293
       ],
-      "mean": 0.166625,
+      "mean": 0.10325,
       "n": 2000,
-      "se": 0.00403708790180046
+      "se": 0.0033755245270796572
     },
-    "wins": 1333
+    "wins": 826
   },
   "table": {
     "field": [
       {
         "bot": "faan_aware",
-        "sha256": "4094849829017afed0d6f4dba0d4498b661cfa2c79a7c7ead2cb357c9a3dc07a"
+        "sha256": "3a2fbdda4293c217a627e17a6444324dfbabd3028a82495b7df7d755a4ea9ea8"
       },
       {
         "bot": "ukeire",

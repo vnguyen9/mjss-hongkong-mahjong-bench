@@ -8,10 +8,10 @@
     "trained_on": "none (scripted)"
   },
   "command": "hkbench score --table hk-hkma-v1 --bot ref:shallow_search --deals 400 --workers 4 --trained-on 'none (scripted)'",
-  "created_utc": "2026-11-17T00:00:22Z",
+  "created_utc": "2026-11-17T00:57:11Z",
   "engine": {
     "fingerprint_deals": 300,
-    "fingerprint_sha256": "c52f96dfd4b775dbe3ed6eb8d2eb3dfe2b25c517aec77b0ceeb0f7f5e6997e1e",
+    "fingerprint_sha256": "02537f17f5df3b6f6151ec37eb4bd9e48809f4e70adc4e21f76d0665cd87eb07",
     "hkbench_version": "1.0.0",
     "python": "3.11.5",
     "rules_sha256": "43e4e01c50dce4d3dde5ba4f07d728e533e8c92ddb095372b3d718933ae16882"
@@ -26,7 +26,7 @@
     "view_mismatches": 0
   },
   "faults": {
-    "decisions": 42554,
+    "decisions": 42460,
     "faults": {},
     "limit_per_1000": 1.0,
     "ok": true,
@@ -34,18 +34,18 @@
   },
   "headline": {
     "ci95": [
-      -1.6500147565437282,
-      -0.944985243456272
+      -1.4974841297762584,
+      -0.8725158702237417
     ],
     "deals": 400,
     "games": 1600,
     "metric": "points per hand against the frozen field",
-    "points_per_hand": -1.2975,
-    "se": 0.17931220410600457
+    "points_per_hand": -1.185,
+    "se": 0.15894999292427375
   },
   "kind": "duplicate",
-  "log": "logs/hk-hkma-v1__shallow_search__public__20261117T000022.jsonl.gz",
-  "run_id": "hk-hkma-v1__shallow_search__public__20261117T000022",
+  "log": "logs/hk-hkma-v1__shallow_search__public__20261117T005711.jsonl.gz",
+  "run_id": "hk-hkma-v1__shallow_search__public__20261117T005711",
   "schema": "hkbench-result-1",
   "seeds": {
     "deals": 400,
@@ -57,25 +57,25 @@
     "tag": "public"
   },
   "stats": {
-    "average_win_faan": 3.3636363636363638,
-    "average_win_points": 14.690909090909091,
+    "average_win_faan": 3.4150943396226414,
+    "average_win_points": 15.320754716981131,
     "deal_in_rate": {
       "ci95": [
-        0.03593427949503679,
-        0.05656572050496321
+        0.036660460722576275,
+        0.057089539277423725
       ],
-      "mean": 0.04625,
+      "mean": 0.046875,
       "n": 400,
-      "se": 0.005247254324393104
+      "se": 0.00519578689334953
     },
     "draw_rate": {
       "ci95": [
-        0.6758841970929613,
-        0.7228658029070386
+        0.6688203762357215,
+        0.7174296237642784
       ],
-      "mean": 0.699375,
+      "mean": 0.693125,
       "n": 400,
-      "se": 0.011948968283710228
+      "se": 0.012362931129095431
     },
     "limit_hand_rate": {
       "ci95": [
@@ -89,29 +89,29 @@
     "limit_hands": 0,
     "self_draw_win_rate": {
       "ci95": [
-        0.01612745364881691,
-        0.03137254635118309
+        0.01593141891642528,
+        0.03156858108357472
       ],
       "mean": 0.02375,
       "n": 400,
-      "se": 0.0038773287125110022
+      "se": 0.003977044878413162
     },
     "win_rate": {
       "ci95": [
-        0.02538180347734052,
-        0.04336819652265948
+        0.02425550871371472,
+        0.04199449128628528
       ],
-      "mean": 0.034375,
+      "mean": 0.033125,
       "n": 400,
-      "se": 0.0045745315919462565
+      "se": 0.004511606967708685
     },
-    "wins": 55
+    "wins": 53
   },
   "table": {
     "field": [
       {
         "bot": "faan_aware",
-        "sha256": "4094849829017afed0d6f4dba0d4498b661cfa2c79a7c7ead2cb357c9a3dc07a"
+        "sha256": "3a2fbdda4293c217a627e17a6444324dfbabd3028a82495b7df7d755a4ea9ea8"
       },
       {
         "bot": "ukeire",

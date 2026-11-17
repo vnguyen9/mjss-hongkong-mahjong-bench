@@ -30,9 +30,13 @@
      [
       "four_concealed_pongs",
       10
+     ],
+     [
+      "self_draw",
+      1
      ]
     ],
-    "total_faan": 10,
+    "total_faan": 11,
     "faan": 10,
     "meets_minimum": true,
     "limit": true,
@@ -387,9 +391,13 @@
      [
       "nine_gates",
       10
+     ],
+     [
+      "self_draw",
+      1
      ]
     ],
-    "total_faan": 10,
+    "total_faan": 11,
     "faan": 10,
     "meets_minimum": true,
     "limit": true,
@@ -554,9 +562,13 @@
      [
       "all_honors",
       10
+     ],
+     [
+      "self_draw",
+      1
      ]
     ],
-    "total_faan": 10,
+    "total_faan": 11,
     "faan": 10,
     "meets_minimum": true,
     "limit": true,
@@ -918,9 +930,13 @@
      [
       "four_concealed_pongs",
       10
+     ],
+     [
+      "self_draw",
+      1
      ]
     ],
-    "total_faan": 10,
+    "total_faan": 11,
     "faan": 10,
     "meets_minimum": true,
     "limit": true,
@@ -1023,9 +1039,13 @@
      [
       "great_winds",
       10
+     ],
+     [
+      "self_draw",
+      1
      ]
     ],
-    "total_faan": 10,
+    "total_faan": 11,
     "faan": 10,
     "meets_minimum": true,
     "limit": true,
@@ -1336,9 +1356,13 @@
      [
       "thirteen_orphans",
       10
+     ],
+     [
+      "self_draw",
+      1
      ]
     ],
-    "total_faan": 10,
+    "total_faan": 11,
     "faan": 10,
     "meets_minimum": true,
     "limit": true,

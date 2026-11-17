@@ -29,6 +29,29 @@ def _all_meld_tiles(decomp: Decomposition, exposed: list[Meld]) -> list[tuple[st
     return melds
 
 
+def _condition_hits(
+    win_source: WinSource,
+    last_tile: bool,
+    after_kong: bool,
+    after_double_kong: bool,
+    profile: RulesProfile,
+) -> List[PatternHit]:
+    """The win-condition items that still count on a limit hand: Self-Drawn, Robbing a Kong,
+    Last Tile from the Wall, and the kong replacement items."""
+    hits: List[PatternHit] = []
+    if win_source == WinSource.SELF_DRAW:
+        hits.append(PatternHit("self_draw", profile.patterns["self_draw"]))
+    if win_source == WinSource.ROB_KONG:
+        hits.append(PatternHit("rob_kong", profile.patterns["rob_kong"]))
+    if last_tile:
+        hits.append(PatternHit("last_tile", profile.patterns["last_tile"]))
+    if after_double_kong:
+        hits.append(PatternHit("double_kong", profile.patterns["double_kong"]))
+    elif after_kong:
+        hits.append(PatternHit("kong_replacement", profile.patterns["kong_replacement"]))
+    return hits
+
+
 def _is_limit_name(name: str, profile: RulesProfile) -> bool:
     return name in profile.limit_hands
 
@@ -81,10 +104,12 @@ def score_hand(
 
     if is_thirteen_orphans(concealed) and not exposed:
         patterns.append(PatternHit("thirteen_orphans", profile.patterns["thirteen_orphans"]))
+        patterns.extend(_condition_hits(win_source, last_tile, after_kong, after_double_kong, profile))
         return _finalize(patterns, True, win_source, winner_seat, discarder, profile, player.melds)
 
     if is_nine_gates(concealed) and not exposed:
         patterns.append(PatternHit("nine_gates", profile.patterns["nine_gates"]))
+        patterns.extend(_condition_hits(win_source, last_tile, after_kong, after_double_kong, profile))
         return _finalize(patterns, True, win_source, winner_seat, discarder, profile, player.melds)
 
     decomps = structural_wins(concealed, exposed)
@@ -104,9 +129,11 @@ def score_hand(
     # Heaven/earth only after the hand is structurally complete
     if heavenly:
         patterns.append(PatternHit("heavenly_hand", profile.patterns["heavenly_hand"]))
+        patterns.extend(_condition_hits(win_source, last_tile, after_kong, after_double_kong, profile))
         return _finalize(patterns, True, win_source, winner_seat, discarder, profile, player.melds)
     if earthly:
         patterns.append(PatternHit("earthly_hand", profile.patterns["earthly_hand"]))
+        patterns.extend(_condition_hits(win_source, last_tile, after_kong, after_double_kong, profile))
         return _finalize(patterns, True, win_source, winner_seat, discarder, profile, player.melds)
 
     # Pick the decomposition that maximizes faan
@@ -152,6 +179,7 @@ def _score_decomp(
     # concealed kongs in decomp aren't separate if not declared — only declared melds
     if kong_count == 4:
         patterns.append(PatternHit("all_kongs", profile.patterns["all_kongs"]))
+        patterns.extend(_condition_hits(win_source, last_tile, after_kong, after_double_kong, profile))
         return patterns, True
 
     kinds = [k for k, _ in melds]
@@ -180,15 +208,18 @@ def _score_decomp(
     unique_wind_pongs = set(wind_pongs)
     if len(unique_wind_pongs) == 4:
         patterns.append(PatternHit("great_winds", profile.patterns["great_winds"]))
+        patterns.extend(_condition_hits(win_source, last_tile, after_kong, after_double_kong, profile))
         return patterns, True
     if len(unique_wind_pongs) == 3 and wind_pair is not None and wind_pair not in unique_wind_pongs:
         patterns.append(PatternHit("small_winds", profile.patterns["small_winds"]))
 
     if honors_only:
         patterns.append(PatternHit("all_honors", profile.patterns["all_honors"]))
+        patterns.extend(_condition_hits(win_source, last_tile, after_kong, after_double_kong, profile))
         return patterns, True
     if terminals_only and all_pong:
         patterns.append(PatternHit("pure_orphans", profile.patterns["pure_orphans"]))
+        patterns.extend(_condition_hits(win_source, last_tile, after_kong, after_double_kong, profile))
         return patterns, True
 
     # four concealed pongs (坎坎糊) — after more specific limit hands
@@ -201,6 +232,7 @@ def _score_decomp(
         )
     ):
         patterns.append(PatternHit("four_concealed_pongs", profile.patterns["four_concealed_pongs"]))
+        patterns.extend(_condition_hits(win_source, last_tile, after_kong, after_double_kong, profile))
         return patterns, True
 
     # Dragons

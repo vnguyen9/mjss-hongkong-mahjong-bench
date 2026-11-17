@@ -8,8 +8,10 @@ The rulebook is the Hong Kong Mahjong Association's *Hong Kong Mahjong (Classica
 
 * **13-tile Hong Kong Mahjong.** 144 tiles: 4 each of 27 suit tiles and 7 honour tiles, and 8 flowers and seasons. Four players. A winning hand is four melds and a pair, or Thirteen Orphans. Seven Pairs is not a hand in `hk-hkma-v1`.
 * **One game is one hand.** The bench plays single hands. Each deal fixes the dealer and the prevailing wind (`dealer = deal number mod 4`, `prevailing wind = (deal number / 4) mod 4`). There is no dealer rotation, no match score and no penalty system.
-* **The deal.** The dealer is East and discards first, after drawing a 14th tile. Flowers and seasons are shown as soon as they are drawn and replaced with a tile from the back of the wall (repeating if the replacement is another flower).
-* **Turns.** Draw, then win, declare a kong, or discard. Concealed and added kongs are declared on your own turn and draw a replacement from the back of the wall. A kong replacement that is a flower is replaced again.
+* **The deal.** The dealer is East and discards first, after drawing a 14th tile. Each seat is dealt 13 tiles.
+* **Opening flowers.** After the deal, flowers and seasons in the opening hands are shown and replaced with tiles from the back of the wall. The dealer replaces first, then the next seat, and so on in turn order. Each seat keeps replacing until it holds no flower (a replacement that is a flower is replaced again), and the rounds repeat until no seat holds one.
+* **Flowers drawn in play.** A flower drawn later, from the wall or as a kong replacement, is shown and replaced at once from the back of the wall.
+* **Turns.** Draw, then win, declare a kong, or discard. Concealed and added kongs are declared on your own turn and draw a replacement from the back of the wall.
 * **Claims on a discard.** Win beats pong and kong; pong and kong beat chow. A chow can only be claimed from the player who acts just before you. Two players who can win on the same tile: only the nearest after the discarder wins. A fourth tile added to a pong can be robbed by a player who wins on it.
 * **No dead wall.** The hand ends in a draw when there is no tile left to draw. A draw pays nothing. The very last discard can still be claimed.
 * **Winning needs the minimum faan.** The win action is only offered when the hand is complete and reaches the table's minimum. A bot cannot make a false win.
@@ -79,7 +81,7 @@ Minimum to win: **3 faan**. Cap: **10 faan**.
 * **Payout.** The discarder pays the whole hand ("Full Liability of Chuck"). On a self-draw, the winner collects 1.5 times the discard value, split equally by the other three. The same applies to a win by robbing a kong, which is paid by the player who added the tile.
 * **Points are one quarter of the rulebook's.** The rulebook's table is 32, 64, 96, 128, 192, 256, 384, 512 for 3 to 10 faan, and half of that from each of three players when self-drawn. Here it is 8, 16, 24, 32, 48, 64, 96, 128. Every ratio is the same. Multiply by 4 for rulebook points.
 * **Flowers score nothing.** They are still drawn and replaced, and they still shorten the wall.
-* **Limit hands.** Every ceiling hand pays the cap (10 faan). A hand worth more than 10 faan on paper pays 10.
+* **Limit hands.** Every ceiling hand pays the cap (10 faan). A limit hand still counts Self-Drawn, Last Tile from the Wall, Robbing a Kong and the kong items, and the total is then capped, so a self-drawn limit hand is 11 on paper and pays 10. A hand worth more than 10 faan on paper pays 10.
 * **Small Winds and After Consecutive Kan** are 10 faan items in the rulebook. The engine does not flag them as limit hands, so other faan can be counted beside them. Because the total is capped at 10, the payment is the same.
 
 ### Where `hk-hkma-v1` is not the rulebook

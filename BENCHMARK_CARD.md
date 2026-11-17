@@ -43,12 +43,12 @@ Baseline rows on the board (public deals, so **unverified**; points a hand again
 
 | Bot | Points a hand | 95% interval | Win | Deal-in | Deals |
 |---|---|---|---|---|---|
-| `python_example` | +2.47 | [+2.03, +2.91] | 10.1% | 5.0% | 2,000 |
-| `faan_aware` | +1.73 | [+1.48, +1.98] | 16.7% | 4.2% | 2,000 |
-| `ukeire` | -0.85 | [-1.01, -0.69] | 4.6% | 4.4% | 2,000 |
-| `deficiency` | -0.90 | [-1.06, -0.73] | 4.3% | 4.7% | 2,000 |
-| `shallow_search` | -1.30 | [-1.65, -0.94] | 3.4% | 4.6% | 400 |
-| `random` | -1.84 | [-1.98, -1.69] | 0.0% | 5.0% | 2,000 |
+| `python_example` | +2.50 | [+2.06, +2.95] | 10.3% | 5.0% | 2,000 |
+| `faan_aware` | +1.41 | [+1.17, +1.65] | 15.9% | 4.2% | 2,000 |
+| `ukeire` | -0.96 | [-1.12, -0.80] | 4.6% | 4.7% | 2,000 |
+| `deficiency` | -0.99 | [-1.16, -0.82] | 4.3% | 4.8% | 2,000 |
+| `shallow_search` | -1.19 | [-1.50, -0.87] | 3.3% | 4.7% | 400 |
+| `random` | -1.79 | [-1.92, -1.65] | 0.1% | 4.7% | 2,000 |
 
 A bot scored against a field that contains it plays itself, so `faan_aware`, `ukeire` and `deficiency` are rows against two other field bots and a copy of themselves. Head to head, over 300 deals each pair, the ranks are `faan_aware` first, the Python example second, `ukeire` and `deficiency` sharing third, and `random` last. These rows reproduce byte for byte on Python 3.9 and 3.11 (`hkbench score ... --deals 2000`).
 
@@ -80,8 +80,8 @@ The check does not stop a bot from being run with more thinking time, tools or h
 * **Single hands.** There is no dealer rotation, no match, no fouls and no table talk. A strategy that depends on the score of a match is not measured.
 * **Points are one quarter of the rulebook's.** Every ratio is the same.
 * **Gaps from the rulebook.** `hk-hkma-v1` has no 包 (liability) and several smaller differences, listed in `RULES.md`. A bot's row on it is a row under those rules.
-* **Most hands are draws, and big hands decide the score.** Between 59% and 71% of baseline games end in a draw, because 3 faan is a high bar. The bots that win do so in 0% to 17% of games. A strong bot's edge is in the few big hands, so intervals are wide at low deal counts. 2,000 deals gave intervals of about plus or minus 0.15 to 0.45 points a hand for the baselines.
-* **Points a hand and head-to-head ranks can disagree.** The first values big hands. The second counts which team came out ahead. In the baselines the Python example bot collects more points a hand than `faan_aware` against the field (+2.47 against +1.73, because it plays for triplets and gets 104 limit hands against 9), yet head to head `faan_aware` wins more games (441 to 239 out of 1,800) with the points level. Read both.
+* **Most hands are draws, and big hands decide the score.** Between 59% and 72% of baseline games end in a draw, because 3 faan is a high bar. The bots that win do so in 0% to 16% of games. A strong bot's edge is in the few big hands, so intervals are wide at low deal counts. 2,000 deals gave intervals of about plus or minus 0.15 to 0.45 points a hand for the baselines.
+* **Points a hand and head-to-head ranks can disagree.** The first values big hands. The second counts which team came out ahead. In the baselines the Python example bot collects more points a hand than `faan_aware` against the field (+2.50 against +1.41, because it plays for triplets and gets 105 limit hands against 4), yet head to head `faan_aware` wins more games (450 to 223 out of 1,800) with the points level. Read both.
 * **The example bot beats the field.** A short hand-written bot that keeps pairs and claims dragon and wind pongs finishes ahead of the field's best bot on points a hand. The field is a reference point, not a ceiling.
 * **Time limits depend on hardware.** The limit is wall-clock time per decision (10 seconds). A bot that needs more will be asked to run on our machine with its own limit, which is then recorded.
 * **Language models and people are not scored yet.** Those tracks need cost per hand and a place to play. They are empty.

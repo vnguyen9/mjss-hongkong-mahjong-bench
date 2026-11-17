@@ -32,7 +32,7 @@
       "display": "faan_aware",
       "kind": "reference",
       "name": "faan_aware",
-      "sha256": "4094849829017afed0d6f4dba0d4498b661cfa2c79a7c7ead2cb357c9a3dc07a",
+      "sha256": "3a2fbdda4293c217a627e17a6444324dfbabd3028a82495b7df7d755a4ea9ea8",
       "track": "bots",
       "trained_on": "none (scripted)"
     },
@@ -49,50 +49,50 @@
   "bradley_terry": {
     "deficiency": {
       "ci95": [
-        -15.833364917562381,
-        -10.039337528629044
+        -16.42296910292818,
+        -10.878697570760496
       ],
       "rank": 3,
-      "rating": -12.975162199442634
+      "rating": -13.460937171424304
     },
     "faan_aware": {
       "ci95": [
-        50.946665961467964,
-        58.85179303341144
+        53.27184843906534,
+        61.24728629001753
       ],
       "rank": 1,
-      "rating": 54.84923075385118
+      "rating": 57.08745003619214
     },
     "python_example": {
       "ci95": [
-        11.029435224035375,
-        17.886617307899584
+        9.261927908770655,
+        16.347251115267767
       ],
       "rank": 2,
-      "rating": 14.58994454657481
+      "rating": 13.017522117199382
     },
     "random": {
       "ci95": [
-        -50.197528737656256,
-        -44.77092122014914
+        -49.06216690294113,
+        -43.76948569006149
       ],
       "rank": 5,
-      "rating": -47.50646747677531
+      "rating": -46.49984548196689
     },
     "ukeire": {
       "ci95": [
-        -11.903986855943316,
-        -6.118838425613418
+        -12.910561353413774,
+        -7.525462091229885
       ],
       "rank": 3,
-      "rating": -8.957545624208048
+      "rating": -10.144189500000401
     }
   },
   "command": "hkbench h2h --table hk-hkma-v1 --bot random=ref:random --bot deficiency=ref:deficiency --bot ukeire=ref:ukeire --bot faan_aware=ref:faan_aware --bot 'python_example=python3 examples/bots/python_bot.py' --deals 300 --workers 4",
-  "created_utc": "2026-11-17T00:04:12Z",
+  "created_utc": "2026-11-17T01:01:06Z",
   "engine": {
     "fingerprint_deals": 300,
-    "fingerprint_sha256": "c52f96dfd4b775dbe3ed6eb8d2eb3dfe2b25c517aec77b0ceeb0f7f5e6997e1e",
+    "fingerprint_sha256": "02537f17f5df3b6f6151ec37eb4bd9e48809f4e70adc4e21f76d0665cd87eb07",
     "hkbench_version": "1.0.0",
     "python": "3.11.5",
     "rules_sha256": "43e4e01c50dce4d3dde5ba4f07d728e533e8c92ddb095372b3d718933ae16882"
@@ -106,35 +106,35 @@
   },
   "faults": {
     "deficiency": {
-      "decisions": 382046,
+      "decisions": 381657,
       "faults": {},
       "limit_per_1000": 1.0,
       "ok": true,
       "per_1000_decisions": 0.0
     },
     "faan_aware": {
-      "decisions": 370644,
+      "decisions": 370693,
       "faults": {},
       "limit_per_1000": 1.0,
       "ok": true,
       "per_1000_decisions": 0.0
     },
     "python_example": {
-      "decisions": 400526,
+      "decisions": 400834,
       "faults": {},
       "limit_per_1000": 1.0,
       "ok": true,
       "per_1000_decisions": 0.0
     },
     "random": {
-      "decisions": 364541,
+      "decisions": 365697,
       "faults": {},
       "limit_per_1000": 1.0,
       "ok": true,
       "per_1000_decisions": 0.0
     },
     "ukeire": {
-      "decisions": 382212,
+      "decisions": 382114,
       "faults": {},
       "limit_per_1000": 1.0,
       "ok": true,
@@ -142,191 +142,191 @@
     }
   },
   "kind": "h2h",
-  "log": "logs/hk-hkma-v1__h2h__public__20261117T000412.jsonl.gz",
+  "log": "logs/hk-hkma-v1__h2h__public__20261117T010106.jsonl.gz",
   "pairs": [
     {
       "a": "random",
       "a_game_wins": 0,
       "a_points_per_hand_per_seat": {
         "ci95": [
-          -0.7451495405247849,
-          -0.4859615705863255
+          -0.8361099783371988,
+          -0.47500113277391137
         ],
-        "mean": -0.6155555555555552,
+        "mean": -0.6555555555555551,
         "n": 300,
-        "se": 0.06585295552292646
+        "se": 0.09174841236443473
       },
       "b": "deficiency",
-      "b_game_wins": 163,
+      "b_game_wins": 159,
       "deals": 300,
       "games": 1800,
-      "ties": 1637
+      "ties": 1641
     },
     {
       "a": "random",
       "a_game_wins": 1,
       "a_points_per_hand_per_seat": {
         "ci95": [
-          -0.7483416761211815,
-          -0.48721387943437333
+          -0.7878006671346311,
+          -0.46997711064314535
         ],
-        "mean": -0.6177777777777774,
+        "mean": -0.6288888888888883,
         "n": 300,
-        "se": 0.06634581529806002
+        "se": 0.08075074061015088
       },
       "b": "ukeire",
-      "b_game_wins": 185,
+      "b_game_wins": 175,
       "deals": 300,
       "games": 1800,
-      "ties": 1614
+      "ties": 1624
     },
     {
       "a": "random",
       "a_game_wins": 1,
       "a_points_per_hand_per_seat": {
         "ci95": [
-          -2.803609280056304,
-          -2.200835164388139
+          -2.8761350904032916,
+          -2.252753798485597
         ],
-        "mean": -2.5022222222222217,
+        "mean": -2.5644444444444443,
         "n": 300,
-        "se": 0.153149303337234
+        "se": 0.1583850535201439
       },
       "b": "faan_aware",
-      "b_game_wins": 546,
+      "b_game_wins": 538,
       "deals": 300,
       "games": 1800,
-      "ties": 1253
+      "ties": 1261
     },
     {
       "a": "random",
-      "a_game_wins": 0,
+      "a_game_wins": 2,
       "a_points_per_hand_per_seat": {
         "ci95": [
-          -3.7221140958636374,
-          -2.6245525708030266
+          -3.9777092764896165,
+          -2.822290723510377
         ],
-        "mean": -3.173333333333332,
+        "mean": -3.399999999999997,
         "n": 300,
-        "se": 0.2788619792448433
+        "se": 0.2935619527317254
       },
       "b": "python_example",
-      "b_game_wins": 319,
+      "b_game_wins": 317,
       "deals": 300,
       "games": 1800,
       "ties": 1481
     },
     {
       "a": "deficiency",
-      "a_game_wins": 149,
+      "a_game_wins": 144,
       "a_points_per_hand_per_seat": {
         "ci95": [
-          -0.1974919142884355,
-          0.01971413651065769
+          -0.17909197972896496,
+          -0.003130242493257232
         ],
-        "mean": -0.0888888888888889,
+        "mean": -0.09111111111111109,
         "n": 300,
-        "se": 0.05518643633799591
+        "se": 0.0447073236411059
       },
       "b": "ukeire",
       "b_game_wins": 179,
       "deals": 300,
       "games": 1800,
-      "ties": 1472
+      "ties": 1477
     },
     {
       "a": "deficiency",
-      "a_game_wins": 129,
+      "a_game_wins": 124,
       "a_points_per_hand_per_seat": {
         "ci95": [
-          -1.8094688834608414,
-          -1.3327533387613817
+          -1.938176491598322,
+          -1.404045730623901
         ],
-        "mean": -1.5711111111111116,
+        "mean": -1.6711111111111114,
         "n": 300,
-        "se": 0.12112108277878424
+        "se": 0.13570880336084665
       },
       "b": "faan_aware",
-      "b_game_wins": 467,
+      "b_game_wins": 472,
       "deals": 300,
       "games": 1800,
       "ties": 1204
     },
     {
       "a": "deficiency",
-      "a_game_wins": 149,
+      "a_game_wins": 165,
       "a_points_per_hand_per_seat": {
         "ci95": [
-          -2.062042672613462,
-          -1.2490684384976474
+          -2.1629523365358523,
+          -1.3526032190197037
         ],
-        "mean": -1.6555555555555548,
+        "mean": -1.7577777777777779,
         "n": 300,
-        "se": 0.20655571357430486
+        "se": 0.20588873938286617
       },
       "b": "python_example",
-      "b_game_wins": 276,
+      "b_game_wins": 285,
       "deals": 300,
       "games": 1800,
-      "ties": 1375
+      "ties": 1350
     },
     {
       "a": "ukeire",
-      "a_game_wins": 143,
+      "a_game_wins": 123,
       "a_points_per_hand_per_seat": {
         "ci95": [
-          -1.710356353059409,
-          -1.2274214247183701
+          -1.864285164275197,
+          -1.3357148357248014
         ],
-        "mean": -1.4688888888888896,
+        "mean": -1.5999999999999992,
         "n": 300,
-        "se": 0.12270126720796963
+        "se": 0.1342960413827558
       },
       "b": "faan_aware",
-      "b_game_wins": 455,
+      "b_game_wins": 464,
       "deals": 300,
       "games": 1800,
-      "ties": 1202
+      "ties": 1213
     },
     {
       "a": "ukeire",
-      "a_game_wins": 144,
+      "a_game_wins": 163,
       "a_points_per_hand_per_seat": {
         "ci95": [
-          -2.2166989315099737,
-          -1.3833010684900253
+          -2.4118792341381914,
+          -1.517009654750697
         ],
-        "mean": -1.7999999999999996,
+        "mean": -1.9644444444444442,
         "n": 300,
-        "se": 0.2117448291268515
+        "se": 0.2273632014025058
       },
       "b": "python_example",
-      "b_game_wins": 275,
+      "b_game_wins": 290,
       "deals": 300,
       "games": 1800,
-      "ties": 1381
+      "ties": 1347
     },
     {
       "a": "faan_aware",
-      "a_game_wins": 441,
+      "a_game_wins": 450,
       "a_points_per_hand_per_seat": {
         "ci95": [
-          -0.49752743121109794,
-          0.4041940978777641
+          -0.3450818806066486,
+          0.6073041028288706
         ],
-        "mean": -0.046666666666666926,
+        "mean": 0.131111111111111,
         "n": 300,
-        "se": 0.22910410449703072
+        "se": 0.24197663117902116
       },
       "b": "python_example",
-      "b_game_wins": 239,
+      "b_game_wins": 223,
       "deals": 300,
       "games": 1800,
-      "ties": 1120
+      "ties": 1127
     }
   ],
   "rank_rule": "rank = 1 + the number of bots whose 95% interval lies entirely above this bot's; overlapping bots share a rank",
-  "run_id": "hk-hkma-v1__h2h__public__20261117T000412",
+  "run_id": "hk-hkma-v1__h2h__public__20261117T010106",
   "schema": "hkbench-h2h-1",
   "seeds": {
     "deals": 300,

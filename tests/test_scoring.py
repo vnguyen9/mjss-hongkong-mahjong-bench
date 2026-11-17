@@ -147,6 +147,56 @@ class RulebookFaan(unittest.TestCase):
         self.assertTrue(all(v == 0 for k, v in names.items() if "flower" in k or "season" in k))
 
 
+HOUSE_RULES = Path(__file__).resolve().parent.parent / "tables" / "hk-house-v1" / "rules.pending.json"
+
+
+class LimitHandsKeepTheirWinConditions(unittest.TestCase):
+    """A limit hand still counts Self-Drawn, Last Tile, Robbing a Kong and the kong items, then the cap applies."""
+
+    def house(self):
+        from hkbench.engine.profile import profile_from_dict
+
+        return profile_from_dict(json.loads(HOUSE_RULES.read_text()))
+
+    def score(self, conc, profile, source=WinSource.SELF_DRAW, **flags):
+        return score_hand(player(conc), None, source, 0, 0, discarder=None if source == WinSource.SELF_DRAW else 1,
+                          profile=profile, **flags)
+
+    def test_a_self_drawn_ten_faan_limit_is_eleven_on_a_cap_13_table(self):
+        house = self.house()
+        self.assertEqual(house.faan_cap, 13)
+        for name, conc in (("nine_gates", "m1 m1 m1 m2 m3 m4 m5 m6 m7 m8 m9 m9 m9 m5"),
+                           ("all_honors", "E E E S S S W W W C C C F F"),
+                           ("four_concealed_pongs", "m1 m1 m1 m3 m3 m3 p5 p5 p5 s7 s7 s7 E E")):
+            with self.subTest(name):
+                r = self.score(conc, house)
+                self.assertEqual([(h.name, h.faan) for h in r.patterns], [(name, 10), ("self_draw", 1)])
+                self.assertEqual(r.capped_faan, 11)
+                self.assertEqual(r.payments, [288, -96, -96, -96])  # table[11] = 192, self-drawn x1.5
+
+    def test_the_same_hands_stay_at_ten_on_hkma(self):
+        for conc in ("m1 m1 m1 m2 m3 m4 m5 m6 m7 m8 m9 m9 m9 m5", "E E E S S S W W W C C C F F"):
+            r = self.score(conc, hkma_profile())
+            self.assertEqual(r.total_faan, 11)
+            self.assertEqual(r.capped_faan, 10)
+            self.assertEqual(r.payments, [192, -64, -64, -64])
+
+    def test_other_win_conditions_count_on_a_limit_hand(self):
+        house = self.house()
+        r = self.score("E E E S S S W W W C C C F F", house, source=WinSource.DISCARD, last_tile=True)
+        self.assertEqual([h.name for h in r.patterns], ["all_honors", "last_tile"])
+        self.assertEqual(r.capped_faan, 11)
+        r = self.score("E E E S S S W W W C C C F F", house, after_kong=True)
+        self.assertEqual([h.name for h in r.patterns], ["all_honors", "self_draw", "kong_replacement"])
+        self.assertEqual(r.capped_faan, 12)
+
+    def test_a_limit_at_the_cap_stays_at_the_cap(self):
+        house = self.house()
+        r = self.score("m1 m9 s1 s9 p1 p9 E S W N C F P P", house)
+        self.assertEqual(r.total_faan, 14)  # thirteen orphans 13 + self-drawn 1
+        self.assertEqual(r.capped_faan, 13)
+
+
 class KnownGaps(unittest.TestCase):
     """What the engine does today where the HKMA rulebook says something else.
 

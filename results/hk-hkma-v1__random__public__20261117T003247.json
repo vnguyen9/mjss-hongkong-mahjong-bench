@@ -1,17 +1,17 @@
 {
   "bot": {
-    "description": "examples/bots/python_bot.py",
-    "kind": "external",
-    "name": "python_example",
-    "sha256": "11af7f9fedcf5799134343c6e6a02f5f3aafc5275f55e8d95b218c404b3ac630",
+    "description": "",
+    "kind": "reference",
+    "name": "random",
+    "sha256": "9c1c37dc49ebf5f63bb87cc87f83e332e4e10d7b31b97f77cd7aceacdf56dfd1",
     "track": "bots",
-    "trained_on": "none (hand-written heuristic)"
+    "trained_on": "none (scripted)"
   },
-  "command": "hkbench score --table hk-hkma-v1 --bot 'python3 examples/bots/python_bot.py' --name python_example --kind external --trained-on 'none (hand-written heuristic)' --description examples/bots/python_bot.py --deals 2000 --workers 4",
-  "created_utc": "2026-11-16T23:48:44Z",
+  "command": "hkbench score --table hk-hkma-v1 --bot ref:random --deals 2000 --workers 4 --trained-on 'none (scripted)'",
+  "created_utc": "2026-11-17T00:32:47Z",
   "engine": {
     "fingerprint_deals": 300,
-    "fingerprint_sha256": "c52f96dfd4b775dbe3ed6eb8d2eb3dfe2b25c517aec77b0ceeb0f7f5e6997e1e",
+    "fingerprint_sha256": "02537f17f5df3b6f6151ec37eb4bd9e48809f4e70adc4e21f76d0665cd87eb07",
     "hkbench_version": "1.0.0",
     "python": "3.11.5",
     "rules_sha256": "43e4e01c50dce4d3dde5ba4f07d728e533e8c92ddb095372b3d718933ae16882"
@@ -26,7 +26,7 @@
     "view_mismatches": 0
   },
   "faults": {
-    "decisions": 222537,
+    "decisions": 200215,
     "faults": {},
     "limit_per_1000": 1.0,
     "ok": true,
@@ -34,18 +34,18 @@
   },
   "headline": {
     "ci95": [
-      2.031285468620625,
-      2.910714531379375
+      -1.924614023672623,
+      -1.6503859763273772
     ],
     "deals": 2000,
     "games": 8000,
     "metric": "points per hand against the frozen field",
-    "points_per_hand": 2.471,
-    "se": 0.22421243299057758
+    "points_per_hand": -1.7875,
+    "se": 0.06991506227535245
   },
   "kind": "duplicate",
-  "log": "logs/hk-hkma-v1__python_example__public__20261116T234844.jsonl.gz",
-  "run_id": "hk-hkma-v1__python_example__public__20261116T234844",
+  "log": "logs/hk-hkma-v1__random__public__20261117T003247.jsonl.gz",
+  "run_id": "hk-hkma-v1__random__public__20261117T003247",
   "schema": "hkbench-result-1",
   "seeds": {
     "deals": 2000,
@@ -57,61 +57,61 @@
     "tag": "public"
   },
   "stats": {
-    "average_win_faan": 5.185873605947956,
-    "average_win_points": 41.18463444857497,
+    "average_win_faan": 5.0,
+    "average_win_points": 50.0,
     "deal_in_rate": {
       "ci95": [
-        0.04559635632685333,
-        0.05515364367314668
+        0.04260023320146703,
+        0.05214976679853297
       ],
-      "mean": 0.050375,
+      "mean": 0.047375,
       "n": 2000,
-      "se": 0.0024366520728577893
+      "se": 0.0024346752369165006
     },
     "draw_rate": {
       "ci95": [
-        0.6266644747452,
-        0.6495855252548001
+        0.7049875793128254,
+        0.7265124206871746
       ],
-      "mean": 0.638125,
+      "mean": 0.71575,
       "n": 2000,
-      "se": 0.005843773783567978
+      "se": 0.005487807099687574
     },
     "limit_hand_rate": {
       "ci95": [
-        0.010516372335392054,
-        0.015483627664607945
+        0.0,
+        0.0
       ],
-      "mean": 0.013,
+      "mean": 0.0,
       "n": 2000,
-      "se": 0.0012664130056780137
+      "se": 0.0
     },
-    "limit_hands": 104,
+    "limit_hands": 0,
     "self_draw_win_rate": {
       "ci95": [
-        0.03759346449150574,
-        0.046156535508494266
+        -4.9389277406645124e-05,
+        0.0007993892774066451
       ],
-      "mean": 0.041875,
+      "mean": 0.000375,
       "n": 2000,
-      "se": 0.002183174366067985
+      "se": 0.00021639801651303857
     },
     "win_rate": {
       "ci95": [
-        0.09439965244600727,
-        0.10735034755399274
+        1.0080182933685329e-05,
+        0.0009899198170663147
       ],
-      "mean": 0.100875,
+      "mean": 0.0005,
       "n": 2000,
-      "se": 0.003301809073686653
+      "se": 0.00024981233576737194
     },
-    "wins": 807
+    "wins": 4
   },
   "table": {
     "field": [
       {
         "bot": "faan_aware",
-        "sha256": "4094849829017afed0d6f4dba0d4498b661cfa2c79a7c7ead2cb357c9a3dc07a"
+        "sha256": "3a2fbdda4293c217a627e17a6444324dfbabd3028a82495b7df7d755a4ea9ea8"
       },
       {
         "bot": "ukeire",

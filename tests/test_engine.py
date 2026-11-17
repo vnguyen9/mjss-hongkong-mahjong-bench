@@ -326,7 +326,7 @@ class EngineTests(unittest.TestCase):
         state.apply_action(1)
         t = state.terminal
         self.assertEqual(t.cause, "win")
-        self.assertEqual([p["name"] for p in t.pattern_breakdown], ["heavenly_hand"])
+        self.assertEqual([p["name"] for p in t.pattern_breakdown], ["heavenly_hand", "self_draw"])
         self.assertEqual(t.faan, 10)
         self.assertEqual(t.payments, [192, -64, -64, -64])
 
@@ -353,6 +353,60 @@ class EngineTests(unittest.TestCase):
         self.assertFalse(profile.data["flower_rules"]["check_seven_eight_during_replacement"])
         self.assertEqual(profile.flower_patterns["seven_flowers"], 0)
         self.assertEqual(profile.flower_patterns["eight_flowers"], 0)
+
+    def _wall_with_flowers_at(self, positions):
+        """A wall whose only flowers inside the opening deal are at ``positions``; the rest sit mid-wall."""
+        flowers = list(range(136, 144))
+        regular = list(range(136))
+        wall = [None] * 144
+        for pos, f in zip(positions, flowers):
+            wall[pos] = f
+        rest_flowers = flowers[len(positions):]
+        for k, f in enumerate(rest_flowers):
+            wall[70 + k] = f
+        it = iter(regular)
+        for i in range(144):
+            if wall[i] is None:
+                wall[i] = next(it)
+        return wall
+
+    def test_opening_flowers_are_replaced_dealer_first_in_turn_order(self):
+        """Dealer East; the dealer's second tile (wall[4]) and West's first tile (wall[2]) are flowers.
+
+        Standard practice: the dealer replaces first, so East takes the first tile from the back of
+        the wall and West the second. (Replacing in the order the flowers were dealt would give West
+        the first.)
+        """
+        wall = self._wall_with_flowers_at([2, 4])
+        state = new_game(hkma_profile(), seed=0, supplied_wall=wall, dealer=0)
+        self.assertIn(wall[143], state.concealed_ids[0])
+        self.assertIn(wall[142], state.concealed_ids[2])
+        self.assertEqual(len(state.players[0].flowers), 1)
+        self.assertEqual(len(state.players[2].flowers), 1)
+        self.assertTrue(state.check_invariants().ok)
+
+    def test_opening_replacement_starts_at_the_dealer_not_at_seat_zero(self):
+        """Dealer is seat 2, so the deal runs 2, 3, 0, 1. Seat 3 (wall[1]) and seat 0 (wall[2]) hold flowers.
+
+        Round order from the dealer: seat 3 replaces before seat 0. Starting at seat 0 would
+        hand seat 0 the first back tile.
+        """
+        wall = self._wall_with_flowers_at([1, 2])
+        state = new_game(hkma_profile(), seed=0, supplied_wall=wall, dealer=2)
+        self.assertIn(wall[143], state.concealed_ids[3])
+        self.assertIn(wall[142], state.concealed_ids[0])
+        self.assertEqual(sum(len(x) for x in state.concealed_ids), 53)
+
+    def test_a_flower_replacing_a_flower_is_replaced_again_before_the_next_seat(self):
+        wall = self._wall_with_flowers_at([0, 4])
+        wall[143], wall[142] = wall[142], wall[143]
+        # Make the first back tile a flower too: swap flower 138 (mid-wall) into position 143.
+        i = wall.index(138)
+        wall[i], wall[143] = wall[143], wall[i]
+        state = new_game(hkma_profile(), seed=0, supplied_wall=wall, dealer=0)
+        self.assertEqual(len(state.players[0].flowers), 3)  # two dealt flowers plus the flower that replaced one
+        self.assertEqual(sum(len(x) for x in state.concealed_ids[:1]), 14)
+        self.assertTrue(state.check_invariants().ok)
 
 
 if __name__ == "__main__":

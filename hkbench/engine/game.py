@@ -457,10 +457,17 @@ class GameState:
                 )
 
     def _replace_flowers_until_stable(self, *, during_deal: bool) -> None:
+        """Replace the flowers dealt in the opening hands.
+
+        Standard Hong Kong practice: starting with the dealer and going round in turn order, each
+        seat replaces its flowers from the back of the wall until it holds none. Rounds repeat
+        until no seat holds a flower.
+        """
         changed = True
         while changed and not self.is_terminal():
             changed = False
-            for seat in range(4):
+            for k in range(4):
+                seat = (self.dealer + k) % 4
                 while (
                     not self.is_terminal()
                     and self.players[seat].concealed_count() < 13
