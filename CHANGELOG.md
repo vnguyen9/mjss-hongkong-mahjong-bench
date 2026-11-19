@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* The hosted bot `h1` is now named `Fu-2.3M-HKMA-1`: family, size (2.3M parameters), the rules it trained on, and version. Its result files, logs and head-to-head entries are renamed; no game, score or hash changed.
+
 ## 1.0.0 (2026-11-16)
 
 First release.

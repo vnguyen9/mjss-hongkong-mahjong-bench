@@ -110,7 +110,7 @@ The engine comes from the maintainers' own training package. These are the chang
 
 House rules are the rule set the Mahjong Sensei app plays: flowers score, limit hands are graded, the cap is 13, and Seven Pairs is a hand. The values below are `tables/hk-house-v1/rules.json`.
 
-The House track exists to keep one thing visible: the maintainer's own bot, h1, was trained on HKMA rules, and a bot trained without flower faan and without Seven Pairs is at an advantage on the HKMA table. Scoring every bot on both tables shows how much a rule set suits the bot.
+The House track exists to keep one thing visible: the maintainer's own bot, Fu-2.3M-HKMA-1, was trained on HKMA rules, and a bot trained without flower faan and without Seven Pairs is at an advantage on the HKMA table. Scoring every bot on both tables shows how much a rule set suits the bot.
 
 <!-- rules:hk-house-v1:begin -->
 Minimum to win: **3 faan**. Cap: **13 faan**.

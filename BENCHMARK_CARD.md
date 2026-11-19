@@ -65,22 +65,22 @@ Baseline rows on `hk-house-v1`, the same bots and the same 2,000 deals (400 for 
 
 On House the head-to-head ranks are `faan_aware` first, `ukeire` and the Python example sharing second, `deficiency` fourth and `random` last. Flowers add a faan to nearly every hand (one for holding none, one for each seat flower), so 3 faan is easy to reach and far more hands are won than on HKMA (33% to 46% of games end in a draw, against 59% to 72%). The reference bots do not aim for Seven Pairs, but they declare it when a hand is complete. It ended 6 to 9 games in 8,000 (about 0.1%) in the rows for the field bots and `random`, and 190 in 8,000 (2.4%) in the Python example's row, since that bot keeps pairs.
 
-## The maintainers' hosted bot: h1
+## Mahjong Sensei's hosted bot: Fu-2.3M-HKMA-1
 
-`h1` is the hosted bot. It runs through the same protocol as any other bot; the result files hide how it is started and carry only its supplied hash. It was trained on HKMA Classical rules, with flowers dealt and replaced but no flower faan, and no Seven Pairs. Read its row beside `trained on`: on the HKMA table it plays the rules it was trained for, and on the House table it is playing rules it was not trained for.
+`Fu-2.3M-HKMA-1` is the bot that ships in Mahjong Sensei, hosted here. The name reads family (Fu), size (2.3M parameters), the rules it trained on (HKMA) and version (1); it trained on 1.3B decisions. It runs through the same protocol as any other bot; the result files hide how it is started and carry only its supplied hash. It was trained on HKMA Classical rules, with flowers dealt and replaced but no flower faan, and no Seven Pairs. Read its row beside `trained on`: on the HKMA table it plays the rules it was trained for, and on the House table it is playing rules it was not trained for.
 
 Rows on the private deck (**verified**; 2,000 deals, with every baseline re-run on the same deals) and, for reference, on the public deals (unverified). Points a hand against the field, 95% interval:
 
-| Table | Deck | h1 points a hand | Win | Deal-in | Best baseline (points a hand) |
+| Table | Deck | Fu-2.3M-HKMA-1 points a hand | Win | Deal-in | Best baseline (points a hand) |
 |---|---|---|---|---|---|
 | `hk-hkma-v1` | private, verified | +17.36 [+16.70, +18.02] | 47.0% | 3.4% | `python_example` +2.52 |
 | `hk-hkma-v1` | public, unverified | +17.67 [+17.00, +18.35] | 47.7% | 3.1% | `python_example` +2.50 |
 | `hk-house-v1` | private, verified | +16.37 [+15.56, +17.19] | 37.8% | 4.8% | `python_example` +2.69 |
 | `hk-house-v1` | public, unverified | +16.26 [+15.42, +17.09] | 37.3% | 4.9% | `python_example` +2.43 |
 
-Head to head over 300 deals (Bradley-Terry, Elo scale), with `h1` added to the five bots above: on both tables and both decks `h1` is rank 1 and `faan_aware` rank 2. On the verified HKMA deck the ratings are `h1` +150.6, `faan_aware` +25.3, `python_example` -9.4, `ukeire` -42.9, `deficiency` -45.9, `random` -77.6; on the verified House deck `h1` +103.9, `faan_aware` +48.9, `python_example` -7.4, `ukeire` -9.3, `deficiency` -20.3, `random` -115.8. The earlier five-bot head-to-head runs stay in `results/`.
+Head to head over 300 deals (Bradley-Terry, Elo scale), with `Fu-2.3M-HKMA-1` added to the five bots above: on both tables and both decks `Fu-2.3M-HKMA-1` is rank 1 and `faan_aware` rank 2. On the verified HKMA deck the ratings are `Fu-2.3M-HKMA-1` +150.6, `faan_aware` +25.3, `python_example` -9.4, `ukeire` -42.9, `deficiency` -45.9, `random` -77.6; on the verified House deck `Fu-2.3M-HKMA-1` +103.9, `faan_aware` +48.9, `python_example` -7.4, `ukeire` -9.3, `deficiency` -20.3, `random` -115.8. The earlier five-bot head-to-head runs stay in `results/`.
 
-The bench's seat view is turned into `h1`'s own observation by a wrapper that the maintainers keep with the bot. Before any number counted, `h1` through the bench and `h1` in its own engine chose the same move on every position where both engines offer the same legal moves (13,984 of 13,984 on HKMA, 13,684 of 13,684 on House). On the House table the bench also offers a win that the trained rules cannot declare (a hand that reaches 3 faan with flowers, or Seven Pairs); those positions are the only ones where the two differ.
+The bench's seat view is turned into `Fu-2.3M-HKMA-1`'s own observation by a wrapper that the maintainers keep with the bot. Before any number counted, `Fu-2.3M-HKMA-1` through the bench and `Fu-2.3M-HKMA-1` in its own engine chose the same move on every position where both engines offer the same legal moves (13,984 of 13,984 on HKMA, 13,684 of 13,684 on House). On the House table the bench also offers a win that the trained rules cannot declare (a hand that reaches 3 faan with flowers, or Seven Pairs); those positions are the only ones where the two differ.
 
 ## Deals
 
@@ -104,7 +104,7 @@ The check does not stop a bot from being run with more thinking time, tools or h
 
 ## Known limits
 
-* **A hosted bot is scored here.** The hosted bot (h1) is scored through this harness and its implementation is private. It was trained on the HKMA rules, with no flower faan and no Seven Pairs, so it is at an advantage on the HKMA table. The House table exists to keep that visible. Read a row beside its `trained on` field.
+* **A hosted bot is scored here.** The hosted bot (Fu-2.3M-HKMA-1) is scored through this harness and its implementation is private. It was trained on the HKMA rules, with no flower faan and no Seven Pairs, so it is at an advantage on the HKMA table. The House table exists to keep that visible. Read a row beside its `trained on` field.
 * **The field is fixed and not strong.** Points against three scripted bots say how a player does against that kind of opponent. They say less about play against careful humans, or against opponents that adapt.
 * **The field's claim play is crude.** `ukeire` and `deficiency` claim at random, and no field bot plays defence. A bot can profit from that without being good.
 * **Single hands.** There is no dealer rotation, no match, no fouls and no table talk. A strategy that depends on the score of a match is not measured.
