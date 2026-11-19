@@ -6,10 +6,16 @@ on:
 
 jobs:
   unittest:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ['3.9', '3.12']
+        include:
+          # Python 3.9 is the oldest the bench supports; newer Ubuntu images no longer carry it.
+          - os: ubuntu-22.04
+            python-version: '3.9'
+          - os: ubuntu-latest
+            python-version: '3.12'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
