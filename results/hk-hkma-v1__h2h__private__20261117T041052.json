@@ -47,15 +47,23 @@
     },
     {
       "description": "",
-      "display": "h1",
+      "display": "Fu-2.3M-HKMA-1",
       "kind": "external",
-      "name": "h1",
+      "name": "Fu-2.3M-HKMA-1",
       "sha256": "bcf71634d09b0eb17c84c3f63edd95132f60d21941ecad99f25b0af879b776a8",
       "track": "bots",
       "trained_on": "unknown"
     }
   ],
   "bradley_terry": {
+    "Fu-2.3M-HKMA-1": {
+      "ci95": [
+        145.8287860967068,
+        155.1865342934522
+      ],
+      "rank": 1,
+      "rating": 150.60122992969096
+    },
     "deficiency": {
       "ci95": [
         -49.005367509486824,
@@ -71,14 +79,6 @@
       ],
       "rank": 2,
       "rating": 25.2671279179928
-    },
-    "h1": {
-      "ci95": [
-        145.8287860967068,
-        155.1865342934522
-      ],
-      "rank": 1,
-      "rating": 150.60122992969096
     },
     "python_example": {
       "ci95": [
@@ -105,7 +105,7 @@
       "rating": -42.90288688470747
     }
   },
-  "command": "hkbench h2h --table hk-hkma-v1 --bot random=ref:random --bot deficiency=ref:deficiency --bot ukeire=ref:ukeire --bot faan_aware=ref:faan_aware --bot 'python_example=python3 examples/bots/python_bot.py' --bot h1=./hosted --deals 300 --workers 9",
+  "command": "hkbench h2h --table hk-hkma-v1 --bot random=ref:random --bot deficiency=ref:deficiency --bot ukeire=ref:ukeire --bot faan_aware=ref:faan_aware --bot 'python_example=python3 examples/bots/python_bot.py' --bot Fu-2.3M-HKMA-1=./hosted --deals 300 --workers 9",
   "created_utc": "2026-11-17T04:10:52Z",
   "engine": {
     "fingerprint_deals": 300,
@@ -115,14 +115,21 @@
     "rules_sha256": "43e4e01c50dce4d3dde5ba4f07d728e533e8c92ddb095372b3d718933ae16882"
   },
   "fairplay": {
+    "Fu-2.3M-HKMA-1": "passed",
     "deficiency": "passed",
     "faan_aware": "passed",
-    "h1": "passed",
     "python_example": "passed",
     "random": "passed",
     "ukeire": "passed"
   },
   "faults": {
+    "Fu-2.3M-HKMA-1": {
+      "decisions": 405887,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
     "deficiency": {
       "decisions": 462638,
       "faults": {},
@@ -132,13 +139,6 @@
     },
     "faan_aware": {
       "decisions": 445743,
-      "faults": {},
-      "limit_per_1000": 1.0,
-      "ok": true,
-      "per_1000_decisions": 0.0
-    },
-    "h1": {
-      "decisions": 405887,
       "faults": {},
       "limit_per_1000": 1.0,
       "ok": true,
@@ -253,7 +253,7 @@
         "n": 300,
         "se": 0.34199222992591505
       },
-      "b": "h1",
+      "b": "Fu-2.3M-HKMA-1",
       "b_game_wins": 1090,
       "deals": 300,
       "games": 1800,
@@ -325,7 +325,7 @@
         "n": 300,
         "se": 0.3317386355509244
       },
-      "b": "h1",
+      "b": "Fu-2.3M-HKMA-1",
       "b_game_wins": 1030,
       "deals": 300,
       "games": 1800,
@@ -379,7 +379,7 @@
         "n": 300,
         "se": 0.3172865883398547
       },
-      "b": "h1",
+      "b": "Fu-2.3M-HKMA-1",
       "b_game_wins": 1003,
       "deals": 300,
       "games": 1800,
@@ -415,7 +415,7 @@
         "n": 300,
         "se": 0.33998736991476114
       },
-      "b": "h1",
+      "b": "Fu-2.3M-HKMA-1",
       "b_game_wins": 868,
       "deals": 300,
       "games": 1800,
@@ -433,7 +433,7 @@
         "n": 300,
         "se": 0.3551994686618734
       },
-      "b": "h1",
+      "b": "Fu-2.3M-HKMA-1",
       "b_game_wins": 893,
       "deals": 300,
       "games": 1800,
