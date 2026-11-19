@@ -10,3 +10,6 @@ dist/
 private/
 *.private.json
 private-seeds*
+# Keep the operator-supplied private deck outside this checkout.
+/.private-seeds
+HKBENCH_PRIVATE_SEEDS

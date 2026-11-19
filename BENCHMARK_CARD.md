@@ -67,7 +67,7 @@ On House the head-to-head ranks are `faan_aware` first, `ukeire` and the Python 
 
 ## The maintainers' hosted bot: h1
 
-`h1` is Mahjong Sensei's shipped bot. It is **hosted**: it runs on the maintainers' machines through the same protocol as any other bot, and its weights and code are not in this repository (the result files hide how it is started and carry a hash supplied by its owners). It was trained on HKMA Classical rules, with flowers dealt and replaced but no flower faan, and no Seven Pairs. Read its row beside `trained on`: on the HKMA table it plays the rules it was trained for, and on the House table it is playing rules it was not trained for.
+`h1` is the hosted bot. It runs through the same protocol as any other bot; the result files hide how it is started and carry only its supplied hash. It was trained on HKMA Classical rules, with flowers dealt and replaced but no flower faan, and no Seven Pairs. Read its row beside `trained on`: on the HKMA table it plays the rules it was trained for, and on the House table it is playing rules it was not trained for.
 
 Rows on the private deck (**verified**; 2,000 deals, with every baseline re-run on the same deals) and, for reference, on the public deals (unverified). Points a hand against the field, 95% interval:
 
@@ -104,7 +104,7 @@ The check does not stop a bot from being run with more thinking time, tools or h
 
 ## Known limits
 
-* **The maintainers' own bot is scored here.** Mahjong Sensei's bot (h1) is hosted: it is scored through this harness and its weights are private. It was trained on the HKMA rules, with no flower faan and no Seven Pairs, so it is at an advantage on the HKMA table. The House table exists to keep that visible. Read a row beside its `trained on` field.
+* **A hosted bot is scored here.** The hosted bot (h1) is scored through this harness and its implementation is private. It was trained on the HKMA rules, with no flower faan and no Seven Pairs, so it is at an advantage on the HKMA table. The House table exists to keep that visible. Read a row beside its `trained on` field.
 * **The field is fixed and not strong.** Points against three scripted bots say how a player does against that kind of opponent. They say less about play against careful humans, or against opponents that adapt.
 * **The field's claim play is crude.** `ukeire` and `deficiency` claim at random, and no field bot plays defence. A bot can profit from that without being good.
 * **Single hands.** There is no dealer rotation, no match, no fouls and no table talk. A strategy that depends on the score of a match is not measured.
@@ -115,7 +115,7 @@ The check does not stop a bot from being run with more thinking time, tools or h
 * **The example bot beats the field.** A short hand-written bot that keeps pairs and claims dragon and wind pongs finishes ahead of the field's best bot on points a hand. The field is a reference point, not a ceiling.
 * **Time limits depend on hardware.** The limit is wall-clock time per decision (10 seconds). A bot that needs more will be asked to run on our machine with its own limit, which is then recorded.
 * **Language models and people are not scored yet.** Those tracks need cost per hand and a place to play. They are empty.
-* **Third-party bots are not listed without their authors' agreement.** None of their code, weights or results are in this repository. The protocol is documented so they can submit (`SUBMITTING.md`).
+* **Third-party bots are not listed without their authors' agreement.** None of their code, model files or results are in this repository. The protocol is documented so they can submit (`SUBMITTING.md`).
 
 ## Results format
 

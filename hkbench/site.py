@@ -107,9 +107,12 @@ def build(results_dir: Path, out_dir: Path) -> Path:
             "field": [m["bot"] for m in t.field],
             "headline": t.id == "hk-hkma-v1",
         })
+    timestamps = [r["created_utc"] for r in rows]
+    timestamps.extend(r["created_utc"] for r in _h2h(results_dir))
+    generated_utc = max(timestamps) if timestamps else "1970-01-01T00:00:00Z"
     data = {
         "schema": SCHEMA,
-        "generated_utc": datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0, tzinfo=None).isoformat() + "Z",
+        "generated_utc": generated_utc,
         "hkbench_version": __version__,
         "tracks": TRACKS,
         "tables": tables,

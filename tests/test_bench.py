@@ -179,7 +179,7 @@ class Tags(unittest.TestCase):
 
 class HostedBots(unittest.TestCase):
     def test_a_hosted_bots_location_is_not_recorded(self):
-        argv = ["score", "--table", "hk-hkma-v1", "--bot", "/private/h1/run_wrapper --weights /private/h1/w.bin",
+        argv = ["score", "--table", "hk-hkma-v1", "--bot", "/private/h1/run_wrapper --model-file /private/h1/m.bin",
                 "--kind", "hosted", "--cwd=/private/h1", "--bot-hash", "ab" * 32, "--deals", "10"]
         scrubbed = cli.scrub_hosted(argv)
         self.assertNotIn("private", " ".join(scrubbed))

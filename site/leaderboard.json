@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-17T12:29:52Z",
+  "generated_utc": "2026-11-17T04:21:51Z",
   "head_to_head": [
     {
       "bots": [
@@ -386,7 +386,7 @@
       "average_win_faan": 5.522999202339803,
       "average_win_points": 39.56500930603563,
       "bot": {
-        "description": "Mahjong Sensei's shipped bot, hosted: its weights and code stay private",
+        "description": "Hosted bot; its implementation stays private",
         "kind": "hosted",
         "name": "h1",
         "sha256": "af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54",
@@ -396,7 +396,7 @@
         16.70044195089777,
         18.018558049102232
       ],
-      "command": "hkbench score --table hk-hkma-v1 --bot '<hosted>' --name h1 --kind hosted --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Mahjong Sensei'\"'\"'s shipped bot, hosted: its weights and code stay private' --deals 2000 --workers 9",
+      "command": "python -m hkbench score --table hk-hkma-v1 --bot '<hosted>' --name h1 --kind hosted --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Hosted bot; its implementation stays private' --deals 2000 --workers 9",
       "created_utc": "2026-11-17T03:35:04Z",
       "deal_in_rate": 0.03375,
       "deals": 2000,
@@ -617,7 +617,7 @@
       "average_win_faan": 5.5111402359108785,
       "average_win_points": 39.60681520314548,
       "bot": {
-        "description": "Mahjong Sensei's shipped bot, hosted: its weights and code stay private",
+        "description": "Hosted bot; its implementation stays private",
         "kind": "hosted",
         "name": "h1",
         "sha256": "af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54",
@@ -627,7 +627,7 @@
         16.998907784587473,
         18.348092215412528
       ],
-      "command": "hkbench score --table hk-hkma-v1 --bot '<hosted>' --name h1 --kind hosted --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Mahjong Sensei'\"'\"'s shipped bot, hosted: its weights and code stay private' --deals 2000 --workers 9",
+      "command": "python -m hkbench score --table hk-hkma-v1 --bot '<hosted>' --name h1 --kind hosted --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Hosted bot; its implementation stays private' --deals 2000 --workers 9",
       "created_utc": "2026-11-17T03:18:59Z",
       "deal_in_rate": 0.030875,
       "deals": 2000,
@@ -848,7 +848,7 @@
       "average_win_faan": 6.031777557100298,
       "average_win_points": 49.13339953657729,
       "bot": {
-        "description": "Mahjong Sensei's shipped bot, hosted: its weights and code stay private",
+        "description": "Hosted bot; its implementation stays private",
         "kind": "hosted",
         "name": "h1",
         "sha256": "af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54",
@@ -858,7 +858,7 @@
         15.555755639908561,
         17.19324436009144
       ],
-      "command": "hkbench score --table hk-house-v1 --bot '<hosted>' --name h1 --kind hosted --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Mahjong Sensei'\"'\"'s shipped bot, hosted: its weights and code stay private' --deals 2000 --workers 9",
+      "command": "python -m hkbench score --table hk-house-v1 --bot '<hosted>' --kind hosted --name h1 --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Hosted bot; its implementation stays private' --deals 2000 --workers 9",
       "created_utc": "2026-11-17T03:57:12Z",
       "deal_in_rate": 0.04775,
       "deals": 2000,
@@ -1079,7 +1079,7 @@
       "average_win_faan": 6.065035199463627,
       "average_win_points": 49.406637613141136,
       "bot": {
-        "description": "Mahjong Sensei's shipped bot, hosted: its weights and code stay private",
+        "description": "Hosted bot; its implementation stays private",
         "kind": "hosted",
         "name": "h1",
         "sha256": "af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54",
@@ -1089,7 +1089,7 @@
         15.420058008543016,
         17.093941991456987
       ],
-      "command": "hkbench score --table hk-house-v1 --bot '<hosted>' --name h1 --kind hosted --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Mahjong Sensei'\"'\"'s shipped bot, hosted: its weights and code stay private' --deals 2000 --workers 9",
+      "command": "python -m hkbench score --table hk-house-v1 --bot '<hosted>' --name h1 --kind hosted --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Hosted bot; its implementation stays private' --deals 2000 --workers 9",
       "created_utc": "2026-11-17T03:48:59Z",
       "deal_in_rate": 0.04925,
       "deals": 2000,

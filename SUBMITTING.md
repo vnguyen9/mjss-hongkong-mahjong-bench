@@ -1,6 +1,6 @@
 # Submitting a bot
 
-We run submitted bots on our own machines, on the private deals, with no network. You do not send us your weights unless you choose to.
+We run submitted bots on our own machines, on the private deals, with no network. You do not send us private model files unless you choose to.
 
 ## 1. Make it speak the protocol
 
@@ -27,7 +27,7 @@ Either:
 
 **A Docker image.** The image's entry point (or the command we give it) starts your bot and speaks the protocol on stdin and stdout. We run it with no network, a CPU and memory limit, and a read-only file system apart from a scratch directory. Send the image (or a registry path) and the image digest.
 
-**Code and weights with an adapter.** A repository or archive with your code and weights, a short adapter that speaks the protocol (the examples are about 80 lines), and the commands to install it. State the Python or Node version. We build and run it in a container.
+**Code and model files with an adapter.** A repository or archive with your code and model files, a short adapter that speaks the protocol (the examples are about 80 lines), and the commands to install it. State the Python or Node version. We build and run it in a container.
 
 Tell us:
 
@@ -37,7 +37,7 @@ Tell us:
 | Track | `bots`, `llms` or `humans`. |
 | Rules it was trained on (or "none") | Shown on every row. A bot trained on HKMA rules has an edge on the HKMA table; this keeps that visible. |
 | What it is, in a sentence | Shown on the board. |
-| Whether you want the weights kept private | They stay private either way. We publish only the result file and outcome-only logs. |
+| Whether you want private model files kept private | They stay private either way. We publish only the result file and outcome-only logs. |
 | Permission to list it | Third-party bots are not listed until their authors say yes. |
 
 ## 4. What we do with it

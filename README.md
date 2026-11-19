@@ -4,7 +4,7 @@ A fair way to compare Hong Kong Mahjong players: bots today, language models and
 
 The headline number is **points a hand against a frozen field of reference bots**, in duplicate play, with a 95% interval. Every deal is played four times on the same wall, with the player under test in each seat once. Every row says which rules it was scored under and whether the deals were private.
 
-This repository holds the rules engine, the scorer and the harness. It is MIT licensed. It has no training code and no model weights.
+This repository holds the rules engine, the scorer and the harness. It is MIT licensed and contains no private artifacts.
 
 ## Two rule sets
 
@@ -20,7 +20,7 @@ HKMA Classical is the headline because it has a citable rulebook. `RULES.md` lis
 Python 3.9 or newer. No packages to install.
 
 ```
-git clone <this repository>
+git clone https://github.com/vnguyen9/mjss-hongkong-mahjong-bench.git
 cd mjss-hongkong-mahjong-bench
 python -m unittest discover -s tests          # or: python -m pytest tests
 ```
@@ -44,19 +44,19 @@ python -m hkbench score --table hk-hkma-v1 --bot "node examples/bots/javascript_
 Other commands:
 
 ```
-hkbench h2h --table hk-hkma-v1 --bot a=ref:ukeire --bot b="python examples/bots/python_bot.py" --deals 100
-hkbench fairplay --table hk-hkma-v1 --bot "python examples/bots/python_bot.py"
-hkbench fingerprint --table hk-hkma-v1          # does this engine reproduce the table's fingerprint?
-hkbench verify-log results/logs/<file>.jsonl.gz # replay every game in a log
-hkbench site                                    # rebuild site/leaderboard.json and site/index.html
-hkbench tables                                  # list tables, check the reference field pins
+python -m hkbench h2h --table hk-hkma-v1 --bot a=ref:ukeire --bot b="python examples/bots/python_bot.py" --deals 100
+python -m hkbench fairplay --table hk-hkma-v1 --bot "python examples/bots/python_bot.py"
+python -m hkbench fingerprint --table hk-hkma-v1          # does this engine reproduce the table's fingerprint?
+python -m hkbench verify-log results/logs/<file>.jsonl.gz # replay every game in a log
+python -m hkbench site                                    # rebuild site/leaderboard.json and site/index.html
+python -m hkbench tables                                  # list tables, check the reference field pins
 ```
 
 (`python -m hkbench` works everywhere; `hkbench` is installed by `pip install -e .`.)
 
 ## How a row is scored
 
-1. **Table checks.** The reference bots must match their pinned hashes, and the engine must reproduce the table's fingerprint: 300 fixed deals and 33 fixed hands, hashed. If either fails, nothing is scored.
+1. **Table checks.** The reference bots must match their pinned hashes, and the engine must reproduce the table's fingerprint: 300 fixed deals and 42 fixed hands, hashed. If either fails, nothing is scored.
 2. **Fair-play check.** The bench takes real decision points, re-shuffles every hidden tile (the other hands and the wall) into a new arrangement that looks the same from the bot's seat, and asks again. A changed answer rejects the bot.
 3. **Duplicate play.** The bot takes one seat, the three field bots fill the others. Every deal is played from all four seats.
 4. **Numbers.** One average per deal, then the mean and a 95% interval over deals. The four games of a deal are not independent, so the deal is the unit.
@@ -75,7 +75,7 @@ site/              the static leaderboard (index.html and leaderboard.json)
 tests/             scoring goldens, engine fingerprint, statistics, protocol, fair play, determinism
 ```
 
-More: `BENCHMARK_CARD.md` (what the bench measures and where it is weak), `RULES.md`, `SUBMITTING.md`, `CHANGELOG.md`.
+More: `BENCHMARK_CARD.md` (what the bench measures and where it is weak), `RULES.md`, [`SUBMITTING.md`](SUBMITTING.md), `CHANGELOG.md`.
 
 ## Tracks
 

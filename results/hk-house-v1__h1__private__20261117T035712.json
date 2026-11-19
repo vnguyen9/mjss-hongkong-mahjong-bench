@@ -1,13 +1,13 @@
 {
   "bot": {
-    "description": "Mahjong Sensei's shipped bot, hosted: its weights and code stay private",
+    "description": "Hosted bot; its implementation stays private",
     "kind": "hosted",
     "name": "h1",
     "sha256": "af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54",
     "track": "bots",
     "trained_on": "HKMA Classical rules (no flower faan, no Seven Pairs)"
   },
-  "command": "hkbench score --table hk-house-v1 --bot '<hosted>' --name h1 --kind hosted --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Mahjong Sensei'\"'\"'s shipped bot, hosted: its weights and code stay private' --deals 2000 --workers 9",
+  "command": "python -m hkbench score --table hk-house-v1 --bot '<hosted>' --kind hosted --name h1 --bot-hash af2e0349c68ce5b532b39d3133859cdf6cf7cf1ec3d710bec36b8401750ebc54 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Hosted bot; its implementation stays private' --deals 2000 --workers 9",
   "created_utc": "2026-11-17T03:57:12Z",
   "engine": {
     "fingerprint_deals": 300,
