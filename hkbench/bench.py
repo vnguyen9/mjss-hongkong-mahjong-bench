@@ -142,6 +142,11 @@ def isolation_for(tag: str, specs: Sequence[str], sandbox: Optional[str], native
     return "native"
 
 
+def isolated(isolation: str, specs: Sequence[str]) -> bool:
+    """True when no program bot ran natively: a native private run can be scored, never verified."""
+    return isolation == "sandbox" or all(sp.startswith("ref:") for sp in specs)
+
+
 def _deck(table: Table, deals: int, offset: int, private_seeds: Optional[str]) -> Tuple[str, List[Deal]]:
     if private_seeds:
         return "private", table.private_deals(private_seeds, deals, offset)
@@ -260,7 +265,7 @@ def score(
     cap = table.profile.faan_cap
     summary = stats.duplicate_summary(records, cap)
     faults = _fault_check(table, summary["decisions"], summary["faults"])
-    verified = tag == "private" and fair.get("status") == "passed" and faults["ok"]
+    verified = tag == "private" and fair.get("status") == "passed" and faults["ok"] and isolated(isolation, [spec])
     if not faults["ok"]:
         raise Rejected("%s made %.2f faults per 1000 decisions (limit %.2f): %s"
                        % (meta["name"], faults["per_1000_decisions"], faults["limit_per_1000"], faults["faults"]))
@@ -423,7 +428,7 @@ def h2h(
     bad = [n for n, f in faults_ok.items() if not f["ok"]]
     if bad:
         raise Rejected("too many faults from: %s" % ", ".join(bad))
-    verified = tag == "private" and all(s == "passed" for s in fair_status.values())
+    verified = tag == "private" and all(s == "passed" for s in fair_status.values()) and isolated(isolation, [b[1] for b in bots])
     created = _now()
     run_id = "%s__h2h__%s__%s" % (table.id, tag, created.replace(":", "").replace("-", "")[:15])
     result = {

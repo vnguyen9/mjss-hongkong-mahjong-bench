@@ -59,7 +59,7 @@ Without a sandbox a bot runs as a normal process of the same user. The bench giv
 2. Run the fair-play check (in the sandbox).
 3. Play the private deals in duplicate against the frozen field (and head to head against other listed bots if you want a Bradley-Terry rank).
 4. Publish a result file and a log of each game's outcome by deal number. The log has no walls, deals or actions, so it does not reveal the private deck. (`--training-log` adds nothing on a private deck.)
-5. The row is tagged **verified**. The command that reproduces it on the public deals is on the row.
+5. The row is tagged **verified** (a run made without a sandbox never is). The command that reproduces it on the public deals is on the row.
 
 If your bot fails the fair-play check, breaks the protocol too often, or crashes, we tell you why and do not list it.
 

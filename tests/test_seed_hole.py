@@ -544,6 +544,10 @@ class Sandbox(unittest.TestCase):
         self.assertEqual(r["isolation"], "sandbox")
         # an in-process reference bot has nothing to sandbox, and a public run is unaffected
         self.assertEqual(bench.score(TABLE, "ref:ukeire", meta("ref:ukeire"), **kw)["isolation"], "native")
+        # a native program bot can be scored on the private deck, never verified
+        self.assertFalse(bench.isolated("native", [py_bot]))
+        self.assertTrue(bench.isolated("sandbox", [py_bot]))
+        self.assertTrue(bench.isolated("native", ["ref:ukeire", "ref:random"]))
         pub = bench.score(TABLE, py_bot, meta(py_bot), deals=1, skip_fairplay=True, quiet=True, write=False,
                           results_dir=self.tmp)
         self.assertEqual(pub["isolation"], "native")
