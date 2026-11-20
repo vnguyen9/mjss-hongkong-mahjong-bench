@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+* New table `hk-chicken-v1` (chicken hand): `hk-hkma-v1` with exactly one change, `win.minimum_faan: 0`. A complete hand with no scoring pattern wins and pays the 0-faan row; faan still score and pay as usual (cap 10, no flower faan, no Seven Pairs, the discarder pays all). It is not a table where every win pays the same. Same three-bot field, unchanged and with the same pins; its own rules hash, public deal range (3,000,000 to 3,099,999) and engine fingerprint (300 deals, 42 hands, 198 wins). The engine needed no change: the win action is offered whenever a hand is complete and reaches the table's minimum. The pins and fingerprints of `hk-hkma-v1` and `hk-house-v1` did not move, and a test pins them to their old values.
+* Baseline rows on `hk-chicken-v1`, public and private deals: random, deficiency, ukeire, faan_aware and the Python example at 2,000 deals, shallow_search at 400, and 300-deal head-to-heads (five bots on public deals; six with the hosted bot on public and private deals). All 94,600 public games replay with 0 mismatches; a 60-deal row is identical on Python 3.9 (where the rows ran) and 3.11.
+* The hosted bot `Fu-2.3M-HKMA-1` is scored on `hk-chicken-v1`, public and private deals and in the head-to-heads. It is told the rules the way the app's Beginner table tells it (no-faan bit on, win-out inputs under this table's rules); the setting was chosen once from that rule and the other was not run. Its hash differs from its other rows because the hash covers the wrapper.
+* `RULES.md` has a section for the new table, and the leaderboard lists tables in release order.
 * The hosted bot `h1` is now named `Fu-2.3M-HKMA-1`: family, size (2.3M parameters), the rules it trained on, and version. Its result files, logs and head-to-head entries are renamed; no game, score or hash changed.
 
 ## 1.0.0 (2026-11-16)

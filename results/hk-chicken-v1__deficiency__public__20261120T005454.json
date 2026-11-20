@@ -1,0 +1,130 @@
+{
+  "bot": {
+    "description": "",
+    "kind": "reference",
+    "name": "deficiency",
+    "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648",
+    "track": "bots",
+    "trained_on": "none (scripted)"
+  },
+  "command": "hkbench score --table hk-chicken-v1 --bot ref:deficiency --deals 2000 --workers 8 --trained-on 'none (scripted)'",
+  "created_utc": "2026-11-20T00:54:54Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "4f548d719647060e2eb8aceaaf81e18aaa96b336d1cb84566bb055193c158665",
+    "hkbench_version": "1.0.0",
+    "python": "3.9.6",
+    "rules_sha256": "d577a8f1e4a0275cad62c974a534a75f6e87789e88772cebf414290368f9e0e5"
+  },
+  "fairplay": {
+    "asks": 300,
+    "decision_changes": 0,
+    "faults": 0,
+    "points": 100,
+    "reshuffles": 2,
+    "status": "passed",
+    "view_mismatches": 0
+  },
+  "faults": {
+    "decisions": 128522,
+    "faults": {},
+    "limit_per_1000": 1.0,
+    "ok": true,
+    "per_1000_decisions": 0.0
+  },
+  "headline": {
+    "ci95": [
+      -0.3210343956782272,
+      -0.1779656043217728
+    ],
+    "deals": 2000,
+    "games": 8000,
+    "metric": "points per hand against the frozen field",
+    "points_per_hand": -0.2495,
+    "se": 0.03647571265660082
+  },
+  "kind": "duplicate",
+  "log": "logs/hk-chicken-v1__deficiency__public__20261120T005454.jsonl.gz",
+  "run_id": "hk-chicken-v1__deficiency__public__20261120T005454",
+  "schema": "hkbench-result-1",
+  "seeds": {
+    "deals": 2000,
+    "offset": 0,
+    "public_range": {
+      "count": 100000,
+      "start": 3000000
+    },
+    "tag": "public"
+  },
+  "stats": {
+    "average_win_faan": 0.9061976549413735,
+    "average_win_points": 2.8056951423785597,
+    "deal_in_rate": {
+      "ci95": [
+        0.17629183770903462,
+        0.1934581622909654
+      ],
+      "mean": 0.184875,
+      "n": 2000,
+      "se": 0.004376593363820317
+    },
+    "draw_rate": {
+      "ci95": [
+        0.025963692080916825,
+        0.03378630791908317
+      ],
+      "mean": 0.029875,
+      "n": 2000,
+      "se": 0.0019943936398052033
+    },
+    "limit_hand_rate": {
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "mean": 0.0,
+      "n": 2000,
+      "se": 0.0
+    },
+    "limit_hands": 0,
+    "self_draw_win_rate": {
+      "ci95": [
+        0.0453918433915934,
+        0.05485815660840661
+      ],
+      "mean": 0.050125,
+      "n": 2000,
+      "se": 0.0024134580123317977
+    },
+    "win_rate": {
+      "ci95": [
+        0.21548353546704488,
+        0.2322664645329551
+      ],
+      "mean": 0.223875,
+      "n": 2000,
+      "se": 0.004278845807951515
+    },
+    "wins": 1791
+  },
+  "table": {
+    "field": [
+      {
+        "bot": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+      },
+      {
+        "bot": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      },
+      {
+        "bot": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      }
+    ],
+    "id": "hk-chicken-v1",
+    "rules_sha256": "d577a8f1e4a0275cad62c974a534a75f6e87789e88772cebf414290368f9e0e5",
+    "rules_track": "Chicken hand"
+  },
+  "verification": "unverified"
+}

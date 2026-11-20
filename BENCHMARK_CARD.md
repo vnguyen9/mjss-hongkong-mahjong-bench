@@ -16,12 +16,13 @@ Also reported: win rate, deal-in rate (how often the player's discard was the wi
 
 ## Rules
 
-Two tables, named on every row. `RULES.md` has every faan value, the cap, the minimum, the payout and the flower rules.
+Three tables, named on every row. `RULES.md` has every faan value, the cap, the minimum, the payout and the flower rules.
 
 | Table | What it is | State |
 |---|---|---|
 | `hk-hkma-v1` | The Hong Kong Mahjong Association's classical rules: 3 faan to win, cap 10, the discarder pays the whole hand, flowers do not score. **The headline track.** It is not the rulebook in every detail: `RULES.md` lists the gaps (no 包, a concealed kong keeps a hand closed, and others). | scoring |
 | `hk-house-v1` | House rules: flowers score, limit hands are graded 6, 8, 10 and 13, cap 13, Seven Pairs is a hand. | scoring |
+| `hk-chicken-v1` | Chicken hand: `hk-hkma-v1` with one change, a minimum of 0 faan, so a complete hand with no scoring pattern (a chicken hand, 雞糊) wins and pays the 0-faan row. Faan still score and pay as usual (cap 10), so it is not a table where every win pays the same. | scoring |
 
 A table is frozen when it is released. A change to the rules, the engine, the field or the deal schedule makes a new table (`v2`). A released table is never edited.
 
@@ -65,9 +66,24 @@ Baseline rows on `hk-house-v1`, the same bots and the same 2,000 deals (400 for 
 
 On House the head-to-head ranks are `faan_aware` first, `ukeire` and the Python example sharing second, `deficiency` fourth and `random` last. Flowers add a faan to nearly every hand (one for holding none, one for each seat flower), so 3 faan is easy to reach and far more hands are won than on HKMA (33% to 46% of games end in a draw, against 59% to 72%). The reference bots do not aim for Seven Pairs, but they declare it when a hand is complete. It ended 6 to 9 games in 8,000 (about 0.1%) in the rows for the field bots and `random`, and 190 in 8,000 (2.4%) in the Python example's row, since that bot keeps pairs.
 
+Baseline rows on `hk-chicken-v1`, the same bots, 2,000 deals (400 for `shallow_search`). Points a hand against the field with a 95% interval, on the public deals (unverified) and on the private deck (verified):
+
+| Bot | Public points a hand | Private points a hand | Win (public) | Deal-in (public) |
+|---|---|---|---|---|
+| `faan_aware` | +0.31 [+0.19, +0.42] | +0.40 [+0.28, +0.51] | 26.9% | 18.6% |
+| `python_example` | +0.09 [-0.14, +0.32] | +0.26 [+0.01, +0.50] | 8.7% | 23.3% |
+| `shallow_search` | +0.07 [-0.15, +0.30] | +0.06 [-0.06, +0.18] | 35.2% | 16.1% |
+| `ukeire` | -0.20 [-0.28, -0.13] | -0.22 [-0.30, -0.14] | 23.6% | 18.3% |
+| `deficiency` | -0.25 [-0.32, -0.18] | -0.28 [-0.36, -0.20] | 22.4% | 18.5% |
+| `random` | -1.18 [-1.26, -1.10] | -1.07 [-1.13, -1.00] | 0.3% | 25.5% |
+
+Head to head over 300 deals, five bots on the public deals: `faan_aware` +97.8 (rank 1), `ukeire` +72.5 (rank 2), `deficiency` +60.7 (rank 3), the Python example -49.2 (rank 4), `random` -181.8 (rank 5).
+
+Draws almost disappear: 2% to 6% of baseline games end in a draw (0.5% for `Fu-2.3M-HKMA-1`), against 59% to 72% on HKMA. About a third of all wins (31% to 35% in the baseline rows) are chicken hands worth 1 point, and another 41% to 44% are worth 1 faan, so a point a hand is small here and the intervals are tight: about plus or minus 0.1 for the field bots at 2,000 deals. Points a hand are not comparable with the other tables' (a 3-faan win pays 8 on all three, a chicken hand 1). `shallow_search` wins the most games of the baselines (35%) and still scores level with zero, because its wins are cheap, and the Python example wins 9% of games and scores more through its limit hands (25 to 31 in 8,000 games).
+
 ## Mahjong Sensei's hosted bot: Fu-2.3M-HKMA-1
 
-`Fu-2.3M-HKMA-1` is the bot that ships in Mahjong Sensei, hosted here. The name reads family (Fu), size (2.3M parameters), the rules it trained on (HKMA) and version (1); it trained on 1.3B decisions. It runs through the same protocol as any other bot; the result files hide how it is started and carry only its supplied hash. It was trained on HKMA Classical rules, with flowers dealt and replaced but no flower faan, and no Seven Pairs. Read its row beside `trained on`: on the HKMA table it plays the rules it was trained for, and on the House table it is playing rules it was not trained for.
+`Fu-2.3M-HKMA-1` is the bot that ships in Mahjong Sensei, hosted here. The name reads family (Fu), size (2.3M parameters), the rules it trained on (HKMA) and version (1); it trained on 1.3B decisions. It runs through the same protocol as any other bot; the result files hide how it is started and carry only its supplied hash. It was trained on HKMA Classical rules, with flowers dealt and replaced but no flower faan, and no Seven Pairs. Read its row beside `trained on`: on the HKMA table it plays the rules it was trained for, and on the House and Chicken-hand tables it is playing rules it was not trained for.
 
 Rows on the private deck (**verified**; 2,000 deals, with every baseline re-run on the same deals) and, for reference, on the public deals (unverified). Points a hand against the field, 95% interval:
 
@@ -77,10 +93,14 @@ Rows on the private deck (**verified**; 2,000 deals, with every baseline re-run 
 | `hk-hkma-v1` | public, unverified | +17.67 [+17.00, +18.35] | 47.7% | 3.1% | `python_example` +2.50 |
 | `hk-house-v1` | private, verified | +16.37 [+15.56, +17.19] | 37.8% | 4.8% | `python_example` +2.69 |
 | `hk-house-v1` | public, unverified | +16.26 [+15.42, +17.09] | 37.3% | 4.9% | `python_example` +2.43 |
+| `hk-chicken-v1` | private, verified | +0.69 [+0.61, +0.77] | 49.1% | 13.1% | `faan_aware` +0.40 |
+| `hk-chicken-v1` | public, unverified | +0.64 [+0.56, +0.72] | 48.4% | 12.4% | `faan_aware` +0.31 |
 
-Head to head over 300 deals (Bradley-Terry, Elo scale), with `Fu-2.3M-HKMA-1` added to the five bots above: on both tables and both decks `Fu-2.3M-HKMA-1` is rank 1 and `faan_aware` rank 2. On the verified HKMA deck the ratings are `Fu-2.3M-HKMA-1` +150.6, `faan_aware` +25.3, `python_example` -9.4, `ukeire` -42.9, `deficiency` -45.9, `random` -77.6; on the verified House deck `Fu-2.3M-HKMA-1` +103.9, `faan_aware` +48.9, `python_example` -7.4, `ukeire` -9.3, `deficiency` -20.3, `random` -115.8. The earlier five-bot head-to-head runs stay in `results/`.
+Head to head over 300 deals (Bradley-Terry, Elo scale), with `Fu-2.3M-HKMA-1` added to the five bots above: on both tables and both decks `Fu-2.3M-HKMA-1` is rank 1 and `faan_aware` rank 2. On the verified HKMA deck the ratings are `Fu-2.3M-HKMA-1` +150.6, `faan_aware` +25.3, `python_example` -9.4, `ukeire` -42.9, `deficiency` -45.9, `random` -77.6; on the verified House deck `Fu-2.3M-HKMA-1` +103.9, `faan_aware` +48.9, `python_example` -7.4, `ukeire` -9.3, `deficiency` -20.3, `random` -115.8. The earlier five-bot head-to-head runs stay in `results/`. On `hk-chicken-v1`, again on both decks, `Fu-2.3M-HKMA-1` is rank 1 and `faan_aware` rank 2; on the verified deck the ratings are `Fu-2.3M-HKMA-1` +158.6, `faan_aware` +58.7, `ukeire` +40.5, `deficiency` +30.4, `python_example` -80.2, `random` -208.0.
 
 The bench's seat view is turned into `Fu-2.3M-HKMA-1`'s own observation by a wrapper that the maintainers keep with the bot. Before any number counted, `Fu-2.3M-HKMA-1` through the bench and `Fu-2.3M-HKMA-1` in its own engine chose the same move on every position where both engines offer the same legal moves (13,984 of 13,984 on HKMA, 13,684 of 13,684 on House). On the House table the bench also offers a win that the trained rules cannot declare (a hand that reaches 3 faan with flowers, or Seven Pairs); those positions are the only ones where the two differ.
+
+**What it is told on `hk-chicken-v1`.** The bot has one input that says which rules are in force, a no-faan bit. It was never trained with the bit on. For this table the maintainers set it the way the Mahjong Sensei app sets it for its own zero-minimum table (the Beginner table): the bit is on, and the inputs that count how many of its outs would win are computed under this table's own rules (minimum 0 faan, cap 10). It was chosen once, from the app's rule, and the other setting was not run, so the row is not the better of two. The same check as above, run on this table (replaying 66 bench games, 4,109 positions), found the bot through the bench and in its own engine identical on every position: inputs, legal moves and choices. A different setting could score differently, and the bot is not trained for this table, so its row measures how the HKMA-trained player copes with it. Because the supplied hash covers the wrapper, the bot on this table carries a different hash from its other rows.
 
 ## Deals
 
@@ -110,6 +130,7 @@ The check does not stop a bot from being run with more thinking time, tools or h
 * **Single hands.** There is no dealer rotation, no match, no fouls and no table talk. A strategy that depends on the score of a match is not measured.
 * **Points are one quarter of the rulebook's.** Every ratio is the same.
 * **Gaps from the rulebook.** `hk-hkma-v1` has no 包 (liability) and several smaller differences, listed in `RULES.md`. A bot's row on it is a row under those rules.
+* **On the chicken-hand table a point is small.** A chicken hand pays 1, a 1-faan hand 2, so the field bots' points a hand sit between -1.2 and +0.7 and most wins are cheap. The row shows who wins and who stays out of discarding, more than who builds the big hand. The scripted field was not tuned for a 0-faan minimum: the bots take any win offered, and `faan_aware` still counts ready hands under the table's rules.
 * **On HKMA most hands are draws, and big hands decide the score.** Between 59% and 72% of baseline games end in a draw, because 3 faan is a high bar (on House the figure is 33% to 46%). The bots that win do so in 0% to 16% of games. A strong bot's edge is in the few big hands, so intervals are wide at low deal counts. 2,000 deals gave intervals of about plus or minus 0.15 to 0.45 points a hand for the baselines.
 * **Points a hand and head-to-head ranks can disagree.** The first values big hands. The second counts which team came out ahead. In the baselines the Python example bot collects more points a hand than `faan_aware` against the field (+2.50 against +1.41, because it plays for triplets and gets 105 limit hands against 4), yet head to head `faan_aware` wins more games (450 to 223 out of 1,800) with the points level. Read both.
 * **The example bot beats the field.** A short hand-written bot that keeps pairs and claims dragon and wind pongs finishes ahead of the field's best bot on points a hand. The field is a reference point, not a ceiling.
