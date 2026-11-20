@@ -90,13 +90,26 @@ def engine_info(table: Table, fp: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def reproduce_command(argv: Sequence[str], private_seeds: Optional[str]) -> str:
-    """The command line that made a run, with the private deck and the home directory scrubbed."""
+    """The command line that made a run, with the private deck and the home directory scrubbed.
+
+    The deck's path is hidden wherever it appears: as a word, after ``--private-seeds=``, or inside any
+    other word, and in its absolute spelling as well as the one typed.
+    """
     home = str(Path.home())
+    hidden: List[str] = []
+    if private_seeds:
+        for spelling in (private_seeds, os.path.abspath(private_seeds), str(Path(private_seeds).expanduser())):
+            if spelling not in hidden:
+                hidden.append(spelling)
+        hidden.sort(key=len, reverse=True)  # the longest first, so a part is never left behind
     args = []
     for a in argv:
-        if private_seeds and a == private_seeds:
-            a = "<private deck>"
-        else:
+        scrubbed = False
+        for h in hidden:
+            if h in a:
+                a = a.replace(h, "<private deck>")
+                scrubbed = True
+        if not scrubbed:
             a = a.replace(home, "~")
         args.append(a)
     return " ".join(shlex.quote(a) for a in ["hkbench"] + args)

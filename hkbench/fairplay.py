@@ -1,12 +1,15 @@
 """The fair-play check: does a bot's choice depend on tiles it cannot see?
 
-Before a bot is scored, the bench picks real decision points from real games. At each one it
-re-shuffles every hidden tile (the other three concealed hands and the live wall) into a new
-arrangement that looks identical to the seat, and asks the bot again. Three things are checked:
+Before a bot is scored, the bench plays it in real games against the table's field, on deals drawn
+from a secret made for this check alone (never a known range, never a public deal). At chosen
+decisions it re-shuffles every hidden tile (the other three concealed hands and the live wall) into a
+new arrangement that looks identical to the seat, and asks the bot again, in a fresh process that has
+first been sent that seat's earlier messages of the game. Four things are checked:
 
 1. The view the bench builds is identical for every arrangement. If it is not, the bench leaks.
 2. The bot gives the same answer to the identical view every time.
-3. The bot gives a legal, on-time answer.
+3. The bot gives the same answer to each earlier message of the game as it did when it played it.
+4. The bot gives a legal, on-time answer.
 
 Any changed answer rejects the bot. Because the protocol only carries the seat view, a bot that
 plays honestly can only fail this by being random without using ``rng_seed``, or by keeping state
@@ -16,7 +19,11 @@ bench's memory, a network service) is caught when the answers move with the hidd
 
 from __future__ import annotations
 
-from typing import Any, Callable, Dict, List, Optional, Tuple
+import hashlib
+import hmac
+import os
+import struct
+from typing import Any, Callable, Dict, List, NamedTuple, Optional, Tuple
 
 from hkbench.engine.game import GameState
 from hkbench.engine.profile import RulesProfile
@@ -26,7 +33,9 @@ from hkbench import runkey
 from hkbench.seeds import Rng, dealer_for_index, wind_for_index
 from hkbench.view import build_view
 
-FAIRPLAY_SEED_START = 8_000_000_000
+#: ``hkbench fairplay --debug-fixed-check`` uses this secret. It makes the check's deals the same every time, so
+#: a bot could recognise them: for reproducing a result only, never used when a bot is scored.
+DEBUG_CHECK_SECRET = hashlib.sha256(b"hkbench-fairplay-debug-check").digest()
 DEFAULT_POINTS = 100
 DEFAULT_RESHUFFLES = 2
 
@@ -107,10 +116,77 @@ def _collect(profile: RulesProfile, table_id: str, count: int, seed: int, run_ke
     return points
 
 
+def public_ranges(tables_dir) -> List[Tuple[int, int]]:
+    from hkbench.tables import list_tables
+
+    out = []
+    for t in list_tables(tables_dir):
+        r = t.public_range
+        out.append((r["start"], r["start"] + r["count"]))
+    return out
+
+
+def check_deal_seed(secret: bytes, index: int, ranges: List[Tuple[int, int]]) -> int:
+    """The seed of the check's ``index``-th deal: 64 bits from ``secret``, outside every public range."""
+    attempt = 0
+    while True:
+        digest = hmac.new(secret, b"hkbench-check-deal" + struct.pack(">QI", index, attempt), hashlib.sha256).digest()
+        seed = int.from_bytes(digest[:8], "big")
+        if not any(lo <= seed < hi for lo, hi in ranges):
+            return seed
+        attempt += 1
+
+
+def _check_rng(secret: bytes) -> Rng:
+    return Rng(int.from_bytes(hmac.new(secret, b"hkbench-check-rng", hashlib.sha256).digest()[:8], "big"))
+
+
+def _seeds(run_key: bytes, table_id: str, index: int, seq: int) -> Dict[str, Any]:
+    """The game_id and rng_seed a position carries, made exactly as a real game makes them."""
+    return {"game_id": runkey.game_id(run_key, table_id, index, runkey.FAIRPLAY_ARRANGEMENT),
+            "rng_seed": runkey.decision_seed(run_key, table_id, index, runkey.FAIRPLAY_ARRANGEMENT, seq)}
+
+
 def collect_points(profile: RulesProfile, table_id: str, count: int, seed: int = 1,
                    run_key: bytes = runkey.PUBLIC_RUN_KEY) -> List[Tuple[GameState, int, int, int]]:
-    """Real decision points: (state, actor, deal index, seq). Games are played by three reference bots."""
-    return [p[:4] for p in _collect(profile, table_id, count, seed, run_key)]
+    """Decision points from games of reference bots: (state, actor, deal index, seq). For tests of the reshuffle.
+
+    ``check`` does not use this: it plays the bot being checked.
+    """
+    rng = Rng(seed)
+    secret = struct.pack(">Q", seed)
+    players = [make_player("ref:" + name, table_id, profile)
+               for name in ("ukeire", "faan_aware", "random", "ukeire")]
+    points: List[Tuple[GameState, int, int, int]] = []
+    index = 0
+    while len(points) < count:
+        state = GameState.new_game(profile, seed=check_deal_seed(secret, index, []), dealer=dealer_for_index(index),
+                                   prevailing_wind=wind_for_index(index))
+        seq = 0
+        per_game = 0
+        while not state.is_terminal() and len(points) < count:
+            actor = state.current_actor()
+            assert isinstance(actor, int)
+            msg = build_view(state, actor, seq=seq, table_id=table_id, **_seeds(run_key, table_id, index, seq))
+            if len(msg["legal"]) >= 2 and rng.randrange(8) == 0 and per_game < 12:
+                points.append((state.clone(), actor, index, seq))
+                per_game += 1
+            action, _ = players[actor].decide(msg)
+            state.apply_action(action)
+            seq += 1
+        index += 1
+    return points
+
+
+class Point(NamedTuple):
+    """A decision the bot made in a live check game, and what it takes to ask it again."""
+    state: GameState
+    actor: int
+    index: int
+    seq: int
+    history: List[Tuple[Dict[str, Any], int]]  # the seat's earlier messages and the actions it really played
+    msg: Dict[str, Any]
+    action: int
 
 
 def check(
@@ -124,57 +200,106 @@ def check(
     cwd: Optional[str] = None,
     run_key: bytes = runkey.PUBLIC_RUN_KEY,
     bot_env: Optional[Dict[str, str]] = None,
+    check_secret: Optional[bytes] = None,
 ) -> Dict[str, Any]:
     """Run the check on one bot. ``on_decision`` is a test hook called before every ask.
 
-    The positions carry a ``game_id`` and ``rng_seed`` made with the run's key, the way a real game's
-    are, so a bot cannot tell it is being checked. Every ask goes to a fresh process, as every game
-    does, and that process is first shown the seat's earlier decisions in the game (its answers to
-    those do not count), so it starts the way a real game's process starts and sees no position twice.
+    The bot plays real games in one seat against the table's field, in a fresh process, on deals
+    drawn from ``check_secret`` (32 fresh random bytes unless given; a given one makes the deals
+    recognisable, so only a debugging run passes one). Its own answers drive each game. At the chosen
+    decisions every hidden tile is dealt again and the bot is asked again in a fresh process, after that
+    process has been sent the seat's earlier messages of the game: the answers it gives to those must be the
+    ones it played, and its answer to the position must be unchanged. The positions carry a ``game_id`` and
+    ``rng_seed`` made with the run's key, as a real game's do.
     """
     profile = table.profile
-    pts = _collect(profile, table.id, points, 1, run_key)
     timeout = decision_timeout_s or table.decision_timeout_s
-
-    def ask(msg: Dict[str, Any], history: List[Dict[str, Any]]) -> Tuple[int, Optional[str]]:
-        player: Player = make_player(bot_spec, table.id, profile, decision_timeout_s=timeout, cwd=cwd, env=bot_env)
-        try:
-            for earlier in history:
-                player.decide(earlier)
-            return player.decide(msg)
-        finally:
-            player.close()
-
-    rng = Rng(7)
+    secret = check_secret or os.urandom(32)
+    ranges = public_ranges(table.dir.parent)
+    rng = _check_rng(secret)
+    field = [make_player("ref:" + m["bot"], table.id, profile) for m in table.field]
     report: Dict[str, Any] = {
-        "points": len(pts), "reshuffles": reshuffles, "asks": 0,
+        "points": 0, "reshuffles": reshuffles, "asks": 0,
         "view_mismatches": 0, "decision_changes": 0, "faults": 0, "examples": [],
     }
-    for state, actor, index, seq, history in pts:
-        ids = _seeds(run_key, table.id, index, seq)
-        base = build_view(state, actor, seq=seq, table_id=table.id, **ids)
-        if on_decision is not None:
-            on_decision(state, actor, base)
-        first, fault = ask(base, history)
-        report["asks"] += 1
-        report["faults"] += 1 if fault else 0
+
+    def new_bot() -> Player:
+        return make_player(bot_spec, table.id, profile, decision_timeout_s=timeout, cwd=cwd, env=bot_env)
+
+    def note(example: Dict[str, Any]) -> None:
+        if len(report["examples"]) < 3:
+            report["examples"].append(example)
+
+    # 1. Play the bot, and keep the decisions to ask again.
+    chosen: List[Point] = []
+    index = 0
+    while len(chosen) < points:
+        rot = index % 4
+        state = GameState.new_game(profile, seed=check_deal_seed(secret, index, ranges),
+                                   dealer=dealer_for_index(index), prevailing_wind=wind_for_index(index))
+        bot = new_bot()
+        seats: List[Player] = [bot] * 4
+        for i in range(3):
+            seats[(rot + 1 + i) % 4] = field[i]
+        seq = 0
+        per_game = 0
+        history: List[Tuple[Dict[str, Any], int]] = []
+        try:
+            while not state.is_terminal() and len(chosen) < points:
+                actor = state.current_actor()
+                assert isinstance(actor, int)
+                msg = build_view(state, actor, seq=seq, table_id=table.id, **_seeds(run_key, table.id, index, seq))
+                if actor == rot and on_decision is not None:
+                    on_decision(state, actor, msg)
+                action, fault = seats[actor].decide(msg)
+                if actor == rot:
+                    report["faults"] += 1 if fault else 0
+                    if len(msg["legal"]) >= 2 and rng.randrange(8) == 0 and per_game < 12:
+                        chosen.append(Point(state.clone(), actor, index, seq, list(history), msg, action))
+                        per_game += 1
+                    history.append((msg, action))
+                state.apply_action(action)
+                seq += 1
+        finally:
+            bot.close()
+        index += 1
+    report["points"] = len(chosen)
+
+    # 2. Ask again where the hidden tiles are dealt differently, each time in a fresh process.
+    def ask(msg: Dict[str, Any], history: List[Tuple[Dict[str, Any], int]]):
+        bot = new_bot()
+        replay_changes = faults = 0
+        try:
+            for earlier, played in history:
+                answer, fault = bot.decide(earlier)
+                faults += 1 if fault else 0
+                replay_changes += 1 if answer != played else 0
+            answer, fault = bot.decide(msg)
+            return answer, faults + (1 if fault else 0), replay_changes
+        finally:
+            bot.close()
+
+    report["asks"] += len(chosen)  # the answers given while playing
+    for pt in chosen:
+        base = pt.msg
         for _ in range(reshuffles):
-            variant = reshuffle_hidden(state, actor, rng)
-            msg = build_view(variant, actor, seq=seq, table_id=table.id, **ids)
+            variant = reshuffle_hidden(pt.state, pt.actor, rng)
+            msg = build_view(variant, pt.actor, seq=pt.seq, table_id=table.id, game_id=base["game_id"],
+                             rng_seed=base["rng_seed"])
             if msg != base:
                 report["view_mismatches"] += 1
-                if len(report["examples"]) < 3:
-                    report["examples"].append({"kind": "view", "deal": index, "seq": seq})
+                note({"kind": "view", "deal": pt.index, "seq": pt.seq})
             if on_decision is not None:
-                on_decision(variant, actor, msg)
-            again, fault = ask(msg, history)
+                on_decision(variant, pt.actor, msg)
+            again, faults, replay_changes = ask(msg, pt.history)
             report["asks"] += 1
-            report["faults"] += 1 if fault else 0
-            if again != first:
+            report["faults"] += faults
+            if replay_changes:
+                report["decision_changes"] += replay_changes
+                note({"kind": "replay", "deal": pt.index, "seq": pt.seq, "changed": replay_changes})
+            if again != pt.action:
                 report["decision_changes"] += 1
-                if len(report["examples"]) < 3:
-                    report["examples"].append({"kind": "decision", "deal": index, "seq": seq,
-                                               "before": first, "after": again})
+                note({"kind": "decision", "deal": pt.index, "seq": pt.seq, "before": pt.action, "after": again})
     report["passed"] = (report["view_mismatches"] == 0 and report["decision_changes"] == 0
                         and report["faults"] == 0)
     return report

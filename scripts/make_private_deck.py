@@ -19,7 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from hkbench.tables import list_tables  # noqa: E402
+from hkbench.tables import SEED_LIMIT, list_tables  # noqa: E402
 
 
 def public_ranges(tables_dir=None):
@@ -34,7 +34,7 @@ def make_seeds(count: int, ranges) -> list:
     seeds = set()
     while len(seeds) < count:
         s = secrets.randbits(64)
-        if any(lo <= s < hi for lo, hi in ranges):
+        if not 0 <= s < SEED_LIMIT or any(lo <= s < hi for lo, hi in ranges):
             continue
         seeds.add(s)
     out = sorted(seeds)

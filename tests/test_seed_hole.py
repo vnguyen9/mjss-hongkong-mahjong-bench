@@ -8,6 +8,7 @@
 """
 
 import base64
+import time
 import gzip
 import importlib.util
 import json
@@ -17,6 +18,7 @@ import shutil
 import stat
 import sys
 import tempfile
+import textwrap
 import unittest
 import warnings
 from pathlib import Path
@@ -27,10 +29,10 @@ from test_bench import meta
 
 import seed_cheat_bot
 from hkbench import bench, fairplay, pool, runkey
-from hkbench.players import Player, ProcessPlayer, bot_environment, fallback_action, make_player
+from hkbench.players import BYE_GRACE_S, Player, ProcessPlayer, bot_environment, fallback_action, make_player
 from hkbench.runner import play_game
 from hkbench.seeds import dealer_for_index, wind_for_index
-from hkbench.tables import Deal, list_tables, load_private_seeds
+from hkbench.tables import Deal, check_seed, list_tables, load_private_seeds
 
 PY = sys.executable
 TABLE = hkma_table()
@@ -184,8 +186,7 @@ class KeyedSeeds(unittest.TestCase):
                        on_decision=lambda s, a, m: other.append(m))
         self.assertNotEqual([m["rng_seed"] for m in seen[:5]], [m["rng_seed"] for m in other[:5]])
 
-    def test_fair_play_asks_come_from_a_process_that_has_played_the_game_so_far(self):
-        # A fresh process per ask, shown the seat's earlier messages first: its first message is not a mid-game one.
+    def test_every_fair_play_ask_runs_in_a_new_process_after_the_games_so_far(self):
         tmp = Path(tempfile.mkdtemp())
         self.addCleanup(shutil.rmtree, str(tmp))
         out = tmp / "probe.jsonl"
@@ -196,10 +197,60 @@ class KeyedSeeds(unittest.TestCase):
         born = {}
         for r in rows:
             born.setdefault(r["born"], []).append(r["seq"])
-        self.assertEqual(len(born), rep["asks"])  # one process per ask
+        self.assertGreaterEqual(len(born), 2 * rep["points"])  # at least one process per re-asked position
         for seqs in born.values():
             self.assertEqual(seqs, sorted(seqs))
-            self.assertEqual(len(set(seqs[:-1])), len(seqs) - 1)
+            self.assertEqual(len(set(seqs)), len(seqs))  # no process is shown a position twice
+
+
+class FairPlayDeals(unittest.TestCase):
+    def test_deals_come_from_a_secret_and_not_from_any_known_range(self):
+        ranges = fairplay.public_ranges(TABLE.dir.parent)
+        a, b = os.urandom(32), os.urandom(32)
+        sa = [fairplay.check_deal_seed(a, i, ranges) for i in range(20)]
+        sb = [fairplay.check_deal_seed(b, i, ranges) for i in range(20)]
+        self.assertEqual(sa, [fairplay.check_deal_seed(a, i, ranges) for i in range(20)])
+        self.assertNotEqual(sa, sb)
+        self.assertEqual(len(set(sa)), 20)
+        for seed in sa + sb:
+            self.assertTrue(0 <= seed < 2 ** 64)
+            self.assertFalse(any(lo <= seed < hi for lo, hi in ranges))
+            self.assertFalse(8_000_000_000 <= seed < 8_000_000_100)  # the old fixed range
+        # a draw that lands in a public range is drawn again
+        first = fairplay.check_deal_seed(a, 0, [])
+        self.assertNotEqual(fairplay.check_deal_seed(a, 0, [(first, first + 1)]), first)
+
+    def test_two_checks_open_on_different_deals_unless_asked_to_repeat(self):
+        def openings(**kw):
+            seen = []
+            fairplay.check(TABLE, "ref:ukeire", points=3, on_decision=lambda s, a, m: seen.append(m["you"]["hand"]), **kw)
+            return seen[:3]
+
+        self.assertNotEqual(openings(), openings())
+        self.assertEqual(openings(check_secret=fairplay.DEBUG_CHECK_SECRET),
+                         openings(check_secret=fairplay.DEBUG_CHECK_SECRET))
+
+
+class ReplayFollowsTheBot(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, str(self.tmp))
+        self.out = self.tmp / "probe.jsonl"
+
+    def test_a_bot_that_plays_its_own_moves_never_sees_an_impossible_game(self):
+        # Its moves are not the reference bots'. In the check's games and in every replay, the next message
+        # must show its own discard on the table.
+        rep = fairplay.check(TABLE, "%s %s" % (PY, ROOT / "tests" / "consistency_bot.py"), points=15,
+                             bot_env={"PROBE_OUT": str(self.out)})
+        seen = self.out.read_text().splitlines() if self.out.exists() else []
+        self.assertEqual(seen, [])
+        self.assertTrue(rep["passed"], rep)
+        self.assertGreaterEqual(rep["asks"], 15 * 3)
+
+    def test_a_bot_that_answers_the_replay_differently_is_not_passed(self):
+        rep = fairplay.check(TABLE, "%s %s" % (PY, ROOT / "tests" / "identity_bot.py"), points=15)
+        self.assertFalse(rep["passed"])
+        self.assertGreater(rep["decision_changes"], 0)
 
 
 class FreshProcesses(unittest.TestCase):
@@ -255,6 +306,8 @@ class FreshProcesses(unittest.TestCase):
         src = {"PATH": "/bin", "HOME": "/h", "LANG": "C", "LC_ALL": "C", "TMPDIR": "/t", "SYSTEMROOT": "C:\\W",
                "HKBENCH_PRIVATE_SEEDS": "/x", "AWS_SECRET_ACCESS_KEY": "s", "PYTHONPATH": "/p"}
         self.assertEqual(set(bot_environment(src)), {"PATH", "HOME", "LANG", "LC_ALL", "TMPDIR", "SYSTEMROOT"})
+        env = bot_environment(src, scratch="/scratch")
+        self.assertEqual({env[k] for k in ("HOME", "TMPDIR", "TEMP", "TMP")}, {"/scratch"})
         self.assertEqual(bot_environment(src, {"MODEL_DIR": "/m"})["MODEL_DIR"], "/m")
         with self.assertRaises(ValueError):
             bot_environment(src, {"HKBENCH_PRIVATE_SEEDS": "/x"})
@@ -265,6 +318,94 @@ class FreshProcesses(unittest.TestCase):
         from hkbench.players import BotCrashed
         with self.assertRaises(BotCrashed):
             pool.run_specs(config, bench.duplicate_specs([deal_at(0, 1_000_000)]), workers=1)
+
+
+class Isolation(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, str(self.tmp))
+        self.out = self.tmp / "probe.jsonl"
+
+    def games(self, players, specs):
+        config = {"table": TABLE.id, "tables_dir": str(TABLE.dir.parent), "players": players,
+                  "bot_env": {"PROBE_OUT": str(self.out)}}
+        pool.run_specs(config, specs, workers=1)
+        return [json.loads(line) for line in self.out.read_text().splitlines()]
+
+    def test_a_file_written_in_one_game_is_not_there_in_the_next_or_at_the_other_seat(self):
+        d0, d1 = deal_at(0, 1_000_000), deal_at(1, 1_000_001)
+        probe = "%s %s" % (PY, ROOT / "tests" / "scratch_probe_bot.py")
+        # duplicate scoring: the bot in every seat of one wall, one game after another; head to head: two seats of one bot
+        self.games({"bot": probe, "f0": "ref:ukeire", "f1": "ref:ukeire", "f2": "ref:ukeire"},
+                   bench.duplicate_specs([d0, d1]))
+        rows = self.games({"A": probe, "B": "ref:ukeire"},  # all rows so far: the file is shared
+                          [{"deal": list(d0), "arrangement": 0, "seats": ["A", "B", "A", "B"]}])
+        self.assertEqual(len(rows), 8 + 2)
+        for r in rows:
+            self.assertEqual(r["found"], [], r)
+            self.assertEqual(len({os.path.realpath(v) for v in r["places"].values()}), 1)  # one directory is cwd, HOME and the temp directory
+        dirs = [r["places"]["home"] for r in rows]
+        self.assertEqual(len(set(dirs)), len(dirs))
+        self.assertFalse([d for d in dirs if os.path.exists(d)])  # and each is gone when its process is
+
+    def test_an_explicit_working_directory_is_kept_but_home_and_temp_are_still_new(self):
+        out_dir = self.tmp / "program"
+        out_dir.mkdir()
+        p = ProcessPlayer("%s %s" % (PY, ROOT / "tests" / "scratch_probe_bot.py"), TABLE.id, cwd=str(out_dir),
+                          env={"PROBE_OUT": str(self.out)})
+        d = deal_at(0, 1_000_000)
+        try:
+            play_game(TABLE.id, PROFILE, d, [p] + [make_player("ref:ukeire", TABLE.id, PROFILE) for _ in range(3)],
+                      arrangement=0)
+        finally:
+            p.close()
+        row = json.loads(self.out.read_text().splitlines()[0])
+        self.assertEqual(os.path.realpath(row["places"]["cwd"]), os.path.realpath(str(out_dir)))
+        self.assertNotEqual(row["places"]["home"], row["places"]["cwd"])
+
+    def start_with_descendant(self, exits_on_bye):
+        script = self.tmp / "parent.py"
+        pidfile = self.tmp / "descendant.pid"
+        script.write_text(textwrap.dedent("""
+            import json, subprocess, sys, time
+            child = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(60)"])
+            open(%r, "w").write(str(child.pid))
+            for line in sys.stdin:
+                m = json.loads(line)
+                if m["type"] == "hello":
+                    print(json.dumps({"type": "ready"}), flush=True)
+                elif m["type"] == "bye":
+                    if %r:
+                        break
+                    time.sleep(60)
+        """ % (str(pidfile), exits_on_bye)))
+        player = ProcessPlayer("%s %s" % (PY, script), TABLE.id)
+        return player, int(pidfile.read_text())
+
+    @staticmethod
+    def alive(pid):
+        try:
+            os.kill(pid, 0)
+        except ProcessLookupError:
+            return False
+        return True
+
+    def test_closing_a_bot_stops_the_descendants_it_left_holding_the_pipes(self):
+        for exits in (True, False):
+            with self.subTest(exits_on_bye=exits):
+                player, descendant = self.start_with_descendant(exits)
+                self.assertTrue(self.alive(descendant))
+                t0 = time.monotonic()
+                player.close()
+                took = time.monotonic() - t0
+                self.assertLess(took, BYE_GRACE_S + 1.5)
+                if exits:
+                    self.assertLess(took, 1.0)
+                for _ in range(40):
+                    if not self.alive(descendant):
+                        break
+                    time.sleep(0.05)
+                self.assertFalse(self.alive(descendant))
 
 
 class KeyStaysPut(unittest.TestCase):
@@ -363,6 +504,44 @@ class PrivateDeckGenerator(unittest.TestCase):
         with mock.patch.object(self.mod.secrets, "randbits", lambda _n: next(draws)):
             seeds = self.mod.make_seeds(2, self.mod.public_ranges())
         self.assertEqual(sorted(seeds), [4_000_000_000, 4_000_000_001])
+
+    def test_a_seed_outside_64_bits_is_never_written(self):
+        draws = iter([2 ** 64 + 5, -3, 4_000_000_000])
+        with mock.patch.object(self.mod.secrets, "randbits", lambda _n: next(draws)):
+            self.assertEqual(self.mod.make_seeds(1, self.mod.public_ranges()), [4_000_000_000])
+
+    def test_the_loader_refuses_seeds_that_are_not_64_bit_unsigned(self):
+        lo = TABLE.public_range["start"]
+        for bad in (lo + 2 ** 64, -1, 2 ** 64, 2 ** 70):
+            for form, text in (("seeds", json.dumps({"seeds": [7, bad]})), ("list", json.dumps([7, bad])),
+                               ("lines", "7\n%d\n" % bad)):
+                path = self.tmp / ("d_%s_%d.txt" % (form, abs(bad) % 1000))
+                path.write_text(text)
+                with self.subTest(form=form, seed=bad):
+                    with self.assertRaises(ValueError):
+                        load_private_seeds(str(path))
+                    with self.assertRaises(ValueError):
+                        TABLE.private_deals(str(path), 1)
+        self.assertEqual(check_seed(2 ** 64 - 1), 2 ** 64 - 1)
+        for odd in (True, 1.5, None):
+            with self.assertRaises(ValueError):
+                check_seed(odd)
+        # the alias really was a public wall, which is why it matters
+        from hkbench.seeds import wall_for_seed
+        self.assertEqual(wall_for_seed(lo + 2 ** 64), wall_for_seed(lo))
+
+    def test_the_decks_path_is_hidden_in_every_spelling(self):
+        path = str(self.tmp / "secret" / "deck.json")
+        for argv in (["score", "--private-seeds", path], ["score", "--private-seeds=" + path],
+                     ["score", "--note", "from " + path + " today"]):
+            cmd = bench.reproduce_command(argv, path)
+            self.assertNotIn(path, cmd)
+            self.assertNotIn("deck.json", cmd)
+            self.assertIn("<private deck>", cmd)
+        rel = os.path.relpath(path)
+        self.assertNotIn("deck.json", bench.reproduce_command(["score", "--private-seeds=" + rel], rel))
+        self.assertNotIn("deck.json", bench.reproduce_command(["score", "--private-seeds=" + os.path.abspath(rel)], rel))
+        self.assertEqual(bench.reproduce_command(["score", "--deals", "5"], None), "hkbench score --deals 5")
 
     def test_the_deck_runs_a_private_score(self):
         out = self.tmp / "deck.json"

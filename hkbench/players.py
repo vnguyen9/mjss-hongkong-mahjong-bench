@@ -14,7 +14,11 @@ import json
 import os
 import queue
 import shlex
+import shutil
+import signal
 import subprocess
+import sys
+import tempfile
 import threading
 import time
 from typing import Any, Dict, List, Optional, Tuple
@@ -33,15 +37,27 @@ BOT_ENV_PREFIXES = ("LC_",)
 BOT_ENV_FORBIDDEN_PREFIX = "HKBENCH_"
 
 
-def bot_environment(source: Optional[Dict[str, str]] = None, extra: Optional[Dict[str, str]] = None) -> Dict[str, str]:
+#: Variables that name a place a program writes. Each bot process gets its own empty directory for all of them.
+BOT_SCRATCH_VARS = ("HOME", "TMPDIR", "TEMP", "TMP")
+
+#: How long a bot gets to leave after ``bye`` before its whole process group is killed.
+BYE_GRACE_S = 1.0
+
+
+def bot_environment(source: Optional[Dict[str, str]] = None, extra: Optional[Dict[str, str]] = None,
+                    scratch: Optional[str] = None) -> Dict[str, str]:
     """The environment a bot's process starts with: the allowlist taken from ``source``, plus ``extra``.
 
+    ``scratch`` is the bot's own empty directory: ``HOME``, ``TMPDIR``, ``TEMP`` and ``TMP`` point at it.
     ``extra`` is what the run was explicitly asked to hand over. It may not name an ``HKBENCH_*``
     variable: those belong to the bench.
     """
     src = os.environ if source is None else source
     env = {k: v for k, v in src.items()
            if k.upper() in BOT_ENV_ALLOW or k.upper().startswith(BOT_ENV_PREFIXES)}
+    if scratch is not None:
+        for k in BOT_SCRATCH_VARS:
+            env[k] = scratch
     for k, v in (extra or {}).items():
         if k.upper().startswith(BOT_ENV_FORBIDDEN_PREFIX):
             raise ValueError("a bot may not be given %s: %s* variables belong to the bench" % (k, BOT_ENV_FORBIDDEN_PREFIX))
@@ -116,22 +132,36 @@ class ProcessPlayer(Player):
         self._lines: "queue.Queue[Optional[str]]" = queue.Queue()
         self._stderr_tail: List[str] = []
         self.bot_info: Dict[str, Any] = {}
-        child_env = bot_environment(extra=env)
+        # Every process gets a new empty directory to be its HOME, its temp directory and (unless the run
+        # names a directory to start in) its working directory. It is deleted when the process is stopped,
+        # so nothing a bot writes in one game is there in the next, or at its other seat.
+        self._scratch = tempfile.mkdtemp(prefix="hkbench-bot-")
+        argv = shlex.split(command)
+        if cwd is None:
+            argv = [_absolute_if_file(a) for a in argv]  # a relative script path must still find its script
+        child_env = bot_environment(extra=env, scratch=self._scratch)
+        group = {"creationflags": subprocess.CREATE_NEW_PROCESS_GROUP} if sys.platform == "win32" \
+            else {"start_new_session": True}  # its own group, so the whole tree can be stopped
+        self._readers: List[threading.Thread] = []
         try:
             self.proc = subprocess.Popen(
-                shlex.split(command),
+                argv,
                 stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                cwd=cwd,
+                cwd=cwd or self._scratch,
                 env=child_env,
                 universal_newlines=True,
                 bufsize=1,
+                **group,
             )
         except (OSError, ValueError) as exc:
+            shutil.rmtree(self._scratch, ignore_errors=True)
             raise BotCrashed("could not start the bot: %s" % exc)
-        threading.Thread(target=self._read_stdout, daemon=True).start()
-        threading.Thread(target=self._read_stderr, daemon=True).start()
+        for target in (self._read_stdout, self._read_stderr):
+            t = threading.Thread(target=target, daemon=True)
+            t.start()
+            self._readers.append(t)
         try:
             self._handshake()
         except BaseException:
@@ -233,7 +263,26 @@ class ProcessPlayer(Player):
     def game_over(self, msg: Dict[str, Any]) -> None:
         self._send(msg)
 
+    def _kill_tree(self) -> None:
+        """Stop the bot and everything it started. Safe to call when it is already gone."""
+        proc = self.proc
+        if sys.platform == "win32":
+            subprocess.run(["taskkill", "/T", "/F", "/PID", str(proc.pid)], stdout=subprocess.DEVNULL,
+                           stderr=subprocess.DEVNULL)
+        else:
+            try:
+                os.killpg(proc.pid, signal.SIGKILL)  # the group this process leads, descendants included
+            except (ProcessLookupError, PermissionError):
+                pass
+        try:
+            proc.kill()
+        except OSError:
+            pass
+
     def close(self) -> None:
+        if getattr(self, "_closed", False):
+            return
+        self._closed = True
         proc = self.proc
         if proc.poll() is None:
             try:
@@ -245,15 +294,37 @@ class ProcessPlayer(Player):
             except Exception:
                 pass
             try:
-                proc.wait(timeout=2.0)
+                proc.wait(timeout=BYE_GRACE_S)
             except subprocess.TimeoutExpired:
-                proc.kill()
-                proc.wait(timeout=2.0)
-        for pipe in (proc.stdin, proc.stdout, proc.stderr):
-            try:
-                pipe.close()  # type: ignore[union-attr]
-            except Exception:
                 pass
+        # Whether or not it left, nothing it started may stay: a descendant would hold the pipes and carry
+        # state into the next game.
+        self._kill_tree()
+        try:
+            proc.wait(timeout=2.0)
+        except subprocess.TimeoutExpired:
+            pass
+        # With the tree gone the readers see the end of the pipes. Closing a pipe a reader is still inside would
+        # wait for it, so a reader that has not finished in a second is left to die with the process.
+        for t in self._readers:
+            t.join(timeout=1.0)
+        if not any(t.is_alive() for t in self._readers):
+            for pipe in (proc.stdin, proc.stdout, proc.stderr):
+                try:
+                    pipe.close()  # type: ignore[union-attr]
+                except Exception:
+                    pass
+        shutil.rmtree(self._scratch, ignore_errors=True)
+
+
+def _absolute_if_file(token: str) -> str:
+    """A command-line word that names a file here, as an absolute path (the bot starts in an empty directory)."""
+    try:
+        if not token.startswith("-") and os.path.isfile(token):
+            return os.path.abspath(token)
+    except (OSError, ValueError):
+        pass
+    return token
 
 
 def make_player(spec: str, table_id: str, profile, *, decision_timeout_s: float = DEFAULT_DECISION_TIMEOUT_S,

@@ -79,6 +79,9 @@ def build_parser() -> argparse.ArgumentParser:
     fp.add_argument("--points", type=int, default=fairplay.DEFAULT_POINTS)
     fp.add_argument("--timeout", type=float, default=None)
     fp.add_argument("--cwd", default=None)
+    fp.add_argument("--debug-fixed-check", action="store_true",
+                    help="use the same deals every time, to reproduce a check. This makes the check recognisable "
+                         "to a bot that has seen it, so it is never used when a bot is scored.")
     fp.add_argument("--bot-env", action="append", default=[], metavar="NAME",
                     help="hand the bot this environment variable from yours (repeat for more)")
 
@@ -201,7 +204,8 @@ def cmd_fingerprint(args) -> int:
 def cmd_fairplay(args) -> int:
     table = _table(args)
     rep = fairplay.check(table, args.bot, points=args.points, cwd=args.cwd, decision_timeout_s=args.timeout,
-                         bot_env=_bot_env(args))
+                         bot_env=_bot_env(args),
+                         check_secret=fairplay.DEBUG_CHECK_SECRET if args.debug_fixed_check else None)
     print(json.dumps(rep, indent=2, sort_keys=True))
     return 0 if rep["passed"] else 1
 

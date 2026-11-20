@@ -154,25 +154,39 @@ SEQUENTIAL_DECK_MESSAGE = (
 )
 
 
+SEED_LIMIT = 1 << 64
+
+
+def check_seed(value: Any) -> int:
+    """A seed as an int in [0, 2**64). The shuffle keeps only 64 bits, so a bigger number (or a negative one)
+    would be another spelling of some other seed, a public one included, and slip past the overlap check."""
+    if isinstance(value, bool) or not isinstance(value, (int, str)):
+        raise ValueError("a private seed must be an integer, got %r" % (value,))
+    n = int(value)
+    if not 0 <= n < SEED_LIMIT:
+        raise ValueError("a private seed must be in [0, 2**64), got %d" % n)
+    return n
+
+
 def load_private_seeds(path: str) -> List[int]:
     """Read a private deck: JSON ``{"seeds": [...]}``, a JSON list, or one integer per line.
 
-    The old ``{"start": S, "count": C}`` form is refused: it makes every deal a guess away from the
+    Every seed must be in [0, 2**64). The old ``{"start": S, "count": C}`` form is refused: it makes every deal a guess away from the
     others. A list of consecutive seeds is read, with a warning, for the same reason.
     """
     text = Path(path).read_text(encoding="utf-8").strip()
     if text.startswith("{") or text.startswith("["):
         obj = json.loads(text)
         if isinstance(obj, dict) and "seeds" in obj:
-            seeds = [int(s) for s in obj["seeds"]]
+            seeds = [check_seed(s) for s in obj["seeds"]]
         elif isinstance(obj, dict) and "start" in obj and "count" in obj:
             raise ValueError(SEQUENTIAL_DECK_MESSAGE)
         elif isinstance(obj, list):
-            seeds = [int(s) for s in obj]
+            seeds = [check_seed(s) for s in obj]
         else:
             raise ValueError("unrecognised private seed file")
     else:
-        seeds = [int(line) for line in text.splitlines() if line.strip()]
+        seeds = [check_seed(line.strip()) for line in text.splitlines() if line.strip()]
     if len(seeds) >= 10 and all(b - a == 1 for a, b in zip(seeds, seeds[1:])):
         warnings.warn("the private deck's seeds are consecutive: learn one seed and you know every deal. "
                       "Make a new deck with scripts/make_private_deck.py (independent random seeds).", stacklevel=2)
