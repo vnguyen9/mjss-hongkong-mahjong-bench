@@ -43,6 +43,9 @@ BOT_SCRATCH_VARS = ("HOME", "TMPDIR", "TEMP", "TMP")
 #: How long a bot gets to leave after ``bye`` before its whole process group is killed.
 BYE_GRACE_S = 1.0
 
+#: How long a sandbox wrapper gets to take its sandbox down after SIGTERM before it is killed.
+SANDBOX_TERM_GRACE_S = 2.0
+
 
 def bot_environment(source: Optional[Dict[str, str]] = None, extra: Optional[Dict[str, str]] = None,
                     scratch: Optional[str] = None) -> Dict[str, str]:
@@ -111,8 +114,49 @@ class LocalPlayer(Player):
         return action, None
 
 
+_scratch_lock = threading.Lock()
+_scratch_parent: Optional[str] = None
+_scratch_count = 0
+
+
+def _new_scratch() -> str:
+    """A new empty directory for one bot process, under a parent only this user can enter (mode 0700).
+
+    The parent exists while any scratch directory does and is removed with the last one. Another user
+    cannot reach it; another process of the same user can, which is why a native run is not a sandbox.
+    """
+    global _scratch_parent, _scratch_count
+    with _scratch_lock:
+        if _scratch_parent is None:
+            _scratch_parent = tempfile.mkdtemp(prefix="hkbench-run-")
+            os.chmod(_scratch_parent, 0o700)
+        path = tempfile.mkdtemp(prefix="bot-", dir=_scratch_parent)
+        _scratch_count += 1
+        return path
+
+
+def _drop_scratch(path: str) -> None:
+    global _scratch_parent, _scratch_count
+    shutil.rmtree(path, ignore_errors=True)
+    with _scratch_lock:
+        _scratch_count -= 1
+        if _scratch_count <= 0 and _scratch_parent is not None:
+            try:
+                os.rmdir(_scratch_parent)
+            except OSError:
+                pass
+            _scratch_parent, _scratch_count = None, 0
+
+
 class ProcessPlayer(Player):
-    """A bot that runs as its own program, spoken to over stdin and stdout."""
+    """A bot that runs as its own program, spoken to over stdin and stdout.
+
+    With ``sandbox`` (a command prefix, for example a ``docker run`` line) the bot's command is started
+    behind it, one sandbox per process, and the sandbox is expected to go when the wrapper does. The bench then
+    leaves HOME and the temp directories alone: they are the sandbox's to set. Without it the process runs
+    natively, with the scratch directory and environment described in ``PROTOCOL.md``; that keeps honest bots
+    honest but is not a boundary against one that means to cheat.
+    """
 
     def __init__(
         self,
@@ -123,7 +167,11 @@ class ProcessPlayer(Player):
         handshake_timeout_s: float = DEFAULT_HANDSHAKE_TIMEOUT_S,
         cwd: Optional[str] = None,
         env: Optional[Dict[str, str]] = None,
+        sandbox: Optional[str] = None,
     ) -> None:
+        self._closed = False
+        self._scratch: Optional[str] = None
+        self._readers: List[threading.Thread] = []
         self.command = command
         self.name = command
         self.table_id = table_id
@@ -132,31 +180,40 @@ class ProcessPlayer(Player):
         self._lines: "queue.Queue[Optional[str]]" = queue.Queue()
         self._stderr_tail: List[str] = []
         self.bot_info: Dict[str, Any] = {}
-        # Every process gets a new empty directory to be its HOME, its temp directory and (unless the run
-        # names a directory to start in) its working directory. It is deleted when the process is stopped,
-        # so nothing a bot writes in one game is there in the next, or at its other seat.
-        self._scratch = tempfile.mkdtemp(prefix="hkbench-bot-")
+        # Check everything that can be wrong with the request before anything is made.
         argv = shlex.split(command)
-        if cwd is None:
-            argv = [_absolute_if_file(a) for a in argv]  # a relative script path must still find its script
-        child_env = bot_environment(extra=env, scratch=self._scratch)
+        prefix = shlex.split(sandbox) if sandbox else []
+        self._sandboxed = bool(prefix)
+        bot_environment(extra=env)
         group = {"creationflags": subprocess.CREATE_NEW_PROCESS_GROUP} if sys.platform == "win32" \
             else {"start_new_session": True}  # its own group, so the whole tree can be stopped
-        self._readers: List[threading.Thread] = []
+        if self._sandboxed:
+            argv = prefix + argv  # what runs inside the sandbox is the sandbox's business
+            child_env = bot_environment(extra=env)
+            run_cwd = cwd
+        else:
+            # A new empty directory is the process's HOME, its temp directory and (unless the run names a directory
+            # to start in) its working directory. It is deleted when the process is stopped, so nothing a bot
+            # writes in one game is there in the next, or at its other seat.
+            if cwd is None:
+                argv = [_absolute_if_file(a) for a in argv]  # a relative script path must still find its script
+            self._scratch = _new_scratch()
+            child_env = bot_environment(extra=env, scratch=self._scratch)
+            run_cwd = cwd or self._scratch
         try:
             self.proc = subprocess.Popen(
                 argv,
                 stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                cwd=cwd or self._scratch,
+                cwd=run_cwd,
                 env=child_env,
                 universal_newlines=True,
                 bufsize=1,
                 **group,
             )
         except (OSError, ValueError) as exc:
-            shutil.rmtree(self._scratch, ignore_errors=True)
+            self._drop()
             raise BotCrashed("could not start the bot: %s" % exc)
         for target in (self._read_stdout, self._read_stderr):
             t = threading.Thread(target=target, daemon=True)
@@ -263,13 +320,31 @@ class ProcessPlayer(Player):
     def game_over(self, msg: Dict[str, Any]) -> None:
         self._send(msg)
 
+    def _drop(self) -> None:
+        if self._scratch is not None:
+            _drop_scratch(self._scratch)
+            self._scratch = None
+
     def _kill_tree(self) -> None:
-        """Stop the bot and everything it started. Safe to call when it is already gone."""
+        """Stop the bot and everything it started. Safe to call when it is already gone.
+
+        A sandbox wrapper is asked to leave first (SIGTERM, which ``docker run`` passes to its container) and is
+        killed only if it does not, so the sandbox it started is torn down with it.
+        """
         proc = self.proc
         if sys.platform == "win32":
             subprocess.run(["taskkill", "/T", "/F", "/PID", str(proc.pid)], stdout=subprocess.DEVNULL,
                            stderr=subprocess.DEVNULL)
         else:
+            if self._sandboxed and proc.poll() is None:
+                try:
+                    os.killpg(proc.pid, signal.SIGTERM)
+                except (ProcessLookupError, PermissionError):
+                    pass
+                try:
+                    proc.wait(timeout=SANDBOX_TERM_GRACE_S)
+                except subprocess.TimeoutExpired:
+                    pass
             try:
                 os.killpg(proc.pid, signal.SIGKILL)  # the group this process leads, descendants included
             except (ProcessLookupError, PermissionError):
@@ -280,7 +355,7 @@ class ProcessPlayer(Player):
             pass
 
     def close(self) -> None:
-        if getattr(self, "_closed", False):
+        if self._closed:
             return
         self._closed = True
         proc = self.proc
@@ -314,7 +389,7 @@ class ProcessPlayer(Player):
                     pipe.close()  # type: ignore[union-attr]
                 except Exception:
                     pass
-        shutil.rmtree(self._scratch, ignore_errors=True)
+        self._drop()
 
 
 def _absolute_if_file(token: str) -> str:
@@ -328,11 +403,12 @@ def _absolute_if_file(token: str) -> str:
 
 
 def make_player(spec: str, table_id: str, profile, *, decision_timeout_s: float = DEFAULT_DECISION_TIMEOUT_S,
-                cwd: Optional[str] = None, env: Optional[Dict[str, str]] = None) -> Player:
+                cwd: Optional[str] = None, env: Optional[Dict[str, str]] = None,
+                sandbox: Optional[str] = None) -> Player:
     """``ref:<name>`` is an in-repo bot; anything else is a command to start."""
     if spec.startswith("ref:"):
         name = spec[4:]
         if name not in REFERENCE_BOTS:
             raise ValueError("no reference bot called %r (have: %s)" % (name, ", ".join(sorted(REFERENCE_BOTS))))
         return LocalPlayer(name, profile)
-    return ProcessPlayer(spec, table_id, decision_timeout_s=decision_timeout_s, cwd=cwd, env=env)
+    return ProcessPlayer(spec, table_id, decision_timeout_s=decision_timeout_s, cwd=cwd, env=env, sandbox=sandbox)

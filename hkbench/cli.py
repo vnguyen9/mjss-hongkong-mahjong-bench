@@ -39,6 +39,12 @@ def _common(p: argparse.ArgumentParser) -> None:
     p.add_argument("--bot-env", action="append", default=[], metavar="NAME",
                    help="hand the bot this environment variable from yours (repeat for more). A bot starts with "
                         "PATH, HOME, LANG, LC_*, TMPDIR and little else; HKBENCH_* is never passed.")
+    p.add_argument("--sandbox", default=None, metavar="CMD",
+                   help="a command put in front of every launch of the bot, one sandbox per bot process, for example a "
+                        "docker run line (see SUBMITTING.md). A private-deck run of a program bot needs it.")
+    p.add_argument("--native-unsafe", action="store_true",
+                   help="allow a private-deck run of a program bot without --sandbox. It runs natively, which does not "
+                        "stop a bot sharing state between processes on this machine; the result says so.")
     p.add_argument("--no-write", action="store_true", help="print the result without writing files")
     p.add_argument("--training-log", action="store_true",
                    help="also put each won game's melds, concealed tiles, winning tile, flowers and the winner's "
@@ -79,6 +85,7 @@ def build_parser() -> argparse.ArgumentParser:
     fp.add_argument("--points", type=int, default=fairplay.DEFAULT_POINTS)
     fp.add_argument("--timeout", type=float, default=None)
     fp.add_argument("--cwd", default=None)
+    fp.add_argument("--sandbox", default=None, metavar="CMD", help="a command put in front of every launch of the bot")
     fp.add_argument("--debug-fixed-check", action="store_true",
                     help="use the same deals every time, to reproduce a check. This makes the check recognisable "
                          "to a bot that has seen it, so it is never used when a bot is scored.")
@@ -126,7 +133,7 @@ def _print_result(result) -> None:
              st["average_win_points"] or 0.0, st["average_win_faan"] or 0.0, st["limit_hands"]))
 
 
-HOSTED_SCRUB = ("--bot", "--cwd", "--hash-dir")
+HOSTED_SCRUB = ("--bot", "--cwd", "--hash-dir", "--sandbox")
 
 
 def scrub_hosted(argv: Sequence[str]) -> List[str]:
@@ -159,7 +166,8 @@ def cmd_score(args, argv) -> int:
                          workers=args.workers, results_dir=Path(args.results_dir), argv=argv,
                          skip_fairplay=args.skip_fairplay, fairplay_points=args.fairplay_points, cwd=args.cwd,
                          decision_timeout_s=args.timeout, write=not args.no_write,
-                         training_log=args.training_log, bot_env=_bot_env(args))
+                         training_log=args.training_log, bot_env=_bot_env(args), sandbox=args.sandbox,
+                         native_unsafe=args.native_unsafe)
     _print_result(result)
     if not args.no_write:
         print("wrote %s" % (Path(args.results_dir) / (result["run_id"] + ".json")))
@@ -181,7 +189,7 @@ def cmd_h2h(args, argv) -> int:
                        results_dir=Path(args.results_dir), argv=argv, skip_fairplay=args.skip_fairplay,
                        fairplay_points=args.fairplay_points, cwd=args.cwd, decision_timeout_s=args.timeout,
                        resamples=args.resamples, write=not args.no_write, training_log=args.training_log,
-                       bot_env=_bot_env(args))
+                       bot_env=_bot_env(args), sandbox=args.sandbox, native_unsafe=args.native_unsafe)
     print("head to head on %s (%s deck, %s)" % (table.id, result["seeds"]["tag"], result["verification"]))
     for n, r in sorted(result["bradley_terry"].items(), key=lambda kv: -kv[1]["rating"]):
         print("  rank %d  %-20s rating %+7.1f  [%+.1f, %+.1f]" % (r["rank"], n, r["rating"], r["ci95"][0], r["ci95"][1]))
@@ -204,7 +212,7 @@ def cmd_fingerprint(args) -> int:
 def cmd_fairplay(args) -> int:
     table = _table(args)
     rep = fairplay.check(table, args.bot, points=args.points, cwd=args.cwd, decision_timeout_s=args.timeout,
-                         bot_env=_bot_env(args),
+                         bot_env=_bot_env(args), sandbox=args.sandbox,
                          check_secret=fairplay.DEBUG_CHECK_SECRET if args.debug_fixed_check else None)
     print(json.dumps(rep, indent=2, sort_keys=True))
     return 0 if rep["passed"] else 1

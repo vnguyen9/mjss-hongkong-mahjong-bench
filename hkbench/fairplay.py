@@ -23,6 +23,7 @@ import hashlib
 import hmac
 import os
 import struct
+import time
 from typing import Any, Callable, Dict, List, NamedTuple, Optional, Tuple
 
 from hkbench.engine.game import GameState
@@ -38,6 +39,12 @@ from hkbench.view import build_view
 DEBUG_CHECK_SECRET = hashlib.sha256(b"hkbench-fairplay-debug-check").digest()
 DEFAULT_POINTS = 100
 DEFAULT_RESHUFFLES = 2
+
+# The clock and the pause the replay uses; tests swap them.
+_now = time.monotonic
+_sleep = time.sleep
+#: A recorded pause longer than this is not repeated (a pause that long is the bot's or the machine's, not the bench's).
+MAX_REPLAY_GAP_S = 2.0
 
 Hook = Callable[[GameState, int, Dict[str, Any]], None]
 
@@ -184,9 +191,10 @@ class Point(NamedTuple):
     actor: int
     index: int
     seq: int
-    history: List[Tuple[Dict[str, Any], int]]  # the seat's earlier messages and the actions it really played
+    history: List[Tuple[Dict[str, Any], int, float]]  # the seat's earlier messages, the moves it played, the pause before each
     msg: Dict[str, Any]
     action: int
+    gap: float  # the pause before this message, as in the history
 
 
 def check(
@@ -201,6 +209,7 @@ def check(
     run_key: bytes = runkey.PUBLIC_RUN_KEY,
     bot_env: Optional[Dict[str, str]] = None,
     check_secret: Optional[bytes] = None,
+    sandbox: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Run the check on one bot. ``on_decision`` is a test hook called before every ask.
 
@@ -224,7 +233,7 @@ def check(
     }
 
     def new_bot() -> Player:
-        return make_player(bot_spec, table.id, profile, decision_timeout_s=timeout, cwd=cwd, env=bot_env)
+        return make_player(bot_spec, table.id, profile, decision_timeout_s=timeout, cwd=cwd, env=bot_env, sandbox=sandbox)
 
     def note(example: Dict[str, Any]) -> None:
         if len(report["examples"]) < 3:
@@ -234,16 +243,19 @@ def check(
     chosen: List[Point] = []
     index = 0
     while len(chosen) < points:
-        rot = index % 4
+        # Dealer and wind step every four games, the checked seat every game, so the bot sits at every
+        # position relative to the dealer (as scoring rotates it) and plays dealer, South, West and North evenly.
+        deal_no, rot = divmod(index, 4)
         state = GameState.new_game(profile, seed=check_deal_seed(secret, index, ranges),
-                                   dealer=dealer_for_index(index), prevailing_wind=wind_for_index(index))
+                                   dealer=dealer_for_index(deal_no), prevailing_wind=wind_for_index(deal_no))
         bot = new_bot()
         seats: List[Player] = [bot] * 4
         for i in range(3):
             seats[(rot + 1 + i) % 4] = field[i]
         seq = 0
         per_game = 0
-        history: List[Tuple[Dict[str, Any], int]] = []
+        history: List[Tuple[Dict[str, Any], int, float]] = []
+        answered_at: Optional[float] = None  # when the bot last answered: the pause before its next message
         try:
             while not state.is_terminal() and len(chosen) < points:
                 actor = state.current_actor()
@@ -251,13 +263,16 @@ def check(
                 msg = build_view(state, actor, seq=seq, table_id=table.id, **_seeds(run_key, table.id, index, seq))
                 if actor == rot and on_decision is not None:
                     on_decision(state, actor, msg)
+                sent_at = _now() if actor == rot else 0.0
                 action, fault = seats[actor].decide(msg)
                 if actor == rot:
+                    gap = 0.0 if answered_at is None else max(0.0, sent_at - answered_at)
+                    answered_at = _now()
                     report["faults"] += 1 if fault else 0
                     if len(msg["legal"]) >= 2 and rng.randrange(8) == 0 and per_game < 12:
-                        chosen.append(Point(state.clone(), actor, index, seq, list(history), msg, action))
+                        chosen.append(Point(state.clone(), actor, index, seq, list(history), msg, action, gap))
                         per_game += 1
-                    history.append((msg, action))
+                    history.append((msg, action, gap))
                 state.apply_action(action)
                 seq += 1
         finally:
@@ -266,14 +281,18 @@ def check(
     report["points"] = len(chosen)
 
     # 2. Ask again where the hidden tiles are dealt differently, each time in a fresh process.
-    def ask(msg: Dict[str, Any], history: List[Tuple[Dict[str, Any], int]]):
+    def ask(msg: Dict[str, Any], history: List[Tuple[Dict[str, Any], int, float]], gap: float):
         bot = new_bot()
         replay_changes = faults = 0
         try:
-            for earlier, played in history:
+            # The replay waits as long as the game did between each answer and the next message, so
+            # the bot cannot tell it by how fast the messages come.
+            for earlier, played, before in history:
+                _sleep(min(before, MAX_REPLAY_GAP_S))
                 answer, fault = bot.decide(earlier)
                 faults += 1 if fault else 0
                 replay_changes += 1 if answer != played else 0
+            _sleep(min(gap, MAX_REPLAY_GAP_S))
             answer, fault = bot.decide(msg)
             return answer, faults + (1 if fault else 0), replay_changes
         finally:
@@ -291,7 +310,7 @@ def check(
                 note({"kind": "view", "deal": pt.index, "seq": pt.seq})
             if on_decision is not None:
                 on_decision(variant, pt.actor, msg)
-            again, faults, replay_changes = ask(msg, pt.history)
+            again, faults, replay_changes = ask(msg, pt.history, pt.gap)
             report["asks"] += 1
             report["faults"] += faults
             if replay_changes:

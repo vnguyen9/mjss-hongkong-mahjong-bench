@@ -108,6 +108,8 @@ class Privacy(unittest.TestCase):
         for path in ROOT.rglob("*"):
             if not path.is_file() or ".git" in path.parts or "__pycache__" in path.parts or ".pytest_cache" in path.parts:
                 continue
+            if path.relative_to(ROOT).parts[0] == "build":  # git-ignored scratch space, not the tree
+                continue
             if path.suffix in (".gz",) or path.name == "test_docs_site.py":
                 continue
             try:

@@ -8,6 +8,7 @@
 """
 
 import base64
+import glob
 import time
 import gzip
 import importlib.util
@@ -25,11 +26,12 @@ from pathlib import Path
 from unittest import mock
 
 from helpers import ROOT, hkma_profile, hkma_table
-from test_bench import meta
+from test_bench import meta, run_cli
 
 import seed_cheat_bot
 from hkbench import bench, fairplay, pool, runkey
-from hkbench.players import BYE_GRACE_S, Player, ProcessPlayer, bot_environment, fallback_action, make_player
+from hkbench import players
+from hkbench.players import BYE_GRACE_S, SANDBOX_TERM_GRACE_S, Player, ProcessPlayer, bot_environment, fallback_action, make_player
 from hkbench.runner import play_game
 from hkbench.seeds import dealer_for_index, wind_for_index
 from hkbench.tables import Deal, check_seed, list_tables, load_private_seeds
@@ -406,6 +408,162 @@ class Isolation(unittest.TestCase):
                         break
                     time.sleep(0.05)
                 self.assertFalse(self.alive(descendant))
+
+
+class CheckedSeat(unittest.TestCase):
+    def test_the_bot_sits_at_every_position_against_the_dealer(self):
+        seen = []
+        rep = fairplay.check(TABLE, "ref:ukeire", points=40,
+                             on_decision=lambda s, a, m: seen.append((m["dealer"], m["you"]["seat_wind"])))
+        self.assertTrue(rep["passed"], rep)
+        self.assertEqual({d for d, _w in seen}, {0, 1, 2, 3})  # relative dealer: it deals, and each seat after
+        self.assertEqual({w for _d, w in seen}, {0, 1, 2, 3})  # and it holds every seat wind
+        self.assertEqual(len(set(seen)), 4)
+
+    def test_a_bot_that_is_honest_only_as_dealer_is_caught(self):
+        rep = fairplay.check(TABLE, "%s %s" % (PY, ROOT / "tests" / "dealer_gate_bot.py"), points=30)
+        self.assertFalse(rep["passed"])
+        self.assertGreater(rep["decision_changes"], 0)
+
+
+class ReplayTiming(unittest.TestCase):
+    def test_the_replay_waits_as_long_as_the_game_did(self):
+        sleeps = []
+        ticks = iter(range(10 ** 6))
+        with mock.patch.object(fairplay, "_now", lambda: next(ticks) * 0.5), \
+                mock.patch.object(fairplay, "_sleep", lambda s: sleeps.append(s)):
+            rep = fairplay.check(TABLE, "ref:ukeire", points=10)
+        self.assertTrue(rep["passed"], rep)
+        # Each bot decision reads the clock twice (before it is asked, after it answers), so every pause
+        # between an answer and its next message is exactly one tick, and the first message has none.
+        self.assertTrue(sleeps)
+        self.assertEqual(set(sleeps), {0.0, 0.5})
+        self.assertGreater(sleeps.count(0.5), sleeps.count(0.0))
+
+    def test_a_recorded_pause_is_waited_out_for_real_and_a_huge_one_is_capped(self):
+        sleeps = []
+        clock = {"t": 0.0}
+
+        def now():
+            clock["t"] += 7.0  # every pause the game recorded is seven seconds
+            return clock["t"]
+
+        with mock.patch.object(fairplay, "_now", now), mock.patch.object(fairplay, "_sleep", lambda s: sleeps.append(s)):
+            fairplay.check(TABLE, "ref:ukeire", points=4)
+        self.assertEqual(max(sleeps), fairplay.MAX_REPLAY_GAP_S)
+
+
+class StartupCleanup(unittest.TestCase):
+    def runs(self):
+        return set(glob.glob(os.path.join(tempfile.gettempdir(), "hkbench-run-*")))
+
+    def test_a_request_that_fails_before_the_start_leaves_nothing_behind(self):
+        before = self.runs()
+        with self.assertRaises(ValueError):
+            ProcessPlayer("%s 'unterminated" % PY, TABLE.id)  # an unmatched quote
+        with self.assertRaises(ValueError):
+            ProcessPlayer("%s -c pass" % PY, TABLE.id, env={"HKBENCH_PRIVATE_SEEDS": "/x"})
+        with self.assertRaises(Exception):
+            ProcessPlayer("/no/such/program", TABLE.id)  # the program cannot be started
+        self.assertEqual(self.runs(), before)
+        self.assertIsNone(players._scratch_parent)
+
+    def test_the_scratch_parent_is_private_and_goes_with_the_last_bot(self):
+        p = ProcessPlayer("%s %s" % (PY, ROOT / "examples" / "bots" / "python_bot.py"), TABLE.id)
+        try:
+            parent = players._scratch_parent
+            self.assertEqual(stat.S_IMODE(os.stat(parent).st_mode), 0o700)
+            self.assertEqual(os.path.dirname(p._scratch), parent)
+        finally:
+            p.close()
+        self.assertFalse(os.path.exists(parent))
+
+
+class Sandbox(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, str(self.tmp))
+        self.log = self.tmp / "sandbox.log"
+        self.wrapper = "%s %s" % (PY, ROOT / "tests" / "sandbox_wrapper.py")
+        self.bot = "%s %s" % (PY, ROOT / "tests" / "env_probe_bot.py")
+        self.out = self.tmp / "probe.jsonl"
+
+    def test_every_bot_launch_goes_through_the_wrapper_and_the_games_play_through_it(self):
+        deals = [deal_at(i, 1_000_000 + i) for i in range(2)]
+        config = {"table": TABLE.id, "tables_dir": str(TABLE.dir.parent), "sandbox": self.wrapper,
+                  "players": {"bot": self.bot, "f0": "ref:ukeire", "f1": "ref:ukeire", "f2": "ref:ukeire"},
+                  "bot_env": {"PROBE_OUT": str(self.out), "SANDBOX_LOG": str(self.log)}}
+        recs = pool.run_specs(config, bench.duplicate_specs(deals), workers=1)
+        self.assertEqual(len(recs), 8)
+        self.assertEqual(len(self.log.read_text().splitlines()), 8)  # one sandbox per game
+        rows = [json.loads(line) for line in self.out.read_text().splitlines()]
+        self.assertEqual(len({r["born"] for r in rows}), 8)
+        for r in rows:  # the wrapper decides the bot's environment, so the bench set no scratch variables
+            self.assertEqual(r["values"], [])
+        self.assertFalse(glob.glob(os.path.join(tempfile.gettempdir(), "hkbench-run-*")) and players._scratch_parent)
+
+    def test_closing_stops_the_wrapper_and_what_it_started(self):
+        script = self.tmp / "stubborn.py"
+        pidfile = self.tmp / "bot.pid"
+        script.write_text(textwrap.dedent("""
+            import json, os, sys, time
+            open(%r, "w").write(str(os.getpid()))
+            for line in sys.stdin:
+                if json.loads(line)["type"] == "hello":
+                    print(json.dumps({"type": "ready"}), flush=True)
+                elif json.loads(line)["type"] == "bye":
+                    time.sleep(60)
+        """ % str(pidfile)))
+        p = ProcessPlayer("%s %s" % (PY, script), TABLE.id, sandbox=self.wrapper,
+                          env={"SANDBOX_LOG": str(self.log), "SANDBOX_MODE": "term"})
+        pid = int(pidfile.read_text())
+        t0 = time.monotonic()
+        p.close()
+        self.assertLess(time.monotonic() - t0, BYE_GRACE_S + SANDBOX_TERM_GRACE_S + 1.0)
+        self.assertIn("TERM", self.log.read_text())  # the wrapper was asked first, so it could take its sandbox down
+        for _ in range(40):
+            try:
+                os.kill(pid, 0)
+            except ProcessLookupError:
+                break
+            time.sleep(0.05)
+        with self.assertRaises(ProcessLookupError):
+            os.kill(pid, 0)
+
+    def test_a_private_deck_needs_a_sandbox_or_the_native_flag(self):
+        deck = self.tmp / "deck.json"
+        deck.write_text(json.dumps({"seeds": [5_000_000_000 + 7919 * i for i in range(4)]}))
+        py_bot = "%s %s" % (PY, ROOT / "examples" / "bots" / "python_bot.py")
+        kw = dict(deals=1, private_seeds=str(deck), skip_fairplay=True, quiet=True, write=False, results_dir=self.tmp)
+        with self.assertRaisesRegex(ValueError, "sandbox"):
+            bench.score(TABLE, py_bot, meta(py_bot), **kw)
+        with self.assertWarnsRegex(UserWarning, "native-unsafe"):
+            r = bench.score(TABLE, py_bot, meta(py_bot), native_unsafe=True, **kw)
+        self.assertEqual(r["isolation"], "native")
+        r = bench.score(TABLE, py_bot, meta(py_bot), sandbox=self.wrapper, **kw)
+        self.assertEqual(r["isolation"], "sandbox")
+        # an in-process reference bot has nothing to sandbox, and a public run is unaffected
+        self.assertEqual(bench.score(TABLE, "ref:ukeire", meta("ref:ukeire"), **kw)["isolation"], "native")
+        pub = bench.score(TABLE, py_bot, meta(py_bot), deals=1, skip_fairplay=True, quiet=True, write=False,
+                          results_dir=self.tmp)
+        self.assertEqual(pub["isolation"], "native")
+        with self.assertRaisesRegex(ValueError, "sandbox"):
+            bench.h2h(TABLE, [("a", py_bot, meta(py_bot)), ("b", "ref:ukeire", meta("ref:ukeire"))],
+                      deals=1, private_seeds=str(deck), skip_fairplay=True, quiet=True, write=False, results_dir=self.tmp)
+
+    def test_the_command_line_refuses_and_allows(self):
+        deck = self.tmp / "deck.json"
+        deck.write_text(json.dumps({"seeds": [5_000_000_000 + 7919 * i for i in range(4)]}))
+        py_bot = "%s %s" % (PY, ROOT / "examples" / "bots" / "python_bot.py")
+        base = ["score", "--table", TABLE.id, "--bot", py_bot, "--deals", "1", "--skip-fairplay", "--no-write",
+                "--private-seeds", str(deck)]
+        code, _out, err = run_cli(*base)
+        self.assertEqual(code, 2)
+        self.assertIn("--sandbox", err)
+        code, out, _err = run_cli(*base, "--native-unsafe")
+        self.assertEqual(code, 0)
+        code, out, _err = run_cli(*base, "--sandbox", self.wrapper)
+        self.assertEqual(code, 0)
 
 
 class KeyStaysPut(unittest.TestCase):

@@ -40,10 +40,23 @@ Tell us:
 | Whether you want private model files kept private | They stay private either way. We publish only the result file and outcome-only logs. |
 | Permission to list it | Third-party bots are not listed until their authors say yes. |
 
+### How we sandbox it
+
+Official private-deck scores are made with a sandbox: `--sandbox CMD` puts a command in front of every launch of your bot, one fresh sandbox per bot process, torn down with it. `hkbench` refuses a private-deck run of a program bot without it (`--native-unsafe` overrides, prints a warning, and the result records `"isolation": "native"` instead of `"sandbox"`). The recipe we use, with the bot's program directory read-only:
+
+```
+python -m hkbench score --table hk-hkma-v1 --private-seeds <deck> --bot "python /bot/my_bot.py" --name my_bot \
+  --sandbox "docker run --rm -i --init --network none --read-only --tmpfs /tmp --pids-limit 256 --memory 2g --cpus 2 -v /path/to/bot:/bot:ro my-bot-image"
+```
+
+Each bot process gets its own container, with no network, a read-only file system apart from an empty `/tmp`, and the bot directory mounted read-only. When the bench stops the bot it sends the `docker run` wrapper SIGTERM (which Docker passes to the container) and then kills it, so the container and everything in it go with it. The deal deck, the run key and the bench's files are not in the container. This recipe has not been run against every image; the plumbing it relies on (a wrapper that forwards stdin and stdout, and is stopped with its process) is tested with a stand-in wrapper.
+
+Without a sandbox a bot runs as a normal process of the same user. The bench gives it an empty scratch directory and a limited environment and kills its process group at the end of the game, which keeps honest bots honest. It does not stop a bot that means to cheat: another process of the same user can be reached through the file system, a process that starts a new session survives the kill, and the bot can see `game_over` after it has answered. That is why native private-deck runs are marked and are not official.
+
 ## 4. What we do with it
 
 1. Check the reference field pins and the engine fingerprint.
-2. Run the fair-play check.
+2. Run the fair-play check (in the sandbox).
 3. Play the private deals in duplicate against the frozen field (and head to head against other listed bots if you want a Bradley-Terry rank).
 4. Publish a result file and a log of each game's outcome by deal number. The log has no walls, deals or actions, so it does not reveal the private deck. (`--training-log` adds nothing on a private deck.)
 5. The row is tagged **verified**. The command that reproduces it on the public deals is on the row.

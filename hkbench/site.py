@@ -39,6 +39,7 @@ def _rows(results_dir: Path) -> List[Dict[str, Any]]:
             "bot": {k: r["bot"][k] for k in ("name", "kind", "trained_on", "sha256", "description")},
             "verification": r["verification"],
             "rng_scheme": runkey.scheme_of(r),
+            "isolation": r.get("isolation"),
             "seed_tag": r["seeds"]["tag"],
             "points_per_hand": h["points_per_hand"],
             "se": h["se"],

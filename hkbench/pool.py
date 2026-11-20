@@ -8,7 +8,7 @@ A *config* says how to build the players the specs name::
 
     {"table": "hk-hkma-v1", "tables_dir": None, "players": {"bot": "ref:ukeire", "f0": "ref:faan_aware", ...},
      "decision_timeout_s": 10.0, "cwd": None, "record_actions": False,
-     "training_log": False, "run_key": b"...", "bot_env": {}}
+     "training_log": False, "run_key": b"...", "bot_env": {}, "sandbox": None}
 
 ``run_key`` is the run's key (``hkbench.runkey``); it stays in the runner's processes. A reference
 bot (``ref:``) runs in the worker and is built once. A bot that is a program is started afresh for
@@ -51,7 +51,7 @@ class Runtime:
         return make_player(
             self.config["players"][key], self.table.id, self.profile,
             decision_timeout_s=self.config.get("decision_timeout_s", self.table.decision_timeout_s),
-            cwd=self.config.get("cwd"), env=self.config.get("bot_env"),
+            cwd=self.config.get("cwd"), env=self.config.get("bot_env"), sandbox=self.config.get("sandbox"),
         )
 
     def play(self, spec: Dict[str, Any]) -> Dict[str, Any]:

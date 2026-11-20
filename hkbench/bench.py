@@ -10,6 +10,7 @@ import os
 import platform
 import shlex
 import sys
+import warnings
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
@@ -122,6 +123,25 @@ def _run_key(tag: str, given: Optional[bytes]) -> bytes:
     return runkey.PUBLIC_RUN_KEY if tag == "public" else runkey.new_run_key()
 
 
+ISOLATION_MESSAGE = (
+    "a private-deck run of a program bot needs a sandbox: give --sandbox CMD (see SUBMITTING.md for a Docker "
+    "recipe), or --native-unsafe to run it natively anyway. Native mode does not stop a bot from sharing state "
+    "between processes on this machine."
+)
+
+
+def isolation_for(tag: str, specs: Sequence[str], sandbox: Optional[str], native_unsafe: bool) -> str:
+    """``sandbox`` or ``native``. A private deck refuses a program bot that is neither sandboxed nor allowed to run natively."""
+    if sandbox:
+        return "sandbox"
+    if tag == "private" and any(not sp.startswith("ref:") for sp in specs):
+        if not native_unsafe:
+            raise ValueError(ISOLATION_MESSAGE)
+        warnings.warn("--native-unsafe: this private-deck run is not sandboxed, so a bot could share state between "
+                      "its processes on this machine; the result records isolation \"native\"", stacklevel=3)
+    return "native"
+
+
 def _deck(table: Table, deals: int, offset: int, private_seeds: Optional[str]) -> Tuple[str, List[Deal]]:
     if private_seeds:
         return "private", table.private_deals(private_seeds, deals, offset)
@@ -161,7 +181,8 @@ def _fault_check(table: Table, decisions: int, faults: Dict[str, int]) -> Dict[s
 def check_before_scoring(table: Table, spec: str, *, skip_fairplay: bool, fairplay_points: int,
                          cwd: Optional[str], decision_timeout_s: Optional[float],
                          run_key: bytes = runkey.PUBLIC_RUN_KEY,
-                         bot_env: Optional[Dict[str, str]] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+                         bot_env: Optional[Dict[str, str]] = None,
+                         sandbox: Optional[str] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     """The gate every score or match passes first: field pins, engine fingerprint, fair play."""
     table.require_active()
     table.verify_field()
@@ -169,7 +190,7 @@ def check_before_scoring(table: Table, spec: str, *, skip_fairplay: bool, fairpl
     if skip_fairplay:
         return fp, {"status": "skipped"}
     rep = fairplay.check(table, spec, points=fairplay_points, cwd=cwd, decision_timeout_s=decision_timeout_s,
-                         run_key=run_key, bot_env=bot_env)
+                         run_key=run_key, bot_env=bot_env, sandbox=sandbox)
     rep["status"] = "passed" if rep["passed"] else "failed"
     if not rep["passed"]:
         raise Rejected("fair-play check failed for %s: %s" % (spec, json.dumps(rep, sort_keys=True)))
@@ -212,19 +233,26 @@ def score(
     training_log: bool = False,
     bot_env: Optional[Dict[str, str]] = None,
     run_key: Optional[bytes] = None,
+    sandbox: Optional[str] = None,
+    native_unsafe: bool = False,
 ) -> Dict[str, Any]:
-    """``bot_env`` is what the run hands its bots beyond the allowlist; ``run_key`` is for tests (see ``runkey``)."""
+    """``bot_env`` is what the run hands its bots beyond the allowlist; ``run_key`` is for tests (see ``runkey``).
+
+    ``sandbox`` is a command prefix put in front of every launch of the bot. A private deck needs it, or ``native_unsafe``.
+    """
     tag, deck = _deck(table, deals, offset, private_seeds)
+    isolation = isolation_for(tag, [spec], sandbox, native_unsafe)
     training_log = training_log and tag == "public"  # a private deck's log stays outcome-only
     rkey = _run_key(tag, run_key)
     fp, fair = check_before_scoring(table, spec, skip_fairplay=skip_fairplay, fairplay_points=fairplay_points,
-                                    cwd=cwd, decision_timeout_s=decision_timeout_s, run_key=rkey, bot_env=bot_env)
+                                    cwd=cwd, decision_timeout_s=decision_timeout_s, run_key=rkey, bot_env=bot_env,
+                                    sandbox=sandbox)
     players = {"bot": spec}
     for i, member in enumerate(table.field):
         players["f%d" % i] = "ref:" + member["bot"]
     config = {"table": table.id, "tables_dir": str(table.dir.parent), "players": players,
               "decision_timeout_s": decision_timeout_s or table.decision_timeout_s, "cwd": cwd,
-              "record_actions": True, "run_key": rkey, "bot_env": bot_env or {}}
+              "record_actions": True, "run_key": rkey, "bot_env": bot_env or {}, "sandbox": sandbox}
     if training_log:
         config["training_log"] = True
     records = run_specs(config, duplicate_specs(deck), workers,
@@ -253,6 +281,7 @@ def score(
         "seeds": {"tag": tag, "deals": len(deck), "offset": offset,
                   "public_range": table.public_range if tag == "public" else None},
         "rng_scheme": runkey.RNG_SCHEME,
+        "isolation": isolation,
         "verification": "verified" if verified else "unverified",
         "fairplay": {k: fair[k] for k in ("status", "points", "reshuffles", "asks", "view_mismatches",
                                           "decision_changes", "faults") if k in fair},
@@ -278,7 +307,8 @@ def score(
         results_dir.mkdir(parents=True, exist_ok=True)
         write_log(results_dir / result["log"], {"run_id": run_id, "table": table.id, "bot": meta,
                                                 "seed_tag": tag, "command": result["command"],
-                                                "engine": result["engine"], "rng_scheme": runkey.RNG_SCHEME}, records, tag)
+                                                "engine": result["engine"], "rng_scheme": runkey.RNG_SCHEME,
+                                                "isolation": isolation}, records, tag)
         (results_dir / (run_id + ".json")).write_text(json.dumps(result, indent=2, sort_keys=True) + "\n",
                                                       encoding="utf-8")
     return result
@@ -327,6 +357,8 @@ def h2h(
     training_log: bool = False,
     bot_env: Optional[Dict[str, str]] = None,
     run_key: Optional[bytes] = None,
+    sandbox: Optional[str] = None,
+    native_unsafe: bool = False,
 ) -> Dict[str, Any]:
     """Round robin. ``bots`` is a list of (display name, spec, meta). One run key serves every pair."""
     if len(bots) < 2:
@@ -336,13 +368,14 @@ def h2h(
         raise ValueError("bot names must be different")
     tag, deck = _deck(table, deals, offset, private_seeds)
     training_log = training_log and tag == "public"  # a private deck's log stays outcome-only
+    isolation = isolation_for(tag, [b[1] for b in bots], sandbox, native_unsafe)
     rkey = _run_key(tag, run_key)
     fps = None
     fair_status = {}
     for name, spec, _meta in bots:
         fps, fair = check_before_scoring(table, spec, skip_fairplay=skip_fairplay, fairplay_points=fairplay_points,
                                          cwd=cwd, decision_timeout_s=decision_timeout_s, run_key=rkey,
-                                         bot_env=bot_env)
+                                         bot_env=bot_env, sandbox=sandbox)
         fair_status[name] = fair.get("status")
     assert fps is not None
     pairs: List[Dict[str, Any]] = []
@@ -357,7 +390,8 @@ def h2h(
             config = {"table": table.id, "tables_dir": str(table.dir.parent),
                       "players": {"A": a_spec, "B": b_spec},
                       "decision_timeout_s": decision_timeout_s or table.decision_timeout_s, "cwd": cwd,
-                      "record_actions": True, "run_key": rkey, "bot_env": bot_env or {}}
+                      "record_actions": True, "run_key": rkey, "bot_env": bot_env or {},
+                      "sandbox": sandbox}
             if training_log:
                 config["training_log"] = True
             recs = run_specs(config, h2h_specs(deck), workers,
@@ -402,6 +436,7 @@ def h2h(
         "seeds": {"tag": tag, "deals": len(deck), "offset": offset,
                   "public_range": table.public_range if tag == "public" else None},
         "rng_scheme": runkey.RNG_SCHEME,
+        "isolation": isolation,
         "verification": "verified" if verified else "unverified",
         "fairplay": fair_status,
         "pairs": pairs,
@@ -418,7 +453,7 @@ def h2h(
         results_dir.mkdir(parents=True, exist_ok=True)
         write_log(results_dir / result["log"], {"run_id": run_id, "table": table.id, "seed_tag": tag,
                                                 "command": result["command"], "engine": result["engine"],
-                                                "rng_scheme": runkey.RNG_SCHEME}, all_records, tag)
+                                                "rng_scheme": runkey.RNG_SCHEME, "isolation": isolation}, all_records, tag)
         (results_dir / (run_id + ".json")).write_text(json.dumps(result, indent=2, sort_keys=True) + "\n",
                                                       encoding="utf-8")
     return result
