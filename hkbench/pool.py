@@ -7,7 +7,8 @@ A *game spec* says which deal to play and which player sits at each seat::
 A *config* says how to build the players the specs name::
 
     {"table": "hk-hkma-v1", "tables_dir": None, "players": {"bot": "ref:ukeire", "f0": "ref:faan_aware", ...},
-     "decision_timeout_s": 10.0, "cwd": None, "record_actions": False}
+     "decision_timeout_s": 10.0, "cwd": None, "record_actions": False,
+     "training_log": False}
 
 Every worker builds its own players once and reuses them. Results do not depend on the number
 of workers: a game is a pure function of its spec and its players.
@@ -57,6 +58,7 @@ class Runtime:
             arrangement=spec["arrangement"],
             seed_key=spec.get("seed_key"),
             record_actions=self.config.get("record_actions", False),
+            training_log=self.config.get("training_log", False),
             check_invariants=self.config.get("check_invariants", False),
         )
         rec["seats"] = list(seats)

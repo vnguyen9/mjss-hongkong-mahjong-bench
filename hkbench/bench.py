@@ -108,6 +108,10 @@ def _deck(table: Table, deals: int, offset: int, private_seeds: Optional[str]) -
     return "public", table.public_deals(deals, offset)
 
 
+#: What ``--training-log`` adds to the record of a won game (``runner.winning_hand``).
+TRAINING_FIELDS = ("melds", "concealed", "winning_tile", "flowers", "winner_draws")
+
+
 def write_log(path: Path, header: Dict[str, Any], records: Sequence[Dict[str, Any]], tag: str) -> None:
     """One gzip JSON-lines file: a header, then one line per game.
 
@@ -122,6 +126,8 @@ def write_log(path: Path, header: Dict[str, Any], records: Sequence[Dict[str, An
             if tag == "private":
                 row.pop("seed", None)
                 row.pop("actions", None)
+                for field in TRAINING_FIELDS:  # never on a private deck: a hand names the deal
+                    row.pop(field, None)
             gz.write((json.dumps(row, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8"))
 
 
@@ -180,8 +186,10 @@ def score(
     decision_timeout_s: Optional[float] = None,
     write: bool = True,
     quiet: bool = False,
+    training_log: bool = False,
 ) -> Dict[str, Any]:
     tag, deck = _deck(table, deals, offset, private_seeds)
+    training_log = training_log and tag == "public"  # a private deck's log stays outcome-only
     fp, fair = check_before_scoring(table, spec, skip_fairplay=skip_fairplay, fairplay_points=fairplay_points,
                                     cwd=cwd, decision_timeout_s=decision_timeout_s)
     players = {"bot": spec}
@@ -190,6 +198,8 @@ def score(
     config = {"table": table.id, "tables_dir": str(table.dir.parent), "players": players,
               "decision_timeout_s": decision_timeout_s or table.decision_timeout_s, "cwd": cwd,
               "record_actions": True}
+    if training_log:
+        config["training_log"] = True
     records = run_specs(config, duplicate_specs(deck), workers,
                         None if quiet else stderr_progress("score %s" % meta["name"]))
     cap = table.profile.faan_cap
@@ -234,6 +244,8 @@ def score(
         "engine": engine_info(table, fp),
         "log": "logs/%s.jsonl.gz" % run_id,
     }
+    if training_log:
+        result["training_log"] = True
     if write:
         results_dir.mkdir(parents=True, exist_ok=True)
         write_log(results_dir / result["log"], {"run_id": run_id, "table": table.id, "bot": meta,
@@ -284,6 +296,7 @@ def h2h(
     resamples: int = 500,
     write: bool = True,
     quiet: bool = False,
+    training_log: bool = False,
 ) -> Dict[str, Any]:
     """Round robin. ``bots`` is a list of (display name, spec, meta)."""
     if len(bots) < 2:
@@ -292,6 +305,7 @@ def h2h(
     if len(set(names)) != len(names):
         raise ValueError("bot names must be different")
     tag, deck = _deck(table, deals, offset, private_seeds)
+    training_log = training_log and tag == "public"  # a private deck's log stays outcome-only
     fps = None
     fair_status = {}
     for name, spec, _meta in bots:
@@ -312,6 +326,8 @@ def h2h(
                       "players": {"A": a_spec, "B": b_spec},
                       "decision_timeout_s": decision_timeout_s or table.decision_timeout_s, "cwd": cwd,
                       "record_actions": True}
+            if training_log:
+                config["training_log"] = True
             recs = run_specs(config, h2h_specs(deck), workers,
                              None if quiet else stderr_progress("%s vs %s" % (a_name, b_name)))
             for r in recs:
@@ -363,6 +379,8 @@ def h2h(
         "engine": engine_info(table, fps),
         "log": "logs/%s.jsonl.gz" % run_id,
     }
+    if training_log:
+        result["training_log"] = True
     if write:
         results_dir.mkdir(parents=True, exist_ok=True)
         write_log(results_dir / result["log"], {"run_id": run_id, "table": table.id, "seed_tag": tag,

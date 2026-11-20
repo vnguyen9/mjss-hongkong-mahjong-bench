@@ -5,6 +5,9 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional
 
 from hkbench.engine.game import GameState
+from hkbench.engine.game_types import GameEventKind
+from hkbench.engine.tiles import bonus_name, tile_name
+from hkbench.engine.types import MeldKind
 from hkbench.engine.profile import RulesProfile
 from hkbench.players import Player
 from hkbench.seeds import splitmix64
@@ -20,6 +23,27 @@ def decision_seed(deal_seed: int, arrangement: int, seq: int) -> int:
     return out & 0x7FFFFFFF
 
 
+def winning_hand(state: GameState) -> Dict[str, Any]:
+    """The winner's hand at the end of a won game: what a training set wants beside the patterns.
+
+    ``melds`` are [kind, tiles, seat the claimed tile came from or null]; ``concealed`` is the winner's
+    concealed tiles with the winning tile in it; ``winning_tile`` is null for a flower win; ``winner_draws``
+    counts the winner's own draws from the engine's DRAW events.
+    """
+    winner = state.terminal.winner
+    player = state.players[winner]
+    wins = [e for e in state.events if e.kind == GameEventKind.WIN]
+    tile = wins[-1].tile_type if wins else None
+    return {
+        "melds": [[MeldKind(m.kind).name.lower(), [tile_name(t) for t in m.tiles], m.from_seat]
+                  for m in player.melds],
+        "concealed": [tile_name(t) for t, n in enumerate(player.concealed) for _ in range(n)],
+        "winning_tile": None if tile is None else tile_name(tile),
+        "flowers": [bonus_name(b) for b in player.flowers],
+        "winner_draws": sum(1 for e in state.events if e.kind == GameEventKind.DRAW and e.seat == winner),
+    }
+
+
 def play_game(
     table_id: str,
     profile: RulesProfile,
@@ -29,6 +53,7 @@ def play_game(
     arrangement: int,
     seed_key: Optional[int] = None,
     record_actions: bool = False,
+    training_log: bool = False,
     check_invariants: bool = False,
     on_decision=None,
 ) -> Dict[str, Any]:
@@ -39,6 +64,8 @@ def play_game(
     to ``arrangement``. Head-to-head games that mirror each other share a key, so a bot played
     against itself draws the same random numbers on both sides.
     ``on_decision(state, seat, msg)`` is called before each decision; the fair-play tests use it.
+    ``training_log`` adds the winner's melds, concealed tiles, winning tile, flowers and draw count to the
+    record of a won game (see ``winning_hand``). It is off by default and changes nothing else.
     """
     state = GameState.new_game(profile, seed=deal.seed, dealer=deal.dealer,
                                prevailing_wind=deal.prevailing_wind)
@@ -89,6 +116,8 @@ def play_game(
     if record_actions:
         rec["seed"] = deal.seed
         rec["actions"] = actions
+    if training_log and r.winner is not None:
+        rec.update(winning_hand(state))
     for seat, p in enumerate(players):
         msg = {"type": "game_over", "game_id": game_id, "cause": r.cause,
                "winner": None if r.winner is None else (r.winner - seat) % 4,

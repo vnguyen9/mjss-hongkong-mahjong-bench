@@ -35,6 +35,9 @@ def _common(p: argparse.ArgumentParser) -> None:
     p.add_argument("--timeout", type=float, default=None, help="seconds a bot may take per decision (default: the table's)")
     p.add_argument("--cwd", default=None, help="directory to start the bot in")
     p.add_argument("--no-write", action="store_true", help="print the result without writing files")
+    p.add_argument("--training-log", action="store_true",
+                   help="also put each won game's melds, concealed tiles, winning tile, flowers and the winner's "
+                        "draw count in the log, for training (public deals only; off by default)")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -134,7 +137,8 @@ def cmd_score(args, argv) -> int:
     result = bench.score(table, args.bot, meta, deals=args.deals, offset=args.offset, private_seeds=priv,
                          workers=args.workers, results_dir=Path(args.results_dir), argv=argv,
                          skip_fairplay=args.skip_fairplay, fairplay_points=args.fairplay_points, cwd=args.cwd,
-                         decision_timeout_s=args.timeout, write=not args.no_write)
+                         decision_timeout_s=args.timeout, write=not args.no_write,
+                         training_log=args.training_log)
     _print_result(result)
     if not args.no_write:
         print("wrote %s" % (Path(args.results_dir) / (result["run_id"] + ".json")))
@@ -155,7 +159,7 @@ def cmd_h2h(args, argv) -> int:
     result = bench.h2h(table, bots, deals=args.deals, offset=args.offset, private_seeds=priv, workers=args.workers,
                        results_dir=Path(args.results_dir), argv=argv, skip_fairplay=args.skip_fairplay,
                        fairplay_points=args.fairplay_points, cwd=args.cwd, decision_timeout_s=args.timeout,
-                       resamples=args.resamples, write=not args.no_write)
+                       resamples=args.resamples, write=not args.no_write, training_log=args.training_log)
     print("head to head on %s (%s deck, %s)" % (table.id, result["seeds"]["tag"], result["verification"]))
     for n, r in sorted(result["bradley_terry"].items(), key=lambda kv: -kv[1]["rating"]):
         print("  rank %d  %-20s rating %+7.1f  [%+.1f, %+.1f]" % (r["rank"], n, r["rating"], r["ci95"][0], r["ci95"][1]))
