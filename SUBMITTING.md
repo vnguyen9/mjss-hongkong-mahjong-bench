@@ -51,6 +51,17 @@ python -m hkbench score --table hk-hkma-v1 --private-seeds <deck> --bot "python 
 
 Each bot process gets its own container, with no network, a read-only file system apart from an empty `/tmp`, and the bot directory mounted read-only. When the bench stops the bot it sends the `docker run` wrapper SIGTERM (which Docker passes to the container) and then kills it, so the container and everything in it go with it. The deal deck, the run key and the bench's files are not in the container. This recipe has not been run against every image; the plumbing it relies on (a wrapper that forwards stdin and stdout, and is stopped with its process) is tested with a stand-in wrapper.
 
+**On a Mac without Docker:** `scripts/sandbox/macos.sh` runs each bot under `/usr/bin/sandbox-exec` with a profile made for that launch.
+
+```
+python -m hkbench score --table hk-hkma-v1 --private-seeds /path/to/deck.json --bot "python3 /bot/my_bot.py" --name my_bot \
+  --sandbox "scripts/sandbox/macos.sh --deny-read /path/to/deck.json --"
+```
+
+For each bot process it allows writes only to a new empty directory under a shared mode-0700 parent (`HOME`, `TMPDIR`, `TMP` and `TEMP` point at it, the bot starts in it unless you add `--keep-cwd`, and it is removed when the bot ends or is stopped, SIGTERM included). It denies the network, `fork` (so a bot cannot start a descendant, a daemon or a process in a new session, while `exec` still works), POSIX shared memory and Mach service registration, any read of the parent's other directories (other bots' scratch cannot be read, listed or stat-ed), and any read of each `--deny-read` path. `--allow-write PATH` opens a cache the bot needs; `--allow-fork` and `--allow-shm` lift those two denials if a bot cannot start without them. stdin and stdout go to the bot untouched.
+
+Limits, plainly. `sandbox-exec` is deprecated by Apple, though it still works. **Reads elsewhere on disk are still allowed**, so the private deck must be named with `--deny-read` and must not sit in a place the bot is meant to read (its program directory, its model files). The bot can still read the bench's own files and anything else the user can; only what you deny is closed. A torch-based bot starts and runs normally (`fork` and shared memory are not needed); OpenMP prints a harmless `OMP: Warning #179` line on stderr because it cannot create its file in `/tmp`. It costs about 30 percent of a cheap bot's speed (the Python example: 10.4 games a second native, 7.0 sandboxed, one worker), mostly process start-up.
+
 Without a sandbox a bot runs as a normal process of the same user. The bench gives it an empty scratch directory and a limited environment and kills its process group at the end of the game, which keeps honest bots honest. It does not stop a bot that means to cheat: another process of the same user can be reached through the file system, a process that starts a new session survives the kill, and the bot can see `game_over` after it has answered. That is why native private-deck runs are marked and are not official.
 
 ## 4. What we do with it
