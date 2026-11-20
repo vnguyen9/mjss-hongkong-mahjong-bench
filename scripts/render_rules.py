@@ -6,6 +6,7 @@ document cannot drift from the rules file.
 
     python scripts/render_rules.py hk-hkma-v1
     python scripts/render_rules.py hk-house-v1
+    python scripts/render_rules.py hk-chicken-v1
 """
 
 import json
@@ -89,6 +90,10 @@ def render(table_id: str) -> str:
     for faan in range(rules["win"]["minimum_faan"], rules["win"]["faan_cap"] + 1):
         base = table[faan]
         total = int(base * mult)
+        if faan == 0:
+            # A win by self-draw always scores Self-Drawn (1 faan), so a 0-faan win is always a discard win.
+            lines.append("| 0 (a chicken hand) | %d | not possible | not possible |" % base)
+            continue
         lines.append("| %d | %d | %d | %d |" % (faan, base, total // 3, total))
     return "\n".join(lines)
 

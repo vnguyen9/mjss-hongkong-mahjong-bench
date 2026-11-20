@@ -19,7 +19,7 @@ from hkbench import bench, site  # noqa: E402
 class RulesDocument(unittest.TestCase):
     def test_rules_md_tables_are_generated_from_the_rules_files(self):
         text = (ROOT / "RULES.md").read_text(encoding="utf-8")
-        for tid in ("hk-hkma-v1", "hk-house-v1"):
+        for tid in ("hk-hkma-v1", "hk-house-v1", "hk-chicken-v1"):
             m = re.search(r"<!-- rules:%s:begin -->\n(.*?)\n<!-- rules:%s:end -->" % (tid, tid), text, re.S)
             self.assertIsNotNone(m, tid)
             self.assertEqual(m.group(1), render(tid), "RULES.md is out of date for %s: run scripts/render_rules.py" % tid)
@@ -60,7 +60,7 @@ class Leaderboard(unittest.TestCase):
         data = json.loads((out / "leaderboard.json").read_text())
         self.assertEqual(data["schema"], "hkbench-leaderboard-1")
         self.assertEqual([t["id"] for t in data["tracks"]], ["bots", "llms", "humans"])
-        self.assertEqual({t["id"]: t["status"] for t in data["tables"]}, {"hk-hkma-v1": "active", "hk-house-v1": "active"})
+        self.assertEqual({t["id"]: t["status"] for t in data["tables"]}, {"hk-chicken-v1": "active", "hk-hkma-v1": "active", "hk-house-v1": "active"})
         self.assertEqual(len(data["rows"]), 2)
         for row in data["rows"]:
             for key in ("rank", "track", "table", "rules_track", "verification", "seed_tag", "ci95", "points_per_hand", "games"):

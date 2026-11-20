@@ -1,0 +1,143 @@
+{
+  "profile_id": "hk-chicken-v1",
+  "version": 1,
+  "description": "Chicken-hand rules, 13-tile Hong Kong Mahjong. The same as HKMA Classical (cap 10, flowers do not score, no Seven Pairs, the discarder pays the whole hand) except that a complete hand with no scoring pattern, a chicken hand, may win: the minimum is 0 faan. Faan still score and pay as usual, and a chicken hand pays the 0-faan row. Points are one quarter of the rulebook's. See RULES.md.",
+  "derived_from": {
+    "profile": "hk-hkma-v1",
+    "rules_hash": "43e4e01c50dce4d3",
+    "change": "win.minimum_faan is 0 instead of 3: the only change. A chicken hand (a complete hand with no scoring pattern) may win and pays the 0-faan row."
+  },
+  "win": {
+    "minimum_faan": 0,
+    "faan_cap": 10,
+    "seven_pairs": false,
+    "multiple_winners": false
+  },
+  "claims": {
+    "priority": [
+      "win",
+      "pong_kong",
+      "chow"
+    ],
+    "pong_kong_same_class": true,
+    "one_winner_seat_order": "after_discarder"
+  },
+  "payments": {
+    "discarder_pays": "all",
+    "self_draw_multiplier": 1.5,
+    "require_zero_sum": true,
+    "table": {
+      "0": 1,
+      "1": 2,
+      "2": 4,
+      "3": 8,
+      "4": 16,
+      "5": 24,
+      "6": 32,
+      "7": 48,
+      "8": 64,
+      "9": 96,
+      "10": 128,
+      "11": 192,
+      "12": 256,
+      "13": 384
+    }
+  },
+  "patterns": {
+    "common_hand": 1,
+    "fully_concealed": 1,
+    "self_draw": 1,
+    "dragon_pong": 1,
+    "seat_wind": 1,
+    "prevailing_wind": 1,
+    "mixed_orphans": 1,
+    "rob_kong": 1,
+    "kong_replacement": 1,
+    "last_tile": 1,
+    "mixed_one_suit": 3,
+    "all_pong": 3,
+    "small_dragons": 3,
+    "great_dragons": 5,
+    "pure_one_suit": 7,
+    "all_honors": 10,
+    "small_winds": 10,
+    "great_winds": 10,
+    "four_concealed_pongs": 10,
+    "all_kongs": 10,
+    "pure_orphans": 10,
+    "heavenly_hand": 10,
+    "earthly_hand": 10,
+    "thirteen_orphans": 10,
+    "double_kong": 10,
+    "nine_gates": 10
+  },
+  "flowers": {
+    "seat_flower": 0,
+    "seat_season": 0,
+    "no_flowers": 0,
+    "all_flowers": 0,
+    "all_seasons": 0,
+    "seven_flowers": 0,
+    "eight_flowers": 0
+  },
+  "flower_rules": {
+    "recursive_replacement": true,
+    "replacement_from": "rear_wall",
+    "check_seven_eight_during_deal": false,
+    "check_seven_eight_during_replacement": false
+  },
+  "exclusions": {
+    "limit_hands": [
+      "all_honors",
+      "four_concealed_pongs",
+      "pure_orphans",
+      "nine_gates",
+      "great_winds",
+      "thirteen_orphans",
+      "all_kongs",
+      "heavenly_hand",
+      "earthly_hand"
+    ],
+    "implied": {
+      "four_concealed_pongs": [
+        "all_pong",
+        "fully_concealed"
+      ],
+      "all_kongs": [
+        "all_pong"
+      ],
+      "pure_orphans": [
+        "all_pong",
+        "mixed_orphans"
+      ],
+      "great_winds": [
+        "all_pong"
+      ],
+      "thirteen_orphans": [
+        "fully_concealed"
+      ],
+      "nine_gates": [
+        "pure_one_suit",
+        "fully_concealed"
+      ]
+    },
+    "flower_set_no_stack_seat": true
+  },
+  "wall": {
+    "dead_wall_tiles": 0,
+    "flower_replacement": true,
+    "kong_replacement": true,
+    "replacement_end": "rear"
+  },
+  "scoring": {
+    "pass_winning_tile": true,
+    "wait_sensitive_decomposition": true
+  },
+  "tiles": {
+    "regular_types": 34,
+    "copies_per_regular": 4,
+    "bonus_tiles": 8,
+    "total": 144,
+    "instance_ids": "0-143"
+  }
+}

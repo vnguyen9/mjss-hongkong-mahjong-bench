@@ -100,7 +100,7 @@ def build(results_dir: Path, out_dir: Path) -> Path:
     _rank(rows)
     rows.sort(key=lambda r: (r["table"], r["track"], r["seed_tag"], -r["points_per_hand"]))
     tables = []
-    for t in list_tables():
+    for t in sorted(list_tables(), key=lambda t: (t.data.get("released", ""), t.id)):  # in the order they were released
         tables.append({
             "id": t.id, "title": t.data["title"], "rules_track": t.rules_track, "status": t.status,
             "summary": t.data["summary"], "pending_reason": t.data.get("pending_reason"),

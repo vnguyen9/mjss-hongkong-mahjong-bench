@@ -1,12 +1,12 @@
 # Rules
 
-Two tables, one engine. This file is what each table plays, in full, and where `hk-hkma-v1` is **not** the HKMA rulebook.
+Three tables, one engine. This file is what each table plays, in full, and where `hk-hkma-v1` is **not** the HKMA rulebook.
 
 The rulebook is the Hong Kong Mahjong Association's *Hong Kong Mahjong (Classical Mahjong)*, latest version 17 May 2023, pp.20 to 24 (score calculation, the faan list, the Faan-to-Score table). The numbers below were checked against it by hand.
 
-## How a hand is played (both tables)
+## How a hand is played (every table)
 
-* **13-tile Hong Kong Mahjong.** 144 tiles: 4 each of 27 suit tiles and 7 honour tiles, and 8 flowers and seasons. Four players. A winning hand is four melds and a pair, or Thirteen Orphans. Seven Pairs is not a hand in `hk-hkma-v1`.
+* **13-tile Hong Kong Mahjong.** 144 tiles: 4 each of 27 suit tiles and 7 honour tiles, and 8 flowers and seasons. Four players. A winning hand is four melds and a pair, or Thirteen Orphans. Seven Pairs is not a hand in `hk-hkma-v1` or `hk-chicken-v1`.
 * **One game is one hand.** The bench plays single hands. Each deal fixes the dealer and the prevailing wind (`dealer = deal number mod 4`, `prevailing wind = (deal number / 4) mod 4`). There is no dealer rotation, no match score and no penalty system.
 * **The deal.** The dealer is East and discards first, after drawing a 14th tile. Each seat is dealt 13 tiles.
 * **Opening flowers.** After the deal, flowers and seasons in the opening hands are shown and replaced with tiles from the back of the wall. The dealer replaces first, then the next seat, and so on in turn order. Each seat keeps replacing until it holds no flower (a replacement that is a flower is replaced again), and the rounds repeat until no seat holds one.
@@ -14,7 +14,7 @@ The rulebook is the Hong Kong Mahjong Association's *Hong Kong Mahjong (Classica
 * **Turns.** Draw, then win, declare a kong, or discard. Concealed and added kongs are declared on your own turn and draw a replacement from the back of the wall.
 * **Claims on a discard.** Win beats pong and kong; pong and kong beat chow. A chow can only be claimed from the player who acts just before you. Two players who can win on the same tile: only the nearest after the discarder wins. A fourth tile added to a pong can be robbed by a player who wins on it.
 * **No dead wall.** The hand ends in a draw when there is no tile left to draw. A draw pays nothing. The very last discard can still be claimed.
-* **Winning needs the minimum faan.** The win action is only offered when the hand is complete and reaches the table's minimum. A bot cannot make a false win.
+* **Winning needs the minimum faan.** The win action is only offered when the hand is complete and reaches the table's minimum (3 faan on HKMA and House, 0 on `hk-chicken-v1`). A bot cannot make a false win.
 * **Counting.** The hand is scored in the way that gives the most faan. Every faan item that applies is counted (rulebook: the Total Compound Principle), except where a limit hand replaces them. The total is capped, then looked up in the payment table.
 * **Concealed kongs are shown** to every player in the protocol (at a real table they are placed in the meld area).
 
@@ -183,3 +183,73 @@ Minimum to win: **3 faan**. Cap: **13 faan**.
 * **Payout.** Same as HKMA: the discarder pays the whole hand, self-draw is 1.5 times, split three ways. The table values are the same as `hk-hkma-v1`'s and continue to 13 faan.
 * **Flowers score.** One faan for the player's own seat flower or season, one for having none, two for all four flowers or all four seasons, three for seven, and eight is a limit hand worth 13.
 * **Same engine.** House does not claim to be the rulebook, but the engine behaves the same way: there is no 包, and gaps 2 to 11 above describe it too.
+
+## `hk-chicken-v1`: Chicken hand
+
+HKMA Classical with exactly one change: **the minimum to win is 0 faan.** A complete hand with no scoring pattern, a chicken hand (雞糊, "chicken win"), wins, and everything else is as on `hk-hkma-v1`: cap 10, flowers score nothing, no Seven Pairs, the discarder pays the whole hand, the same faan values and the same payment table. The rules file is `tables/hk-chicken-v1/rules.json`, and it says in `derived_from` that it came from `hk-hkma-v1` (rules hash 43e4e01c50dce4d3) and what changed.
+
+Why it is here: a table where any complete hand may win plays differently from one with a 3-faan bar, because a hand is never stuck below the minimum and a cheap win is always available. It shows whether a bot, a model or a person is built for a 3-faan game or can play the quick game too. It is **not** the no-minimum "hit and run" game where every win pays the same: here a 3-faan hand still pays 8, a limit hand 128, and a chicken hand 1, so building a big hand still pays.
+
+<!-- rules:hk-chicken-v1:begin -->
+Minimum to win: **0 faan**. Cap: **10 faan**.
+
+| Faan item | Faan |
+|---|---|
+| All Sequences | 1 |
+| Closed Hand | 1 |
+| Self-Drawn | 1 |
+| Triplet of Dragons (each triplet) | 1 |
+| Triplet of the player's own wind | 1 |
+| Triplet of the prevailing wind | 1 |
+| All Terminals and Honours (all triplets) | 1 |
+| Robbing a Kong | 1 |
+| Win on the replacement tile after a kong | 1 |
+| Last Tile from the Wall | 1 |
+| Semi-Flush (one suit plus honours) | 3 |
+| All Triplets | 3 |
+| Small Dragons | 3 |
+| Big Dragons | 5 |
+| Flush (one suit, no honours) | 7 |
+| All Honours \* | 10 |
+| Small Winds | 10 |
+| Big Winds \* | 10 |
+| All Concealed Triplets \* | 10 |
+| All Quads \* | 10 |
+| All Terminals \* | 10 |
+| Bless of Heaven (dealer wins on the first draw) \* | 10 |
+| Bless of Earth (win on the dealer's first discard) \* | 10 |
+| Thirteen Orphans \* | 10 |
+| After Consecutive Kan | 10 |
+| Nine Gates \* | 10 |
+
+\* Limit hand. Only this item counts, plus Self-Drawn, Last Tile from the Wall, Robbing a Kong and the kong items.
+
+| Flower item | Faan |
+|---|---|
+| Flower matching the player's seat | 0 |
+| Season matching the player's seat | 0 |
+| No flowers or seasons | 0 |
+| All four flowers | 0 |
+| All four seasons | 0 |
+| Seven flowers or seasons (instant win) | 0 |
+| Eight flowers and seasons (instant win) | 0 |
+
+| Faan | Discarder pays everything | Self-drawn: each of the three pays | Self-drawn: winner collects |
+|---|---|---|---|
+| 0 (a chicken hand) | 1 | not possible | not possible |
+| 1 | 2 | 1 | 3 |
+| 2 | 4 | 2 | 6 |
+| 3 | 8 | 4 | 12 |
+| 4 | 16 | 8 | 24 |
+| 5 | 24 | 12 | 36 |
+| 6 | 32 | 16 | 48 |
+| 7 | 48 | 24 | 72 |
+| 8 | 64 | 32 | 96 |
+| 9 | 96 | 48 | 144 |
+| 10 | 128 | 64 | 192 |
+<!-- rules:hk-chicken-v1:end -->
+
+* **What counts as a chicken hand.** Four melds and a pair that score no faan item at all: not all sequences, not all triplets, no dragon triplet, no triplet of the player's own wind or the prevailing wind, no flush, no limit hand, and flowers score nothing. Self-Drawn and Closed Hand are one faan each, so a chicken hand is always won on a discard, with at least one meld claimed from another player. A hand that is not complete is still not a win: a lower minimum does not make Seven Pairs, or a hand one tile short, a hand.
+* **Payout.** The discarder pays 1 point for a chicken hand (the 0-faan row of the same table), and the rest as on HKMA: 8 for 3 faan up to 128 at the cap.
+* **Same engine, same gaps.** Gaps 1 to 11 above describe this table too.
+* **The reference field is the same three bots, unchanged.** They take a win whenever the engine offers one, so on this table they declare a chicken hand, and they read the table's rules, so what counts as a hand ready to win moves with the minimum.

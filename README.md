@@ -6,12 +6,13 @@ The headline number is **points a hand against a frozen field of reference bots*
 
 This repository holds the rules engine, the scorer and the harness. It is MIT licensed and contains no private artifacts.
 
-## Two rule sets
+## Three rule sets
 
 | Table | Rules | State |
 |---|---|---|
 | `hk-hkma-v1` | HKMA Classical: 3 faan to win, cap 10, discarder pays the whole hand, flowers do not score | scoring |
 | `hk-house-v1` | House: flowers score, limit hands graded, cap 13, Seven Pairs is a hand | scoring |
+| `hk-chicken-v1` | Chicken hand: HKMA Classical with a 0-faan minimum, so a hand with no scoring pattern wins; faan still score and pay | scoring |
 
 HKMA Classical is the headline because it has a citable rulebook. `RULES.md` lists every faan value, the payout, and the places where `hk-hkma-v1` is not the rulebook.
 

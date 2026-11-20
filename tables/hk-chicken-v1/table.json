@@ -1,0 +1,43 @@
+{
+  "id": "hk-chicken-v1",
+  "version": 1,
+  "status": "active",
+  "title": "Hong Kong Mahjong, Chicken hand",
+  "rules_track": "Chicken hand",
+  "summary": "13-tile Hong Kong Mahjong, chicken-hand rules. The same as HKMA Classical (cap 10, the discarder pays the whole hand, flowers do not score, no Seven Pairs) except that the minimum is 0 faan: a complete hand with no scoring pattern may win, and pays the 0-faan row. RULES.md has the full table.",
+  "rules": "rules.json",
+  "rules_sha256": "d577a8f1e4a0275cad62c974a534a75f6e87789e88772cebf414290368f9e0e5",
+  "source_profile": "hkma_classical_v1 with a minimum of 0 faan",
+  "field": [
+    {
+      "bot": "faan_aware",
+      "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+    },
+    {
+      "bot": "ukeire",
+      "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+    },
+    {
+      "bot": "deficiency",
+      "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+    }
+  ],
+  "field_note": "The same three scripted bots as hk-hkma-v1, which read only their own seat view. They take a win whenever the engine offers one, so on this table they declare a chicken hand, and they read the table's rules, so what counts as a ready hand moves with the minimum. The scored bot takes one seat and the field fills the other three in this order, starting with the seat after the scored bot.",
+  "seeds": {
+    "public": {
+      "start": 3000000,
+      "count": 100000
+    },
+    "private": "The scored deck is private. Give its path with --private-seeds or the HKBENCH_PRIVATE_SEEDS environment variable. It must not overlap the public range."
+  },
+  "schedule": "deal i has dealer i % 4 and prevailing wind (i // 4) % 4; every deal is played four times, the scored bot taking each seat once",
+  "timeouts": {
+    "decision_s": 10,
+    "handshake_s": 30
+  },
+  "faults": {
+    "max_per_1000_decisions": 1
+  },
+  "fingerprint": "fingerprint.json",
+  "released": "2026-11-19"
+}
