@@ -96,6 +96,16 @@ class TrainingLog(unittest.TestCase):
         bench.write_log(path, {"h": 1}, [{"winner": 0, "melds": [], "concealed": ["m1"], "seed": 5}], "private")
         self.assertEqual(read_log(path)[1], [{"winner": 0}])
 
+    def test_the_run_key_is_not_in_a_training_log_or_its_result(self):
+        key = bytes(range(100, 132))
+        r = bench.score(TABLE, "ref:ukeire", meta("ref:ukeire"), deals=3, results_dir=self.tmp / "keyed",
+                        skip_fairplay=True, quiet=True, training_log=True, run_key=key)
+        blobs = [(self.tmp / "keyed" / (r["run_id"] + ".json")).read_bytes(),
+                 gzip.decompress((self.tmp / "keyed" / r["log"]).read_bytes())]
+        for blob in blobs:
+            for form in (key, key.hex().encode(), repr(key).encode()):
+                self.assertNotIn(form, blob)
+
     def test_the_command_line_flag(self):
         out_dir = self.tmp / "cli"
         code, out, _ = run_cli("score", "--table", "hk-hkma-v1", "--bot", "ref:ukeire", "--deals", "3",

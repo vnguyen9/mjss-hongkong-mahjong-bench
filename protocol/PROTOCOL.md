@@ -33,7 +33,7 @@ The bench sends **only what that seat could see at a real table**: its own conce
 Players are numbered relative to you: `0` you, `1` the player who acts after you, `2` across, `3` the player who acts before you. Only player 1 may claim your discards as a chow.
 
 ```json
-{"protocol":"hkbench-1","type":"decide","table":"hk-hkma-v1","game_id":"hk-hkma-v1/d17/a2","seq":7,
+{"protocol":"hkbench-1","type":"decide","table":"hk-hkma-v1","game_id":"3f9c0a52e1d84b7aa6c5d20817be94f0","seq":7,
  "rng_seed":1396672242,"phase":"turn","prevailing_wind":0,"dealer":2,"wall_remaining":84,
  "you":{"seat_wind":2,"hand":[1,0,0,0,0,0,0,0,0,1,0,1,1,0,0,0,0,1,0,1,0,0,0,1,0,2,1,0,1,1,0,1,0,1],
         "drawn":31,"draw_kind":"wall","melds":[],"flowers":[3]},
@@ -50,9 +50,9 @@ Players are numbered relative to you: `0` you, `1` the player who acts after you
 
 | Field | Meaning |
 |---|---|
-| `game_id` | Names the hand. Do not rely on its format. |
+| `game_id` | A random-looking token that names the hand within this game. It means nothing: it holds no deal number, seat or table, and it is not the same from run to run on a private deck. Do not parse it. |
 | `seq` | Counts every decision in the hand across all seats. Echo it back. |
-| `rng_seed` | A number below 2^31. **Use it for any randomness.** |
+| `rng_seed` | A number below 2^31. **Use it for any randomness.** It is a keyed hash (HMAC-SHA256) of the decision under a key the bench keeps to itself, so it tells you nothing about the deal. On a private deck the key is new every run. |
 | `phase` | `turn`: you act on your own hand. `claim`: a tile was discarded (or added to a kong) and you may react. |
 | `prevailing_wind`, `dealer` | Winds are 0 East, 1 South, 2 West, 3 North. `dealer` is the dealer's player number relative to you, so `0` means you deal. |
 | `wall_remaining` | Tiles left to draw. |
@@ -112,7 +112,7 @@ After a claim that is not a win, the claimer is asked for a `turn` with `drawn: 
 ### game_over
 
 ```json
-{"type":"game_over","game_id":"hk-hkma-v1/d17/a2","cause":"win","winner":1,"discarder":3,"faan":4,"patterns":[["all_pong",3],["dragon_pong",1]],"payment":-16}
+{"type":"game_over","game_id":"3f9c0a52e1d84b7aa6c5d20817be94f0","cause":"win","winner":1,"discarder":3,"faan":4,"patterns":[["all_pong",3],["dragon_pong",1]],"payment":-16}
 ```
 
 `cause` is `win` or `exhaustive` (the wall ran out). `winner` and `discarder` are player numbers relative to you, or `null`. `payment` is your points. No answer.
@@ -133,10 +133,12 @@ Illegal means: not an integer, not in `legal`, or a `seq` that does not match. P
 
 A bot must be a **pure function of the `decide` message**. The same message must always get the same answer. If you need randomness, seed it from `rng_seed`. Do not read the clock, files, the network, or your own earlier messages to decide.
 
+Every game gets a **new process**. The bench starts your bot for each seat of each game and stops it when the game ends, so nothing it learns in one game can carry into the next. It starts with only `PATH`, `HOME`, `LANG`, `LC_*`, `TMPDIR` and (on Windows) `SYSTEMROOT` in its environment, plus any variable the run names with `--bot-env`. Nothing of the bench's own (`HKBENCH_*`, the path of the private deck) is passed.
+
 Before a bot is scored, the bench takes real decision points, re-deals every hidden tile (other players' concealed hands and the whole wall) so that the seat's view is unchanged, and asks again. A bot whose answer changes is rejected. The same check runs on your machine:
 
 ```
 python -m hkbench fairplay --table hk-hkma-v1 --bot "python examples/bots/python_bot.py"
 ```
 
-The check also confirms that the message the bench builds is byte-identical for every re-deal.
+The check also confirms that the message the bench builds is byte-identical for every re-deal. The check's messages carry a `game_id` and `rng_seed` made the way a real game's are, and each ask goes to a fresh process that has first been shown that seat's earlier decisions in the game, so a bot cannot tell the check from a game.

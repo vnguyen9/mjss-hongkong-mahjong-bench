@@ -11,7 +11,7 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List
 
-from hkbench import __version__, stats
+from hkbench import __version__, runkey, stats
 from hkbench.tables import list_tables
 
 SCHEMA = "hkbench-leaderboard-1"
@@ -38,6 +38,7 @@ def _rows(results_dir: Path) -> List[Dict[str, Any]]:
             "rules_track": r["table"]["rules_track"],
             "bot": {k: r["bot"][k] for k in ("name", "kind", "trained_on", "sha256", "description")},
             "verification": r["verification"],
+            "rng_scheme": runkey.scheme_of(r),
             "seed_tag": r["seeds"]["tag"],
             "points_per_hand": h["points_per_hand"],
             "se": h["se"],

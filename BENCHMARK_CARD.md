@@ -40,6 +40,8 @@ The field is pinned: `tables/hk-hkma-v1/table.json` holds a hash of each bot's s
 
 Why these three. We ran the maintainers' scripted bots against one strong opponent (4,608 games each) and kept the strongest that read only their own view. `faan_aware` was clearly ahead of the rest. `shallow_search` and `ukeire` finished level within noise, and `shallow_search` costs about 100 times the time, so it is a baseline row and not in the field. `wait_aware` scored higher than any of them but it reads other players' hidden hands, so it is not shipped. `kstep2` plays identically to `ukeire`, so it is not listed.
 
+**Seed scheme.** Every row in this card and on the board was scored under 1.0.0's seeds (`splitmix-v1`, see "What a bot is sent"). They stay as they are until each is re-scored under 1.1.0 (`hmac-sha256-v2`) on a new private deck. The public rows will move a little, because a bot that draws from `rng_seed` now draws other numbers. No third-party bot had played the private deck.
+
 Baseline rows on `hk-hkma-v1` (public deals, so **unverified**; points a hand against the field with a 95% interval):
 
 | Bot | Points a hand | 95% interval | Win | Deal-in | Deals |
@@ -105,7 +107,7 @@ The bench's seat view is turned into `Fu-2.3M-HKMA-1`'s own observation by a wra
 ## Deals
 
 * **Public deals.** Deals 0 to 99,999 of each table's public deck are in the repository (the seed is computed from the table's public range). Anyone can reproduce a row on them. A run on public deals is tagged **unverified**.
-* **Private deals.** The deck used for scored rows is private. It is read from a file outside the repository (`--private-seeds` or `HKBENCH_PRIVATE_SEEDS`), is refused if it overlaps the public range, and is never committed. A run on private deals that also passed the fair-play check and made no excess faults is tagged **verified**. The log of a private run holds each game's outcome by deal number, and no deal, wall or action, so publishing it does not reveal the deck.
+* **Private deals.** The deck used for scored rows is private. It is read from a file outside the repository (`--private-seeds` or `HKBENCH_PRIVATE_SEEDS`), is refused if it overlaps the public range, and is never committed. Make it with `scripts/make_private_deck.py`: independent random 64-bit seeds, no start and count (a deck in that form is refused, because one guessed seed would give every deal). A run on private deals that also passed the fair-play check and made no excess faults is tagged **verified**. The log of a private run holds each game's outcome by deal number, and no deal, wall or action, so publishing it does not reveal the deck.
 * **Schedule.** Deal `i` has dealer `i mod 4` and prevailing wind `(i / 4) mod 4`. A deal is a 144-tile wall from a 64-bit seed with the bench's own shuffle, the same on every Python version.
 
 A private deck wears out if it is reused many times: results on it can be tuned against. Retire it and make a new one when a table is superseded, or when a bot has been scored on it enough times to matter.
@@ -115,6 +117,10 @@ A private deck wears out if it is reused many times: results on it can be tuned 
 The four games of a deal share a wall, and the six games of a head-to-head deal share a wall. They are not independent. Every interval therefore uses **one number per deal**, then the standard error of those numbers (Student's t, 95%). This is tested on synthetic data where the answer is known (`tests/test_stats.py`), including a case where treating games as independent is wrong by a factor of about two.
 
 Bradley-Terry ratings use game outcomes (win, loss, or half for a draw or a hand that nets to nothing) and resample whole deals within each pair for the intervals.
+
+## What a bot is sent
+
+A bot is sent its seat's view and two identifiers, and neither reveals the deal. `rng_seed` is the low 31 bits of an HMAC-SHA256 of the table, deal number, arrangement and decision number under a run key; `game_id` is another HMAC of the same inputs, as 32 hex digits. The key is 32 random bytes per private run, held only by the bench's processes and never written to a result, a log or the environment. A public run uses a fixed, public key so it repeats exactly. Version 1.0.0 derived `rng_seed` from the deal's seed and named the deal in `game_id`, so a bot could rebuild the private wall; see `CHANGELOG.md`. Every bot that is a program is started fresh for every seat of every game, with an environment limited to `PATH`, `HOME`, `LANG`, `LC_*`, `TMPDIR` and `SYSTEMROOT` plus what the run names, so it cannot carry anything from one game to the next. This closes the channels inside the protocol. A bot that can read the bench's files or memory as the same operating-system user is outside what the protocol can stop; submitted bots run in a container without the deck.
 
 ## Fair play
 
@@ -140,7 +146,7 @@ The check does not stop a bot from being run with more thinking time, tools or h
 
 ## Results format
 
-One JSON per scored run in `results/` (schema `hkbench-result-1`) and a gzip JSON-lines log of every game in `results/logs/`. A result records the bot and its hash, the table, the rules hash, the field hashes, the deal tag and count, verification, the fair-play outcome, faults, the exact command, and the engine fingerprint. Public-deck logs carry each deal's seed and every action, and `hkbench verify-log` replays them.
+One JSON per scored run in `results/` (schema `hkbench-result-1`) and a gzip JSON-lines log of every game in `results/logs/`. A result records its seed scheme (`rng_scheme`: `hmac-sha256-v2`, or `splitmix-v1` for a file made before 1.1.0, which has no such field), the bot and its hash, the table, the rules hash, the field hashes, the deal tag and count, verification, the fair-play outcome, faults, the exact command, and the engine fingerprint. Public-deck logs carry each deal's seed and every action, and `hkbench verify-log` replays them.
 
 ## Maintenance
 

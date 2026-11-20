@@ -1,7 +1,7 @@
 """A deliberately dishonest bot, for the fair-play tests only. It lives in tests/, not examples/.
 
 The protocol gives a bot only its own seat's view, so this bot needs a second channel: the test
-harness writes the other seats' concealed hands to the file named by HKBENCH_TEST_LEAK before every
+harness writes the other seats' concealed hands to the file named by CHEAT_TEST_LEAK before every
 decision. The bot reads that file. It never discards a tile any opponent could win on, and among
 the safe tiles it throws the one the opponents hold the most of.
 """
@@ -20,7 +20,7 @@ def decide(msg):
         return 1
     if msg["phase"] == "claim":
         return 0
-    with open(os.environ["HKBENCH_TEST_LEAK"]) as f:
+    with open(os.environ["CHEAT_TEST_LEAK"]) as f:
         hands = json.load(f)["hands"]
     live = set()
     held = [0] * 34

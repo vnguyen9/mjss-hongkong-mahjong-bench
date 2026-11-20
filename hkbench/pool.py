@@ -8,10 +8,13 @@ A *config* says how to build the players the specs name::
 
     {"table": "hk-hkma-v1", "tables_dir": None, "players": {"bot": "ref:ukeire", "f0": "ref:faan_aware", ...},
      "decision_timeout_s": 10.0, "cwd": None, "record_actions": False,
-     "training_log": False}
+     "training_log": False, "run_key": b"...", "bot_env": {}}
 
-Every worker builds its own players once and reuses them. Results do not depend on the number
-of workers: a game is a pure function of its spec and its players.
+``run_key`` is the run's key (``hkbench.runkey``); it stays in the runner's processes. A reference
+bot (``ref:``) runs in the worker and is built once. A bot that is a program is started afresh for
+every seat of every game and stopped when the game ends, so nothing it learns in one game reaches the
+next, and no program is ever shared between two seats. Results do not depend on the number of
+workers: a game is a pure function of its spec and its players.
 """
 
 from __future__ import annotations
@@ -22,13 +25,14 @@ import time
 import traceback
 from typing import Any, Callable, Dict, List, Optional
 
+from hkbench import runkey
 from hkbench.players import Player, make_player
 from hkbench.runner import play_game
 from hkbench.tables import Deal, load_table
 
 
 class Runtime:
-    """The players one process holds."""
+    """What one process needs to play games: the table, and the reference bots it runs in-process."""
 
     def __init__(self, config: Dict[str, Any]) -> None:
         from pathlib import Path
@@ -37,39 +41,52 @@ class Runtime:
         tables_dir = Path(config["tables_dir"]) if config.get("tables_dir") else None
         self.table = load_table(config["table"], tables_dir)
         self.profile = self.table.profile
-        self.players: Dict[str, Player] = {}
-        try:
-            for key, spec in config["players"].items():
-                self.players[key] = make_player(
-                    spec, self.table.id, self.profile,
-                    decision_timeout_s=config.get("decision_timeout_s", self.table.decision_timeout_s),
-                    cwd=config.get("cwd"),
-                )
-        except BaseException:
-            self.close()
-            raise
+        self.run_key: bytes = config.get("run_key", runkey.PUBLIC_RUN_KEY)
+        self.local: Dict[str, Player] = {}
+        for key, spec in config["players"].items():
+            if spec.startswith("ref:"):
+                self.local[key] = make_player(spec, self.table.id, self.profile)
+
+    def _fresh_player(self, key: str) -> Player:
+        return make_player(
+            self.config["players"][key], self.table.id, self.profile,
+            decision_timeout_s=self.config.get("decision_timeout_s", self.table.decision_timeout_s),
+            cwd=self.config.get("cwd"), env=self.config.get("bot_env"),
+        )
 
     def play(self, spec: Dict[str, Any]) -> Dict[str, Any]:
         index, seed, dealer, wind = spec["deal"]
         seats = spec["seats"]
-        rec = play_game(
-            self.table.id, self.profile, Deal(index, seed, dealer, wind),
-            [self.players[k] for k in seats],
-            arrangement=spec["arrangement"],
-            seed_key=spec.get("seed_key"),
-            record_actions=self.config.get("record_actions", False),
-            training_log=self.config.get("training_log", False),
-            check_invariants=self.config.get("check_invariants", False),
-        )
+        started: List[Player] = []
+        try:
+            players: List[Player] = []
+            for k in seats:
+                if k in self.local:
+                    players.append(self.local[k])
+                else:
+                    p = self._fresh_player(k)
+                    started.append(p)
+                    players.append(p)
+            rec = play_game(
+                self.table.id, self.profile, Deal(index, seed, dealer, wind), players,
+                arrangement=spec["arrangement"],
+                seed_key=spec.get("seed_key"),
+                run_key=self.run_key,
+                record_actions=self.config.get("record_actions", False),
+                training_log=self.config.get("training_log", False),
+                check_invariants=self.config.get("check_invariants", False),
+            )
+        finally:
+            for p in started:
+                try:
+                    p.close()
+                except Exception:
+                    pass
         rec["seats"] = list(seats)
         return rec
 
     def close(self) -> None:
-        for p in self.players.values():
-            try:
-                p.close()
-            except Exception:
-                pass
+        pass
 
 
 def _worker_main(config: Dict[str, Any], tasks, results) -> None:

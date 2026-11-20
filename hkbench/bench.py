@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
-from hkbench import __version__, fairplay, fingerprint, stats
+from hkbench import __version__, fairplay, fingerprint, runkey, stats
 from hkbench.agents.registry import REFERENCE_BOTS
 from hkbench.pool import run_specs, stderr_progress
 from hkbench.tables import Deal, Table, reference_bot_hash, sha256_file
@@ -102,6 +102,13 @@ def reproduce_command(argv: Sequence[str], private_seeds: Optional[str]) -> str:
     return " ".join(shlex.quote(a) for a in ["hkbench"] + args)
 
 
+def _run_key(tag: str, given: Optional[bytes]) -> bytes:
+    """The key for this run: the public one for a public deck (so it repeats), a fresh secret for a private one."""
+    if given is not None:
+        return given
+    return runkey.PUBLIC_RUN_KEY if tag == "public" else runkey.new_run_key()
+
+
 def _deck(table: Table, deals: int, offset: int, private_seeds: Optional[str]) -> Tuple[str, List[Deal]]:
     if private_seeds:
         return "private", table.private_deals(private_seeds, deals, offset)
@@ -139,14 +146,17 @@ def _fault_check(table: Table, decisions: int, faults: Dict[str, int]) -> Dict[s
 
 
 def check_before_scoring(table: Table, spec: str, *, skip_fairplay: bool, fairplay_points: int,
-                         cwd: Optional[str], decision_timeout_s: Optional[float]) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+                         cwd: Optional[str], decision_timeout_s: Optional[float],
+                         run_key: bytes = runkey.PUBLIC_RUN_KEY,
+                         bot_env: Optional[Dict[str, str]] = None) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     """The gate every score or match passes first: field pins, engine fingerprint, fair play."""
     table.require_active()
     table.verify_field()
     fp = fingerprint.verify(table)
     if skip_fairplay:
         return fp, {"status": "skipped"}
-    rep = fairplay.check(table, spec, points=fairplay_points, cwd=cwd, decision_timeout_s=decision_timeout_s)
+    rep = fairplay.check(table, spec, points=fairplay_points, cwd=cwd, decision_timeout_s=decision_timeout_s,
+                         run_key=run_key, bot_env=bot_env)
     rep["status"] = "passed" if rep["passed"] else "failed"
     if not rep["passed"]:
         raise Rejected("fair-play check failed for %s: %s" % (spec, json.dumps(rep, sort_keys=True)))
@@ -187,17 +197,21 @@ def score(
     write: bool = True,
     quiet: bool = False,
     training_log: bool = False,
+    bot_env: Optional[Dict[str, str]] = None,
+    run_key: Optional[bytes] = None,
 ) -> Dict[str, Any]:
+    """``bot_env`` is what the run hands its bots beyond the allowlist; ``run_key`` is for tests (see ``runkey``)."""
     tag, deck = _deck(table, deals, offset, private_seeds)
     training_log = training_log and tag == "public"  # a private deck's log stays outcome-only
+    rkey = _run_key(tag, run_key)
     fp, fair = check_before_scoring(table, spec, skip_fairplay=skip_fairplay, fairplay_points=fairplay_points,
-                                    cwd=cwd, decision_timeout_s=decision_timeout_s)
+                                    cwd=cwd, decision_timeout_s=decision_timeout_s, run_key=rkey, bot_env=bot_env)
     players = {"bot": spec}
     for i, member in enumerate(table.field):
         players["f%d" % i] = "ref:" + member["bot"]
     config = {"table": table.id, "tables_dir": str(table.dir.parent), "players": players,
               "decision_timeout_s": decision_timeout_s or table.decision_timeout_s, "cwd": cwd,
-              "record_actions": True}
+              "record_actions": True, "run_key": rkey, "bot_env": bot_env or {}}
     if training_log:
         config["training_log"] = True
     records = run_specs(config, duplicate_specs(deck), workers,
@@ -225,6 +239,7 @@ def score(
         "bot": meta,
         "seeds": {"tag": tag, "deals": len(deck), "offset": offset,
                   "public_range": table.public_range if tag == "public" else None},
+        "rng_scheme": runkey.RNG_SCHEME,
         "verification": "verified" if verified else "unverified",
         "fairplay": {k: fair[k] for k in ("status", "points", "reshuffles", "asks", "view_mismatches",
                                           "decision_changes", "faults") if k in fair},
@@ -250,7 +265,7 @@ def score(
         results_dir.mkdir(parents=True, exist_ok=True)
         write_log(results_dir / result["log"], {"run_id": run_id, "table": table.id, "bot": meta,
                                                 "seed_tag": tag, "command": result["command"],
-                                                "engine": result["engine"]}, records, tag)
+                                                "engine": result["engine"], "rng_scheme": runkey.RNG_SCHEME}, records, tag)
         (results_dir / (run_id + ".json")).write_text(json.dumps(result, indent=2, sort_keys=True) + "\n",
                                                       encoding="utf-8")
     return result
@@ -297,8 +312,10 @@ def h2h(
     write: bool = True,
     quiet: bool = False,
     training_log: bool = False,
+    bot_env: Optional[Dict[str, str]] = None,
+    run_key: Optional[bytes] = None,
 ) -> Dict[str, Any]:
-    """Round robin. ``bots`` is a list of (display name, spec, meta)."""
+    """Round robin. ``bots`` is a list of (display name, spec, meta). One run key serves every pair."""
     if len(bots) < 2:
         raise ValueError("a head-to-head needs at least two bots")
     names = [b[0] for b in bots]
@@ -306,11 +323,13 @@ def h2h(
         raise ValueError("bot names must be different")
     tag, deck = _deck(table, deals, offset, private_seeds)
     training_log = training_log and tag == "public"  # a private deck's log stays outcome-only
+    rkey = _run_key(tag, run_key)
     fps = None
     fair_status = {}
     for name, spec, _meta in bots:
         fps, fair = check_before_scoring(table, spec, skip_fairplay=skip_fairplay, fairplay_points=fairplay_points,
-                                         cwd=cwd, decision_timeout_s=decision_timeout_s)
+                                         cwd=cwd, decision_timeout_s=decision_timeout_s, run_key=rkey,
+                                         bot_env=bot_env)
         fair_status[name] = fair.get("status")
     assert fps is not None
     pairs: List[Dict[str, Any]] = []
@@ -325,7 +344,7 @@ def h2h(
             config = {"table": table.id, "tables_dir": str(table.dir.parent),
                       "players": {"A": a_spec, "B": b_spec},
                       "decision_timeout_s": decision_timeout_s or table.decision_timeout_s, "cwd": cwd,
-                      "record_actions": True}
+                      "record_actions": True, "run_key": rkey, "bot_env": bot_env or {}}
             if training_log:
                 config["training_log"] = True
             recs = run_specs(config, h2h_specs(deck), workers,
@@ -369,6 +388,7 @@ def h2h(
         "bots": [dict(b[2], display=b[0]) for b in bots],
         "seeds": {"tag": tag, "deals": len(deck), "offset": offset,
                   "public_range": table.public_range if tag == "public" else None},
+        "rng_scheme": runkey.RNG_SCHEME,
         "verification": "verified" if verified else "unverified",
         "fairplay": fair_status,
         "pairs": pairs,
@@ -384,8 +404,8 @@ def h2h(
     if write:
         results_dir.mkdir(parents=True, exist_ok=True)
         write_log(results_dir / result["log"], {"run_id": run_id, "table": table.id, "seed_tag": tag,
-                                                "command": result["command"], "engine": result["engine"]},
-                  all_records, tag)
+                                                "command": result["command"], "engine": result["engine"],
+                                                "rng_scheme": runkey.RNG_SCHEME}, all_records, tag)
         (results_dir / (run_id + ".json")).write_text(json.dumps(result, indent=2, sort_keys=True) + "\n",
                                                       encoding="utf-8")
     return result

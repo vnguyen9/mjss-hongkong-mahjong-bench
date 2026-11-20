@@ -72,8 +72,8 @@ class Cheating(unittest.TestCase):
         self.cheater = "%s %s" % (PY, ROOT / "tests" / "cheat_bot.py")
 
     def test_a_bot_that_reads_hidden_hands_is_caught(self):
-        with mock.patch.dict(os.environ, {"HKBENCH_TEST_LEAK": self.leak}):
-            rep = fairplay.check(TABLE, self.cheater, points=60, on_decision=leak_hook(self.leak))
+        rep = fairplay.check(TABLE, self.cheater, points=60, on_decision=leak_hook(self.leak),
+                             bot_env={"CHEAT_TEST_LEAK": self.leak})
         self.assertFalse(rep["passed"])
         self.assertGreater(rep["decision_changes"], 0)
         self.assertEqual(rep["view_mismatches"], 0)  # the bench itself did not leak
@@ -81,24 +81,22 @@ class Cheating(unittest.TestCase):
     def test_without_the_leak_the_same_bot_is_indistinguishable_from_an_honest_one(self):
         # Same program, but the file never changes with the hidden tiles: nothing to catch.
         Path(self.leak).write_text(json.dumps({"hands": [[0] * 34] * 3}))
-        with mock.patch.dict(os.environ, {"HKBENCH_TEST_LEAK": self.leak}):
-            rep = fairplay.check(TABLE, self.cheater, points=30)
+        rep = fairplay.check(TABLE, self.cheater, points=30, bot_env={"CHEAT_TEST_LEAK": self.leak})
         self.assertTrue(rep["passed"], rep)
 
     def test_scoring_refuses_a_cheater(self):
-        with mock.patch.dict(os.environ, {"HKBENCH_TEST_LEAK": self.leak}):
-            # score() runs the check without the test hook, so wrap the check to add it.
-            real = fairplay.check
+        # score() runs the check without the test hook, so wrap the check to add it.
+        real = fairplay.check
 
-            def with_hook(table, spec, **kw):
-                return real(table, spec, on_decision=leak_hook(self.leak), **kw)
+        def with_hook(table, spec, **kw):
+            return real(table, spec, on_decision=leak_hook(self.leak), **kw)
 
-            with mock.patch.object(fairplay, "check", with_hook):
-                meta = bench.bot_meta(self.cheater, name="cheater", track="bots", kind=None, trained_on=None,
-                                      description=None, cwd=None, hash_dir=None, hash_override=None)
-                with self.assertRaises(bench.Rejected):
-                    bench.score(TABLE, self.cheater, meta, deals=2, results_dir=Path(tempfile.mkdtemp()),
-                                fairplay_points=40, write=False, quiet=True)
+        with mock.patch.object(fairplay, "check", with_hook):
+            meta = bench.bot_meta(self.cheater, name="cheater", track="bots", kind=None, trained_on=None,
+                                  description=None, cwd=None, hash_dir=None, hash_override=None)
+            with self.assertRaises(bench.Rejected):
+                bench.score(TABLE, self.cheater, meta, deals=2, results_dir=Path(tempfile.mkdtemp()),
+                            fairplay_points=40, write=False, quiet=True, bot_env={"CHEAT_TEST_LEAK": self.leak})
 
     def test_a_harness_that_leaks_is_reported_as_a_view_mismatch(self):
         real = fairplay.build_view

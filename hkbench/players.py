@@ -25,6 +25,29 @@ from hkbench.view import PROTOCOL, SeatView
 DEFAULT_DECISION_TIMEOUT_S = 10.0
 DEFAULT_HANDSHAKE_TIMEOUT_S = 30.0
 
+#: The only variables a bot's process inherits. Nothing of the bench's own (``HKBENCH_*``, the private
+#: deck's path) is among them. ``LC_*`` is let through as a prefix. Anything else a bot needs is asked for
+#: by name with ``--bot-env``.
+BOT_ENV_ALLOW = ("PATH", "HOME", "LANG", "TMPDIR", "TEMP", "TMP", "SYSTEMROOT")
+BOT_ENV_PREFIXES = ("LC_",)
+BOT_ENV_FORBIDDEN_PREFIX = "HKBENCH_"
+
+
+def bot_environment(source: Optional[Dict[str, str]] = None, extra: Optional[Dict[str, str]] = None) -> Dict[str, str]:
+    """The environment a bot's process starts with: the allowlist taken from ``source``, plus ``extra``.
+
+    ``extra`` is what the run was explicitly asked to hand over. It may not name an ``HKBENCH_*``
+    variable: those belong to the bench.
+    """
+    src = os.environ if source is None else source
+    env = {k: v for k, v in src.items()
+           if k.upper() in BOT_ENV_ALLOW or k.upper().startswith(BOT_ENV_PREFIXES)}
+    for k, v in (extra or {}).items():
+        if k.upper().startswith(BOT_ENV_FORBIDDEN_PREFIX):
+            raise ValueError("a bot may not be given %s: %s* variables belong to the bench" % (k, BOT_ENV_FORBIDDEN_PREFIX))
+        env[k] = v
+    return env
+
 
 class BotCrashed(RuntimeError):
     """The bot's process ended, or spoke so badly the run cannot continue."""
@@ -93,9 +116,7 @@ class ProcessPlayer(Player):
         self._lines: "queue.Queue[Optional[str]]" = queue.Queue()
         self._stderr_tail: List[str] = []
         self.bot_info: Dict[str, Any] = {}
-        child_env = dict(os.environ)
-        if env:
-            child_env.update(env)
+        child_env = bot_environment(extra=env)
         try:
             self.proc = subprocess.Popen(
                 shlex.split(command),
@@ -236,11 +257,11 @@ class ProcessPlayer(Player):
 
 
 def make_player(spec: str, table_id: str, profile, *, decision_timeout_s: float = DEFAULT_DECISION_TIMEOUT_S,
-                cwd: Optional[str] = None) -> Player:
+                cwd: Optional[str] = None, env: Optional[Dict[str, str]] = None) -> Player:
     """``ref:<name>`` is an in-repo bot; anything else is a command to start."""
     if spec.startswith("ref:"):
         name = spec[4:]
         if name not in REFERENCE_BOTS:
             raise ValueError("no reference bot called %r (have: %s)" % (name, ", ".join(sorted(REFERENCE_BOTS))))
         return LocalPlayer(name, profile)
-    return ProcessPlayer(spec, table_id, decision_timeout_s=decision_timeout_s, cwd=cwd)
+    return ProcessPlayer(spec, table_id, decision_timeout_s=decision_timeout_s, cwd=cwd, env=env)

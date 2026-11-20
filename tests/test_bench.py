@@ -162,9 +162,18 @@ class Tags(unittest.TestCase):
         a.write_text("5\n6\n7\n")
         self.assertEqual(load_private_seeds(str(a)), [5, 6, 7])
         b = self.tmp / "b.json"
-        b.write_text('{"start": 100, "count": 3}')
-        self.assertEqual(load_private_seeds(str(b)), [100, 101, 102])
-        self.assertEqual(load_private_seeds(str(self.deck))[:2], [31_000_000_000, 31_000_000_001])
+        b.write_text('{"seeds": [100, 5000000000, 7]}')
+        self.assertEqual(load_private_seeds(str(b)), [100, 5000000000, 7])
+        with self.assertWarns(UserWarning):  # ten consecutive seeds: one guess gives them all
+            self.assertEqual(load_private_seeds(str(self.deck))[:2], [31_000_000_000, 31_000_000_001])
+
+    def test_the_old_start_and_count_deck_is_refused(self):
+        old = self.tmp / "old.json"
+        old.write_text('{"start": 100, "count": 3}')
+        with self.assertRaisesRegex(ValueError, "make_private_deck"):
+            load_private_seeds(str(old))
+        with self.assertRaises(ValueError):
+            TABLE.private_deals(str(old), 2)
 
     def test_the_env_var_selects_the_private_deck(self):
         code, out, err = run_cli("score", "--table", "hk-hkma-v1", "--bot", "ref:ukeire", "--deals", "2", "--no-write",

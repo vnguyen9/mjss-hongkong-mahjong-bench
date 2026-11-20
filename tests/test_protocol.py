@@ -14,7 +14,8 @@ from helpers import ROOT, check_message, hkma_profile, hkma_table
 from hkbench.engine.game import GameState
 from hkbench.engine.tile_instance import STANDARD_INSTANCES
 from hkbench.players import BotCrashed, ProcessPlayer, fallback_action, make_player
-from hkbench.runner import decision_seed, play_game
+from hkbench import runkey
+from hkbench.runner import play_game
 from hkbench.seeds import Rng
 from hkbench.tables import Deal
 from hkbench.view import build_view
@@ -34,7 +35,7 @@ def some_messages(count=60):
         seq = 0
         while not state.is_terminal() and len(out) < count:
             actor = state.current_actor()
-            msg = build_view(state, actor, game_id="t", seq=seq, rng_seed=decision_seed(700 + deal, 0, seq),
+            msg = build_view(state, actor, game_id="t", seq=seq, rng_seed=runkey.decision_seed(runkey.PUBLIC_RUN_KEY, "hk-hkma-v1", deal, 0, seq),
                              table_id="hk-hkma-v1")
             out.append((state.clone(), actor, msg))
             state.apply_action(rng.choice(state.legal_actions(actor)))
@@ -84,9 +85,10 @@ class Messages(unittest.TestCase):
         self.assertTrue(seen_claimed)
 
     def test_rng_seed_is_per_decision_and_stable(self):
-        self.assertEqual(decision_seed(5, 1, 7), decision_seed(5, 1, 7))
-        self.assertNotEqual(decision_seed(5, 1, 7), decision_seed(5, 1, 8))
-        self.assertLess(decision_seed(2 ** 40, 3, 1999), 2 ** 31)
+        key = runkey.PUBLIC_RUN_KEY
+        self.assertEqual(runkey.decision_seed(key, "t", 5, 1, 7), runkey.decision_seed(key, "t", 5, 1, 7))
+        self.assertNotEqual(runkey.decision_seed(key, "t", 5, 1, 7), runkey.decision_seed(key, "t", 5, 1, 8))
+        self.assertLess(runkey.decision_seed(key, "t", 2 ** 40, 3, 1999), 2 ** 31)
 
     def test_fallback_is_always_legal(self):
         for _s, _a, msg in some_messages(200):

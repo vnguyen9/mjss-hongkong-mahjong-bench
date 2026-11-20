@@ -64,7 +64,9 @@ python -m hkbench tables                                  # list tables, check t
 3. **Duplicate play.** The bot takes one seat, the three field bots fill the others. Every deal is played from all four seats.
 4. **Numbers.** One average per deal, then the mean and a 95% interval over deals. The four games of a deal are not independent, so the deal is the unit.
 
-Public deals are in the repository. The deal deck used for **verified** rows is private and is read from a file outside the repository (`--private-seeds`, or the `HKBENCH_PRIVATE_SEEDS` environment variable).
+Public deals are in the repository. The deal deck used for **verified** rows is private and is read from a file outside the repository (`--private-seeds`, or the `HKBENCH_PRIVATE_SEEDS` environment variable). Make one with `python scripts/make_private_deck.py --count 10000 --out /path/outside/the/repo/deck.json`: independent random seeds, never a start and a count (the bench refuses that old form).
+
+A bot never sees the deal's seed. Each decision's `rng_seed` and each game's `game_id` are HMAC-SHA256 outputs under a per-run key: random for a private deck and held only by the bench, fixed and public for a public deck so public runs repeat exactly. A program bot is started afresh for every game and given only a short allowlist of environment variables (`--bot-env NAME` hands over more). Results record `"rng_scheme": "hmac-sha256-v2"`.
 
 ## What is in here
 
@@ -72,6 +74,7 @@ Public deals are in the repository. The deal deck used for **verified** rows is 
 hkbench/           the engine, the harness, the reference bots, the CLI
 tables/            frozen, versioned tables: rules, field pins, deal range, engine fingerprint
 protocol/          PROTOCOL.md and schema.json
+scripts/           render_rules.py, and make_private_deck.py for a private deal deck
 examples/bots/     a Python bot and a JavaScript bot that pass the harness
 results/           one JSON per scored run, and compressed per-game logs
 site/              the static leaderboard (index.html and leaderboard.json)

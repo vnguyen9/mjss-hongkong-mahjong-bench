@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import gzip
 import json
+import os
 import sys
 from pathlib import Path
 from typing import List, Optional, Sequence
@@ -12,6 +13,7 @@ from typing import List, Optional, Sequence
 from hkbench import __version__, bench, fairplay, fingerprint
 from hkbench.agents.registry import REFERENCE_BOTS
 from hkbench.engine.game import GameState
+from hkbench import players
 from hkbench.players import BotCrashed
 from hkbench.tables import (PRIVATE_SEEDS_ENV, TablePending, list_tables, load_table, private_seed_path,
                             reference_bot_hash)
@@ -34,6 +36,9 @@ def _common(p: argparse.ArgumentParser) -> None:
     p.add_argument("--fairplay-points", type=int, default=fairplay.DEFAULT_POINTS)
     p.add_argument("--timeout", type=float, default=None, help="seconds a bot may take per decision (default: the table's)")
     p.add_argument("--cwd", default=None, help="directory to start the bot in")
+    p.add_argument("--bot-env", action="append", default=[], metavar="NAME",
+                   help="hand the bot this environment variable from yours (repeat for more). A bot starts with "
+                        "PATH, HOME, LANG, LC_*, TMPDIR and little else; HKBENCH_* is never passed.")
     p.add_argument("--no-write", action="store_true", help="print the result without writing files")
     p.add_argument("--training-log", action="store_true",
                    help="also put each won game's melds, concealed tiles, winning tile, flowers and the winner's "
@@ -74,6 +79,8 @@ def build_parser() -> argparse.ArgumentParser:
     fp.add_argument("--points", type=int, default=fairplay.DEFAULT_POINTS)
     fp.add_argument("--timeout", type=float, default=None)
     fp.add_argument("--cwd", default=None)
+    fp.add_argument("--bot-env", action="append", default=[], metavar="NAME",
+                    help="hand the bot this environment variable from yours (repeat for more)")
 
     si = sub.add_parser("site", help="build the leaderboard (site/leaderboard.json and index.html) from results/")
     si.add_argument("--results-dir", default=str(DEFAULT_RESULTS))
@@ -87,6 +94,17 @@ def build_parser() -> argparse.ArgumentParser:
     t.add_argument("--tables-dir", default=None)
     t.add_argument("--hashes", action="store_true", help="print the current source hash of every reference bot")
     return ap
+
+
+def _bot_env(args):
+    """The variables ``--bot-env`` names, taken from this process's environment."""
+    env = {}
+    for name in args.bot_env:
+        if name not in os.environ:
+            raise ValueError("--bot-env %s: that variable is not set" % name)
+        env[name] = os.environ[name]
+    players.bot_environment(extra=env)  # refuses HKBENCH_* now, not after the fair-play check
+    return env
 
 
 def _table(args):
@@ -138,7 +156,7 @@ def cmd_score(args, argv) -> int:
                          workers=args.workers, results_dir=Path(args.results_dir), argv=argv,
                          skip_fairplay=args.skip_fairplay, fairplay_points=args.fairplay_points, cwd=args.cwd,
                          decision_timeout_s=args.timeout, write=not args.no_write,
-                         training_log=args.training_log)
+                         training_log=args.training_log, bot_env=_bot_env(args))
     _print_result(result)
     if not args.no_write:
         print("wrote %s" % (Path(args.results_dir) / (result["run_id"] + ".json")))
@@ -159,7 +177,8 @@ def cmd_h2h(args, argv) -> int:
     result = bench.h2h(table, bots, deals=args.deals, offset=args.offset, private_seeds=priv, workers=args.workers,
                        results_dir=Path(args.results_dir), argv=argv, skip_fairplay=args.skip_fairplay,
                        fairplay_points=args.fairplay_points, cwd=args.cwd, decision_timeout_s=args.timeout,
-                       resamples=args.resamples, write=not args.no_write, training_log=args.training_log)
+                       resamples=args.resamples, write=not args.no_write, training_log=args.training_log,
+                       bot_env=_bot_env(args))
     print("head to head on %s (%s deck, %s)" % (table.id, result["seeds"]["tag"], result["verification"]))
     for n, r in sorted(result["bradley_terry"].items(), key=lambda kv: -kv[1]["rating"]):
         print("  rank %d  %-20s rating %+7.1f  [%+.1f, %+.1f]" % (r["rank"], n, r["rating"], r["ci95"][0], r["ci95"][1]))
@@ -181,7 +200,8 @@ def cmd_fingerprint(args) -> int:
 
 def cmd_fairplay(args) -> int:
     table = _table(args)
-    rep = fairplay.check(table, args.bot, points=args.points, cwd=args.cwd, decision_timeout_s=args.timeout)
+    rep = fairplay.check(table, args.bot, points=args.points, cwd=args.cwd, decision_timeout_s=args.timeout,
+                         bot_env=_bot_env(args))
     print(json.dumps(rep, indent=2, sort_keys=True))
     return 0 if rep["passed"] else 1
 

@@ -8,7 +8,7 @@ Your bot is a program that reads JSON lines on stdin and writes JSON lines on st
 
 Two rules matter most:
 
-* **Same message, same answer.** Seed any randomness from `rng_seed`. Do not use the clock, files, the network or memory of earlier hands.
+* **Same message, same answer.** Seed any randomness from `rng_seed`. Do not use the clock, files, the network or memory of earlier hands. Your bot is started fresh for every game, so there is no memory to use, and `game_id` and `rng_seed` are keyed hashes that tell you nothing about the deal.
 * **Answer within 10 seconds,** with the id of a legal action.
 
 ## 2. Test it here
@@ -25,7 +25,7 @@ python -m hkbench score    --table hk-hkma-v1 --bot "<your command>" --name my_b
 
 Either:
 
-**A Docker image.** The image's entry point (or the command we give it) starts your bot and speaks the protocol on stdin and stdout. We run it with no network, a CPU and memory limit, and a read-only file system apart from a scratch directory. Send the image (or a registry path) and the image digest.
+**A Docker image.** The image's entry point (or the command we give it) starts your bot and speaks the protocol on stdin and stdout. We run it with no network, a CPU and memory limit, and a read-only file system apart from a scratch directory. The deal deck is not in the container. Send the image (or a registry path) and the image digest.
 
 **Code and model files with an adapter.** A repository or archive with your code and model files, a short adapter that speaks the protocol (the examples are about 80 lines), and the commands to install it. State the Python or Node version. We build and run it in a container.
 

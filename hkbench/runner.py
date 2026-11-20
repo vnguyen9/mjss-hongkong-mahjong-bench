@@ -10,17 +10,11 @@ from hkbench.engine.tiles import bonus_name, tile_name
 from hkbench.engine.types import MeldKind
 from hkbench.engine.profile import RulesProfile
 from hkbench.players import Player
-from hkbench.seeds import splitmix64
+from hkbench import runkey
 from hkbench.tables import Deal
 from hkbench.view import build_view
 
 MAX_DECISIONS = 2000
-
-
-def decision_seed(deal_seed: int, arrangement: int, seq: int) -> int:
-    """The seed a decision message carries for the bot's own randomness (below 2**31)."""
-    _, out = splitmix64(((deal_seed & 0xFFFFFFFFFFFF) << 16) ^ (arrangement << 12) ^ seq)
-    return out & 0x7FFFFFFF
 
 
 def winning_hand(state: GameState) -> Dict[str, Any]:
@@ -52,6 +46,7 @@ def play_game(
     *,
     arrangement: int,
     seed_key: Optional[int] = None,
+    run_key: bytes = runkey.PUBLIC_RUN_KEY,
     record_actions: bool = False,
     training_log: bool = False,
     check_invariants: bool = False,
@@ -62,14 +57,16 @@ def play_game(
     ``players[s]`` sits at absolute seat ``s``. ``arrangement`` labels which rotation or seat pair
     this is within the deal (it names the game). ``seed_key`` picks the per-decision seeds; it defaults
     to ``arrangement``. Head-to-head games that mirror each other share a key, so a bot played
-    against itself draws the same random numbers on both sides.
+    against itself draws the same random numbers on both sides. ``run_key`` keys both the seeds and the
+    game's id (``hkbench.runkey``): the deal's own seed is never an input to anything a bot is sent.
     ``on_decision(state, seat, msg)`` is called before each decision; the fair-play tests use it.
     ``training_log`` adds the winner's melds, concealed tiles, winning tile, flowers and draw count to the
     record of a won game (see ``winning_hand``). It is off by default and changes nothing else.
     """
     state = GameState.new_game(profile, seed=deal.seed, dealer=deal.dealer,
                                prevailing_wind=deal.prevailing_wind)
-    game_id = "%s/d%d/a%d" % (table_id, deal.index, arrangement)
+    game_id = runkey.game_id(run_key, table_id, deal.index, arrangement)
+    key = arrangement if seed_key is None else seed_key
     faults: List[Dict[str, int]] = [{} for _ in range(4)]
     actions: List[List[int]] = []
     decisions = [0, 0, 0, 0]
@@ -79,7 +76,7 @@ def play_game(
         if not isinstance(actor, int):
             raise RuntimeError("a live game has no one to act")
         msg = build_view(state, actor, game_id=game_id, seq=seq,
-                         rng_seed=decision_seed(deal.seed, arrangement if seed_key is None else seed_key, seq), table_id=table_id)
+                         rng_seed=runkey.decision_seed(run_key, table_id, deal.index, key, seq), table_id=table_id)
         if on_decision is not None:
             on_decision(state, actor, msg)
         action, fault = players[actor].decide(msg)
