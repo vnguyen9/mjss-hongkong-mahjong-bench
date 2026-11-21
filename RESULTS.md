@@ -278,7 +278,7 @@ The tag does not audit a bot's code or prove that it had the same thinking time,
 
 ## Check a public result
 
-This command reproduces the public `faan_aware` row on `hk-hkma-v1`:
+This command reproduces the public `faan_aware` row on `hk-hkma-v1`. We ran it again after the run finished and got the same numbers to the last digit.
 
 ```
 python -m hkbench score --table hk-hkma-v1 --bot ref:faan_aware --deals 2000 --workers 10

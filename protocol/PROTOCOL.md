@@ -15,7 +15,7 @@ bench -> bot   {"type":"game_over", ...}        when a hand ends; no answer
 bench -> bot   {"type":"bye"}                   then the bench closes stdin; exit when you see either
 ```
 
-One program plays many hands. It may be asked to play two seats of the same hand (in a head-to-head match) and different seats in different hands, so keep no state you cannot rebuild from the `decide` message.
+The bench starts your program fresh for every seat of every game and stops it when the game ends, so nothing carries over from one game to the next. Keep no state you cannot rebuild from the `decide` message.
 
 ### hello and ready
 

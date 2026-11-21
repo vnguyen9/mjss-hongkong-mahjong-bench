@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0 (unreleased)
+## 1.1.0 (2026-11-21)
 
 A bot could rebuild the private wall from `rng_seed`. This release fixes that. Every decision carried `rng_seed = splitmix64(deal seed, arrangement, seq)` and every game a `game_id` that named the deal number and arrangement. A bot that inverted the seed (by search, when the deck was a start and a count) knew the deal seed, and the bench's own public shuffle then gave it the wall and every hidden hand. The fair-play check used `game_id` `"fairplay"`, so a bot could tell it was being checked, and bots inherited the runner's environment (the private deck's path included) and lived across games. No third-party bot has played the private deck, so no private row was affected by an outside bot. The baselines and the hosted bot were re-scored under the new scheme on a new private deck, on another machine (see the re-scoring entry below).
 
