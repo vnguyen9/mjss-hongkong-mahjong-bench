@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Make a private deal deck: independent random 64-bit seeds, one JSON file.
+"""Create a private deal deck of independent random 64-bit seeds in one JSON file.
 
     python scripts/make_private_deck.py --count 10000 --out /path/outside/the/repo/deck.json
 
 The seeds come from the operating system's random source (``secrets``), so knowing one says nothing
 about another. The file is ``{"seeds": [...]}``, mode 0600. The script will not overwrite a file, and
-will not write a seed that falls inside any table's public range (a deck that overlaps it is refused by
-the bench anyway). Keep the file out of the repository and out of any place a bot can read.
+will not write a seed that falls inside any table's public range. The bench also refuses a deck that
+overlaps a public range. Keep the file out of the repository and out of any place a bot can read.
 """
 
 import argparse

@@ -1,9 +1,9 @@
 #!/bin/bash
-# A sandbox for one bot process on macOS, for use as the command prefix of `hkbench --sandbox`:
+# This script sandboxes one bot process on macOS. Use it as the command prefix of `hkbench --sandbox`:
 #
 #   hkbench score ... --sandbox "scripts/sandbox/macos.sh --deny-read /path/to/deck.json --" --bot "python3 /bot/my_bot.py"
 #
-# It runs the bot under /usr/bin/sandbox-exec with a profile made for this one launch:
+# It runs the bot under /usr/bin/sandbox-exec with a new profile for each launch:
 #   * no network (sockets, including Unix ones);
 #   * no fork, so the bot cannot start a descendant, a daemon or a setsid survivor (exec still works);
 #   * writes only inside a new empty directory under a shared mode-0700 parent; HOME, TMPDIR, TMP and TEMP

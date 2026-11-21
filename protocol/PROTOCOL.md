@@ -1,6 +1,6 @@
 # Protocol `hkbench-1`
 
-A bot is any program that speaks JSON lines over its standard input and output. The bench starts the program, sends it messages, and reads its answers. One JSON object per line, UTF-8, no blank lines needed. Write answers to stdout and flush after every line. Anything you write to stderr is ignored (the last few lines are shown if your bot crashes).
+A bot is any program that speaks JSON lines over its standard input and output. The bench starts the program, sends it messages, and reads its answers. Send one JSON object per line in UTF-8. You do not need blank lines. Write answers to stdout and flush after every line. Anything you write to stderr is ignored (the last few lines are shown if your bot crashes).
 
 The machine-readable form is `schema.json` in this folder. `examples/bots/python_bot.py` and `examples/bots/javascript_bot.js` are complete bots.
 
@@ -46,7 +46,7 @@ Players are numbered relative to you: `0` you, `1` the player who acts after you
  "legal":[{"id":2,"kind":"discard","tile":0},{"id":11,"kind":"discard","tile":9},{"id":35,"kind":"discard","tile":33}]}
 ```
 
-(`discards` and `legal` are shortened here.) Fields:
+(`discards` and `legal` are shortened here.) The fields are:
 
 | Field | Meaning |
 |---|---|
@@ -66,7 +66,7 @@ Players are numbered relative to you: `0` you, `1` the player who acts after you
 | `discards` | Every discard so far, oldest first. `claimed` is true if the tile was later taken into a meld. |
 | `offer` | On a claim phase: `{"tile", "from", "kind"}`, where `kind` is `discard` or `added_kong` (a player added a fourth tile to a pong; you may rob it by winning). `null` on a turn. |
 | `unseen` | For each tile id, how many are not in your hand, not in a meld, and not in a river. It is derived from the other fields and is there for convenience. |
-| `legal` | Every action you may take. Never empty. |
+| `legal` | Every action you may take. This list is never empty. |
 
 **Reactions are simultaneous.** On a claim phase you are not told what other players choose. Wins beat pongs and kongs, which beat chows. If two players can win on the same tile, the one nearest after the discarder wins.
 
@@ -115,7 +115,7 @@ After a claim that is not a win, the claimer is asked for a `turn` with `drawn: 
 {"type":"game_over","game_id":"3f9c0a52e1d84b7aa6c5d20817be94f0","cause":"win","winner":1,"discarder":3,"faan":4,"patterns":[["all_pong",3],["dragon_pong",1]],"payment":-16}
 ```
 
-`cause` is `win` or `exhaustive` (the wall ran out). `winner` and `discarder` are player numbers relative to you, or `null`. `payment` is your points. No answer.
+`cause` is `win` or `exhaustive` (the wall ran out). `winner` and `discarder` are player numbers relative to you, or `null`. `payment` is your points. Do not send an answer.
 
 ## Time and mistakes
 

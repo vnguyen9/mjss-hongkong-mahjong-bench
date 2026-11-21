@@ -2095,12 +2095,12 @@
     },
     {
       "id": "llms",
-      "note": "Coming. Language models will play through the same protocol, with cost per hand shown.",
+      "note": "Coming soon: LLMs will play through the same protocol, with cost per hand shown.",
       "title": "LLMs"
     },
     {
       "id": "humans",
-      "note": "Coming. People will play the same deals at a table in the browser.",
+      "note": "Coming soon: humans will play the same deals at a table in the browser.",
       "title": "Humans"
     }
   ]

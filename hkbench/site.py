@@ -18,8 +18,8 @@ SCHEMA = "hkbench-leaderboard-1"
 
 TRACKS = [
     {"id": "bots", "title": "Bots", "note": None},
-    {"id": "llms", "title": "LLMs", "note": "Coming. Language models will play through the same protocol, with cost per hand shown."},
-    {"id": "humans", "title": "Humans", "note": "Coming. People will play the same deals at a table in the browser."},
+    {"id": "llms", "title": "LLMs", "note": "Coming soon: LLMs will play through the same protocol, with cost per hand shown."},
+    {"id": "humans", "title": "Humans", "note": "Coming soon: humans will play the same deals at a table in the browser."},
 ]
 
 
@@ -213,7 +213,7 @@ code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12px}
       n.appendChild(document.createTextNode(table.status === "pending" ? "Not scoring yet: " + table.pending_reason + "." : table.summary));
       note.appendChild(n);
     }
-    if (table && table.status === "pending") { board.appendChild(el("div", {"class":"empty", text:"No rows yet. This table opens when its scoring is in the engine."})); render_foot(); return; }
+    if (table && table.status === "pending") { board.appendChild(el("div", {"class":"empty", text:"This table has no results yet. It opens when the engine supports its scoring."})); render_foot(); return; }
     var rows = D.rows.filter(function(r){ return r.track === state.track && r.table === state.table && (!state.verifiedOnly || r.verification === "verified"); });
     if (!rows.length) {
       board.appendChild(el("div", {"class":"empty", text: track.note || "No rows yet."}));
@@ -259,7 +259,7 @@ code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12px}
   }
   function render_foot(){
     document.getElementById("foot").innerHTML = "";
-    var p = el("p", {text:"A rank is shared when 95% intervals overlap. Points are one quarter of the HKMA rulebook's. Unverified rows were played on the public deals; verified rows on private ones, after a hidden-tile fair-play check. Built " + D.generated_utc + " by hkbench " + D.hkbench_version + "."});
+    var p = el("p", {text:"A rank is shared when 95% intervals overlap. Points are one quarter of the HKMA rulebook's. Unverified rows were played on the public deals; verified rows were played on private deals after a hidden-tile fair-play check. Built " + D.generated_utc + " by hkbench " + D.hkbench_version + "."});
     document.getElementById("foot").appendChild(p);
   }
   document.getElementById("verifiedOnly").onchange = function(e){ state.verifiedOnly = e.target.checked; render(); };

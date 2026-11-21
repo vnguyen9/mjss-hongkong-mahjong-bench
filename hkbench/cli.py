@@ -37,10 +37,10 @@ def _common(p: argparse.ArgumentParser) -> None:
     p.add_argument("--timeout", type=float, default=None, help="seconds a bot may take per decision (default: the table's)")
     p.add_argument("--cwd", default=None, help="directory to start the bot in")
     p.add_argument("--bot-env", action="append", default=[], metavar="NAME",
-                   help="hand the bot this environment variable from yours (repeat for more). A bot starts with "
+                   help="pass this environment variable to the bot (repeat for more). A bot starts with "
                         "PATH, HOME, LANG, LC_*, TMPDIR and little else; HKBENCH_* is never passed.")
     p.add_argument("--sandbox", default=None, metavar="CMD",
-                   help="a command put in front of every launch of the bot, one sandbox per bot process, for example a "
+                   help="a command prefix for every bot launch, one sandbox per bot process, for example a "
                         "docker run line (see SUBMITTING.md). A private-deck run of a program bot needs it.")
     p.add_argument("--native-unsafe", action="store_true",
                    help="allow a private-deck run of a program bot without --sandbox. It runs natively, which does not "
@@ -76,7 +76,7 @@ def build_parser() -> argparse.ArgumentParser:
     f = sub.add_parser("fingerprint", help="check (or with --write, create) a table's engine fingerprint")
     f.add_argument("--table", required=True)
     f.add_argument("--tables-dir", default=None)
-    f.add_argument("--write", action="store_true", help="author a new table: write fingerprint.json")
+    f.add_argument("--write", action="store_true", help="write fingerprint.json for a new table")
 
     fp = sub.add_parser("fairplay", help="run the hidden-tile shuffle check on one bot")
     fp.add_argument("--table", required=True)
@@ -85,12 +85,12 @@ def build_parser() -> argparse.ArgumentParser:
     fp.add_argument("--points", type=int, default=fairplay.DEFAULT_POINTS)
     fp.add_argument("--timeout", type=float, default=None)
     fp.add_argument("--cwd", default=None)
-    fp.add_argument("--sandbox", default=None, metavar="CMD", help="a command put in front of every launch of the bot")
+    fp.add_argument("--sandbox", default=None, metavar="CMD", help="a command prefix for every bot launch")
     fp.add_argument("--debug-fixed-check", action="store_true",
                     help="use the same deals every time, to reproduce a check. This makes the check recognisable "
                          "to a bot that has seen it, so it is never used when a bot is scored.")
     fp.add_argument("--bot-env", action="append", default=[], metavar="NAME",
-                    help="hand the bot this environment variable from yours (repeat for more)")
+                    help="pass this environment variable to the bot (repeat for more)")
 
     si = sub.add_parser("site", help="build the leaderboard (site/leaderboard.json and index.html) from results/")
     si.add_argument("--results-dir", default=str(DEFAULT_RESULTS))
