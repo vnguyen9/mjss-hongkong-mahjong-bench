@@ -13,6 +13,7 @@ from typing import Any, Dict, List
 
 from hkbench import __version__, runkey, stats
 from hkbench.tables import list_tables
+from hkbench.visuals import banner
 
 SCHEMA = "hkbench-leaderboard-1"
 
@@ -123,7 +124,7 @@ def build(results_dir: Path, out_dir: Path) -> Path:
     }
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "leaderboard.json").write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    html = TEMPLATE.replace("__DATA__", json.dumps(data, sort_keys=True).replace("</", "<\\/"))
+    html = TEMPLATE.replace("__BANNER__", banner()).replace("__DATA__", json.dumps(data, sort_keys=True).replace("</", "<\\/"))
     (out_dir / "index.html").write_text(html, encoding="utf-8")
     return out_dir / "index.html"
 
@@ -135,135 +136,68 @@ TEMPLATE = r"""<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hong Kong Mahjong Bench</title>
 <style>
-:root{--bg:#fbfaf7;--card:#fff;--ink:#1d1d1b;--mute:#6b6a63;--line:#e4e1d8;--accent:#a3261b;--ok:#1f7a3f;--warn:#9a6a00;--chip:#f1eee6}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161614;--card:#1f1f1c;--ink:#ece9e1;--mute:#a09d93;--line:#333128;--accent:#e0584b;--ok:#58c07a;--warn:#e0b04a;--chip:#2a2924}}
-:root[data-theme="dark"]{--bg:#161614;--card:#1f1f1c;--ink:#ece9e1;--mute:#a09d93;--line:#333128;--accent:#e0584b;--ok:#58c07a;--warn:#e0b04a;--chip:#2a2924}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-main{max-width:1040px;margin:0 auto;padding:28px 16px 64px}
-h1{font-size:28px;margin:0 0 4px}
-p.lede{color:var(--mute);margin:0 0 20px;max-width:62ch}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
-button.tab,button.rules{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px 14px;border-radius:999px;cursor:pointer}
-button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:0 0 12px}
-label.chk{color:var(--mute);font-size:14px;display:flex;gap:6px;align-items:center}
-.note{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 14px;color:var(--mute);font-size:14px}
-.note b{color:var(--ink)}
-.scroll{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
-table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
-th,td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
-th{font-weight:600;color:var(--mute);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
-th:nth-child(1),td:nth-child(1),th:nth-child(2),td:nth-child(2){text-align:left}
-tr:last-child td{border-bottom:0}
-td.rank{color:var(--mute);width:40px}
-td .sub{display:block;color:var(--mute);font-size:12px}
-.pts{font-variant-numeric:tabular-nums;font-weight:600}
-.ci{color:var(--mute);font-variant-numeric:tabular-nums}
-.badge{display:inline-block;font-size:11px;padding:1px 8px;border-radius:999px;background:var(--chip);color:var(--mute);margin-left:6px}
-.badge.verified{background:transparent;color:var(--ok);border:1px solid var(--ok)}
-.badge.unverified{color:var(--warn)}
-.empty{padding:28px 14px;color:var(--mute);text-align:center}
-h2{font-size:18px;margin:28px 0 8px}
-footer{margin-top:28px;color:var(--mute);font-size:13px}
-code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12px}
+:root{color-scheme:light;--bg:#f6f8f6;--card:#fff;--ink:#182d25;--mute:#586a62;--line:#dae4de;--accent:#20785b;--soft:#edf5ef;--warn:#845a12}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0d1612;--card:#14221b;--ink:#edf5ee;--mute:#a5bcb2;--line:#30473a;--accent:#75d9b1;--soft:#1c342c;--warn:#e6bd73}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0d1612;--card:#14221b;--ink:#edf5ee;--mute:#a5bcb2;--line:#30473a;--accent:#75d9b1;--soft:#1c342c;--warn:#e6bd73}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+main{max-width:1160px;margin:auto;padding:24px 32px 60px}a{color:var(--accent);text-underline-offset:4px}nav{display:flex;justify-content:space-between;align-items:center;gap:16px}nav div{display:flex;gap:20px;flex-wrap:wrap}button{font:inherit;cursor:pointer;color:var(--ink)}button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+#theme{border:1px solid var(--line);border-radius:8px;padding:5px 12px;background:var(--card)}header{text-align:center;margin:24px 0 40px}.banner{max-width:900px;margin:auto}.banner svg{width:100%;height:auto;display:block}.banner rect:first-of-type{fill:var(--soft)}.banner text{fill:var(--ink)}.banner text:last-of-type{fill:var(--mute)}.banner svg>g:first-of-type{fill:var(--card);stroke:var(--accent)}.banner svg>g:nth-of-type(2){fill:var(--accent)}.banner svg>path{stroke:var(--accent)}.lede{max-width:660px;margin:20px auto;color:var(--mute);font-size:17px}
+.meta{font-size:12px;letter-spacing:.06em;color:var(--mute)}.tracks{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:28px}.track{border:0;background:none;padding:12px 0;color:var(--mute)}.track[aria-pressed=true]{color:var(--accent);box-shadow:0 2px var(--accent)}.status{font-size:11px;margin-left:8px;background:var(--soft);border-radius:4px;padding:3px 5px}
+h2{font-size:26px;letter-spacing:-.6px;line-height:1.3;margin:0 0 10px}.toolbar{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap;margin:20px 0}.tabs,.decks{display:flex;gap:4px;flex-wrap:wrap}.tabs button,.decks button{border:1px solid transparent;background:transparent;border-radius:6px;padding:8px 14px;color:var(--mute)}.tabs button[aria-pressed=true],.decks button[aria-pressed=true]{background:var(--card);border-color:var(--line);color:var(--accent);font-weight:600}.decks{background:var(--soft);padding:3px;border-radius:9px}.decks button{padding:5px 10px;font-size:13px}
+#summary,.explain,footer{color:var(--mute);font-size:13px}#summary{max-width:80ch}.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}table{border-collapse:collapse;width:100%;font-size:14px;white-space:nowrap}caption{text-align:left;padding:16px 20px;font-size:13px;color:var(--mute);border-bottom:1px solid var(--line)}th,td{padding:15px 16px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}th{font-size:12px;color:var(--mute);background:var(--soft);font-weight:500}th button{border:0;background:none;color:inherit;padding:0;font-size:inherit}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}tr:last-child td{border:0}tr.featured{background:var(--soft)}.name{font-weight:600}.rank{color:var(--mute)}.sub{display:block;color:var(--mute);font-size:11px;font-weight:400}.badge{font-size:11px;border:1px solid var(--line);border-radius:5px;padding:3px 7px;color:var(--warn)}.badge.verified{color:var(--accent)}.metric{min-width:180px}.value{font-weight:650}.interval{display:block;height:12px;margin:7px 0 3px;position:relative;background:var(--soft);border-radius:3px}.whisker{position:absolute;top:5px;height:2px;background:var(--accent)}.whisker:before,.whisker:after{content:"";position:absolute;top:-3px;width:1px;height:8px;background:var(--accent)}.whisker:after{right:0}.dot{position:absolute;width:7px;height:7px;top:2.5px;border-radius:50%;background:var(--accent)}.zero{position:absolute;top:0;height:12px;border-left:1px solid var(--mute);opacity:.5}.empty{padding:50px 24px;border:1px solid var(--line);border-radius:12px;background:var(--card)}.empty p{color:var(--mute)}footer{border-top:1px solid var(--line);margin-top:32px;padding-top:18px}details{margin-top:28px}summary{cursor:pointer;color:var(--accent)}#headtohead .scroll{margin:16px 0}.explain{margin:12px 0 24px}
+@media(max-width:600px){main{padding:16px 16px 40px}nav{font-size:12px}nav div{gap:12px}header{margin:24px 0}.lede{font-size:15px}.tracks{gap:18px;margin-bottom:24px}.track{font-size:13px}.status{margin-left:4px;font-size:10px}h2{font-size:23px}.toolbar{gap:12px}.tabs button{padding:7px 10px;font-size:13px}table{font-size:13px}th,td{padding:12px}.metric{min-width:155px}.banner{margin:0 -5px}.scroll{border-radius:8px}
+#board table,#board caption,#board thead,#board tbody{display:block;width:100%;white-space:normal}#board caption{padding:12px}#board thead tr{display:flex;flex-wrap:wrap;background:var(--soft);padding:4px 8px}#board th{border:0;padding:6px;font-size:11px}#board tbody tr{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));padding:14px 12px;gap:12px 8px;border-bottom:1px solid var(--line)}#board td{border:0;padding:0;text-align:left;min-width:0}#board td.rank{grid-column:1;grid-row:1}#board td.name{grid-column:2 / 7;grid-row:1;overflow-wrap:anywhere}#board .name .sub{margin-top:4px}#board td.metric{grid-column:1 / 5;grid-row:2;min-width:0;padding-right:12px}#board td:nth-child(7){grid-column:5 / 7;grid-row:2;text-align:right}#board td:nth-child(4){grid-column:1 / 3}#board td:nth-child(5){grid-column:3 / 5}#board td:nth-child(6){grid-column:5 / 7;text-align:right}#board td:nth-child(4):before,#board td:nth-child(5):before,#board td:nth-child(6):before{display:block;color:var(--mute);font-size:11px}#board td:nth-child(4):before{content:"Win"}#board td:nth-child(5):before{content:"Deal-in"}#board td:nth-child(6):before{content:"Deals"}}
 </style>
 </head>
 <body>
 <main>
-  <h1>Hong Kong Mahjong Bench</h1>
-  <p class="lede">Points a hand against a frozen field of reference bots, in duplicate play, with a 95% interval. Every row says which rules it was scored under and whether the deals were private.</p>
-  <div class="tabs" id="tracks" role="tablist" aria-label="Track"></div>
-  <div class="tabs" id="rules" aria-label="Rules"></div>
-  <div class="row"><label class="chk"><input type="checkbox" id="verifiedOnly"> Verified rows only</label></div>
-  <div id="note"></div>
-  <div id="board"></div>
-  <div id="h2h"></div>
-  <footer id="foot"></footer>
+<nav aria-label="Resources"><div><a href="https://github.com/vnguyen9/mjss-hongkong-mahjong-bench">Repository</a><a href="https://github.com/vnguyen9/mjss-hongkong-mahjong-bench/blob/main/SUBMITTING.md">Submit a bot</a></div><button id="theme" type="button" aria-label="Switch colour theme">Dark mode</button></nav>
+<header><div class="banner">__BANNER__</div><p class="lede">A fair way to compare Hong Kong Mahjong players: bots today, LLMs and humans next.</p><div class="meta">Version 1.1.0 · Protocol hkbench-1 · MIT licence</div></header>
+<div id="tracks" class="tracks" aria-label="Track"></div>
+<h2>Leaderboard</h2>
+<p id="summary"></p>
+<div class="toolbar"><div id="tables" class="tabs" aria-label="Table"></div><div id="decks" class="decks" aria-label="Deck"></div></div>
+<div id="board" aria-live="polite"></div>
+<p class="explain">Whiskers show 95% intervals. Ranks are shared when intervals overlap. Each table has its own points scale, so points cannot be compared across tables. Select a column heading to sort the results.</p>
+<details id="headtohead"><summary>View head-to-head results</summary><div id="matches"></div></details>
+<footer id="foot"></footer>
 </main>
 <script id="data" type="application/json">__DATA__</script>
 <script>
 (function(){
-  var D = JSON.parse(document.getElementById("data").textContent);
-  var state = {track:"bots", table:"hk-hkma-v1", verifiedOnly:false};
-  try { var s = JSON.parse(localStorage.getItem("hkbench") || "{}"); if (s.track) state.track = s.track; if (s.table) state.table = s.table; } catch (e) {}
-  function save(){ try { localStorage.setItem("hkbench", JSON.stringify({track:state.track, table:state.table})); } catch (e) {} }
-  function el(tag, attrs, kids){ var e = document.createElement(tag); for (var k in (attrs||{})) { if (k === "text") e.textContent = attrs[k]; else e.setAttribute(k, attrs[k]); } (kids||[]).forEach(function(c){ e.appendChild(c); }); return e; }
-  function f(x, d){ return x == null ? "n/a" : (x >= 0 && d !== 0 ? "+" : "") + x.toFixed(d == null ? 2 : d); }
-  function pct(x){ return x == null ? "n/a" : (100 * x).toFixed(1) + "%"; }
-  function buttons(host, items, key){
-    host.innerHTML = "";
-    items.forEach(function(it){
-      var b = el("button", {"class":"tab", "type":"button", "aria-pressed": String(state[key] === it.id), text: it.title});
-      b.onclick = function(){ state[key] = it.id; save(); render(); };
-      host.appendChild(b);
-    });
-  }
-  function render(){
-    buttons(document.getElementById("tracks"), D.tracks, "track");
-    buttons(document.getElementById("rules"), D.tables.map(function(t){ return {id:t.id, title:t.rules_track + (t.status === "pending" ? " (pending)" : "")}; }), "table");
-    var table = D.tables.filter(function(t){ return t.id === state.table; })[0];
-    var track = D.tracks.filter(function(t){ return t.id === state.track; })[0];
-    var note = document.getElementById("note"); note.innerHTML = "";
-    var board = document.getElementById("board"); board.innerHTML = "";
-    var h2h = document.getElementById("h2h"); h2h.innerHTML = "";
-    if (table) {
-      var n = el("div", {"class":"note"});
-      n.appendChild(el("b", {text: table.title + ". "}));
-      n.appendChild(document.createTextNode(table.status === "pending" ? "Not scoring yet: " + table.pending_reason + "." : table.summary));
-      note.appendChild(n);
-    }
-    if (table && table.status === "pending") { board.appendChild(el("div", {"class":"empty", text:"This table has no results yet. It opens when the engine supports its scoring."})); render_foot(); return; }
-    var rows = D.rows.filter(function(r){ return r.track === state.track && r.table === state.table && (!state.verifiedOnly || r.verification === "verified"); });
-    if (!rows.length) {
-      board.appendChild(el("div", {"class":"empty", text: track.note || "No rows yet."}));
-    } else {
-      var head = el("tr"); ["#", "Bot", "Points a hand", "95% interval", "Win", "Deal-in", "Average win", "Games"].forEach(function(h){ head.appendChild(el("th", {text:h})); });
-      var body = el("tbody");
-      rows.forEach(function(r){
-        var tr = el("tr");
-        tr.appendChild(el("td", {"class":"rank", text:String(r.rank)}));
-        var name = el("td"); name.appendChild(document.createTextNode(r.bot.name));
-        name.appendChild(el("span", {"class":"badge " + r.verification, text:r.verification}));
-        name.appendChild(el("span", {"class":"sub", text: r.seed_tag + " deals. Trained on: " + r.bot.trained_on}));
-        tr.appendChild(name);
-        tr.appendChild(el("td", {"class":"pts", text:f(r.points_per_hand)}));
-        tr.appendChild(el("td", {"class":"ci", text: r.ci95 ? "[" + f(r.ci95[0]) + ", " + f(r.ci95[1]) + "]" : "n/a"}));
-        tr.appendChild(el("td", {text:pct(r.win_rate)}));
-        tr.appendChild(el("td", {text:pct(r.deal_in_rate)}));
-        tr.appendChild(el("td", {text: r.average_win_points == null ? "n/a" : r.average_win_points.toFixed(1) + " pts, " + r.average_win_faan.toFixed(1) + " faan"}));
-        tr.appendChild(el("td", {text:String(r.games)}));
-        body.appendChild(tr);
-      });
-      var t = el("table"); var th = el("thead"); th.appendChild(head); t.appendChild(th); t.appendChild(body);
-      var sc = el("div", {"class":"scroll"}); sc.appendChild(t); board.appendChild(sc);
-    }
-    var hh = D.head_to_head.filter(function(h){ return h.table === state.table; });
-    if (state.track === "bots" && hh.length) {
-      h2h.appendChild(el("h2", {text:"Head to head"}));
-      hh.forEach(function(h){
-        var head = el("tr"); ["#", "Bot", "Rating", "95% interval"].forEach(function(x){ head.appendChild(el("th", {text:x})); });
-        var body = el("tbody");
-        h.bots.forEach(function(b){
-          var tr = el("tr"); tr.appendChild(el("td", {"class":"rank", text:String(b.rank)})); tr.appendChild(el("td", {text:b.name}));
-          tr.appendChild(el("td", {"class":"pts", text:f(b.rating, 0)})); tr.appendChild(el("td", {"class":"ci", text:"[" + f(b.ci95[0], 0) + ", " + f(b.ci95[1], 0) + "]"}));
-          body.appendChild(tr);
-        });
-        var t = el("table"); var th = el("thead"); th.appendChild(head); t.appendChild(th); t.appendChild(body);
-        var sc = el("div", {"class":"scroll"}); sc.appendChild(t);
-        h2h.appendChild(el("p", {"class":"ci", text:h.deals + " deals, " + h.seed_tag + " deck, " + h.verification + ". Bradley-Terry rating on the Elo scale."}));
-        h2h.appendChild(sc);
-      });
-    }
-    render_foot();
-  }
-  function render_foot(){
-    document.getElementById("foot").innerHTML = "";
-    var p = el("p", {text:"A rank is shared when 95% intervals overlap. Points are one quarter of the HKMA rulebook's. Unverified rows were played on the public deals; verified rows were played on private deals after a hidden-tile fair-play check. Built " + D.generated_utc + " by hkbench " + D.hkbench_version + "."});
-    document.getElementById("foot").appendChild(p);
-  }
-  document.getElementById("verifiedOnly").onchange = function(e){ state.verifiedOnly = e.target.checked; render(); };
-  render();
+const D=JSON.parse(document.getElementById('data').textContent);
+const state={track:'bots',table:'hk-hkma-v1',deck:'private',sort:'points_per_hand',direction:-1};
+const host=id=>document.getElementById(id);
+function el(tag,attrs={},kids=[]){const e=document.createElement(tag);Object.entries(attrs).forEach(([k,v])=>{if(k==='text')e.textContent=v;else e.setAttribute(k,v)});kids.forEach(k=>e.appendChild(k));return e}
+const f=x=>x==null?'n/a':(x>=0?'+':'')+x.toFixed(2);
+const pct=x=>x==null?'n/a':(100*x).toFixed(1)+'%';
+function buttons(id,items,key){host(id).replaceChildren();items.forEach(it=>{const b=el('button',{type:'button','aria-pressed':String(state[key]===it.id),text:it.title,class:key==='track'?'track':''});if(key==='track')b.appendChild(el('span',{class:'status',text:it.id==='bots'?'Live':'Coming'}));b.onclick=()=>{state[key]=it.id;render()};host(id).appendChild(b)})}
+function interval(r,lo,hi){const pos=v=>100*(v-lo)/(hi-lo||1);const bar=el('span',{class:'interval','aria-hidden':'true'});bar.appendChild(el('span',{class:'zero',style:'left:'+pos(0)+'%'}));bar.appendChild(el('span',{class:'whisker',style:'left:'+pos(r.ci95[0])+'%;width:'+(pos(r.ci95[1])-pos(r.ci95[0]))+'%'}));bar.appendChild(el('span',{class:'dot',style:'left:calc('+pos(r.points_per_hand)+'% - 3.5px)'}));return bar}
+function render(){
+buttons('tracks',D.tracks,'track');buttons('tables',D.tables.slice().sort((a,b)=>Number(b.headline)-Number(a.headline)).map(t=>({id:t.id,title:t.rules_track})),'table');buttons('decks',[{id:'private',title:'Private deck'},{id:'public',title:'Public deck'}],'deck');
+const table=D.tables.find(t=>t.id===state.table);
+const descriptions={
+'hk-hkma-v1':'HKMA Classical requires 3 faan to win and caps scoring at 10 faan. The discarder pays the whole hand, and flowers do not score.',
+'hk-house-v1':'House rules count Seven Pairs as a hand and award points for flowers. Limit hands are graded, with scoring capped at 13 faan.',
+'hk-chicken-v1':'Chicken hand uses HKMA Classical with a 0-faan minimum. A hand without a scoring pattern can win, and faan still determine the payout.'
+};
+host('summary').textContent=descriptions[state.table]||table.summary;
+const rows=D.rows.filter(r=>r.table===state.table&&r.track===state.track&&r.seed_tag===state.deck);
+rows.sort((a,b)=>{const av=state.sort==='bot'?a.bot.name:a[state.sort],bv=state.sort==='bot'?b.bot.name:b[state.sort];return state.direction*(typeof av==='string'?av.localeCompare(bv):av-bv)});
+host('board').replaceChildren();
+if(!rows.length){host('board').appendChild(el('div',{class:'empty'},[el('h2',{text:state.track==='bots'?'No results yet':D.tracks.find(t=>t.id===state.track).title+' are coming soon'}),el('p',{text:D.tracks.find(t=>t.id===state.track).note||'There are no runs for this table and deck.'})]))}
+else{
+const lo=Math.min(0,...rows.map(r=>r.ci95[0])),hi=Math.max(0,...rows.map(r=>r.ci95[1]));
+const t=el('table'),head=el('tr'),body=el('tbody');t.appendChild(el('caption',{text:table.rules_track+' · '+state.deck+' deck · '+rows.length+' bots. Select a column heading to sort.'}));
+[['Rank','rank'],['Bot','bot'],['Points a hand','points_per_hand'],['Win','win_rate'],['Deal-in','deal_in_rate'],['Deals','deals'],['Status','verification']].forEach(([label,key])=>{const th=el('th',{scope:'col','aria-sort':state.sort===key?(state.direction===1?'ascending':'descending'):'none'}),b=el('button',{text:label+(state.sort===key?(state.direction===1?' ↑':' ↓'):''),type:'button'});b.onclick=()=>{state.direction=state.sort===key?-state.direction:(key==='bot'||key==='verification'?1:-1);state.sort=key;render()};th.appendChild(b);head.appendChild(th)});
+rows.forEach(r=>{const tr=el('tr',{class:r.bot.name==='Fu-2.3M-HKMA-1'?'featured':''});tr.appendChild(el('td',{class:'rank',text:r.rank}));tr.appendChild(el('td',{class:'name'},[el('span',{text:r.bot.name}),el('span',{class:'sub',text:'Trained on: '+r.bot.trained_on})]));const metric=el('td',{class:'metric'},[el('span',{class:'value',text:f(r.points_per_hand)}),interval(r,lo,hi),el('span',{class:'sub',text:'['+f(r.ci95[0])+', '+f(r.ci95[1])+']'})]);tr.appendChild(metric);tr.appendChild(el('td',{text:pct(r.win_rate)}));tr.appendChild(el('td',{text:pct(r.deal_in_rate)}));tr.appendChild(el('td',{text:r.deals.toLocaleString('en')}));tr.appendChild(el('td',{},[el('span',{class:'badge '+r.verification,text:r.verification})]));body.appendChild(tr)});
+t.appendChild(el('thead',{},[head]));t.appendChild(body);host('board').appendChild(el('div',{class:'scroll',tabindex:'0','aria-label':'Leaderboard results'},[t]));}
+const matches=D.head_to_head.filter(h=>h.table===state.table&&h.seed_tag===state.deck);host('headtohead').hidden=state.track!=='bots'||!matches.length;host('matches').replaceChildren();matches.forEach(h=>{const t=el('table'),head=el('tr');['Rank','Bot','Rating','95% interval'].forEach(label=>head.appendChild(el('th',{scope:'col',text:label})));t.appendChild(el('caption',{text:h.deals.toLocaleString('en')+' deals · '+h.seed_tag+' deck · '+h.verification+'. Bradley-Terry ratings use the Elo scale.'}));t.appendChild(el('thead',{},[head]));const body=el('tbody');h.bots.forEach(b=>body.appendChild(el('tr',{},[el('td',{text:b.rank}),el('td',{text:b.name}),el('td',{text:Math.round(b.rating)}),el('td',{text:'['+Math.round(b.ci95[0])+', '+Math.round(b.ci95[1])+']'})])));t.appendChild(body);host('matches').appendChild(el('div',{class:'scroll',tabindex:'0'},[t]))});
+host('foot').textContent='Verified rows used private deals after a hidden-tile fair-play check. Unverified rows used public deals. Results updated '+D.generated_utc+'. Built with hkbench '+D.hkbench_version+'.';
+}
+const theme=host('theme');function setTheme(dark){document.documentElement.dataset.theme=dark?'dark':'light';theme.textContent=dark?'Light mode':'Dark mode';theme.setAttribute('aria-pressed',String(dark))}
+setTheme(matchMedia('(prefers-color-scheme:dark)').matches);theme.onclick=()=>setTheme(document.documentElement.dataset.theme!=='dark');
+render();
 })();
 </script>
 </body>

@@ -1,8 +1,38 @@
-# Hong Kong Mahjong Bench
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/banner-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/assets/banner-light.svg">
+  <img src="docs/assets/banner-light.svg" alt="Hong Kong Mahjong Bench" width="900">
+</picture>
 
 A fair way to compare Hong Kong Mahjong players: bots today, LLMs and humans next.
 
+<p>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/licence-MIT-20785b" alt="MIT licence"></a>
+  <img src="https://img.shields.io/badge/Python-3.9%2B-20785b" alt="Python 3.9+">
+  <img src="https://img.shields.io/badge/version-1.1.0-20785b" alt="Version 1.1.0">
+  <img src="https://img.shields.io/badge/protocol-hkbench--1-20785b" alt="Protocol hkbench-1">
+</p>
+<p><a href="site/index.html">Leaderboard</a> · <a href="RESULTS.md">Results</a> · <a href="BENCHMARK_CARD.md">Benchmark card</a> · <a href="RULES.md">Rules</a> · <a href="SUBMITTING.md">Submit a bot</a></p>
+</div>
+
+The headline number is **points a hand against a frozen field of reference bots**, in duplicate play, with a 95% interval. Every deal is played four times on the same wall, with the player under test in each seat once. Every row says which rules it was scored under and whether the deals were private.
+
+This repository holds the rules engine, the scorer and the harness. It is MIT licensed and contains no private artifacts.
+
 ## Results
+
+The [leaderboard](site/index.html) opens directly from a local checkout and needs no server.
+
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/results-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/assets/results-light.svg">
+  <img src="docs/assets/results-light.svg" alt="Verified private-deck points a hand for every bot, with 95% intervals, on HKMA Classical, House and Chicken hand." width="640">
+</picture>
+</div>
+
+Each panel has its own axis. Points cannot be compared across tables because the rules and payouts differ. The whiskers show 95% intervals. [Rebuild the chart](scripts/render_charts.py) from the result files with `python3 scripts/render_charts.py`.
 
 These are the verified private-deck results from 20 to 21 November 2026, using version 1.1.0. Each table shows `Fu-2.3M-HKMA-1` and the baseline with the highest points a hand.
 
@@ -15,13 +45,11 @@ These are the verified private-deck results from 20 to 21 November 2026, using v
 | `hk-chicken-v1` | `Fu-2.3M-HKMA-1` | +0.64 [+0.55, +0.73] | 47.8% | 13.5% |
 | `hk-chicken-v1` | `faan_aware` | +0.41 [+0.30, +0.52] | 27.4% | 18.0% |
 
+## Why the run is fair
+
 The private deck was new and stayed secret. Program bots ran in a sandbox with no network, no child processes and no access to the deck. All 51 runs passed the fair-play check with 0 decision changes and 0 view mismatches; none exceeded the fault limit. All 283,800 public games replayed with 0 mismatches. The bench checked the pinned reference hashes and engine fingerprints before scoring.
 
 The [full results and verification notes](RESULTS.md) include every bot on both decks, head-to-head ratings, the limits of the verified tag and commands to check the public runs. `Fu-2.3M-HKMA-1` was trained on HKMA Classical rules; House and Chicken hand use rules it was not trained for.
-
-The headline number is **points a hand against a frozen field of reference bots**, in duplicate play, with a 95% interval. Every deal is played four times on the same wall, with the player under test in each seat once. Every row says which rules it was scored under and whether the deals were private.
-
-This repository holds the rules engine, the scorer and the harness. It is MIT licensed and contains no private artifacts.
 
 ## Three rule sets
 
@@ -52,6 +80,10 @@ python -m hkbench score --table hk-hkma-v1 --bot ref:ukeire --deals 200 --worker
 It prints points a hand with its 95% interval, win rate, deal-in rate, average win and limit hands. It also writes one result file and a compressed log of every game to `results/`. The run is tagged **unverified**, because it used the public deals.
 
 Each log line is one game: the deal, the arrangement, who won and how, the faan and its `patterns` (`[name, faan]` pairs), the payments, and on public deals the seed and the full action list, so `verify-log` can replay it. To train on the games, add `--training-log` (to `score` or `h2h`; off by default, and with it off the logs are unchanged). Each won game's line then also carries the winner's `melds` (`[kind, tiles, seat the claimed tile came from]`), `concealed` tiles with the winning tile in them, `winning_tile` (null for a flower win), `flowers`, and `winner_draws`, the winner's own draw count from the engine's events. Tiles use the engine's names (`m1`..`m9`, `s1`.., `p1`.., `E S W N`, `C F P`). Seed plus actions rebuild any state, so nothing else is stored. The setting is for public deals: on a private deck the flag is ignored and the log stays outcome-only. The `game_over` message a bot receives (`protocol/PROTOCOL.md`) does not change.
+
+## Submit a bot
+
+Read [the submission guide](SUBMITTING.md) for the protocol, fair-play checks and the files to include.
 
 You can score your own bot with any program that reads one JSON object per line on stdin and writes one per line on stdout (`protocol/PROTOCOL.md`):
 
@@ -103,3 +135,14 @@ More: `BENCHMARK_CARD.md` (what the bench measures and where it is weak), `RULES
 ## Tracks
 
 The leaderboard has three tracks: **Bots**, **LLMs** and **Humans**. Only the Bots track has results so far.
+
+## Citation
+
+```bibtex
+@misc{hongkongmahjongbench2026,
+  title = {Hong Kong Mahjong Bench},
+  year = {2026},
+  howpublished = {\url{https://github.com/vnguyen9/mjss-hongkong-mahjong-bench}},
+  note = {Version 1.1.0}
+}
+```

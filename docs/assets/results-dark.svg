@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1100" role="img" aria-labelledby="chart-title chart-desc">
+<title id="chart-title">Verified private-deck results</title>
+<desc id="chart-desc">Every bot, sorted by points a hand within each table. Whiskers show 95% intervals. Each panel has its own scale.</desc>
+<rect width="640" height="1100" rx="12" fill="#0d1117"/>
+<g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" fill="#e6edf3">
+<text x="20" y="35" font-size="22" font-weight="700">HKMA Classical</text>
+<text x="20" y="61" font-size="14" fill="#a4b1bd">hk-hkma-v1</text>
+<text x="620" y="61" font-size="16" text-anchor="end" fill="#a4b1bd">Mean</text>
+<path d="M210.00 80V300" stroke="#303b43"/>
+<text x="210.00" y="324" font-size="18" text-anchor="middle" fill="#a4b1bd">-5</text>
+<path d="M273.60 80V300" stroke="#303b43"/>
+<text x="273.60" y="324" font-size="18" text-anchor="middle" fill="#a4b1bd">0</text>
+<path d="M337.20 80V300" stroke="#303b43"/>
+<text x="337.20" y="324" font-size="18" text-anchor="middle" fill="#a4b1bd">5</text>
+<path d="M400.80 80V300" stroke="#303b43"/>
+<text x="400.80" y="324" font-size="18" text-anchor="middle" fill="#a4b1bd">10</text>
+<path d="M464.40 80V300" stroke="#303b43"/>
+<text x="464.40" y="324" font-size="18" text-anchor="middle" fill="#a4b1bd">15</text>
+<path d="M528.00 80V300" stroke="#303b43"/>
+<text x="528.00" y="324" font-size="18" text-anchor="middle" fill="#a4b1bd">20</text>
+<path d="M273.60 80V300" stroke="#a4b1bd"/>
+<text x="20" y="101" font-size="20" fill="#75d9b1" font-weight="700">Fu-2.3M-HKMA-1</text>
+<g><title>Fu-2.3M-HKMA-1: +17.75 [+17.08, +18.42]</title><rect x="273.60" y="88" width="225.78" height="16" rx="3" fill="#75d9b1"/><path d="M490.85 96H507.91M490.85 91v10M507.91 91v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="101" font-size="20" text-anchor="end" font-weight="600">+17.75</text>
+<text x="20" y="131" font-size="20" fill="#e6edf3" font-weight="400">python_example</text>
+<g><title>python_example: +2.54 [+2.11, +2.97]</title><rect x="273.60" y="118" width="32.28" height="16" rx="3" fill="#6b8190"/><path d="M300.41 126H311.35M300.41 121v10M311.35 121v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="131" font-size="20" text-anchor="end" font-weight="600">+2.54</text>
+<text x="20" y="161" font-size="20" fill="#e6edf3" font-weight="400">faan_aware</text>
+<g><title>faan_aware: +1.61 [+1.37, +1.84]</title><rect x="273.60" y="148" width="20.42" height="16" rx="3" fill="#6b8190"/><path d="M291.08 156H296.97M291.08 151v10M296.97 151v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="161" font-size="20" text-anchor="end" font-weight="600">+1.61</text>
+<text x="20" y="191" font-size="20" fill="#e6edf3" font-weight="400">ukeire</text>
+<g><title>ukeire: -0.72 [-0.88, -0.55]</title><rect x="264.50" y="178" width="9.10" height="16" rx="3" fill="#6b8190"/><path d="M262.46 186H266.54M262.46 181v10M266.54 181v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="191" font-size="20" text-anchor="end" font-weight="600">-0.72</text>
+<text x="20" y="221" font-size="20" fill="#e6edf3" font-weight="400">deficiency</text>
+<g><title>deficiency: -0.91 [-1.07, -0.75]</title><rect x="262.02" y="208" width="11.58" height="16" rx="3" fill="#6b8190"/><path d="M259.98 216H264.07M259.98 211v10M264.07 211v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="221" font-size="20" text-anchor="end" font-weight="600">-0.91</text>
+<text x="20" y="251" font-size="20" fill="#e6edf3" font-weight="400">shallow_search</text>
+<g><title>shallow_search: -0.94 [-1.24, -0.65]</title><rect x="261.58" y="238" width="12.02" height="16" rx="3" fill="#6b8190"/><path d="M257.84 246H265.32M257.84 241v10M265.32 241v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="251" font-size="20" text-anchor="end" font-weight="600">-0.94</text>
+<text x="20" y="281" font-size="20" fill="#e6edf3" font-weight="400">random</text>
+<g><title>random: -1.81 [-1.95, -1.67]</title><rect x="250.58" y="268" width="23.02" height="16" rx="3" fill="#6b8190"/><path d="M248.86 276H252.31M248.86 271v10M252.31 271v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="281" font-size="20" text-anchor="end" font-weight="600">-1.81</text>
+<text x="369" y="347" font-size="18" text-anchor="middle" fill="#a4b1bd">Points a hand · 95% interval</text>
+<text x="20" y="395" font-size="22" font-weight="700">House</text>
+<text x="20" y="421" font-size="14" fill="#a4b1bd">hk-house-v1</text>
+<text x="620" y="421" font-size="16" text-anchor="end" fill="#a4b1bd">Mean</text>
+<path d="M210.00 440V660" stroke="#303b43"/>
+<text x="210.00" y="684" font-size="18" text-anchor="middle" fill="#a4b1bd">-5</text>
+<path d="M273.60 440V660" stroke="#303b43"/>
+<text x="273.60" y="684" font-size="18" text-anchor="middle" fill="#a4b1bd">0</text>
+<path d="M337.20 440V660" stroke="#303b43"/>
+<text x="337.20" y="684" font-size="18" text-anchor="middle" fill="#a4b1bd">5</text>
+<path d="M400.80 440V660" stroke="#303b43"/>
+<text x="400.80" y="684" font-size="18" text-anchor="middle" fill="#a4b1bd">10</text>
+<path d="M464.40 440V660" stroke="#303b43"/>
+<text x="464.40" y="684" font-size="18" text-anchor="middle" fill="#a4b1bd">15</text>
+<path d="M528.00 440V660" stroke="#303b43"/>
+<text x="528.00" y="684" font-size="18" text-anchor="middle" fill="#a4b1bd">20</text>
+<path d="M273.60 440V660" stroke="#a4b1bd"/>
+<text x="20" y="461" font-size="20" fill="#75d9b1" font-weight="700">Fu-2.3M-HKMA-1</text>
+<g><title>Fu-2.3M-HKMA-1: +17.67 [+16.76, +18.58]</title><rect x="273.60" y="448" width="224.74" height="16" rx="3" fill="#75d9b1"/><path d="M486.77 456H509.91M486.77 451v10M509.91 451v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="461" font-size="20" text-anchor="end" font-weight="600">+17.67</text>
+<text x="20" y="491" font-size="20" fill="#e6edf3" font-weight="400">python_example</text>
+<g><title>python_example: +2.79 [+2.25, +3.33]</title><rect x="273.60" y="478" width="35.48" height="16" rx="3" fill="#6b8190"/><path d="M302.20 486H315.95M302.20 481v10M315.95 481v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="491" font-size="20" text-anchor="end" font-weight="600">+2.79</text>
+<text x="20" y="521" font-size="20" fill="#e6edf3" font-weight="400">faan_aware</text>
+<g><title>faan_aware: +1.57 [+1.30, +1.83]</title><rect x="273.60" y="508" width="19.91" height="16" rx="3" fill="#6b8190"/><path d="M290.09 516H296.93M290.09 511v10M296.93 511v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="521" font-size="20" text-anchor="end" font-weight="600">+1.57</text>
+<text x="20" y="551" font-size="20" fill="#e6edf3" font-weight="400">shallow_search</text>
+<g><title>shallow_search: -0.35 [-0.73, +0.03]</title><rect x="269.12" y="538" width="4.48" height="16" rx="3" fill="#6b8190"/><path d="M264.27 546H273.96M264.27 541v10M273.96 541v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="551" font-size="20" text-anchor="end" font-weight="600">-0.35</text>
+<text x="20" y="581" font-size="20" fill="#e6edf3" font-weight="400">ukeire</text>
+<g><title>ukeire: -0.85 [-1.04, -0.66]</title><rect x="262.81" y="568" width="10.79" height="16" rx="3" fill="#6b8190"/><path d="M260.36 576H265.26M260.36 571v10M265.26 571v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="581" font-size="20" text-anchor="end" font-weight="600">-0.85</text>
+<text x="20" y="611" font-size="20" fill="#e6edf3" font-weight="400">deficiency</text>
+<g><title>deficiency: -0.93 [-1.14, -0.71]</title><rect x="261.83" y="598" width="11.77" height="16" rx="3" fill="#6b8190"/><path d="M259.14 606H264.53M259.14 601v10M264.53 601v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="611" font-size="20" text-anchor="end" font-weight="600">-0.93</text>
+<text x="20" y="641" font-size="20" fill="#e6edf3" font-weight="400">random</text>
+<g><title>random: -2.82 [-2.95, -2.69]</title><rect x="237.72" y="628" width="35.88" height="16" rx="3" fill="#6b8190"/><path d="M236.02 636H239.41M236.02 631v10M239.41 631v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="641" font-size="20" text-anchor="end" font-weight="600">-2.82</text>
+<text x="369" y="707" font-size="18" text-anchor="middle" fill="#a4b1bd">Points a hand · 95% interval</text>
+<text x="20" y="755" font-size="22" font-weight="700">Chicken hand</text>
+<text x="20" y="781" font-size="14" fill="#a4b1bd">hk-chicken-v1</text>
+<text x="620" y="781" font-size="16" text-anchor="end" fill="#a4b1bd">Mean</text>
+<path d="M210.00 800V1020" stroke="#303b43"/>
+<text x="210.00" y="1044" font-size="18" text-anchor="middle" fill="#a4b1bd">-1.5</text>
+<path d="M273.60 800V1020" stroke="#303b43"/>
+<text x="273.60" y="1044" font-size="18" text-anchor="middle" fill="#a4b1bd">-1</text>
+<path d="M337.20 800V1020" stroke="#303b43"/>
+<text x="337.20" y="1044" font-size="18" text-anchor="middle" fill="#a4b1bd">-0.5</text>
+<path d="M400.80 800V1020" stroke="#303b43"/>
+<text x="400.80" y="1044" font-size="18" text-anchor="middle" fill="#a4b1bd">0</text>
+<path d="M464.40 800V1020" stroke="#303b43"/>
+<text x="464.40" y="1044" font-size="18" text-anchor="middle" fill="#a4b1bd">0.5</text>
+<path d="M528.00 800V1020" stroke="#303b43"/>
+<text x="528.00" y="1044" font-size="18" text-anchor="middle" fill="#a4b1bd">1</text>
+<path d="M400.80 800V1020" stroke="#a4b1bd"/>
+<text x="20" y="821" font-size="20" fill="#75d9b1" font-weight="700">Fu-2.3M-HKMA-1</text>
+<g><title>Fu-2.3M-HKMA-1: +0.64 [+0.55, +0.73]</title><rect x="400.80" y="808" width="81.60" height="16" rx="3" fill="#75d9b1"/><path d="M471.29 816H493.50M471.29 811v10M493.50 811v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="821" font-size="20" text-anchor="end" font-weight="600">+0.64</text>
+<text x="20" y="851" font-size="20" fill="#e6edf3" font-weight="400">faan_aware</text>
+<g><title>faan_aware: +0.41 [+0.30, +0.52]</title><rect x="400.80" y="838" width="52.30" height="16" rx="3" fill="#6b8190"/><path d="M438.81 846H467.38M438.81 841v10M467.38 841v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="851" font-size="20" text-anchor="end" font-weight="600">+0.41</text>
+<text x="20" y="881" font-size="20" fill="#e6edf3" font-weight="400">shallow_search</text>
+<g><title>shallow_search: +0.13 [+0.00, +0.26]</title><rect x="400.80" y="868" width="16.85" height="16" rx="3" fill="#6b8190"/><path d="M400.83 876H434.48M400.83 871v10M434.48 871v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="881" font-size="20" text-anchor="end" font-weight="600">+0.13</text>
+<text x="20" y="911" font-size="20" fill="#e6edf3" font-weight="400">python_example</text>
+<g><title>python_example: -0.14 [-0.34, +0.05]</title><rect x="382.37" y="898" width="18.43" height="16" rx="3" fill="#6b8190"/><path d="M357.87 906H406.87M357.87 901v10M406.87 901v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="911" font-size="20" text-anchor="end" font-weight="600">-0.14</text>
+<text x="20" y="941" font-size="20" fill="#e6edf3" font-weight="400">ukeire</text>
+<g><title>ukeire: -0.17 [-0.25, -0.09]</title><rect x="379.22" y="928" width="21.58" height="16" rx="3" fill="#6b8190"/><path d="M368.57 936H389.88M368.57 931v10M389.88 931v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="941" font-size="20" text-anchor="end" font-weight="600">-0.17</text>
+<text x="20" y="971" font-size="20" fill="#e6edf3" font-weight="400">deficiency</text>
+<g><title>deficiency: -0.18 [-0.26, -0.10]</title><rect x="378.51" y="958" width="22.29" height="16" rx="3" fill="#6b8190"/><path d="M368.32 966H388.70M368.32 961v10M388.70 961v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="971" font-size="20" text-anchor="end" font-weight="600">-0.18</text>
+<text x="20" y="1001" font-size="20" fill="#e6edf3" font-weight="400">random</text>
+<g><title>random: -1.19 [-1.27, -1.12]</title><rect x="248.95" y="988" width="151.84" height="16" rx="3" fill="#6b8190"/><path d="M239.03 996H258.88M239.03 991v10M258.88 991v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1001" font-size="20" text-anchor="end" font-weight="600">-1.19</text>
+<text x="369" y="1067" font-size="18" text-anchor="middle" fill="#a4b1bd">Points a hand · 95% interval</text>
+</g></svg>
