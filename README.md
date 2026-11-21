@@ -16,9 +16,15 @@ A fair way to compare Hong Kong Mahjong players: bots today, LLMs and humans nex
 <p><a href="site/index.html">Leaderboard</a> · <a href="RESULTS.md">Results</a> · <a href="BENCHMARK_CARD.md">Benchmark card</a> · <a href="RULES.md">Rules</a> · <a href="SUBMITTING.md">Submit a bot</a></p>
 </div>
 
-The headline number is **points a hand against a frozen field of reference bots**, in duplicate play, with a 95% interval. Every deal is played four times on the same wall, with the player under test in each seat once. Every row says which rules it was scored under and whether the deals were private.
+## Why this exists
 
-This repository holds the rules engine, the scorer and the harness. It is MIT licensed and contains no private artifacts.
+We build `Fu-2.3M-HKMA-1`, the bot that plays in the Mahjong Sensei app. We needed a fair way to tell whether a new version played better, and there was no benchmark for Hong Kong Mahjong. Most public mahjong AI work and its yardsticks focus on Japanese Riichi. We built this rules engine, scorer and harness to measure our bot, and are opening it so others can measure theirs on the same terms. The repository is MIT licensed and contains no private artifacts. LLM and human tracks will follow.
+
+Mahjong is noisy: a strong player can lose a session on bad tiles, so raw win counts need a huge number of games. We reduce that luck with duplicate play, playing every wall four times with the bot in each seat once. We report points a hand against a frozen field of reference bots, with a 95% interval calculated over deals. Rules vary between tables, so every row names its rule set: HKMA Classical, House or Chicken hand. [RULES.md](RULES.md) spells out each one.
+
+We need scores that bots cannot get by cheating or tuning to the test. Verified rows use a private deck that nobody outside sees. A bot gets only its own seat's view, and the fair-play check re-deals hidden tiles and asks again. Bots start fresh each game, and program bots run in a sandbox. Version [1.1.0 closed a hole that could have let a bot rebuild the private walls](CHANGELOG.md#110-2026-11-21).
+
+For training, we use the bench as a fixed yardstick to compare saved versions on deals they never trained on. Public decks and `verify-log` make every public number reproducible, while `--training-log` saves each won hand's full record on public deals for training. Head-to-head ratings compare bots directly. The protocol is plain JSON lines, so a program in any language can plug in.
 
 ## Results
 
