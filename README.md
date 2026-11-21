@@ -113,7 +113,7 @@ python -m hkbench tables                                  # list tables, check t
 ## How a row is scored
 
 1. The reference bots must match their pinned hashes, and the engine must reproduce the table's fingerprint: 300 fixed deals and 42 fixed hands, hashed. If either fails, nothing is scored.
-2. The bench takes real decision points, re-shuffles every hidden tile (the other hands and the wall) into a new arrangement that looks the same from the bot's seat, and asks again. A changed answer rejects the bot.
+2. The bench plays the bot in real games on secret deals, re-shuffles every hidden tile (the other hands and the wall) at chosen decision points into a new arrangement that looks the same from the bot's seat, and asks again. A changed answer rejects the bot.
 3. The bot takes one seat and the three field bots fill the others. Every deal is played from all four seats.
 4. The bench computes one average per deal, then the mean and a 95% interval over deals. The four games of a deal are not independent, so the deal is the unit.
 
@@ -127,7 +127,8 @@ A bot never sees the deal's seed. Each decision's `rng_seed` and each game's `ga
 hkbench/           the engine, the harness, the reference bots, the CLI
 tables/            frozen, versioned tables: rules, field pins, deal range, engine fingerprint
 protocol/          PROTOCOL.md and schema.json
-scripts/           render_rules.py, and make_private_deck.py for a private deal deck
+scripts/           render_rules.py, render_charts.py, make_private_deck.py, and sandbox/macos.sh
+docs/assets/       the banner and results chart, light and dark
 examples/bots/     a Python bot and a JavaScript bot that pass the harness
 results/           one JSON per scored run, and compressed per-game logs
 site/              the static leaderboard (index.html and leaderboard.json)
