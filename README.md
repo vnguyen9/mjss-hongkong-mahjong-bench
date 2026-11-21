@@ -49,6 +49,18 @@ These are the verified private-deck results from 20 to 21 November 2026, using v
 | `hk-chicken-v1` | `Fu-2.3M-HKMA-1` | +0.64 [+0.55, +0.73] | 47.8% | 13.5% |
 | `hk-chicken-v1` | `faan_aware` | +0.41 [+0.30, +0.52] | 27.4% | 18.0% |
 
+Fu-2.3M-HKMA-1 also played [matches against outside bots](RESULTS.md#matches-against-outside-bots) on our HKMA table. The table below gives its team of two seats' lead in points a game, with 95% intervals. These games were not played through the bench harness, so they are not on the leaderboard or the chart and their points cannot be compared with the bench rows.
+
+| Outside bot | Fu-2.3M-HKMA-1 team lead, points a game [95% interval] |
+|---|---|
+| Lucky Cat lc32 | +6.78 [+6.16, +7.39] |
+| Lucky Cat lc34 | +5.73 [+4.82, +6.65] |
+| Neural Cat NC10 | +5.68 [+4.65, +6.71] |
+| Jorge Yau | +8.00 [+7.08, +8.93] |
+| hk-mahjong-lab value | +3.48 [+2.62, +4.33] |
+| hk-mahjong-lab PIMC-128 | +2.49 [+1.89, +3.09] |
+| hk-mahjong-lab PIMC-256 | +1.45 [+0.85, +2.04] |
+
 ## Why the run is fair
 
 The private deck was new and stayed secret. Program bots ran in a sandbox with no network, no child processes and no access to the deck. All 51 runs passed the fair-play check with 0 decision changes and 0 view mismatches; none exceeded the fault limit. All 283,800 public games replayed with 0 mismatches. The bench checked the pinned reference hashes and engine fingerprints before scoring.

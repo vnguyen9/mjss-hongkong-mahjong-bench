@@ -148,7 +148,7 @@ The check does not stop a bot from being run with more thinking time, tools or h
 * The example bot beats the field. A short hand-written bot that keeps pairs and claims dragon and wind pongs finishes ahead of the field's best bot on points a hand. The field provides a reference score that stronger bots can exceed.
 * Time limits depend on hardware. The limit is wall-clock time per decision (10 seconds). A bot that needs more will be asked to run on our machine with its own limit, which is then recorded.
 * LLMs and humans are not scored yet. Those tracks need cost per hand and a place to play. They are empty.
-* Third-party bots are not listed without their authors' agreement. None of their code, model files or results are in this repository. The protocol is documented so they can submit (`SUBMITTING.md`).
+* Results against outside bots are published in [RESULTS.md](RESULTS.md#matches-against-outside-bots) and were played in our own evaluation harness. None of their code or weights are in this repository. These results are not leaderboard rows; their authors can submit through [SUBMITTING.md](SUBMITTING.md) to get a verified row.
 
 The [20 to 21 November 2026 results](RESULTS.md) list every run and the fairness checks.
 

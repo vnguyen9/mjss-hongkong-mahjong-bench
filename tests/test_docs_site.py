@@ -98,7 +98,7 @@ class Privacy(unittest.TestCase):
         r"/Users/", r"\bTrello\b", r"trello\.com", r"[Ff]irebase", r"[Aa]pp ?[Cc]heck", r"api[_-]?key", r"\bsk-[A-Za-z0-9]{8,}",
         r"AIza[0-9A-Za-z_-]{20,}", r"@(gmail|icloud|lumio)", r"\.mlmodel", r"\.mlpackage", r"\.pt\b", r"\.ckpt", r"checkpoint",
         r"ppo_", r"neo_d1", r"neo_h1", r"mahjong_ai", r"mjss_v9", r"\bD1\b", r"Xcode ?Cloud", r"TestFlight",
-        r"lumiodatalabs", r"Lucky Cat", r"hk-mahjong-lab", r"clarkwkw/mahjong-ai", r"training code", r"model weights",
+        r"lumiodatalabs", r"clarkwkw/mahjong-ai", r"training code", r"model weights",
         r"BEGIN (RSA|PRIVATE)", r"password", r"(?:127\.0\.0\.1|localhost|(?:\d{1,3}\.){3}\d{1,3})",
     ]
 
