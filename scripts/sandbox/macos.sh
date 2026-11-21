@@ -18,6 +18,7 @@
 #   --deny-read PATH   make PATH unreadable (repeat)
 #   --allow-write PATH make PATH writable as well (repeat; for a cache the bot needs)
 #   --keep-cwd         start the bot in the directory this wrapper was started in, not in the scratch
+#                      (without it, give the bot's script by absolute path: a relative one is not found)
 #   --allow-fork       leave fork allowed (only if a bot cannot start without it)
 #   --allow-shm        leave POSIX shared memory and Mach registration allowed
 # stdin, stdout and stderr go to the bot untouched, and the environment is passed through apart from HOME and the temp variables.

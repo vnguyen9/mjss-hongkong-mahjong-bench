@@ -1,0 +1,463 @@
+{
+  "bots": [
+    {
+      "description": "",
+      "display": "random",
+      "kind": "reference",
+      "name": "random",
+      "sha256": "9c1c37dc49ebf5f63bb87cc87f83e332e4e10d7b31b97f77cd7aceacdf56dfd1",
+      "track": "bots",
+      "trained_on": "none (scripted)"
+    },
+    {
+      "description": "",
+      "display": "deficiency",
+      "kind": "reference",
+      "name": "deficiency",
+      "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648",
+      "track": "bots",
+      "trained_on": "none (scripted)"
+    },
+    {
+      "description": "",
+      "display": "ukeire",
+      "kind": "reference",
+      "name": "ukeire",
+      "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648",
+      "track": "bots",
+      "trained_on": "none (scripted)"
+    },
+    {
+      "description": "",
+      "display": "faan_aware",
+      "kind": "reference",
+      "name": "faan_aware",
+      "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6",
+      "track": "bots",
+      "trained_on": "none (scripted)"
+    },
+    {
+      "description": "",
+      "display": "python_example",
+      "kind": "external",
+      "name": "python_example",
+      "sha256": "f64eacafe3672d64c5ca84ed57236ff943818f18e8cce8a1845ec6a541b5cfb4",
+      "track": "bots",
+      "trained_on": "unknown"
+    },
+    {
+      "description": "",
+      "display": "Fu-2.3M-HKMA-1",
+      "kind": "external",
+      "name": "Fu-2.3M-HKMA-1",
+      "sha256": "38409559a44bd83b417814c48ad45ee67fd7e56c3831489e069556674d029506",
+      "track": "bots",
+      "trained_on": "unknown"
+    }
+  ],
+  "bradley_terry": {
+    "Fu-2.3M-HKMA-1": {
+      "ci95": [
+        105.99752682457536,
+        116.7729243998461
+      ],
+      "rank": 1,
+      "rating": 111.44296851327618
+    },
+    "deficiency": {
+      "ci95": [
+        -25.791517692721836,
+        -18.04615203774499
+      ],
+      "rank": 5,
+      "rating": -22.1935272948224
+    },
+    "faan_aware": {
+      "ci95": [
+        47.50208296647176,
+        57.00679807959104
+      ],
+      "rank": 2,
+      "rating": 52.175043427671504
+    },
+    "python_example": {
+      "ci95": [
+        -12.718080170708715,
+        -4.506537326715804
+      ],
+      "rank": 3,
+      "rating": -8.806587720265968
+    },
+    "random": {
+      "ci95": [
+        -124.31489699064507,
+        -117.15993299833247
+      ],
+      "rank": 6,
+      "rating": -120.52689611417117
+    },
+    "ukeire": {
+      "ci95": [
+        -16.578549158860028,
+        -8.285977762839252
+      ],
+      "rank": 3,
+      "rating": -12.091000811688193
+    }
+  },
+  "command": "hkbench h2h --table hk-house-v1 --bot random=ref:random --bot deficiency=ref:deficiency --bot ukeire=ref:ukeire --bot faan_aware=ref:faan_aware --bot 'python_example=python3 ~/hkbench_v11/bench/examples/bots/python_bot.py' --bot 'Fu-2.3M-HKMA-1=~/hkbench_v11/hosted_std' --deals 300 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --'",
+  "created_utc": "2026-11-21T06:06:10Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "40776e78617bb1ec4df7d98caa83e70a9bf3f7b0db5c825007d5fac74aa93637",
+    "hkbench_version": "1.1.0",
+    "python": "3.9.6",
+    "rules_sha256": "6318ed16cdaf40f09692c5873ae58400513b9fbaffe0da7efe1a20464a2872e6"
+  },
+  "fairplay": {
+    "Fu-2.3M-HKMA-1": "passed",
+    "deficiency": "passed",
+    "faan_aware": "passed",
+    "python_example": "passed",
+    "random": "passed",
+    "ukeire": "passed"
+  },
+  "faults": {
+    "Fu-2.3M-HKMA-1": {
+      "decisions": 389470,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "deficiency": {
+      "decisions": 421566,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "faan_aware": {
+      "decisions": 405246,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "python_example": {
+      "decisions": 448586,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "random": {
+      "decisions": 419143,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "ukeire": {
+      "decisions": 420713,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    }
+  },
+  "isolation": "sandbox",
+  "kind": "h2h",
+  "log": "logs/hk-house-v1__h2h__public__20261121T060610.jsonl.gz",
+  "pairs": [
+    {
+      "a": "random",
+      "a_game_wins": 6,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -1.6548710862552862,
+          -1.2829066915224938
+        ],
+        "mean": -1.46888888888889,
+        "n": 300,
+        "se": 0.09450652647291782
+      },
+      "b": "deficiency",
+      "b_game_wins": 490,
+      "deals": 300,
+      "games": 1800,
+      "ties": 1304
+    },
+    {
+      "a": "random",
+      "a_game_wins": 4,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -1.7581409609003038,
+          -1.4329701502108092
+        ],
+        "mean": -1.5955555555555565,
+        "n": 300,
+        "se": 0.08261748775907134
+      },
+      "b": "ukeire",
+      "b_game_wins": 556,
+      "deals": 300,
+      "games": 1800,
+      "ties": 1240
+    },
+    {
+      "a": "random",
+      "a_game_wins": 2,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -3.7906016579855497,
+          -3.156065008681112
+        ],
+        "mean": -3.473333333333331,
+        "n": 300,
+        "se": 0.16121934113775982
+      },
+      "b": "faan_aware",
+      "b_game_wins": 850,
+      "deals": 300,
+      "games": 1800,
+      "ties": 948
+    },
+    {
+      "a": "random",
+      "a_game_wins": 6,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -4.874857450539945,
+          -3.6806981050156087
+        ],
+        "mean": -4.277777777777777,
+        "n": 300,
+        "se": 0.3034049855275799
+      },
+      "b": "python_example",
+      "b_game_wins": 481,
+      "deals": 300,
+      "games": 1800,
+      "ties": 1313
+    },
+    {
+      "a": "random",
+      "a_game_wins": 2,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -15.517023259267743,
+          -13.576310074065615
+        ],
+        "mean": -14.54666666666668,
+        "n": 300,
+        "se": 0.4930849957975184
+      },
+      "b": "Fu-2.3M-HKMA-1",
+      "b_game_wins": 1121,
+      "deals": 300,
+      "games": 1800,
+      "ties": 677
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 402,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -0.18735266872860745,
+          0.12068600206194084
+        ],
+        "mean": -0.03333333333333331,
+        "n": 300,
+        "se": 0.07826465438086426
+      },
+      "b": "ukeire",
+      "b_game_wins": 445,
+      "deals": 300,
+      "games": 1800,
+      "ties": 953
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 346,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -1.9641165127399527,
+          -1.4447723761489366
+        ],
+        "mean": -1.7044444444444447,
+        "n": 300,
+        "se": 0.13195190477452023
+      },
+      "b": "faan_aware",
+      "b_game_wins": 707,
+      "deals": 300,
+      "games": 1800,
+      "ties": 747
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 366,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -3.460236592138888,
+          -2.1886522967500004
+        ],
+        "mean": -2.824444444444444,
+        "n": 300,
+        "se": 0.3230766615741405
+      },
+      "b": "python_example",
+      "b_game_wins": 445,
+      "deals": 300,
+      "games": 1800,
+      "ties": 989
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 280,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -11.373773225342658,
+          -9.621782330212879
+        ],
+        "mean": -10.497777777777769,
+        "n": 300,
+        "se": 0.445135545916531
+      },
+      "b": "Fu-2.3M-HKMA-1",
+      "b_game_wins": 946,
+      "deals": 300,
+      "games": 1800,
+      "ties": 574
+    },
+    {
+      "a": "ukeire",
+      "a_game_wins": 377,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -1.8537924293487171,
+          -1.3328742373179499
+        ],
+        "mean": -1.5933333333333335,
+        "n": 300,
+        "se": 0.1323518315260943
+      },
+      "b": "faan_aware",
+      "b_game_wins": 706,
+      "deals": 300,
+      "games": 1800,
+      "ties": 717
+    },
+    {
+      "a": "ukeire",
+      "a_game_wins": 396,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -3.130646884953906,
+          -1.8826864483794272
+        ],
+        "mean": -2.506666666666667,
+        "n": 300,
+        "se": 0.3170744504215377
+      },
+      "b": "python_example",
+      "b_game_wins": 417,
+      "deals": 300,
+      "games": 1800,
+      "ties": 987
+    },
+    {
+      "a": "ukeire",
+      "a_game_wins": 311,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -11.106548533942119,
+          -9.293451466057883
+        ],
+        "mean": -10.200000000000001,
+        "n": 300,
+        "se": 0.46066104302016103
+      },
+      "b": "Fu-2.3M-HKMA-1",
+      "b_game_wins": 920,
+      "deals": 300,
+      "games": 1800,
+      "ties": 569
+    },
+    {
+      "a": "faan_aware",
+      "a_game_wins": 659,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -0.8103112462325174,
+          0.4014223573436281
+        ],
+        "mean": -0.20444444444444468,
+        "n": 300,
+        "se": 0.30787014968666104
+      },
+      "b": "python_example",
+      "b_game_wins": 355,
+      "deals": 300,
+      "games": 1800,
+      "ties": 786
+    },
+    {
+      "a": "faan_aware",
+      "a_game_wins": 490,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -7.9812702825260855,
+          -6.223174161918364
+        ],
+        "mean": -7.102222222222225,
+        "n": 300,
+        "se": 0.4466867257106846
+      },
+      "b": "Fu-2.3M-HKMA-1",
+      "b_game_wins": 787,
+      "deals": 300,
+      "games": 1800,
+      "ties": 523
+    },
+    {
+      "a": "python_example",
+      "a_game_wins": 295,
+      "a_points_per_hand_per_seat": {
+        "ci95": [
+          -9.242470231253238,
+          -7.321974213191207
+        ],
+        "mean": -8.282222222222222,
+        "n": 300,
+        "se": 0.4879483368360996
+      },
+      "b": "Fu-2.3M-HKMA-1",
+      "b_game_wins": 832,
+      "deals": 300,
+      "games": 1800,
+      "ties": 673
+    }
+  ],
+  "rank_rule": "rank = 1 + the number of bots whose 95% interval lies entirely above this bot's; overlapping bots share a rank",
+  "rng_scheme": "hmac-sha256-v2",
+  "run_id": "hk-house-v1__h2h__public__20261121T060610",
+  "schema": "hkbench-h2h-1",
+  "seeds": {
+    "deals": 300,
+    "offset": 0,
+    "public_range": {
+      "count": 100000,
+      "start": 2000000
+    },
+    "tag": "public"
+  },
+  "table": {
+    "id": "hk-house-v1",
+    "rules_sha256": "6318ed16cdaf40f09692c5873ae58400513b9fbaffe0da7efe1a20464a2872e6",
+    "rules_track": "House"
+  },
+  "verification": "unverified"
+}
