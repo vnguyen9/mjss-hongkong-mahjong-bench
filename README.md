@@ -24,11 +24,9 @@ Mahjong is noisy: a strong player can lose a session on bad tiles, so raw win co
 
 We need scores that bots cannot get by cheating or tuning to the test. Verified rows use a private deck that nobody outside sees. A bot gets only its own seat's view, and the fair-play check re-deals hidden tiles and asks again. Bots start fresh each game, and program bots run in a sandbox. Version [1.1.0 closed a hole that could have let a bot rebuild the private walls](CHANGELOG.md#110-2026-11-21).
 
-For training, we use the bench as a fixed yardstick to compare saved versions on deals they never trained on. Public decks and `verify-log` make every public number reproducible, while `--training-log` saves each won hand's full record on public deals for training. Head-to-head ratings compare bots directly. The protocol is plain JSON lines, so a program in any language can plug in.
+It also helps with training. The bench is a fixed yardstick, so you can compare saved versions of a bot on deals it never trained on and know a gain is real. Public decks and `verify-log` make every public number reproducible, and `--training-log` saves each won hand's full record on public deals as training data. Head-to-head ratings compare bots directly. The protocol is plain JSON lines, so a program in any language can plug in.
 
 ## Results
-
-The [leaderboard](site/index.html) opens directly from a local checkout and needs no server.
 
 <div align="center">
 <picture>
