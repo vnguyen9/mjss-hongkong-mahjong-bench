@@ -304,7 +304,7 @@ The matches used duplicate two-against-two play. Two Fu-2.3M-HKMA-1 seats played
 
 The walls came from our own seed range, separate from the bench's private deck. Unless a row says otherwise, the rules were our HKMA Classical table, with no flower faan, no Seven Pairs and a 10 faan cap. The 3-faan with flowers table has a 3 faan minimum, flowers score and the cap is 13 faan. Fu-2.3M-HKMA-1 played its best move every time, with no sampling. Every run finished with 0 failed games.
 
-Each outside bot used its authors' own code. Lucky Cat's bots ran in their own JavaScript, and hk-mahjong-lab's bots were built from its public Rust source. Each bot received only what its seat could see. Before scoring, every move replayed identically on 5,374 real decisions from Lucky Cat's engine, including 5,295 at its newest release. The hk-mahjong-lab value bot matched its own engine on 320 of 320 positions, and its PIMC solver matched on 210 of 210. Shuffling every hidden tile changed no bot's decision.
+Each outside bot used its authors' own code. Lucky Cat's bots ran in their own JavaScript, and hk-mahjong-lab's bots were built from its public Rust source. Each bot received only what its seat could see. Before scoring, every move replayed identically on 5,374 real decisions from Lucky Cat's engine, and on 5,295 more from its newest release. The hk-mahjong-lab value bot matched its own engine on 320 of 320 positions, and its PIMC solver matched on 210 of 210. Shuffling every hidden tile changed no bot's decision.
 
 Lucky Cat lc32 and Neural Cat NC9 came from the [Lucky Cat Mahjong models page](https://huggingface.co/codenameyau/lucky-cat-mahjong). Lucky Cat lc34 and Neural Cat NC10 came from the release that wrote their published 100,000-game dataset; their engine replays 2,346 of those hands exactly. Jorge Yau is their rule-based bot. The other project is [hk-mahjong-lab](https://github.com/bpy13/hk-mahjong-lab). Neither project has a licence, so none of their code or weights, including ports or bridges, are in this repository.
 
@@ -357,4 +357,4 @@ These HKMA sets used one seat per bot, with every deal played from all 24 seatin
 
 These results measure the outside bots on our tables. Lucky Cat's bots were built for a 3 faan minimum, flower faan, Seven Pairs and a full-spicy payout. The hk-mahjong-lab project plays a 10 faan cap and models only a single East hand. Fu-2.3M-HKMA-1 trained on the HKMA rules used here, which gives it a home edge. On Lucky Cat's own table, its published dataset ranks Neural Cat first and Lucky Cat lc34 last.
 
-The hk-mahjong-lab bots win more hands than Fu-2.3M-HKMA-1 (about 49 to 51% against 42 to 43%) with smaller wins and lose on points; Lucky Cat wins 35 to 38% of hands and Neural Cat about 25%.
+The hk-mahjong-lab bots win more hands than Fu-2.3M-HKMA-1 (about 49 to 51% against 42 to 43%), but their wins are smaller, so they lose on points. Lucky Cat wins 35 to 38% of hands and Neural Cat about 25%.
