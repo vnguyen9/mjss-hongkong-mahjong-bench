@@ -38,32 +38,24 @@ It also helps with training. The bench is a fixed yardstick, so you can compare 
 
 Each panel has its own axis. Points cannot be compared across tables because the rules and payouts differ. The whiskers show 95% intervals. [Rebuild the chart](scripts/render_charts.py) from the result files with `python3 scripts/render_charts.py`.
 
-These are the verified private-deck results from 20 to 21 November 2026, using version 1.1.0. Each table shows `Fu-2.3M-HKMA-1` and the baseline with the highest points a hand.
+These are the verified private-deck results from 20 to 22 November 2026, using version 1.1.0. Each table shows `Fu-2.3M-HKMA-1` and the other bot with the highest points a hand.
 
 | Table | Bot | Points a hand [95% interval] | Win | Deal-in |
 |---|---|---|---|---|
 | `hk-hkma-v1` | `Fu-2.3M-HKMA-1` | +17.75 [+17.08, +18.42] | 47.2% | 3.4% |
-| `hk-hkma-v1` | `python_example` | +2.54 [+2.11, +2.97] | 9.8% | 4.5% |
+| `hk-hkma-v1` | `hk-mahjong-lab-PIMC-256` | +13.69 [+12.50, +14.87] | 53.0% | 2.4% |
 | `hk-house-v1` | `Fu-2.3M-HKMA-1` | +17.67 [+16.76, +18.58] | 37.4% | 4.9% |
-| `hk-house-v1` | `python_example` | +2.79 [+2.25, +3.33] | 13.8% | 5.6% |
+| `hk-house-v1` | `NeuralCat-NC9` | +12.81 [+11.62, +13.99] | 23.9% | 4.6% |
 | `hk-chicken-v1` | `Fu-2.3M-HKMA-1` | +0.64 [+0.55, +0.73] | 47.8% | 13.5% |
-| `hk-chicken-v1` | `faan_aware` | +0.41 [+0.30, +0.52] | 27.4% | 18.0% |
+| `hk-chicken-v1` | `LuckyCat-lc34` | +2.15 [+1.84, +2.47] | 11.4% | 22.1% |
 
-Fu-2.3M-HKMA-1 also played [matches against outside bots](RESULTS.md#matches-against-outside-bots) on our HKMA table. The table below gives its team of two seats' lead in points a game, with 95% intervals. These games were not played through the bench harness, so they are not on the leaderboard or the chart and their points cannot be compared with the bench rows.
+### Outside bots on the bench
 
-| Outside bot | Fu-2.3M-HKMA-1 team lead, points a game [95% interval] |
-|---|---|
-| Lucky Cat lc32 | +6.78 [+6.16, +7.39] |
-| Lucky Cat lc34 | +5.73 [+4.82, +6.65] |
-| Neural Cat NC10 | +5.68 [+4.65, +6.71] |
-| Jorge Yau | +8.00 [+7.08, +8.93] |
-| hk-mahjong-lab value | +3.48 [+2.62, +4.33] |
-| hk-mahjong-lab PIMC-128 | +2.49 [+1.89, +3.09] |
-| hk-mahjong-lab PIMC-256 | +1.45 [+0.85, +2.04] |
+`LuckyCat-lc32`, `LuckyCat-lc34`, `NeuralCat-NC9`, `NeuralCat-NC10`, `LuckyCat-JorgeYau`, `hk-mahjong-lab-value`, `hk-mahjong-lab-PIMC-128` and `hk-mahjong-lab-PIMC-256` are now leaderboard rows and appear on the chart. The maintainers ran them from their authors' public code; the authors did not submit them and can replace them with their own submission. [Outside bots on the bench](RESULTS.md#outside-bots-on-the-bench) gives the method, results and approximations. On Chicken hand every outside bot scores above `Fu-2.3M-HKMA-1`, which trained on HKMA rules.
 
 ## Why the run is fair
 
-The private deck was new and stayed secret. Program bots ran in a sandbox with no network, no child processes and no access to the deck. All 51 runs passed the fair-play check with 0 decision changes and 0 view mismatches; none exceeded the fault limit. All 283,800 public games replayed with 0 mismatches. The bench checked the pinned reference hashes and engine fingerprints before scoring.
+The private deck was new and stayed secret. Program bots ran in a sandbox with no network or access to the deck. Lucky Cat's Python adapter starts its own JavaScript, so its sandbox permits a child process. The original 51 runs passed the fair-play check with 0 decision changes and 0 view mismatches; none exceeded the fault limit. All 283,800 original public games replayed with 0 mismatches. The 44 outside-bot runs and three new head-to-heads also passed the fair-play check with 0 faults; every secret-deck run is verified, and all 22 new public logs replay with 0 mismatches. The bench checked the pinned reference hashes and engine fingerprints before scoring.
 
 The [full results and verification notes](RESULTS.md) include every bot on both decks, head-to-head ratings, the limits of the verified tag and commands to check the public runs. `Fu-2.3M-HKMA-1` was trained on HKMA Classical rules; House and Chicken hand use rules it was not trained for.
 

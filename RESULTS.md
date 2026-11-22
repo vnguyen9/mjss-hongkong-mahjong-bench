@@ -1,8 +1,8 @@
-# Results: 20 to 21 November 2026
+# Results: 20 to 22 November 2026
 
-The run finished at 05:34 EST on 21 November 2026. It used bench version 1.1.0 (`hmac-sha256-v2`), Python 3.9.6 and 10 workers on one Apple-silicon Mac. There are 42 duplicate runs and nine head-to-head runs across three tables, on public and private decks.
+The original run finished at 05:34 EST on 21 November 2026. It used bench version 1.1.0 (`hmac-sha256-v2`), Python 3.9.6 and 10 workers on one Apple-silicon Mac. That run contains 42 duplicate runs and nine head-to-head runs across three tables, on public and private decks.
 
-`Fu-2.3M-HKMA-1` finished first on points a hand on every table and deck. It is hosted by the maintainers; its results carry only a supplied hash and hide its start command. It was trained on HKMA Classical rules. House and Chicken hand use rules it was not trained for.
+`Fu-2.3M-HKMA-1` finished first among the original bots on points a hand on every table and deck. With the outside rows below, it still leads on HKMA and House; every outside bot scores above it on Chicken hand. It is hosted by the maintainers; its results carry only a supplied hash and hide its start command. It was trained on HKMA Classical rules. House and Chicken hand use rules it was not trained for.
 
 ## Duplicate results
 
@@ -212,9 +212,9 @@ A new private deck contained 10,000 independent random 64-bit seeds, made with `
 
 For private runs, each decision's `rng_seed` and each game's `game_id` came from HMAC-SHA256 under a per-run secret key that no bot sees. A bot cannot work back from these identifiers to the deal. Public runs use a fixed public key so they can be reproduced.
 
-Every program bot (`python_example` and `Fu-2.3M-HKMA-1`) started fresh for every game and ran under `scripts/sandbox/macos.sh`. It had no network or child processes, could write only to its own empty folder, and could not read the deck file. Reference bots ran inside the bench.
+Every program bot in the original run (`python_example` and `Fu-2.3M-HKMA-1`) started fresh for every game and ran under `scripts/sandbox/macos.sh`. It had no network or child processes, could write only to its own empty folder, and could not read the deck file. Reference bots ran inside the bench.
 
-All 51 runs passed the fair-play check with 0 decision changes and 0 view mismatches, and none exceeded the fault limit. Every private run is tagged verified. All 283,800 public games in 27 public logs replayed with `hkbench verify-log` with 0 mismatches.
+All 51 original runs passed the fair-play check with 0 decision changes and 0 view mismatches, and none exceeded the fault limit. Every private run is tagged verified. All 283,800 public games in 27 public logs replayed with `hkbench verify-log` with 0 mismatches.
 
 The table below gives the evidence recorded in each result JSON. Duplicate runs record the full fair-play counts and used two reshuffles at each checked point. Head-to-head files record only `passed` for each bot, so their counts are shown as “not recorded” rather than inferred from another run. Faults are summed across bots for head-to-head runs. Fair-play faults and scored-play faults are separate counts.
 
@@ -296,9 +296,129 @@ python -m hkbench tables
 
 Outsiders cannot re-run private rows because the deck is secret. Private logs contain outcomes without seeds or actions, so they cannot be replayed with `verify-log` either. A private deck can also wear out through repeated tuning against its results; it should be retired when a table is superseded or after enough repeated scoring to matter.
 
+## Outside bots on the bench
+
+On 21 and 22 November 2026, the maintainers ran the outside bots from their authors' public code through the bench's protocol, on the bench's own deals, scored by `hkbench`. These are leaderboard rows and appear on the chart. They were not submitted by the authors, who can replace them with their own submission. The sources are [Lucky Cat Mahjong](https://huggingface.co/codenameyau/lucky-cat-mahjong) and [hk-mahjong-lab](https://github.com/bpy13/hk-mahjong-lab). Neither project has a licence, so none of their code, weights, adapters or launchers are in this repository. `LuckyCat-JorgeYau` and `hk-mahjong-lab-value` are rule-based bots.
+
+Each bot played HKMA, House and Chicken hand, on the public deck then the secret deck, with 2,000 deals per run. PIMC-128 used 400 deals because its search is slow; PIMC-256 used 400 deals on HKMA only. There were 44 runs and three secret-deck head-to-heads with 100 deals per pair. Every run had 0 faults, passed the fair-play check and ran in the sandbox. Every secret-deck run is verified, and every public log replays with 0 mismatches. Lucky Cat's Python adapter starts its own JavaScript, so its sandbox permits a child process; these runs are still sandboxed.
+
+Before scoring, the adapters were checked against the harness that produced the earlier matches. Lucky Cat made the same move on all of about 139,000 decisions, and the hk-mahjong-lab value bot on all of about 30,000. PIMC differed on 0.58% to 1.7% of decisions, explained by the two facts missing from the bench's message described below. When the earlier harness was denied the same two facts, PIMC differed on none.
+
+The following secret-deck rows use duplicate play against the frozen reference field, with 95% intervals over deals. Each bot name links to its result file. Fu's points a hand are +17.75 on HKMA, +17.67 on House and +0.64 on Chicken hand. On Chicken hand every outside bot scores above `Fu-2.3M-HKMA-1`, which trained on HKMA rules.
+
+### HKMA Classical, secret deck
+
+| Bot | Points a hand | 95% interval | Deals | Faults/decisions |
+|---|---|---|---|---|
+| [`hk-mahjong-lab-PIMC-256`](results/hk-hkma-v1__hk-mahjong-lab-PIMC-256__private__20261122T083043.json) | +13.69 | [+12.50, +14.87] | 400 | 0/37,832 |
+| [`hk-mahjong-lab-PIMC-128`](results/hk-hkma-v1__hk-mahjong-lab-PIMC-128__private__20261122T075727.json) | +13.46 | [+12.23, +14.70] | 400 | 0/37,885 |
+| [`LuckyCat-lc34`](results/hk-hkma-v1__LuckyCat-lc34__private__20261121T223054.json) | +11.46 | [+10.86, +12.05] | 2,000 | 0/198,872 |
+| [`NeuralCat-NC10`](results/hk-hkma-v1__NeuralCat-NC10__private__20261121T224751.json) | +11.38 | [+10.68, +12.08] | 2,000 | 0/203,844 |
+| [`hk-mahjong-lab-value`](results/hk-hkma-v1__hk-mahjong-lab-value__private__20261121T230118.json) | +11.23 | [+10.75, +11.71] | 2,000 | 0/188,847 |
+| [`NeuralCat-NC9`](results/hk-hkma-v1__NeuralCat-NC9__private__20261121T223923.json) | +11.16 | [+10.45, +11.87] | 2,000 | 0/205,319 |
+| [`LuckyCat-lc32`](results/hk-hkma-v1__LuckyCat-lc32__private__20261121T222306.json) | +10.60 | [+10.03, +11.17] | 2,000 | 0/199,779 |
+| [`LuckyCat-JorgeYau`](results/hk-hkma-v1__LuckyCat-JorgeYau__private__20261121T225525.json) | +8.91 | [+8.33, +9.48] | 2,000 | 0/210,897 |
+
+### House, secret deck
+
+| Bot | Points a hand | 95% interval | Deals | Faults/decisions |
+|---|---|---|---|---|
+| [`NeuralCat-NC9`](results/hk-house-v1__NeuralCat-NC9__private__20261122T015325.json) | +12.81 | [+11.62, +13.99] | 2,000 | 0/185,998 |
+| [`NeuralCat-NC10`](results/hk-house-v1__NeuralCat-NC10__private__20261122T020144.json) | +12.79 | [+11.67, +13.91] | 2,000 | 0/184,742 |
+| [`hk-mahjong-lab-PIMC-128`](results/hk-house-v1__hk-mahjong-lab-PIMC-128__private__20261122T090321.json) | +12.72 | [+11.19, +14.25] | 400 | 0/34,979 |
+| [`hk-mahjong-lab-value`](results/hk-house-v1__hk-mahjong-lab-value__private__20261122T021501.json) | +11.70 | [+10.90, +12.49] | 2,000 | 0/175,398 |
+| [`LuckyCat-lc34`](results/hk-house-v1__LuckyCat-lc34__private__20261122T014500.json) | +10.87 | [+10.13, +11.62] | 2,000 | 0/181,787 |
+| [`LuckyCat-lc32`](results/hk-house-v1__LuckyCat-lc32__private__20261122T013716.json) | +10.40 | [+9.67, +11.14] | 2,000 | 0/183,073 |
+| [`LuckyCat-JorgeYau`](results/hk-house-v1__LuckyCat-JorgeYau__private__20261122T020909.json) | +10.04 | [+9.11, +10.97] | 2,000 | 0/188,844 |
+
+### Chicken hand, secret deck
+
+| Bot | Points a hand | 95% interval | Deals | Faults/decisions |
+|---|---|---|---|---|
+| [`LuckyCat-lc34`](results/hk-chicken-v1__LuckyCat-lc34__private__20261122T045707.json) | +2.15 | [+1.84, +2.47] | 2,000 | 0/135,355 |
+| [`NeuralCat-NC10`](results/hk-chicken-v1__NeuralCat-NC10__private__20261122T051042.json) | +1.94 | [+1.58, +2.29] | 2,000 | 0/137,024 |
+| [`NeuralCat-NC9`](results/hk-chicken-v1__NeuralCat-NC9__private__20261122T050353.json) | +1.90 | [+1.55, +2.25] | 2,000 | 0/137,658 |
+| [`LuckyCat-lc32`](results/hk-chicken-v1__LuckyCat-lc32__private__20261122T045040.json) | +1.88 | [+1.60, +2.16] | 2,000 | 0/136,162 |
+| [`LuckyCat-JorgeYau`](results/hk-chicken-v1__LuckyCat-JorgeYau__private__20261122T051659.json) | +1.70 | [+1.41, +1.99] | 2,000 | 0/139,764 |
+| [`hk-mahjong-lab-PIMC-128`](results/hk-chicken-v1__hk-mahjong-lab-PIMC-128__private__20261122T091949.json) | +1.06 | [+0.86, +1.26] | 400 | 0/23,001 |
+| [`hk-mahjong-lab-value`](results/hk-chicken-v1__hk-mahjong-lab-value__private__20261122T052203.json) | +0.84 | [+0.76, +0.93] | 2,000 | 0/114,844 |
+
+### Secret-deck head-to-heads
+
+These matches included five reference bots, `Fu-2.3M-HKMA-1` and the six non-PIMC outside bots. Bradley-Terry ratings compare this field directly, rather than points against the frozen field. `hk-mahjong-lab-value` and Fu share rank 1 on all three tables: value's rating is slightly higher, but their 95% intervals overlap. The tables give the exact shared ranks, with ratings rounded to two decimal places.
+
+#### `hk-chicken-v1`
+
+[Source JSON](results/hk-chicken-v1__h2h__private__20261122T065116.json).
+
+| Bot | Rating | 95% interval | Rank |
+|---|---|---|---|
+| `hk-mahjong-lab-value` | +168.76 | [+161.84, +176.81] | 1 |
+| `Fu-2.3M-HKMA-1` | +165.51 | [+158.76, +173.11] | 1 |
+| `faan_aware` | +68.24 | [+61.49, +74.92] | 3 |
+| `ukeire` | +46.50 | [+40.30, +52.51] | 4 |
+| `deficiency` | +34.81 | [+28.54, +41.17] | 4 |
+| `LuckyCat-JorgeYau` | -13.28 | [-19.32, -6.74] | 6 |
+| `NeuralCat-NC10` | -33.68 | [-39.85, -27.48] | 7 |
+| `LuckyCat-lc34` | -35.94 | [-42.56, -29.13] | 7 |
+| `LuckyCat-lc32` | -49.76 | [-56.94, -42.86] | 9 |
+| `NeuralCat-NC9` | -53.74 | [-59.82, -47.06] | 9 |
+| `python_example` | -83.05 | [-89.66, -76.57] | 11 |
+| `random` | -214.37 | [-220.63, -208.34] | 12 |
+
+#### `hk-hkma-v1`
+
+[Source JSON](results/hk-hkma-v1__h2h__private__20261122T004409.json).
+
+| Bot | Rating | 95% interval | Rank |
+|---|---|---|---|
+| `hk-mahjong-lab-value` | +112.81 | [+106.66, +119.02] | 1 |
+| `Fu-2.3M-HKMA-1` | +105.78 | [+99.81, +112.42] | 1 |
+| `LuckyCat-lc34` | +55.28 | [+49.46, +61.61] | 3 |
+| `LuckyCat-lc32` | +47.41 | [+41.40, +53.11] | 3 |
+| `NeuralCat-NC10` | +30.00 | [+24.57, +35.42] | 5 |
+| `LuckyCat-JorgeYau` | +23.81 | [+17.72, +29.56] | 5 |
+| `NeuralCat-NC9` | +22.64 | [+17.19, +27.79] | 5 |
+| `faan_aware` | -30.18 | [-34.90, -25.29] | 8 |
+| `python_example` | -58.74 | [-64.10, -53.58] | 9 |
+| `ukeire` | -89.47 | [-94.10, -85.36] | 10 |
+| `deficiency` | -91.56 | [-95.70, -87.18] | 10 |
+| `random` | -127.78 | [-132.35, -123.45] | 12 |
+
+#### `hk-house-v1`
+
+[Source JSON](results/hk-house-v1__h2h__private__20261122T035801.json).
+
+| Bot | Rating | 95% interval | Rank |
+|---|---|---|---|
+| `hk-mahjong-lab-value` | +81.86 | [+76.08, +88.49] | 1 |
+| `Fu-2.3M-HKMA-1` | +72.46 | [+67.18, +78.99] | 1 |
+| `LuckyCat-lc34` | +32.57 | [+26.04, +39.69] | 3 |
+| `LuckyCat-JorgeYau` | +29.97 | [+23.52, +35.80] | 3 |
+| `LuckyCat-lc32` | +27.91 | [+21.67, +34.49] | 3 |
+| `NeuralCat-NC10` | +23.67 | [+17.83, +29.72] | 3 |
+| `NeuralCat-NC9` | +23.07 | [+16.93, +28.70] | 3 |
+| `faan_aware` | +10.21 | [+4.32, +16.01] | 8 |
+| `ukeire` | -42.16 | [-47.68, -36.79] | 9 |
+| `python_example` | -49.55 | [-56.11, -43.89] | 9 |
+| `deficiency` | -55.36 | [-60.66, -50.02] | 10 |
+| `random` | -154.65 | [-159.77, -149.43] | 12 |
+
+### Approximations and rule differences
+
+Lucky Cat remembers its own seat's earlier messages within a game, including its plans and big-hand lock, as the protocol now allows. Dropping that memory changes 3% to 7% of its moves.
+
+Lucky Cat's engine wants the turn at which an opponent declared a concealed kong. The message shows the kong but not when it happened. The adapter uses that opponent's discard count at Lucky Cat's previous decision, so it can be late by a few discards.
+
+The hk-mahjong-lab library ends a hand at seven flowers. In about 1 game in 600 a seat shows more than seven flowers, as the bench's rules allow. The adapter hides the extra flowers from the library and counts them as wall tiles.
+
+The bench's message does not say whether a discard was the tile just drawn, or how deep a chain of kongs is. PIMC's search uses both facts, so it plays without them.
+
+Lucky Cat's bots were built for a 3 faan minimum, flower faan, Seven Pairs and a full-spicy payout. The hk-mahjong-lab project plays a 10 faan cap and models only a single East hand. `Fu-2.3M-HKMA-1` trained on HKMA rules. These rows measure each bot on the bench's tables, not its own.
+
 ## Matches against outside bots
 
-These games were played in our own evaluation harness on 16 and 19 November 2026, outside `hkbench`. They are not leaderboard rows and do not appear on the chart. The point scale belongs to that harness, so these points cannot be compared with the bench rows.
+These were the earlier matches in our own evaluation harness on 16 and 19 November 2026, outside `hkbench`, now superseded by the bench rows above. We keep them here as history; these earlier matches are not leaderboard rows and do not appear on the chart. The point scale belongs to that harness, so these points cannot be compared with the bench rows.
 
 The matches used duplicate two-against-two play. Two Fu-2.3M-HKMA-1 seats played two seats of one outside bot, and every wall was played from all six seatings. A deal is six games on one wall; the 95% intervals are t-intervals over deals. The reported lead is the team of two seats' points a game, with positive values meaning Fu-2.3M-HKMA-1 is ahead. Halve it for a single seat.
 
