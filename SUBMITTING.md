@@ -8,7 +8,7 @@ Your bot is a program that reads JSON lines on stdin and writes JSON lines on st
 
 Two rules matter most:
 
-* The same message must get the same answer. Seed any randomness from `rng_seed`. Do not use the clock, files, the network or memory of earlier hands. Your bot is started fresh for every game, in an empty directory, so there is no memory to use, and `game_id` and `rng_seed` are keyed hashes that tell you nothing about the deal.
+* The same history must get the same answer. Seed any randomness from `rng_seed`. Memory of your own seat's earlier messages and answers in the same game is allowed; nothing may come from another game, the clock, files or the network. Your bot is started fresh for every game, in an empty directory, and `game_id` and `rng_seed` are keyed hashes that tell you nothing about the deal.
 * Answer within 10 seconds with the id of a legal action.
 
 ## 2. Test it here
@@ -38,7 +38,7 @@ Tell us:
 | Rules it was trained on (or "none") | Shown on every row. A bot trained on HKMA rules has an edge on the HKMA table; this keeps that visible. |
 | What it is, in a sentence | Shown on the board. |
 | Whether you want private model files kept private | They stay private either way. We publish only the result file and outcome-only logs. |
-| Permission to list it | Third-party bots are not listed until their authors say yes. |
+| Permission to list it | A bot submitted by its authors is listed when they say yes. The maintainers may also run a bot from its authors' public code; the row says it was run by the maintainers and was not submitted, and its authors can submit their own version to replace it. |
 
 ### How we sandbox it
 
