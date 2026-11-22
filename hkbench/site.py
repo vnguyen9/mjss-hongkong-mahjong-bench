@@ -152,7 +152,7 @@ h2{font-size:26px;letter-spacing:-.6px;line-height:1.3;margin:0 0 10px}.toolbar{
 <body>
 <main>
 <nav aria-label="Resources"><div><a href="https://github.com/vnguyen9/mjss-hongkong-mahjong-bench">Repository</a><a href="https://github.com/vnguyen9/mjss-hongkong-mahjong-bench/blob/main/SUBMITTING.md">Submit a bot</a></div><button id="theme" type="button" aria-label="Switch colour theme">Dark mode</button></nav>
-<header><div class="banner">__BANNER__</div><p class="lede">A fair way to compare Hong Kong Mahjong players: bots today, LLMs and humans next.</p><div class="meta">Version 1.1.0 · Protocol hkbench-1 · MIT licence</div></header>
+<header><div class="banner">__BANNER__</div><p class="lede">A fair way to compare Hong Kong Mahjong players: bots today, LLMs and humans next.</p><div class="meta">Version 1.1.0 · Protocol hkbench-1 · MIT licence</div><p class="meta">Made by the team behind <a href="https://mahjongsensei.co">Mahjong Sensei</a>, on the <a href="https://apps.apple.com/us/app/mahjong-sensei/id6792996894">App Store</a></p></header>
 <div id="tracks" class="tracks" aria-label="Track"></div>
 <h2>Leaderboard</h2>
 <p id="summary"></p>

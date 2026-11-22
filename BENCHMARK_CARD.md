@@ -40,11 +40,11 @@ The field is pinned: `tables/hk-hkma-v1/table.json` holds a hash of each bot's s
 
 We chose these three after running the maintainers' scripted bots against one strong opponent (4,608 games each). We kept the strongest that read only their own view. `faan_aware` was clearly ahead of the rest. `shallow_search` and `ukeire` finished level within noise, and `shallow_search` costs about 100 times the time, so it is a baseline row and not in the field. `wait_aware` scored higher than any of them but it reads other players' hidden hands, so it is not shipped. `kstep2` plays identically to `ukeire`, so it is not listed.
 
-The original rows in this card and on the board were re-scored under 1.1.0 (`hmac-sha256-v2`, see "What a bot is sent") on 20 and 21 November 2026, on a new private deck of independent random seeds. The 1.0.0 rows (`splitmix-v1`) are in the repository's history. A bot that is a program (the Python example and `Fu-2.3M-HKMA-1`) ran in the macOS sandbox with the deck unreadable; the reference bots run inside the bench. Public rows moved by up to 0.4 points a hand for the baselines and 0.6 for `Fu-2.3M-HKMA-1`, because the bots draw other random numbers. Private rows are on new deals; the largest move is `Fu-2.3M-HKMA-1` on House, +16.37 to +17.67, where each row's interval is about plus or minus 0.9. Among those original bots, `Fu-2.3M-HKMA-1` is first on every table and deck, and the Python example and `faan_aware` lead the baselines. The outside bots added on 21 and 22 November now score above Fu on Chicken hand; Fu still leads on HKMA and House.
+The original rows in this card and on the board were re-scored under 1.1.0 (`hmac-sha256-v2`, see "What a bot is sent") on 20 and 21 November 2026, on a new private deck of independent random seeds. The 1.0.0 rows (`splitmix-v1`) are in the repository's history. A bot that is a program (the Python example and `Fu-2.3M-HKMA-1`) ran in the macOS sandbox with the deck unreadable; the reference bots run inside the bench. Public rows moved by up to 0.4 points a hand for the baselines and 0.6 for `Fu-2.3M-HKMA-1`, because the bots draw other random numbers. Private rows are on new deals; the largest move is `Fu-2.3M-HKMA-1` on House, +16.37 to +17.67, where each row's interval is about plus or minus 0.9. Among those bots, `Fu-2.3M-HKMA-1` is first on every table and deck, and the Python example and `faan_aware` lead the baselines. Since then, eight outside bots have joined. Fu still leads on HKMA and House, but every outside bot beats it on Chicken hand.
 
-The baseline rows on `hk-hkma-v1` use public deals, so they are **unverified**. They report points a hand against the field with a 95% interval:
+The baseline rows on `hk-hkma-v1` use public deals, so they are **unverified**. They report points a hand against the field:
 
-| Bot | Points a hand | 95% interval | Win | Deal-in | Deals |
+| Bot | Points a hand | Interval | Win | Deal-in | Deals |
 |---|---|---|---|---|---|
 | `python_example` | +2.87 | [+2.43, +3.30] | 10.9% | 4.6% | 2,000 |
 | `faan_aware` | +1.56 | [+1.33, +1.79] | 16.7% | 4.4% | 2,000 |
@@ -57,7 +57,7 @@ A bot scored against a field that contains it plays itself, so `faan_aware`, `uk
 
 The baseline rows on `hk-house-v1` use the same bots and the same 2,000 deals (400 for `shallow_search`):
 
-| Bot | Points a hand | 95% interval | Win | Deal-in | Deals |
+| Bot | Points a hand | Interval | Win | Deal-in | Deals |
 |---|---|---|---|---|---|
 | `python_example` | +2.35 | [+1.83, +2.87] | 13.7% | 6.6% | 2,000 |
 | `faan_aware` | +1.65 | [+1.38, +1.93] | 22.8% | 5.7% | 2,000 |
@@ -68,7 +68,7 @@ The baseline rows on `hk-house-v1` use the same bots and the same 2,000 deals (4
 
 On House the head-to-head ranks are `faan_aware` first, `ukeire` and the Python example sharing second, `deficiency` fourth and `random` last. Flowers add a faan to nearly every hand (one for holding none, one for each seat flower), so 3 faan is easy to reach and far more hands are won than on HKMA (33% to 47% of games end in a draw, against 59% to 72%). The reference bots do not aim for Seven Pairs, but they declare it when a hand is complete. It ended 8 or 9 games in 8,000 (about 0.1%) in the public rows for the field bots and `random`, and 190 in 8,000 (2.4%) in the Python example's row, since that bot keeps pairs.
 
-The `hk-chicken-v1` baseline runs use the same bots and 2,000 deals (400 for `shallow_search`). The table gives points a hand against the field with a 95% interval, on the public deals (unverified) and on the private deck (verified):
+The `hk-chicken-v1` baseline runs use the same bots and 2,000 deals (400 for `shallow_search`). The table gives points a hand against the field, on the public deals (unverified) and on the private deck (verified):
 
 | Bot | Public points a hand | Private points a hand | Win (public) | Deal-in (public) |
 |---|---|---|---|---|
@@ -85,9 +85,9 @@ Draws almost disappear: 1% to 6% of baseline games end in a draw (0.5% for `Fu-2
 
 ## Mahjong Sensei's hosted bot: Fu-2.3M-HKMA-1
 
-`Fu-2.3M-HKMA-1` is the bot that ships in Mahjong Sensei, hosted here. The name gives its family (Fu), size (2.3M parameters), training rules (HKMA) and version (1). It trained on 1.3B decisions. It runs through the same protocol as any other bot; the result files hide how it is started and carry only its supplied hash. It was trained on HKMA Classical rules, with flowers dealt and replaced but no flower faan, and no Seven Pairs. The `trained on` field matters: on the HKMA table it plays the rules it was trained for, and on the House and Chicken-hand tables it is playing rules it was not trained for.
+`Fu-2.3M-HKMA-1` is the bot you play against in [Mahjong Sensei](https://mahjongsensei.co), our Hong Kong Mahjong app ([App Store](https://apps.apple.com/us/app/mahjong-sensei/id6792996894)). We host it for the bench. The name gives its family (Fu), size (2.3M parameters), training rules (HKMA) and version (1). It trained on 1.3B decisions. It runs through the same protocol as any other bot; the result files hide how it is started and carry only its supplied hash. It was trained on HKMA Classical rules, with flowers dealt and replaced but no flower faan, and no Seven Pairs. The `trained on` field matters: on the HKMA table it plays the rules it was trained for, and on the House and Chicken-hand tables it is playing rules it was not trained for.
 
-The following rows give points a hand against the field with a 95% interval. The private rows are **verified** and use 2,000 deals, with every baseline re-run on the same deals. Public rows are unverified.
+The following rows give points a hand against the field. The private rows are **verified** and use 2,000 deals, with every baseline re-run on the same deals. Public rows are unverified.
 
 | Table | Deck | Fu-2.3M-HKMA-1 points a hand | Win | Deal-in | Best baseline (points a hand) |
 |---|---|---|---|---|---|
@@ -148,7 +148,7 @@ The check does not stop a bot from being run with more thinking time, tools or h
 * The example bot beats the field. A short hand-written bot that keeps pairs and claims dragon and wind pongs finishes ahead of the field's best bot on points a hand. The field provides a reference score that stronger bots can exceed.
 * Time limits depend on hardware. The limit is wall-clock time per decision (10 seconds). A bot that needs more will be asked to run on our machine with its own limit, which is then recorded.
 * LLMs and humans are not scored yet. Those tracks need cost per hand and a place to play. They are empty.
-* [Outside bots on the bench](RESULTS.md#outside-bots-on-the-bench) are now verified secret-deck leaderboard rows, scored by `hkbench` through its protocol on its own deals. The maintainers ran Lucky Cat and hk-mahjong-lab from their authors' public code; the authors did not submit them and can replace them with their own submission through [SUBMITTING.md](SUBMITTING.md). Neither project has a licence, so none of their code, weights, adapters or launchers are in this repository. The earlier harness matches remain in RESULTS.md as history.
+* Outside bots were run by us, not submitted. The Lucky Cat and hk-mahjong-lab rows ([details](RESULTS.md#outside-bots-on-the-bench)) are verified and scored like any other, but we ran them from their authors' public code, through adapters we wrote. Their authors can replace them with their own entries through [SUBMITTING.md](SUBMITTING.md). Neither project has a licence, so none of their code or weights, and none of our adapters, are in this repository.
 
 The [20 to 22 November 2026 results](RESULTS.md) list every run and the fairness checks.
 

@@ -1,0 +1,132 @@
+{
+  "bot": {
+    "description": "hk-mahjong-lab's PIMC player with 256 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+    "kind": "external",
+    "name": "hk-mahjong-lab-PIMC-256",
+    "sha256": "44112aa51a6d623bf18d0b60daa5777f4dacc621b3de8b135449271ab951d62d",
+    "track": "bots",
+    "trained_on": "hk-mahjong-lab's own table (10 faan cap, single East hand)"
+  },
+  "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_pimc256' --name hk-mahjong-lab-PIMC-256 --kind external --bot-hash 44112aa51a6d623bf18d0b60daa5777f4dacc621b3de8b135449271ab951d62d --trained-on 'hk-mahjong-lab'\"'\"'s own table (10 faan cap, single East hand)' --description 'hk-mahjong-lab'\"'\"'s PIMC player with 256 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 400 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results'",
+  "created_utc": "2026-11-22T14:28:53Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "40776e78617bb1ec4df7d98caa83e70a9bf3f7b0db5c825007d5fac74aa93637",
+    "hkbench_version": "1.1.0",
+    "python": "3.9.6",
+    "rules_sha256": "6318ed16cdaf40f09692c5873ae58400513b9fbaffe0da7efe1a20464a2872e6"
+  },
+  "fairplay": {
+    "asks": 300,
+    "decision_changes": 0,
+    "faults": 0,
+    "points": 100,
+    "reshuffles": 2,
+    "status": "passed",
+    "view_mismatches": 0
+  },
+  "faults": {
+    "decisions": 35300,
+    "faults": {},
+    "limit_per_1000": 1.0,
+    "ok": true,
+    "per_1000_decisions": 0.0
+  },
+  "headline": {
+    "ci95": [
+      13.717755485068425,
+      17.322244514931576
+    ],
+    "deals": 400,
+    "games": 1600,
+    "metric": "points per hand against the frozen field",
+    "points_per_hand": 15.52,
+    "se": 0.9167401656567258
+  },
+  "isolation": "sandbox",
+  "kind": "duplicate",
+  "log": "logs/hk-house-v1__hk-mahjong-lab-PIMC-256__public__20261122T142853.jsonl.gz",
+  "rng_scheme": "hmac-sha256-v2",
+  "run_id": "hk-house-v1__hk-mahjong-lab-PIMC-256__public__20261122T142853",
+  "schema": "hkbench-result-1",
+  "seeds": {
+    "deals": 400,
+    "offset": 0,
+    "public_range": {
+      "count": 100000,
+      "start": 2000000
+    },
+    "tag": "public"
+  },
+  "stats": {
+    "average_win_faan": 5.197260273972603,
+    "average_win_points": 37.97260273972603,
+    "deal_in_rate": {
+      "ci95": [
+        0.026346852608170643,
+        0.04490314739182935
+      ],
+      "mean": 0.035625,
+      "n": 400,
+      "se": 0.004719476356567572
+    },
+    "draw_rate": {
+      "ci95": [
+        0.1637363690783705,
+        0.20251363092162952
+      ],
+      "mean": 0.183125,
+      "n": 400,
+      "se": 0.009862333648787162
+    },
+    "limit_hand_rate": {
+      "ci95": [
+        0.0011486883423843229,
+        0.007601311657615678
+      ],
+      "mean": 0.004375,
+      "n": 400,
+      "se": 0.001641114432008753
+    },
+    "limit_hands": 7,
+    "self_draw_win_rate": {
+      "ci95": [
+        0.09520840225927239,
+        0.12479159774072761
+      ],
+      "mean": 0.11,
+      "n": 400,
+      "se": 0.007523980043117019
+    },
+    "win_rate": {
+      "ci95": [
+        0.4324026287648929,
+        0.4800973712351071
+      ],
+      "mean": 0.45625,
+      "n": 400,
+      "se": 0.01213034240105847
+    },
+    "wins": 730
+  },
+  "table": {
+    "field": [
+      {
+        "bot": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+      },
+      {
+        "bot": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      },
+      {
+        "bot": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      }
+    ],
+    "id": "hk-house-v1",
+    "rules_sha256": "6318ed16cdaf40f09692c5873ae58400513b9fbaffe0da7efe1a20464a2872e6",
+    "rules_track": "House"
+  },
+  "verification": "unverified"
+}
