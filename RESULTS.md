@@ -6,7 +6,7 @@ Among the original bots, `Fu-2.3M-HKMA-1` came first on points a hand on every t
 
 ## Duplicate results
 
-Each deal is played four times on the same wall, once from each seat. Points a hand are measured against the frozen reference field. The 95% intervals use deals as the independent unit. Points cannot be compared across tables because their payouts differ. Draw rate is the fraction of games that ended without a winner. Limit hands counts hands that reached the table's cap.
+Each deal is played four times on the same wall, once from each seat. Points a hand are measured against the frozen reference field. The 95% confidence intervals (CI) count each deal as one sample, because its four games share a wall. Points cannot be compared across tables because their payouts differ. Draw rate is the fraction of games that ended without a winner. Limit hands counts hands that reached the table's cap.
 
 The source links identify each run. `native` is the recorded isolation for the in-process reference bots; program bots used `sandbox`.
 
@@ -14,7 +14,7 @@ The source links identify each run. `native` is the recorded isolation for the i
 
 The following rows use the public deck.
 
-| Bot | Points a hand [interval] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
+| Bot | Points a hand [95% CI] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | `Fu-2.3M-HKMA-1` | +17.45 [+16.77, +18.13] | 46.6% | 3.4% | 33.1% | 85 | 2,000 | unverified | sandbox | [20261121T004505](results/hk-hkma-v1__Fu-2.3M-HKMA-1__public__20261121T004505.json) |
 | `python_example` | +2.87 [+2.43, +3.30] | 10.9% | 4.6% | 64.4% | 101 | 2,000 | unverified | sandbox | [20261121T001201](results/hk-hkma-v1__python_example__public__20261121T001201.json) |
@@ -26,7 +26,7 @@ The following rows use the public deck.
 
 The following rows use the private deck.
 
-| Bot | Points a hand [interval] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
+| Bot | Points a hand [95% CI] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | `Fu-2.3M-HKMA-1` | +17.75 [+17.08, +18.42] | 47.2% | 3.4% | 33.1% | 68 | 2,000 | verified | sandbox | [20261121T012618](results/hk-hkma-v1__Fu-2.3M-HKMA-1__private__20261121T012618.json) |
 | `python_example` | +2.54 [+2.11, +2.97] | 9.8% | 4.5% | 65.5% | 99 | 2,000 | verified | sandbox | [20261121T005620](results/hk-hkma-v1__python_example__private__20261121T005620.json) |
@@ -40,7 +40,7 @@ The following rows use the private deck.
 
 The following rows use the public deck.
 
-| Bot | Points a hand [interval] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
+| Bot | Points a hand [95% CI] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | `Fu-2.3M-HKMA-1` | +16.83 [+15.95, +17.71] | 37.0% | 4.6% | 22.9% | 4 | 2,000 | unverified | sandbox | [20261121T041028](results/hk-house-v1__Fu-2.3M-HKMA-1__public__20261121T041028.json) |
 | `python_example` | +2.35 [+1.83, +2.87] | 13.7% | 6.6% | 39.9% | 2 | 2,000 | unverified | sandbox | [20261121T034023](results/hk-house-v1__python_example__public__20261121T034023.json) |
@@ -52,7 +52,7 @@ The following rows use the public deck.
 
 The following rows use the private deck.
 
-| Bot | Points a hand [interval] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
+| Bot | Points a hand [95% CI] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | `Fu-2.3M-HKMA-1` | +17.67 [+16.76, +18.58] | 37.4% | 4.9% | 22.8% | 8 | 2,000 | verified | sandbox | [20261121T045103](results/hk-house-v1__Fu-2.3M-HKMA-1__private__20261121T045103.json) |
 | `python_example` | +2.79 [+2.25, +3.33] | 13.8% | 5.6% | 39.5% | 3 | 2,000 | verified | sandbox | [20261121T042116](results/hk-house-v1__python_example__private__20261121T042116.json) |
@@ -66,7 +66,7 @@ The following rows use the private deck.
 
 The following rows use the public deck.
 
-| Bot | Points a hand [interval] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
+| Bot | Points a hand [95% CI] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | `Fu-2.3M-HKMA-1` | +0.67 [+0.58, +0.76] | 48.5% | 13.0% | 0.5% | 0 | 2,000 | unverified | sandbox | [20261121T074943](results/hk-chicken-v1__Fu-2.3M-HKMA-1__public__20261121T074943.json) |
 | `faan_aware` | +0.37 [+0.22, +0.52] | 27.2% | 17.8% | 2.2% | 6 | 2,000 | unverified | native | [20261121T071254](results/hk-chicken-v1__faan_aware__public__20261121T071254.json) |
@@ -78,7 +78,7 @@ The following rows use the public deck.
 
 The following rows use the private deck.
 
-| Bot | Points a hand [interval] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
+| Bot | Points a hand [95% CI] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | `Fu-2.3M-HKMA-1` | +0.64 [+0.55, +0.73] | 47.8% | 13.5% | 0.5% | 0 | 2,000 | verified | sandbox | [20261121T083021](results/hk-chicken-v1__Fu-2.3M-HKMA-1__private__20261121T083021.json) |
 | `faan_aware` | +0.41 [+0.30, +0.52] | 27.4% | 18.0% | 2.0% | 0 | 2,000 | verified | native | [20261121T075356](results/hk-chicken-v1__faan_aware__private__20261121T075356.json) |
@@ -90,13 +90,13 @@ The following rows use the private deck.
 
 ## Head-to-head results
 
-Each pair plays 300 deals in all six seat pairs. Ratings use Bradley-Terry on the Elo scale, with 95% bootstrap intervals from whole deals. Rank is 1 plus the number of bots whose interval lies entirely above that bot's interval. Overlapping intervals share a rank. The public five-bot runs and public six-bot runs are separate runs; ratings belong to the field in that run.
+Each pair plays 300 deals in all six seat pairs. Ratings use Bradley-Terry on the Elo scale, with 95% CIs from bootstrapping whole deals. Rank is 1 plus the number of bots whose interval lies entirely above that bot's interval. Overlapping intervals share a rank. The public five-bot runs and public six-bot runs are separate runs; ratings belong to the field in that run.
 
 ### `hk-hkma-v1`, public, 5 bots
 
 This run is unverified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-hkma-v1__h2h__public__20261121T013727.json).
 
-| Bot | Rating [interval] | Rank |
+| Bot | Rating [95% CI] | Rank |
 |---|---|---|
 | `faan_aware` | +58.6 [+55.0, +62.7] | 1 |
 | `python_example` | +14.3 [+11.4, +17.2] | 2 |
@@ -108,7 +108,7 @@ This run is unverified with isolation `sandbox`. It used 300 deals per pair. [So
 
 This run is unverified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-hkma-v1__h2h__public__20261121T023322.json).
 
-| Bot | Rating [interval] | Rank |
+| Bot | Rating [95% CI] | Rank |
 |---|---|---|
 | `Fu-2.3M-HKMA-1` | +156.3 [+151.3, +161.5] | 1 |
 | `faan_aware` | +24.6 [+21.1, +28.6] | 2 |
@@ -121,7 +121,7 @@ This run is unverified with isolation `sandbox`. It used 300 deals per pair. [So
 
 This run is verified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-hkma-v1__h2h__private__20261121T032901.json).
 
-| Bot | Rating [interval] | Rank |
+| Bot | Rating [95% CI] | Rank |
 |---|---|---|
 | `Fu-2.3M-HKMA-1` | +151.6 [+147.0, +156.4] | 1 |
 | `faan_aware` | +25.2 [+21.5, +29.1] | 2 |
@@ -134,7 +134,7 @@ This run is verified with isolation `sandbox`. It used 300 deals per pair. [Sour
 
 This run is unverified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-house-v1__h2h__public__20261121T050310.json).
 
-| Bot | Rating [interval] | Rank |
+| Bot | Rating [95% CI] | Rank |
 |---|---|---|
 | `faan_aware` | +74.1 [+69.3, +79.2] | 1 |
 | `python_example` | +11.0 [+7.0, +15.0] | 2 |
@@ -146,7 +146,7 @@ This run is unverified with isolation `sandbox`. It used 300 deals per pair. [So
 
 This run is unverified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-house-v1__h2h__public__20261121T060610.json).
 
-| Bot | Rating [interval] | Rank |
+| Bot | Rating [95% CI] | Rank |
 |---|---|---|
 | `Fu-2.3M-HKMA-1` | +111.4 [+106.0, +116.8] | 1 |
 | `faan_aware` | +52.2 [+47.5, +57.0] | 2 |
@@ -159,7 +159,7 @@ This run is unverified with isolation `sandbox`. It used 300 deals per pair. [So
 
 This run is verified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-house-v1__h2h__private__20261121T070833.json).
 
-| Bot | Rating [interval] | Rank |
+| Bot | Rating [95% CI] | Rank |
 |---|---|---|
 | `Fu-2.3M-HKMA-1` | +106.7 [+101.1, +112.1] | 1 |
 | `faan_aware` | +50.7 [+45.9, +55.5] | 2 |
@@ -172,7 +172,7 @@ This run is verified with isolation `sandbox`. It used 300 deals per pair. [Sour
 
 This run is unverified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-chicken-v1__h2h__public__20261121T084217.json).
 
-| Bot | Rating [interval] | Rank |
+| Bot | Rating [95% CI] | Rank |
 |---|---|---|
 | `faan_aware` | +93.1 [+88.4, +98.2] | 1 |
 | `ukeire` | +75.0 [+70.4, +80.0] | 2 |
@@ -184,7 +184,7 @@ This run is unverified with isolation `sandbox`. It used 300 deals per pair. [So
 
 This run is unverified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-chicken-v1__h2h__public__20261121T093909.json).
 
-| Bot | Rating [interval] | Rank |
+| Bot | Rating [95% CI] | Rank |
 |---|---|---|
 | `Fu-2.3M-HKMA-1` | +156.4 [+150.3, +162.0] | 1 |
 | `faan_aware` | +60.0 [+54.6, +65.5] | 2 |
@@ -197,7 +197,7 @@ This run is unverified with isolation `sandbox`. It used 300 deals per pair. [So
 
 This run is verified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-chicken-v1__h2h__private__20261121T103422.json).
 
-| Bot | Rating [interval] | Rank |
+| Bot | Rating [95% CI] | Rank |
 |---|---|---|
 | `Fu-2.3M-HKMA-1` | +164.6 [+158.0, +170.8] | 1 |
 | `faan_aware` | +60.1 [+54.6, +65.4] | 2 |
@@ -308,7 +308,7 @@ The tables give points a hand on the secret deck against the reference field, as
 
 ### HKMA Classical, secret deck
 
-| Bot | Points a hand | Interval | Deals | Faults/decisions |
+| Bot | Points a hand | 95% CI | Deals | Faults/decisions |
 |---|---|---|---|---|
 | [`hk-mahjong-lab-PIMC-256`](results/hk-hkma-v1__hk-mahjong-lab-PIMC-256__private__20261122T083043.json) | +13.69 | [+12.50, +14.87] | 400 | 0/37,832 |
 | [`hk-mahjong-lab-PIMC-128`](results/hk-hkma-v1__hk-mahjong-lab-PIMC-128__private__20261122T075727.json) | +13.46 | [+12.23, +14.70] | 400 | 0/37,885 |
@@ -321,7 +321,7 @@ The tables give points a hand on the secret deck against the reference field, as
 
 ### House, secret deck
 
-| Bot | Points a hand | Interval | Deals | Faults/decisions |
+| Bot | Points a hand | 95% CI | Deals | Faults/decisions |
 |---|---|---|---|---|
 | [`hk-mahjong-lab-PIMC-256`](results/hk-house-v1__hk-mahjong-lab-PIMC-256__private__20261122T150207.json) | +15.09 | [+13.03, +17.16] | 400 | 0/35,224 |
 | [`NeuralCat-NC9`](results/hk-house-v1__NeuralCat-NC9__private__20261122T015325.json) | +12.81 | [+11.62, +13.99] | 2,000 | 0/185,998 |
@@ -334,7 +334,7 @@ The tables give points a hand on the secret deck against the reference field, as
 
 ### Chicken hand, secret deck
 
-| Bot | Points a hand | Interval | Deals | Faults/decisions |
+| Bot | Points a hand | 95% CI | Deals | Faults/decisions |
 |---|---|---|---|---|
 | [`LuckyCat-lc34`](results/hk-chicken-v1__LuckyCat-lc34__private__20261122T045707.json) | +2.15 | [+1.84, +2.47] | 2,000 | 0/135,355 |
 | [`NeuralCat-NC10`](results/hk-chicken-v1__NeuralCat-NC10__private__20261122T051042.json) | +1.94 | [+1.58, +2.29] | 2,000 | 0/137,024 |
@@ -353,7 +353,7 @@ Here the bots play each other: five reference bots, `Fu-2.3M-HKMA-1` and the six
 
 [Source JSON](results/hk-chicken-v1__h2h__private__20261122T065116.json).
 
-| Bot | Rating | Interval | Rank |
+| Bot | Rating | 95% CI | Rank |
 |---|---|---|---|
 | `hk-mahjong-lab-value` | +168.76 | [+161.84, +176.81] | 1 |
 | `Fu-2.3M-HKMA-1` | +165.51 | [+158.76, +173.11] | 1 |
@@ -372,7 +372,7 @@ Here the bots play each other: five reference bots, `Fu-2.3M-HKMA-1` and the six
 
 [Source JSON](results/hk-hkma-v1__h2h__private__20261122T004409.json).
 
-| Bot | Rating | Interval | Rank |
+| Bot | Rating | 95% CI | Rank |
 |---|---|---|---|
 | `hk-mahjong-lab-value` | +112.81 | [+106.66, +119.02] | 1 |
 | `Fu-2.3M-HKMA-1` | +105.78 | [+99.81, +112.42] | 1 |
@@ -391,7 +391,7 @@ Here the bots play each other: five reference bots, `Fu-2.3M-HKMA-1` and the six
 
 [Source JSON](results/hk-house-v1__h2h__private__20261122T035801.json).
 
-| Bot | Rating | Interval | Rank |
+| Bot | Rating | 95% CI | Rank |
 |---|---|---|---|
 | `hk-mahjong-lab-value` | +81.86 | [+76.08, +88.49] | 1 |
 | `Fu-2.3M-HKMA-1` | +72.46 | [+67.18, +78.99] | 1 |
@@ -436,7 +436,7 @@ Lucky Cat lc32 and Neural Cat NC9 came from the [Lucky Cat Mahjong models page](
 
 The following games were played on 16 November 2026.
 
-| Outside bot | Fu-2.3M-HKMA-1 team lead, points a game | Interval | Games |
+| Outside bot | Fu-2.3M-HKMA-1 team lead, points a game | 95% CI | Games |
 |---|---|---|---|
 | Lucky Cat lc32 | +6.78 | [+6.16, +7.39] | 9,216 |
 | Lucky Cat lc34 | +5.73 | [+4.82, +6.65] | 4,608 |
@@ -447,7 +447,7 @@ The following games were played on 16 November 2026.
 
 The following hk-mahjong-lab PIMC runs were played on 19 November 2026 and replace the smaller 16 November runs. The number in each solver's name is its samples per decision.
 
-| Outside bot | Fu-2.3M-HKMA-1 team lead, points a game | Interval | Games |
+| Outside bot | Fu-2.3M-HKMA-1 team lead, points a game | 95% CI | Games |
 |---|---|---|---|
 | PIMC-64 | +2.36 | [+1.77, +2.96] | 9,216 |
 | PIMC-128 | +2.49 | [+1.89, +3.09] | 9,216 |
@@ -455,7 +455,7 @@ The following hk-mahjong-lab PIMC runs were played on 19 November 2026 and repla
 
 ### Team matches on other rules
 
-| Outside bot | Table | Date (2026) | Fu-2.3M-HKMA-1 team lead, points a game | Interval | Games |
+| Outside bot | Table | Date (2026) | Fu-2.3M-HKMA-1 team lead, points a game | 95% CI | Games |
 |---|---|---|---|---|---|
 | hk-mahjong-lab PIMC-128 | 3-faan with flowers | 19 November | +1.86 | [+0.57, +3.16] | 4,608 |
 | hk-mahjong-lab PIMC-128 | House | 19 November | +6.06 | [+2.06, +10.05] | 4,608 |
@@ -466,7 +466,7 @@ The following hk-mahjong-lab PIMC runs were played on 19 November 2026 and repla
 
 These HKMA sets used one seat per bot, with every deal played from all 24 seatings and 2,304 games per set. These rows report points a hand per seat, rather than a team's lead.
 
-| Set | Bot | Points a hand per seat | Interval |
+| Set | Bot | Points a hand per seat | 95% CI |
 |---|---|---|---|
 | 1 | Fu-2.3M-HKMA-1 | +5.4 | [+4.3, +6.5] |
 | 1 | Neural Cat NC9 | −1.6 | [−2.7, −0.5] |

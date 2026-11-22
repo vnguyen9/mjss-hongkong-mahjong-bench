@@ -24,5 +24,5 @@ def banner(dark=False):
 </defs>
 {_tiles()}
 <text x="450" y="150" text-anchor="middle" fill="{ink}" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="40" font-weight="700" letter-spacing="-1">Hong Kong Mahjong Bench</text>
-<text x="450" y="189" text-anchor="middle" fill="{muted}" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17">Every player faces the same deals.</text>
+<text x="450" y="189" text-anchor="middle" fill="{muted}" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17">An open benchmark for Hong Kong Mahjong AI.</text>
 </svg>'''

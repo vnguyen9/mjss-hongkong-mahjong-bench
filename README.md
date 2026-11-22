@@ -5,7 +5,7 @@
   <img src="docs/assets/banner-light.svg" alt="Hong Kong Mahjong Bench" width="900">
 </picture>
 
-A fair way to compare Hong Kong Mahjong players: bots today, LLMs and humans next.
+A fair way to compare Hong Kong Mahjong players: bots today, LLMs and humans.
 
 <p>
   <a href="LICENSE"><img src="https://img.shields.io/badge/licence-MIT-20785b" alt="MIT licence"></a>
@@ -18,11 +18,11 @@ A fair way to compare Hong Kong Mahjong players: bots today, LLMs and humans nex
 
 ## Why this exists
 
-We make [Mahjong Sensei](https://mahjongsensei.co), a Hong Kong Mahjong app ([App Store](https://apps.apple.com/us/app/mahjong-sensei/id6792996894)), and `Fu-2.3M-HKMA-1` is the bot you play against in it. Each time we trained a new version, we needed to know whether it really played better. There was no benchmark for Hong Kong Mahjong; most public mahjong AI work is about Japanese Riichi. So we built this rules engine, scorer and harness for our own bot, and we're opening it up so anyone can measure theirs the same way. It's MIT licensed and contains nothing private. LLM and human tracks come next.
+We make [Mahjong Sensei](https://mahjongsensei.co), a Hong Kong Mahjong app ([App Store](https://apps.apple.com/us/app/mahjong-sensei/id6792996894)), and `Fu-2.3M-HKMA-1` is the bot you play against in it. Each time we trained a new version, we needed to know whether it really played better. There was no benchmark for Hong Kong Mahjong; most public mahjong AI work is about Japanese Riichi. So we built this rules engine, scorer and harness for our own bot, and we're opening it up so anyone can measure theirs the same way. It's MIT licensed. LLM and human tracks are coming soon.
 
-Mahjong is noisy. A strong player can lose a whole session on bad tiles, so counting wins takes an enormous number of games. Duplicate play takes most of that luck out: every wall is played four times, with the bot in each seat once. The score is points a hand against a fixed field of reference bots, with a 95% interval over deals. Rules differ from table to table, so every row names its rule set: HKMA Classical, House or Chicken hand. [RULES.md](RULES.md) has the details.
+Mahjong is noisy. A strong player can lose a whole session on bad tiles, so counting wins takes an enormous number of games. Duplicate play takes most of that luck out: every wall is played four times, with the bot in each seat once. The score is points a hand against a fixed field of reference bots, with a 95% confidence interval (CI). House rules vary a lot in Hong Kong Mahjong, so we bench against three rule sets: HKMA Classical, House and Chicken hand. [RULES.md](RULES.md) has the details.
 
-Scores only mean something if a bot can't cheat or tune itself to the test. Verified rows are played on a private deck that nobody outside sees. A bot is told only what its own seat can see, and the fair-play check re-deals the hidden tiles and asks again, so a bot that peeks gets caught. Every bot starts fresh each game, and program bots run in a sandbox. Version 1.1.0 [closed a hole](CHANGELOG.md#110-2026-11-21) that could have let a bot rebuild the private walls.
+Scores only mean something if a bot can't cheat or tune itself to the test. Verified rows are played on a private deck that only the maintainers hold. A bot is told only what its own seat can see, and the fair-play check re-deals the hidden tiles and asks again, so a bot that peeks gets caught. Every bot starts fresh each game, and program bots run in a sandbox. Version 1.1.0 [closed a hole](CHANGELOG.md#110-2026-11-21) that could have let a bot rebuild the private walls.
 
 It helps with training too. The yardstick never moves, so you can compare saved versions of a bot on deals it never trained on and trust that a gain is real. Public decks and `verify-log` make every public number reproducible, and `--training-log` saves the full record of every won hand on public deals, ready to train on. Head-to-head ratings compare bots directly. The protocol is plain JSON lines, so a program in any language can play.
 
@@ -36,11 +36,11 @@ It helps with training too. The yardstick never moves, so you can compare saved 
 </picture>
 </div>
 
-Each panel has its own scale, because rules and payouts differ between tables. The whiskers are the intervals. [Rebuild the chart](scripts/render_charts.py) with `python3 scripts/render_charts.py`.
+Each panel has its own scale, because rules and payouts differ between tables. The whiskers are 95% CIs. [Rebuild the chart](scripts/render_charts.py) with `python3 scripts/render_charts.py`.
 
 Verified private-deck results from 20 to 22 November 2026, on version 1.1.0. For each table: `Fu-2.3M-HKMA-1` and the best of the other bots.
 
-| Table | Bot | Points a hand [interval] | Win | Deal-in |
+| Table | Bot | Points a hand [95% CI] | Win | Deal-in |
 |---|---|---|---|---|
 | `hk-hkma-v1` | `Fu-2.3M-HKMA-1` | +17.75 [+17.08, +18.42] | 47.2% | 3.4% |
 | `hk-hkma-v1` | `hk-mahjong-lab-PIMC-256` | +13.69 [+12.50, +14.87] | 53.0% | 2.4% |
@@ -49,7 +49,7 @@ Verified private-deck results from 20 to 22 November 2026, on version 1.1.0. For
 | `hk-chicken-v1` | `Fu-2.3M-HKMA-1` | +0.64 [+0.55, +0.73] | 47.8% | 13.5% |
 | `hk-chicken-v1` | `LuckyCat-lc34` | +2.15 [+1.84, +2.47] | 11.4% | 22.1% |
 
-`Fu-2.3M-HKMA-1` leads on HKMA Classical and House. On Chicken hand every outside bot beats it. Fu was trained on HKMA rules, and House and Chicken hand are rules it never trained on.
+`Fu-2.3M-HKMA-1` leads on HKMA Classical and House. On Chicken hand, every outside bot beats it. Fu was trained only on HKMA rules.
 
 ### Outside bots
 
@@ -57,7 +57,7 @@ Eight bots from two other projects are on the leaderboard and the chart. Five co
 
 ## Why the run is fair
 
-The private deck was new and stayed secret. Program bots ran in a sandbox with no network and no way to read the deck. Lucky Cat's bots start a JavaScript process from Python, so their sandbox allows that one child process. Every run passed the fair-play check, no bot went over the fault limit, and every private run is verified. Every public game replays exactly: 283,800 from the 1.1.0 re-score and 153,600 from the outside bots. Before scoring, the bench checked the reference bots' pinned hashes and the engine's fingerprint.
+The private deck stayed secret. Program bots ran in a sandbox with no network and no way to read the deck. Lucky Cat's bots start a JavaScript process from Python, so their sandbox allows that one child process. Every run passed the fair-play check, no bot went over the fault limit, and every private run is verified. Every public game replays exactly: 283,800 from the 1.1.0 re-score and 153,600 from the outside bots. Before scoring, the bench checked the reference bots' pinned hashes and the engine's fingerprint.
 
 [RESULTS.md](RESULTS.md) has every bot on both decks, the head-to-head ratings, what the verified tag does and doesn't prove, and the commands to check the public runs yourself.
 
@@ -87,7 +87,7 @@ Reproduce a row of the leaderboard with one command (about a minute for the fast
 python -m hkbench score --table hk-hkma-v1 --bot ref:ukeire --deals 200 --workers 2
 ```
 
-It prints points a hand with its interval, win rate, deal-in rate, average win and limit hands. It also writes one result file and a compressed log of every game to `results/`. The run is tagged **unverified**, because it used the public deals.
+It prints points a hand with its 95% CI, win rate, deal-in rate, average win and limit hands. It also writes one result file and a compressed log of every game to `results/`. The run is tagged **unverified**, because it used the public deals.
 
 Each log line is one game: the deal, the arrangement, who won and how, the faan and its `patterns` (`[name, faan]` pairs), the payments, and on public deals the seed and the full action list, so `verify-log` can replay it. To train on the games, add `--training-log` (to `score` or `h2h`; off by default, and with it off the logs are unchanged). Each won game's line then also carries the winner's `melds` (`[kind, tiles, seat the claimed tile came from]`), `concealed` tiles with the winning tile in them, `winning_tile` (null for a flower win), `flowers`, and `winner_draws`, the winner's own draw count from the engine's events. Tiles use the engine's names (`m1`..`m9`, `s1`.., `p1`.., `E S W N`, `C F P`). Seed plus actions rebuild any state, so nothing else is stored. The setting is for public deals: on a private deck the flag is ignored and the log stays outcome-only. The `game_over` message a bot receives (`protocol/PROTOCOL.md`) does not change.
 
@@ -121,7 +121,7 @@ python -m hkbench tables                                  # list tables, check t
 1. The reference bots must match their pinned hashes, and the engine must reproduce the table's fingerprint: 300 fixed deals and 42 fixed hands, hashed. If either fails, nothing is scored.
 2. The bench plays the bot in real games on secret deals, re-shuffles every hidden tile (the other hands and the wall) at chosen decision points into a new arrangement that looks the same from the bot's seat, and asks again. A changed answer rejects the bot.
 3. The bot takes one seat and the three field bots fill the others. Every deal is played from all four seats.
-4. The bench computes one average per deal, then the mean and its interval over deals. The four games of a deal are not independent, so the deal is the unit.
+4. The bench computes one average per deal, then the mean and its 95% CI across deals. The four games of a deal are not independent, so the deal is the unit.
 
 Public deals are in the repository. The deal deck used for **verified** rows is private and is read from a file outside the repository (`--private-seeds`, or the `HKBENCH_PRIVATE_SEEDS` environment variable). Make one with `python scripts/make_private_deck.py --count 10000 --out /path/outside/the/repo/deck.json`: independent random seeds, never a start and a count (the bench refuses that old form).
 

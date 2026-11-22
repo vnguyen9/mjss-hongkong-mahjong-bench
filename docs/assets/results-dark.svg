@@ -1,192 +1,192 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1100" role="img" aria-labelledby="chart-title chart-desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1835" role="img" aria-labelledby="chart-title chart-desc">
 <title id="chart-title">Verified private-deck results</title>
-<desc id="chart-desc">Every bot, sorted by points a hand within each table. Whiskers show 95% intervals. Each panel has its own scale.</desc>
-<rect width="640" height="1100" rx="12" fill="#0d1117"/>
+<desc id="chart-desc">Every bot, sorted by points a hand within each table. Whiskers show 95% confidence intervals. Each panel has its own scale.</desc>
+<rect width="640" height="1835" rx="12" fill="#0d1117"/>
 <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" fill="#e6edf3">
 <text x="20" y="35" font-size="22" font-weight="700">HKMA Classical</text>
 <text x="20" y="61" font-size="14" fill="#a4b1bd">hk-hkma-v1</text>
 <text x="620" y="61" font-size="16" text-anchor="end" fill="#a4b1bd">Mean</text>
-<path d="M210.00 80V540" stroke="#303b43"/>
-<text x="210.00" y="564" font-size="18" text-anchor="middle" fill="#a4b1bd">-5</text>
-<path d="M273.60 80V540" stroke="#303b43"/>
-<text x="273.60" y="564" font-size="18" text-anchor="middle" fill="#a4b1bd">0</text>
-<path d="M337.20 80V540" stroke="#303b43"/>
-<text x="337.20" y="564" font-size="18" text-anchor="middle" fill="#a4b1bd">5</text>
-<path d="M400.80 80V540" stroke="#303b43"/>
-<text x="400.80" y="564" font-size="18" text-anchor="middle" fill="#a4b1bd">10</text>
-<path d="M464.40 80V540" stroke="#303b43"/>
-<text x="464.40" y="564" font-size="18" text-anchor="middle" fill="#a4b1bd">15</text>
-<path d="M528.00 80V540" stroke="#303b43"/>
-<text x="528.00" y="564" font-size="18" text-anchor="middle" fill="#a4b1bd">20</text>
-<path d="M273.60 80V540" stroke="#a4b1bd"/>
-<text x="20" y="101" font-size="20" fill="#75d9b1" font-weight="700">Fu-2.3M-HKMA-1</text>
-<g><title>Fu-2.3M-HKMA-1: +17.75 [+17.08, +18.42]</title><rect x="273.60" y="88" width="225.78" height="16" rx="3" fill="#75d9b1"/><path d="M490.85 96H507.91M490.85 91v10M507.91 91v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<path d="M290.00 80V540" stroke="#303b43"/>
+<text x="290.00" y="564" font-size="16" text-anchor="middle" fill="#a4b1bd">-5</text>
+<path d="M340.00 80V540" stroke="#303b43"/>
+<text x="340.00" y="564" font-size="16" text-anchor="middle" fill="#a4b1bd">0</text>
+<path d="M390.00 80V540" stroke="#303b43"/>
+<text x="390.00" y="564" font-size="16" text-anchor="middle" fill="#a4b1bd">5</text>
+<path d="M440.00 80V540" stroke="#303b43"/>
+<text x="440.00" y="564" font-size="16" text-anchor="middle" fill="#a4b1bd">10</text>
+<path d="M490.00 80V540" stroke="#303b43"/>
+<text x="490.00" y="564" font-size="16" text-anchor="middle" fill="#a4b1bd">15</text>
+<path d="M540.00 80V540" stroke="#303b43"/>
+<text x="540.00" y="564" font-size="16" text-anchor="middle" fill="#a4b1bd">20</text>
+<path d="M340.00 80V540" stroke="#a4b1bd"/>
+<text x="20" y="101" font-size="18" fill="#75d9b1" font-weight="700">Fu-2.3M-HKMA-1</text>
+<g><title>Fu-2.3M-HKMA-1: +17.75 [+17.08, +18.42]</title><rect x="340.00" y="88" width="177.50" height="16" rx="3" fill="#75d9b1"/><path d="M510.79 96H524.21M510.79 91v10M524.21 91v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="101" font-size="20" text-anchor="end" font-weight="600">+17.75</text>
-<text x="20" y="131" font-size="20" fill="#e6edf3" font-weight="400">hk-mahjong-lab-PIMC-256</text>
-<g><title>hk-mahjong-lab-PIMC-256: +13.69 [+12.50, +14.87]</title><rect x="273.60" y="118" width="174.07" height="16" rx="3" fill="#6b8190"/><path d="M432.61 126H462.74M432.61 121v10M462.74 121v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="131" font-size="18" fill="#e6edf3" font-weight="400">hk-mahjong-lab-PIMC-256</text>
+<g><title>hk-mahjong-lab-PIMC-256: +13.69 [+12.50, +14.87]</title><rect x="340.00" y="118" width="136.85" height="16" rx="3" fill="#6b8190"/><path d="M465.01 126H488.69M465.01 121v10M488.69 121v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="131" font-size="20" text-anchor="end" font-weight="600">+13.69</text>
-<text x="20" y="161" font-size="20" fill="#e6edf3" font-weight="400">hk-mahjong-lab-PIMC-128</text>
-<g><title>hk-mahjong-lab-PIMC-128: +13.46 [+12.23, +14.70]</title><rect x="273.60" y="148" width="171.24" height="16" rx="3" fill="#6b8190"/><path d="M429.16 156H460.52M429.16 151v10M460.52 151v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="161" font-size="18" fill="#e6edf3" font-weight="400">hk-mahjong-lab-PIMC-128</text>
+<g><title>hk-mahjong-lab-PIMC-128: +13.46 [+12.23, +14.70]</title><rect x="340.00" y="148" width="134.62" height="16" rx="3" fill="#6b8190"/><path d="M462.30 156H486.95M462.30 151v10M486.95 151v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="161" font-size="20" text-anchor="end" font-weight="600">+13.46</text>
-<text x="20" y="191" font-size="20" fill="#e6edf3" font-weight="400">LuckyCat-lc34</text>
-<g><title>LuckyCat-lc34: +11.46 [+10.86, +12.05]</title><rect x="273.60" y="178" width="145.72" height="16" rx="3" fill="#6b8190"/><path d="M411.71 186H426.93M411.71 181v10M426.93 181v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="191" font-size="18" fill="#e6edf3" font-weight="400">LuckyCat-lc34</text>
+<g><title>LuckyCat-lc34: +11.46 [+10.86, +12.05]</title><rect x="340.00" y="178" width="114.56" height="16" rx="3" fill="#6b8190"/><path d="M448.58 186H460.54M448.58 181v10M460.54 181v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="191" font-size="20" text-anchor="end" font-weight="600">+11.46</text>
-<text x="20" y="221" font-size="20" fill="#e6edf3" font-weight="400">NeuralCat-NC10</text>
-<g><title>NeuralCat-NC10: +11.38 [+10.68, +12.08]</title><rect x="273.60" y="208" width="144.71" height="16" rx="3" fill="#6b8190"/><path d="M409.39 216H427.23M409.39 211v10M427.23 211v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="221" font-size="18" fill="#e6edf3" font-weight="400">NeuralCat-NC10</text>
+<g><title>NeuralCat-NC10: +11.38 [+10.68, +12.08]</title><rect x="340.00" y="208" width="113.76" height="16" rx="3" fill="#6b8190"/><path d="M446.75 216H460.78M446.75 211v10M460.78 211v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="221" font-size="20" text-anchor="end" font-weight="600">+11.38</text>
-<text x="20" y="251" font-size="20" fill="#e6edf3" font-weight="400">hk-mahjong-lab-value</text>
-<g><title>hk-mahjong-lab-value: +11.23 [+10.75, +11.71]</title><rect x="273.60" y="238" width="142.79" height="16" rx="3" fill="#6b8190"/><path d="M410.28 246H422.51M410.28 241v10M422.51 241v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="251" font-size="18" fill="#e6edf3" font-weight="400">hk-mahjong-lab-value</text>
+<g><title>hk-mahjong-lab-value: +11.23 [+10.75, +11.71]</title><rect x="340.00" y="238" width="112.26" height="16" rx="3" fill="#6b8190"/><path d="M447.45 246H457.07M447.45 241v10M457.07 241v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="251" font-size="20" text-anchor="end" font-weight="600">+11.23</text>
-<text x="20" y="281" font-size="20" fill="#e6edf3" font-weight="400">NeuralCat-NC9</text>
-<g><title>NeuralCat-NC9: +11.16 [+10.45, +11.87]</title><rect x="273.60" y="268" width="141.97" height="16" rx="3" fill="#6b8190"/><path d="M406.57 276H424.57M406.57 271v10M424.57 271v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="281" font-size="18" fill="#e6edf3" font-weight="400">NeuralCat-NC9</text>
+<g><title>NeuralCat-NC9: +11.16 [+10.45, +11.87]</title><rect x="340.00" y="268" width="111.62" height="16" rx="3" fill="#6b8190"/><path d="M444.54 276H458.69M444.54 271v10M458.69 271v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="281" font-size="20" text-anchor="end" font-weight="600">+11.16</text>
-<text x="20" y="311" font-size="20" fill="#e6edf3" font-weight="400">LuckyCat-lc32</text>
-<g><title>LuckyCat-lc32: +10.60 [+10.03, +11.17]</title><rect x="273.60" y="298" width="134.86" height="16" rx="3" fill="#6b8190"/><path d="M401.21 306H415.71M401.21 301v10M415.71 301v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="311" font-size="18" fill="#e6edf3" font-weight="400">LuckyCat-lc32</text>
+<g><title>LuckyCat-lc32: +10.60 [+10.03, +11.17]</title><rect x="340.00" y="298" width="106.02" height="16" rx="3" fill="#6b8190"/><path d="M440.32 306H451.72M440.32 301v10M451.72 301v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="311" font-size="20" text-anchor="end" font-weight="600">+10.60</text>
-<text x="20" y="341" font-size="20" fill="#e6edf3" font-weight="400">LuckyCat-JorgeYau</text>
-<g><title>LuckyCat-JorgeYau: +8.91 [+8.33, +9.48]</title><rect x="273.60" y="328" width="113.30" height="16" rx="3" fill="#6b8190"/><path d="M379.58 336H394.23M379.58 331v10M394.23 331v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="341" font-size="18" fill="#e6edf3" font-weight="400">LuckyCat-JorgeYau</text>
+<g><title>LuckyCat-JorgeYau: +8.91 [+8.33, +9.48]</title><rect x="340.00" y="328" width="89.08" height="16" rx="3" fill="#6b8190"/><path d="M423.32 336H434.83M423.32 331v10M434.83 331v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="341" font-size="20" text-anchor="end" font-weight="600">+8.91</text>
-<text x="20" y="371" font-size="20" fill="#e6edf3" font-weight="400">python_example</text>
-<g><title>python_example: +2.54 [+2.11, +2.97]</title><rect x="273.60" y="358" width="32.28" height="16" rx="3" fill="#6b8190"/><path d="M300.41 366H311.35M300.41 361v10M311.35 361v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="371" font-size="18" fill="#e6edf3" font-weight="400">python_example</text>
+<g><title>python_example: +2.54 [+2.11, +2.97]</title><rect x="340.00" y="358" width="25.38" height="16" rx="3" fill="#6b8190"/><path d="M361.08 366H369.67M361.08 361v10M369.67 361v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="371" font-size="20" text-anchor="end" font-weight="600">+2.54</text>
-<text x="20" y="401" font-size="20" fill="#e6edf3" font-weight="400">faan_aware</text>
-<g><title>faan_aware: +1.61 [+1.37, +1.84]</title><rect x="273.60" y="388" width="20.42" height="16" rx="3" fill="#6b8190"/><path d="M291.08 396H296.97M291.08 391v10M296.97 391v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="401" font-size="18" fill="#e6edf3" font-weight="400">faan_aware</text>
+<g><title>faan_aware: +1.61 [+1.37, +1.84]</title><rect x="340.00" y="388" width="16.06" height="16" rx="3" fill="#6b8190"/><path d="M353.74 396H358.37M353.74 391v10M358.37 391v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="401" font-size="20" text-anchor="end" font-weight="600">+1.61</text>
-<text x="20" y="431" font-size="20" fill="#e6edf3" font-weight="400">ukeire</text>
-<g><title>ukeire: -0.72 [-0.88, -0.55]</title><rect x="264.50" y="418" width="9.10" height="16" rx="3" fill="#6b8190"/><path d="M262.46 426H266.54M262.46 421v10M266.54 421v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="431" font-size="18" fill="#e6edf3" font-weight="400">ukeire</text>
+<g><title>ukeire: -0.72 [-0.88, -0.55]</title><rect x="332.84" y="418" width="7.16" height="16" rx="3" fill="#6b8190"/><path d="M331.24 426H334.45M331.24 421v10M334.45 421v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="431" font-size="20" text-anchor="end" font-weight="600">-0.72</text>
-<text x="20" y="461" font-size="20" fill="#e6edf3" font-weight="400">deficiency</text>
-<g><title>deficiency: -0.91 [-1.07, -0.75]</title><rect x="262.02" y="448" width="11.58" height="16" rx="3" fill="#6b8190"/><path d="M259.98 456H264.07M259.98 451v10M264.07 451v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="461" font-size="18" fill="#e6edf3" font-weight="400">deficiency</text>
+<g><title>deficiency: -0.91 [-1.07, -0.75]</title><rect x="330.90" y="448" width="9.10" height="16" rx="3" fill="#6b8190"/><path d="M329.29 456H332.51M329.29 451v10M332.51 451v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="461" font-size="20" text-anchor="end" font-weight="600">-0.91</text>
-<text x="20" y="491" font-size="20" fill="#e6edf3" font-weight="400">shallow_search</text>
-<g><title>shallow_search: -0.94 [-1.24, -0.65]</title><rect x="261.58" y="478" width="12.02" height="16" rx="3" fill="#6b8190"/><path d="M257.84 486H265.32M257.84 481v10M265.32 481v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="491" font-size="18" fill="#e6edf3" font-weight="400">shallow_search</text>
+<g><title>shallow_search: -0.94 [-1.24, -0.65]</title><rect x="330.55" y="478" width="9.45" height="16" rx="3" fill="#6b8190"/><path d="M327.61 486H333.49M327.61 481v10M333.49 481v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="491" font-size="20" text-anchor="end" font-weight="600">-0.94</text>
-<text x="20" y="521" font-size="20" fill="#e6edf3" font-weight="400">random</text>
-<g><title>random: -1.81 [-1.95, -1.67]</title><rect x="250.58" y="508" width="23.02" height="16" rx="3" fill="#6b8190"/><path d="M248.86 516H252.31M248.86 511v10M252.31 511v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="20" y="521" font-size="18" fill="#e6edf3" font-weight="400">random</text>
+<g><title>random: -1.81 [-1.95, -1.67]</title><rect x="321.90" y="508" width="18.10" height="16" rx="3" fill="#6b8190"/><path d="M320.55 516H323.26M320.55 511v10M323.26 511v10" stroke="#e6edf3" stroke-width="1.5"/></g>
 <text x="620" y="521" font-size="20" text-anchor="end" font-weight="600">-1.81</text>
-<text x="369" y="587" font-size="18" text-anchor="middle" fill="#a4b1bd">Points a hand · 95% interval</text>
-<text x="20" y="395" font-size="22" font-weight="700">House</text>
-<text x="20" y="421" font-size="14" fill="#a4b1bd">hk-house-v1</text>
-<text x="620" y="421" font-size="16" text-anchor="end" fill="#a4b1bd">Mean</text>
-<path d="M210.00 440V900" stroke="#303b43"/>
-<text x="210.00" y="924" font-size="18" text-anchor="middle" fill="#a4b1bd">-5</text>
-<path d="M273.60 440V900" stroke="#303b43"/>
-<text x="273.60" y="924" font-size="18" text-anchor="middle" fill="#a4b1bd">0</text>
-<path d="M337.20 440V900" stroke="#303b43"/>
-<text x="337.20" y="924" font-size="18" text-anchor="middle" fill="#a4b1bd">5</text>
-<path d="M400.80 440V900" stroke="#303b43"/>
-<text x="400.80" y="924" font-size="18" text-anchor="middle" fill="#a4b1bd">10</text>
-<path d="M464.40 440V900" stroke="#303b43"/>
-<text x="464.40" y="924" font-size="18" text-anchor="middle" fill="#a4b1bd">15</text>
-<path d="M528.00 440V900" stroke="#303b43"/>
-<text x="528.00" y="924" font-size="18" text-anchor="middle" fill="#a4b1bd">20</text>
-<path d="M273.60 440V900" stroke="#a4b1bd"/>
-<text x="20" y="461" font-size="20" fill="#75d9b1" font-weight="700">Fu-2.3M-HKMA-1</text>
-<g><title>Fu-2.3M-HKMA-1: +17.67 [+16.76, +18.58]</title><rect x="273.60" y="448" width="224.74" height="16" rx="3" fill="#75d9b1"/><path d="M486.77 456H509.91M486.77 451v10M509.91 451v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="461" font-size="20" text-anchor="end" font-weight="600">+17.67</text>
-<text x="20" y="491" font-size="20" fill="#e6edf3" font-weight="400">hk-mahjong-lab-PIMC-256</text>
-<g><title>hk-mahjong-lab-PIMC-256: +15.09 [+13.03, +17.16]</title><rect x="273.60" y="478" width="191.98" height="16" rx="3" fill="#6b8190"/><path d="M439.32 486H491.84M439.32 481v10M491.84 481v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="491" font-size="20" text-anchor="end" font-weight="600">+15.09</text>
-<text x="20" y="521" font-size="20" fill="#e6edf3" font-weight="400">NeuralCat-NC9</text>
-<g><title>NeuralCat-NC9: +12.81 [+11.62, +13.99]</title><rect x="273.60" y="508" width="162.91" height="16" rx="3" fill="#6b8190"/><path d="M421.44 516H451.58M421.44 511v10M451.58 511v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="521" font-size="20" text-anchor="end" font-weight="600">+12.81</text>
-<text x="20" y="551" font-size="20" fill="#e6edf3" font-weight="400">NeuralCat-NC10</text>
-<g><title>NeuralCat-NC10: +12.79 [+11.67, +13.91]</title><rect x="273.60" y="538" width="162.64" height="16" rx="3" fill="#6b8190"/><path d="M422.01 546H450.48M422.01 541v10M450.48 541v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="551" font-size="20" text-anchor="end" font-weight="600">+12.79</text>
-<text x="20" y="581" font-size="20" fill="#e6edf3" font-weight="400">hk-mahjong-lab-PIMC-128</text>
-<g><title>hk-mahjong-lab-PIMC-128: +12.72 [+11.19, +14.25]</title><rect x="273.60" y="568" width="161.77" height="16" rx="3" fill="#6b8190"/><path d="M415.92 576H454.81M415.92 571v10M454.81 571v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="581" font-size="20" text-anchor="end" font-weight="600">+12.72</text>
-<text x="20" y="611" font-size="20" fill="#e6edf3" font-weight="400">hk-mahjong-lab-value</text>
-<g><title>hk-mahjong-lab-value: +11.70 [+10.90, +12.49]</title><rect x="273.60" y="598" width="148.80" height="16" rx="3" fill="#6b8190"/><path d="M412.30 606H432.51M412.30 601v10M432.51 601v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="611" font-size="20" text-anchor="end" font-weight="600">+11.70</text>
-<text x="20" y="641" font-size="20" fill="#e6edf3" font-weight="400">LuckyCat-lc34</text>
-<g><title>LuckyCat-lc34: +10.87 [+10.13, +11.62]</title><rect x="273.60" y="628" width="138.30" height="16" rx="3" fill="#6b8190"/><path d="M402.45 636H421.36M402.45 631v10M421.36 631v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="641" font-size="20" text-anchor="end" font-weight="600">+10.87</text>
-<text x="20" y="671" font-size="20" fill="#e6edf3" font-weight="400">LuckyCat-lc32</text>
-<g><title>LuckyCat-lc32: +10.40 [+9.67, +11.14]</title><rect x="273.60" y="658" width="132.34" height="16" rx="3" fill="#6b8190"/><path d="M396.56 666H415.32M396.56 661v10M415.32 661v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="671" font-size="20" text-anchor="end" font-weight="600">+10.40</text>
-<text x="20" y="701" font-size="20" fill="#e6edf3" font-weight="400">LuckyCat-JorgeYau</text>
-<g><title>LuckyCat-JorgeYau: +10.04 [+9.11, +10.97]</title><rect x="273.60" y="688" width="127.68" height="16" rx="3" fill="#6b8190"/><path d="M389.49 696H413.08M389.49 691v10M413.08 691v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="701" font-size="20" text-anchor="end" font-weight="600">+10.04</text>
-<text x="20" y="731" font-size="20" fill="#e6edf3" font-weight="400">python_example</text>
-<g><title>python_example: +2.79 [+2.25, +3.33]</title><rect x="273.60" y="718" width="35.48" height="16" rx="3" fill="#6b8190"/><path d="M302.20 726H315.95M302.20 721v10M315.95 721v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="731" font-size="20" text-anchor="end" font-weight="600">+2.79</text>
-<text x="20" y="761" font-size="20" fill="#e6edf3" font-weight="400">faan_aware</text>
-<g><title>faan_aware: +1.57 [+1.30, +1.83]</title><rect x="273.60" y="748" width="19.91" height="16" rx="3" fill="#6b8190"/><path d="M290.09 756H296.93M290.09 751v10M296.93 751v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="761" font-size="20" text-anchor="end" font-weight="600">+1.57</text>
-<text x="20" y="791" font-size="20" fill="#e6edf3" font-weight="400">shallow_search</text>
-<g><title>shallow_search: -0.35 [-0.73, +0.03]</title><rect x="269.12" y="778" width="4.48" height="16" rx="3" fill="#6b8190"/><path d="M264.27 786H273.96M264.27 781v10M273.96 781v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="791" font-size="20" text-anchor="end" font-weight="600">-0.35</text>
-<text x="20" y="821" font-size="20" fill="#e6edf3" font-weight="400">ukeire</text>
-<g><title>ukeire: -0.85 [-1.04, -0.66]</title><rect x="262.81" y="808" width="10.79" height="16" rx="3" fill="#6b8190"/><path d="M260.36 816H265.26M260.36 811v10M265.26 811v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="821" font-size="20" text-anchor="end" font-weight="600">-0.85</text>
-<text x="20" y="851" font-size="20" fill="#e6edf3" font-weight="400">deficiency</text>
-<g><title>deficiency: -0.93 [-1.14, -0.71]</title><rect x="261.83" y="838" width="11.77" height="16" rx="3" fill="#6b8190"/><path d="M259.14 846H264.53M259.14 841v10M264.53 841v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="851" font-size="20" text-anchor="end" font-weight="600">-0.93</text>
-<text x="20" y="881" font-size="20" fill="#e6edf3" font-weight="400">random</text>
-<g><title>random: -2.82 [-2.95, -2.69]</title><rect x="237.72" y="868" width="35.88" height="16" rx="3" fill="#6b8190"/><path d="M236.02 876H239.41M236.02 871v10M239.41 871v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="881" font-size="20" text-anchor="end" font-weight="600">-2.82</text>
-<text x="369" y="947" font-size="18" text-anchor="middle" fill="#a4b1bd">Points a hand · 95% interval</text>
-<text x="20" y="755" font-size="22" font-weight="700">Chicken hand</text>
-<text x="20" y="781" font-size="14" fill="#a4b1bd">hk-chicken-v1</text>
-<text x="620" y="781" font-size="16" text-anchor="end" fill="#a4b1bd">Mean</text>
-<path d="M210.00 800V1260" stroke="#303b43"/>
-<text x="210.00" y="1284" font-size="18" text-anchor="middle" fill="#a4b1bd">-2</text>
-<path d="M273.60 800V1260" stroke="#303b43"/>
-<text x="273.60" y="1284" font-size="18" text-anchor="middle" fill="#a4b1bd">-1</text>
-<path d="M337.20 800V1260" stroke="#303b43"/>
-<text x="337.20" y="1284" font-size="18" text-anchor="middle" fill="#a4b1bd">0</text>
-<path d="M400.80 800V1260" stroke="#303b43"/>
-<text x="400.80" y="1284" font-size="18" text-anchor="middle" fill="#a4b1bd">1</text>
-<path d="M464.40 800V1260" stroke="#303b43"/>
-<text x="464.40" y="1284" font-size="18" text-anchor="middle" fill="#a4b1bd">2</text>
-<path d="M528.00 800V1260" stroke="#303b43"/>
-<text x="528.00" y="1284" font-size="18" text-anchor="middle" fill="#a4b1bd">3</text>
-<path d="M337.20 800V1260" stroke="#a4b1bd"/>
-<text x="20" y="821" font-size="20" fill="#e6edf3" font-weight="400">LuckyCat-lc34</text>
-<g><title>LuckyCat-lc34: +2.15 [+1.84, +2.47]</title><rect x="337.20" y="808" width="137.03" height="16" rx="3" fill="#6b8190"/><path d="M454.35 816H494.10M454.35 811v10M494.10 811v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="821" font-size="20" text-anchor="end" font-weight="600">+2.15</text>
-<text x="20" y="851" font-size="20" fill="#e6edf3" font-weight="400">NeuralCat-NC10</text>
-<g><title>NeuralCat-NC10: +1.94 [+1.58, +2.29]</title><rect x="337.20" y="838" width="123.13" height="16" rx="3" fill="#6b8190"/><path d="M437.51 846H483.15M437.51 841v10M483.15 841v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="851" font-size="20" text-anchor="end" font-weight="600">+1.94</text>
-<text x="20" y="881" font-size="20" fill="#e6edf3" font-weight="400">NeuralCat-NC9</text>
-<g><title>NeuralCat-NC9: +1.90 [+1.55, +2.25]</title><rect x="337.20" y="868" width="121.03" height="16" rx="3" fill="#6b8190"/><path d="M435.85 876H480.61M435.85 871v10M480.61 871v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="881" font-size="20" text-anchor="end" font-weight="600">+1.90</text>
-<text x="20" y="911" font-size="20" fill="#e6edf3" font-weight="400">LuckyCat-lc32</text>
-<g><title>LuckyCat-lc32: +1.88 [+1.60, +2.16]</title><rect x="337.20" y="898" width="119.42" height="16" rx="3" fill="#6b8190"/><path d="M438.97 906H474.28M438.97 901v10M474.28 901v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="911" font-size="20" text-anchor="end" font-weight="600">+1.88</text>
-<text x="20" y="941" font-size="20" fill="#e6edf3" font-weight="400">LuckyCat-JorgeYau</text>
-<g><title>LuckyCat-JorgeYau: +1.70 [+1.41, +1.99]</title><rect x="337.20" y="928" width="107.95" height="16" rx="3" fill="#6b8190"/><path d="M426.73 936H463.58M426.73 931v10M463.58 931v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="941" font-size="20" text-anchor="end" font-weight="600">+1.70</text>
-<text x="20" y="971" font-size="20" fill="#e6edf3" font-weight="400">hk-mahjong-lab-PIMC-256</text>
-<g><title>hk-mahjong-lab-PIMC-256: +1.13 [+0.84, +1.41]</title><rect x="337.20" y="958" width="71.63" height="16" rx="3" fill="#6b8190"/><path d="M390.77 966H426.89M390.77 961v10M426.89 961v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="971" font-size="20" text-anchor="end" font-weight="600">+1.13</text>
-<text x="20" y="1001" font-size="20" fill="#e6edf3" font-weight="400">hk-mahjong-lab-PIMC-128</text>
-<g><title>hk-mahjong-lab-PIMC-128: +1.06 [+0.86, +1.26]</title><rect x="337.20" y="988" width="67.57" height="16" rx="3" fill="#6b8190"/><path d="M391.91 996H417.64M391.91 991v10M417.64 991v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="1001" font-size="20" text-anchor="end" font-weight="600">+1.06</text>
-<text x="20" y="1031" font-size="20" fill="#e6edf3" font-weight="400">hk-mahjong-lab-value</text>
-<g><title>hk-mahjong-lab-value: +0.84 [+0.76, +0.93]</title><rect x="337.20" y="1018" width="53.52" height="16" rx="3" fill="#6b8190"/><path d="M385.35 1026H396.09M385.35 1021v10M396.09 1021v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="1031" font-size="20" text-anchor="end" font-weight="600">+0.84</text>
-<text x="20" y="1061" font-size="20" fill="#75d9b1" font-weight="700">Fu-2.3M-HKMA-1</text>
-<g><title>Fu-2.3M-HKMA-1: +0.64 [+0.55, +0.73]</title><rect x="337.20" y="1048" width="40.80" height="16" rx="3" fill="#75d9b1"/><path d="M372.45 1056H383.55M372.45 1051v10M383.55 1051v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="1061" font-size="20" text-anchor="end" font-weight="600">+0.64</text>
-<text x="20" y="1091" font-size="20" fill="#e6edf3" font-weight="400">faan_aware</text>
-<g><title>faan_aware: +0.41 [+0.30, +0.52]</title><rect x="337.20" y="1078" width="26.15" height="16" rx="3" fill="#6b8190"/><path d="M356.20 1086H370.49M356.20 1081v10M370.49 1081v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="1091" font-size="20" text-anchor="end" font-weight="600">+0.41</text>
-<text x="20" y="1121" font-size="20" fill="#e6edf3" font-weight="400">shallow_search</text>
-<g><title>shallow_search: +0.13 [+0.00, +0.26]</title><rect x="337.20" y="1108" width="8.43" height="16" rx="3" fill="#6b8190"/><path d="M337.22 1116H354.04M337.22 1111v10M354.04 1111v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="1121" font-size="20" text-anchor="end" font-weight="600">+0.13</text>
-<text x="20" y="1151" font-size="20" fill="#e6edf3" font-weight="400">python_example</text>
-<g><title>python_example: -0.14 [-0.34, +0.05]</title><rect x="327.99" y="1138" width="9.21" height="16" rx="3" fill="#6b8190"/><path d="M315.74 1146H340.23M315.74 1141v10M340.23 1141v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="1151" font-size="20" text-anchor="end" font-weight="600">-0.14</text>
-<text x="20" y="1181" font-size="20" fill="#e6edf3" font-weight="400">ukeire</text>
-<g><title>ukeire: -0.17 [-0.25, -0.09]</title><rect x="326.41" y="1168" width="10.79" height="16" rx="3" fill="#6b8190"/><path d="M321.08 1176H331.74M321.08 1171v10M331.74 1171v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="1181" font-size="20" text-anchor="end" font-weight="600">-0.17</text>
-<text x="20" y="1211" font-size="20" fill="#e6edf3" font-weight="400">deficiency</text>
-<g><title>deficiency: -0.18 [-0.26, -0.10]</title><rect x="326.05" y="1198" width="11.15" height="16" rx="3" fill="#6b8190"/><path d="M320.96 1206H331.15M320.96 1201v10M331.15 1201v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="1211" font-size="20" text-anchor="end" font-weight="600">-0.18</text>
-<text x="20" y="1241" font-size="20" fill="#e6edf3" font-weight="400">random</text>
-<g><title>random: -1.19 [-1.27, -1.12]</title><rect x="261.28" y="1228" width="75.92" height="16" rx="3" fill="#6b8190"/><path d="M256.32 1236H266.24M256.32 1231v10M266.24 1231v10" stroke="#e6edf3" stroke-width="1.5"/></g>
-<text x="620" y="1241" font-size="20" text-anchor="end" font-weight="600">-1.19</text>
-<text x="369" y="1307" font-size="18" text-anchor="middle" fill="#a4b1bd">Points a hand · 95% interval</text>
+<text x="415" y="587" font-size="16" text-anchor="middle" fill="#a4b1bd">Points a hand · 95% CI</text>
+<text x="20" y="650" font-size="22" font-weight="700">House</text>
+<text x="20" y="676" font-size="14" fill="#a4b1bd">hk-house-v1</text>
+<text x="620" y="676" font-size="16" text-anchor="end" fill="#a4b1bd">Mean</text>
+<path d="M290.00 695V1155" stroke="#303b43"/>
+<text x="290.00" y="1179" font-size="16" text-anchor="middle" fill="#a4b1bd">-5</text>
+<path d="M340.00 695V1155" stroke="#303b43"/>
+<text x="340.00" y="1179" font-size="16" text-anchor="middle" fill="#a4b1bd">0</text>
+<path d="M390.00 695V1155" stroke="#303b43"/>
+<text x="390.00" y="1179" font-size="16" text-anchor="middle" fill="#a4b1bd">5</text>
+<path d="M440.00 695V1155" stroke="#303b43"/>
+<text x="440.00" y="1179" font-size="16" text-anchor="middle" fill="#a4b1bd">10</text>
+<path d="M490.00 695V1155" stroke="#303b43"/>
+<text x="490.00" y="1179" font-size="16" text-anchor="middle" fill="#a4b1bd">15</text>
+<path d="M540.00 695V1155" stroke="#303b43"/>
+<text x="540.00" y="1179" font-size="16" text-anchor="middle" fill="#a4b1bd">20</text>
+<path d="M340.00 695V1155" stroke="#a4b1bd"/>
+<text x="20" y="716" font-size="18" fill="#75d9b1" font-weight="700">Fu-2.3M-HKMA-1</text>
+<g><title>Fu-2.3M-HKMA-1: +17.67 [+16.76, +18.58]</title><rect x="340.00" y="703" width="176.68" height="16" rx="3" fill="#75d9b1"/><path d="M507.58 711H525.78M507.58 706v10M525.78 706v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="716" font-size="20" text-anchor="end" font-weight="600">+17.67</text>
+<text x="20" y="746" font-size="18" fill="#e6edf3" font-weight="400">hk-mahjong-lab-PIMC-256</text>
+<g><title>hk-mahjong-lab-PIMC-256: +15.09 [+13.03, +17.16]</title><rect x="340.00" y="733" width="150.93" height="16" rx="3" fill="#6b8190"/><path d="M470.28 741H511.57M470.28 736v10M511.57 736v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="746" font-size="20" text-anchor="end" font-weight="600">+15.09</text>
+<text x="20" y="776" font-size="18" fill="#e6edf3" font-weight="400">NeuralCat-NC9</text>
+<g><title>NeuralCat-NC9: +12.81 [+11.62, +13.99]</title><rect x="340.00" y="763" width="128.07" height="16" rx="3" fill="#6b8190"/><path d="M456.23 771H479.92M456.23 766v10M479.92 766v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="776" font-size="20" text-anchor="end" font-weight="600">+12.81</text>
+<text x="20" y="806" font-size="18" fill="#e6edf3" font-weight="400">NeuralCat-NC10</text>
+<g><title>NeuralCat-NC10: +12.79 [+11.67, +13.91]</title><rect x="340.00" y="793" width="127.87" height="16" rx="3" fill="#6b8190"/><path d="M456.68 801H479.05M456.68 796v10M479.05 796v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="806" font-size="20" text-anchor="end" font-weight="600">+12.79</text>
+<text x="20" y="836" font-size="18" fill="#e6edf3" font-weight="400">hk-mahjong-lab-PIMC-128</text>
+<g><title>hk-mahjong-lab-PIMC-128: +12.72 [+11.19, +14.25]</title><rect x="340.00" y="823" width="127.18" height="16" rx="3" fill="#6b8190"/><path d="M451.89 831H482.46M451.89 826v10M482.46 826v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="836" font-size="20" text-anchor="end" font-weight="600">+12.72</text>
+<text x="20" y="866" font-size="18" fill="#e6edf3" font-weight="400">hk-mahjong-lab-value</text>
+<g><title>hk-mahjong-lab-value: +11.70 [+10.90, +12.49]</title><rect x="340.00" y="853" width="116.99" height="16" rx="3" fill="#6b8190"/><path d="M449.04 861H464.93M449.04 856v10M464.93 856v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="866" font-size="20" text-anchor="end" font-weight="600">+11.70</text>
+<text x="20" y="896" font-size="18" fill="#e6edf3" font-weight="400">LuckyCat-lc34</text>
+<g><title>LuckyCat-lc34: +10.87 [+10.13, +11.62]</title><rect x="340.00" y="883" width="108.73" height="16" rx="3" fill="#6b8190"/><path d="M441.30 891H456.16M441.30 886v10M456.16 886v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="896" font-size="20" text-anchor="end" font-weight="600">+10.87</text>
+<text x="20" y="926" font-size="18" fill="#e6edf3" font-weight="400">LuckyCat-lc32</text>
+<g><title>LuckyCat-lc32: +10.40 [+9.67, +11.14]</title><rect x="340.00" y="913" width="104.04" height="16" rx="3" fill="#6b8190"/><path d="M436.67 921H451.41M436.67 916v10M451.41 916v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="926" font-size="20" text-anchor="end" font-weight="600">+10.40</text>
+<text x="20" y="956" font-size="18" fill="#e6edf3" font-weight="400">LuckyCat-JorgeYau</text>
+<g><title>LuckyCat-JorgeYau: +10.04 [+9.11, +10.97]</title><rect x="340.00" y="943" width="100.38" height="16" rx="3" fill="#6b8190"/><path d="M431.11 951H449.65M431.11 946v10M449.65 946v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="956" font-size="20" text-anchor="end" font-weight="600">+10.04</text>
+<text x="20" y="986" font-size="18" fill="#e6edf3" font-weight="400">python_example</text>
+<g><title>python_example: +2.79 [+2.25, +3.33]</title><rect x="340.00" y="973" width="27.89" height="16" rx="3" fill="#6b8190"/><path d="M362.48 981H373.30M362.48 976v10M373.30 976v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="986" font-size="20" text-anchor="end" font-weight="600">+2.79</text>
+<text x="20" y="1016" font-size="18" fill="#e6edf3" font-weight="400">faan_aware</text>
+<g><title>faan_aware: +1.57 [+1.30, +1.83]</title><rect x="340.00" y="1003" width="15.65" height="16" rx="3" fill="#6b8190"/><path d="M352.97 1011H358.34M352.97 1006v10M358.34 1006v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1016" font-size="20" text-anchor="end" font-weight="600">+1.57</text>
+<text x="20" y="1046" font-size="18" fill="#e6edf3" font-weight="400">shallow_search</text>
+<g><title>shallow_search: -0.35 [-0.73, +0.03]</title><rect x="336.48" y="1033" width="3.52" height="16" rx="3" fill="#6b8190"/><path d="M332.66 1041H340.29M332.66 1036v10M340.29 1036v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1046" font-size="20" text-anchor="end" font-weight="600">-0.35</text>
+<text x="20" y="1076" font-size="18" fill="#e6edf3" font-weight="400">ukeire</text>
+<g><title>ukeire: -0.85 [-1.04, -0.66]</title><rect x="331.51" y="1063" width="8.49" height="16" rx="3" fill="#6b8190"/><path d="M329.59 1071H333.44M329.59 1066v10M333.44 1066v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1076" font-size="20" text-anchor="end" font-weight="600">-0.85</text>
+<text x="20" y="1106" font-size="18" fill="#e6edf3" font-weight="400">deficiency</text>
+<g><title>deficiency: -0.93 [-1.14, -0.71]</title><rect x="330.75" y="1093" width="9.25" height="16" rx="3" fill="#6b8190"/><path d="M328.63 1101H332.87M328.63 1096v10M332.87 1096v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1106" font-size="20" text-anchor="end" font-weight="600">-0.93</text>
+<text x="20" y="1136" font-size="18" fill="#e6edf3" font-weight="400">random</text>
+<g><title>random: -2.82 [-2.95, -2.69]</title><rect x="311.79" y="1123" width="28.21" height="16" rx="3" fill="#6b8190"/><path d="M310.46 1131H313.12M310.46 1126v10M313.12 1126v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1136" font-size="20" text-anchor="end" font-weight="600">-2.82</text>
+<text x="415" y="1202" font-size="16" text-anchor="middle" fill="#a4b1bd">Points a hand · 95% CI</text>
+<text x="20" y="1265" font-size="22" font-weight="700">Chicken hand</text>
+<text x="20" y="1291" font-size="14" fill="#a4b1bd">hk-chicken-v1</text>
+<text x="620" y="1291" font-size="16" text-anchor="end" fill="#a4b1bd">Mean</text>
+<path d="M290.00 1310V1770" stroke="#303b43"/>
+<text x="290.00" y="1794" font-size="16" text-anchor="middle" fill="#a4b1bd">-2</text>
+<path d="M340.00 1310V1770" stroke="#303b43"/>
+<text x="340.00" y="1794" font-size="16" text-anchor="middle" fill="#a4b1bd">-1</text>
+<path d="M390.00 1310V1770" stroke="#303b43"/>
+<text x="390.00" y="1794" font-size="16" text-anchor="middle" fill="#a4b1bd">0</text>
+<path d="M440.00 1310V1770" stroke="#303b43"/>
+<text x="440.00" y="1794" font-size="16" text-anchor="middle" fill="#a4b1bd">1</text>
+<path d="M490.00 1310V1770" stroke="#303b43"/>
+<text x="490.00" y="1794" font-size="16" text-anchor="middle" fill="#a4b1bd">2</text>
+<path d="M540.00 1310V1770" stroke="#303b43"/>
+<text x="540.00" y="1794" font-size="16" text-anchor="middle" fill="#a4b1bd">3</text>
+<path d="M390.00 1310V1770" stroke="#a4b1bd"/>
+<text x="20" y="1331" font-size="18" fill="#e6edf3" font-weight="400">LuckyCat-lc34</text>
+<g><title>LuckyCat-lc34: +2.15 [+1.84, +2.47]</title><rect x="390.00" y="1318" width="107.73" height="16" rx="3" fill="#6b8190"/><path d="M482.10 1326H513.35M482.10 1321v10M513.35 1321v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1331" font-size="20" text-anchor="end" font-weight="600">+2.15</text>
+<text x="20" y="1361" font-size="18" fill="#e6edf3" font-weight="400">NeuralCat-NC10</text>
+<g><title>NeuralCat-NC10: +1.94 [+1.58, +2.29]</title><rect x="390.00" y="1348" width="96.80" height="16" rx="3" fill="#6b8190"/><path d="M468.86 1356H504.74M468.86 1351v10M504.74 1351v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1361" font-size="20" text-anchor="end" font-weight="600">+1.94</text>
+<text x="20" y="1391" font-size="18" fill="#e6edf3" font-weight="400">NeuralCat-NC9</text>
+<g><title>NeuralCat-NC9: +1.90 [+1.55, +2.25]</title><rect x="390.00" y="1378" width="95.15" height="16" rx="3" fill="#6b8190"/><path d="M467.55 1386H502.75M467.55 1381v10M502.75 1381v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1391" font-size="20" text-anchor="end" font-weight="600">+1.90</text>
+<text x="20" y="1421" font-size="18" fill="#e6edf3" font-weight="400">LuckyCat-lc32</text>
+<g><title>LuckyCat-lc32: +1.88 [+1.60, +2.16]</title><rect x="390.00" y="1408" width="93.89" height="16" rx="3" fill="#6b8190"/><path d="M470.01 1416H497.76M470.01 1411v10M497.76 1411v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1421" font-size="20" text-anchor="end" font-weight="600">+1.88</text>
+<text x="20" y="1451" font-size="18" fill="#e6edf3" font-weight="400">LuckyCat-JorgeYau</text>
+<g><title>LuckyCat-JorgeYau: +1.70 [+1.41, +1.99]</title><rect x="390.00" y="1438" width="84.87" height="16" rx="3" fill="#6b8190"/><path d="M460.38 1446H489.35M460.38 1441v10M489.35 1441v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1451" font-size="20" text-anchor="end" font-weight="600">+1.70</text>
+<text x="20" y="1481" font-size="18" fill="#e6edf3" font-weight="400">hk-mahjong-lab-PIMC-256</text>
+<g><title>hk-mahjong-lab-PIMC-256: +1.13 [+0.84, +1.41]</title><rect x="390.00" y="1468" width="56.31" height="16" rx="3" fill="#6b8190"/><path d="M432.11 1476H460.51M432.11 1471v10M460.51 1471v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1481" font-size="20" text-anchor="end" font-weight="600">+1.13</text>
+<text x="20" y="1511" font-size="18" fill="#e6edf3" font-weight="400">hk-mahjong-lab-PIMC-128</text>
+<g><title>hk-mahjong-lab-PIMC-128: +1.06 [+0.86, +1.26]</title><rect x="390.00" y="1498" width="53.12" height="16" rx="3" fill="#6b8190"/><path d="M433.01 1506H453.24M433.01 1501v10M453.24 1501v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1511" font-size="20" text-anchor="end" font-weight="600">+1.06</text>
+<text x="20" y="1541" font-size="18" fill="#e6edf3" font-weight="400">hk-mahjong-lab-value</text>
+<g><title>hk-mahjong-lab-value: +0.84 [+0.76, +0.93]</title><rect x="390.00" y="1528" width="42.08" height="16" rx="3" fill="#6b8190"/><path d="M427.85 1536H436.30M427.85 1531v10M436.30 1531v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1541" font-size="20" text-anchor="end" font-weight="600">+0.84</text>
+<text x="20" y="1571" font-size="18" fill="#75d9b1" font-weight="700">Fu-2.3M-HKMA-1</text>
+<g><title>Fu-2.3M-HKMA-1: +0.64 [+0.55, +0.73]</title><rect x="390.00" y="1558" width="32.07" height="16" rx="3" fill="#75d9b1"/><path d="M417.71 1566H426.44M417.71 1561v10M426.44 1561v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1571" font-size="20" text-anchor="end" font-weight="600">+0.64</text>
+<text x="20" y="1601" font-size="18" fill="#e6edf3" font-weight="400">faan_aware</text>
+<g><title>faan_aware: +0.41 [+0.30, +0.52]</title><rect x="390.00" y="1588" width="20.56" height="16" rx="3" fill="#6b8190"/><path d="M404.94 1596H416.17M404.94 1591v10M416.17 1591v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1601" font-size="20" text-anchor="end" font-weight="600">+0.41</text>
+<text x="20" y="1631" font-size="18" fill="#e6edf3" font-weight="400">shallow_search</text>
+<g><title>shallow_search: +0.13 [+0.00, +0.26]</title><rect x="390.00" y="1618" width="6.62" height="16" rx="3" fill="#6b8190"/><path d="M390.01 1626H403.24M390.01 1621v10M403.24 1621v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1631" font-size="20" text-anchor="end" font-weight="600">+0.13</text>
+<text x="20" y="1661" font-size="18" fill="#e6edf3" font-weight="400">python_example</text>
+<g><title>python_example: -0.14 [-0.34, +0.05]</title><rect x="382.76" y="1648" width="7.24" height="16" rx="3" fill="#6b8190"/><path d="M373.13 1656H392.39M373.13 1651v10M392.39 1651v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1661" font-size="20" text-anchor="end" font-weight="600">-0.14</text>
+<text x="20" y="1691" font-size="18" fill="#e6edf3" font-weight="400">ukeire</text>
+<g><title>ukeire: -0.17 [-0.25, -0.09]</title><rect x="381.52" y="1678" width="8.48" height="16" rx="3" fill="#6b8190"/><path d="M377.33 1686H385.71M377.33 1681v10M385.71 1681v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1691" font-size="20" text-anchor="end" font-weight="600">-0.17</text>
+<text x="20" y="1721" font-size="18" fill="#e6edf3" font-weight="400">deficiency</text>
+<g><title>deficiency: -0.18 [-0.26, -0.10]</title><rect x="381.24" y="1708" width="8.76" height="16" rx="3" fill="#6b8190"/><path d="M377.23 1716H385.24M377.23 1711v10M385.24 1711v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1721" font-size="20" text-anchor="end" font-weight="600">-0.18</text>
+<text x="20" y="1751" font-size="18" fill="#e6edf3" font-weight="400">random</text>
+<g><title>random: -1.19 [-1.27, -1.12]</title><rect x="330.31" y="1738" width="59.69" height="16" rx="3" fill="#6b8190"/><path d="M326.41 1746H334.21M326.41 1741v10M334.21 1741v10" stroke="#e6edf3" stroke-width="1.5"/></g>
+<text x="620" y="1751" font-size="20" text-anchor="end" font-weight="600">-1.19</text>
+<text x="415" y="1817" font-size="16" text-anchor="middle" fill="#a4b1bd">Points a hand · 95% CI</text>
 </g></svg>

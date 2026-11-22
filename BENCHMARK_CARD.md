@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The bench measures how well a player plays Hong Kong Mahjong, with an interval around the score. The player can be a bot, an LLM or a human. The number is points a hand against a fixed set of opponents, under rules that are named on every row.
+The bench measures how well a player plays Hong Kong Mahjong, with a 95% confidence interval (CI) on the score. The player can be a bot, an LLM or a human. The number is points a hand against a fixed set of opponents, under rules that are named on every row.
 
 It is meant for comparing players with each other and for watching one player improve. It is not a measure of fun, of style, or of strength against the best human players.
 
@@ -44,7 +44,7 @@ The original rows in this card and on the board were re-scored under 1.1.0 (`hma
 
 The baseline rows on `hk-hkma-v1` use public deals, so they are **unverified**. They report points a hand against the field:
 
-| Bot | Points a hand | Interval | Win | Deal-in | Deals |
+| Bot | Points a hand | 95% CI | Win | Deal-in | Deals |
 |---|---|---|---|---|---|
 | `python_example` | +2.87 | [+2.43, +3.30] | 10.9% | 4.6% | 2,000 |
 | `faan_aware` | +1.56 | [+1.33, +1.79] | 16.7% | 4.4% | 2,000 |
@@ -57,7 +57,7 @@ A bot scored against a field that contains it plays itself, so `faan_aware`, `uk
 
 The baseline rows on `hk-house-v1` use the same bots and the same 2,000 deals (400 for `shallow_search`):
 
-| Bot | Points a hand | Interval | Win | Deal-in | Deals |
+| Bot | Points a hand | 95% CI | Win | Deal-in | Deals |
 |---|---|---|---|---|---|
 | `python_example` | +2.35 | [+1.83, +2.87] | 13.7% | 6.6% | 2,000 |
 | `faan_aware` | +1.65 | [+1.38, +1.93] | 22.8% | 5.7% | 2,000 |
