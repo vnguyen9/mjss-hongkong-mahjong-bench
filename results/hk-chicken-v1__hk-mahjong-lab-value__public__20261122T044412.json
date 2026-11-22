@@ -1,0 +1,132 @@
+{
+  "bot": {
+    "description": "hk-mahjong-lab's value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+    "kind": "external",
+    "name": "hk-mahjong-lab-value",
+    "sha256": "f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe",
+    "track": "bots",
+    "trained_on": "none (rule-based)"
+  },
+  "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_value' --name hk-mahjong-lab-value --kind external --bot-hash f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe --trained-on 'none (rule-based)' --description 'hk-mahjong-lab'\"'\"'s value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results'",
+  "created_utc": "2026-11-22T04:44:12Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "4f548d719647060e2eb8aceaaf81e18aaa96b336d1cb84566bb055193c158665",
+    "hkbench_version": "1.1.0",
+    "python": "3.9.6",
+    "rules_sha256": "d577a8f1e4a0275cad62c974a534a75f6e87789e88772cebf414290368f9e0e5"
+  },
+  "fairplay": {
+    "asks": 300,
+    "decision_changes": 0,
+    "faults": 0,
+    "points": 100,
+    "reshuffles": 2,
+    "status": "passed",
+    "view_mismatches": 0
+  },
+  "faults": {
+    "decisions": 113698,
+    "faults": {},
+    "limit_per_1000": 1.0,
+    "ok": true,
+    "per_1000_decisions": 0.0
+  },
+  "headline": {
+    "ci95": [
+      0.7790897247691085,
+      0.9866602752308914
+    ],
+    "deals": 2000,
+    "games": 8000,
+    "metric": "points per hand against the frozen field",
+    "points_per_hand": 0.882875,
+    "se": 0.05292058234945647
+  },
+  "isolation": "sandbox",
+  "kind": "duplicate",
+  "log": "logs/hk-chicken-v1__hk-mahjong-lab-value__public__20261122T044412.jsonl.gz",
+  "rng_scheme": "hmac-sha256-v2",
+  "run_id": "hk-chicken-v1__hk-mahjong-lab-value__public__20261122T044412",
+  "schema": "hkbench-result-1",
+  "seeds": {
+    "deals": 2000,
+    "offset": 0,
+    "public_range": {
+      "count": 100000,
+      "start": 3000000
+    },
+    "tag": "public"
+  },
+  "stats": {
+    "average_win_faan": 0.8785574092247301,
+    "average_win_points": 2.8167320902845927,
+    "deal_in_rate": {
+      "ci95": [
+        0.11777702300457399,
+        0.13247297699542598
+      ],
+      "mean": 0.125125,
+      "n": 2000,
+      "se": 0.0037467667819279468
+    },
+    "draw_rate": {
+      "ci95": [
+        0.0032132457479466525,
+        0.006286754252053347
+      ],
+      "mean": 0.00475,
+      "n": 2000,
+      "se": 0.0007835979599778536
+    },
+    "limit_hand_rate": {
+      "ci95": [
+        -4.938927740663981e-05,
+        0.0007993892774066398
+      ],
+      "mean": 0.000375,
+      "n": 2000,
+      "se": 0.00021639801651303586
+    },
+    "limit_hands": 3,
+    "self_draw_win_rate": {
+      "ci95": [
+        0.11587691660318061,
+        0.13012308339681938
+      ],
+      "mean": 0.123,
+      "n": 2000,
+      "se": 0.0036320925164461666
+    },
+    "win_rate": {
+      "ci95": [
+        0.4990187682072922,
+        0.5199812317927077
+      ],
+      "mean": 0.5095,
+      "n": 2000,
+      "se": 0.005344427607632686
+    },
+    "wins": 4076
+  },
+  "table": {
+    "field": [
+      {
+        "bot": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+      },
+      {
+        "bot": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      },
+      {
+        "bot": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      }
+    ],
+    "id": "hk-chicken-v1",
+    "rules_sha256": "d577a8f1e4a0275cad62c974a534a75f6e87789e88772cebf414290368f9e0e5",
+    "rules_track": "Chicken hand"
+  },
+  "verification": "unverified"
+}

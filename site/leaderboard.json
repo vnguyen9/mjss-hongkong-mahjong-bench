@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-21T10:34:22Z",
+  "generated_utc": "2026-11-22T09:19:49Z",
   "head_to_head": [
     {
       "bots": [
@@ -63,6 +63,126 @@
       "result": "results/hk-chicken-v1__h2h__private__20261121T103422.json",
       "rules_track": "Chicken hand",
       "run_id": "hk-chicken-v1__h2h__private__20261121T103422",
+      "seed_tag": "private",
+      "table": "hk-chicken-v1",
+      "verification": "verified"
+    },
+    {
+      "bots": [
+        {
+          "ci95": [
+            161.83687698841175,
+            176.80536137333496
+          ],
+          "name": "hk-mahjong-lab-value",
+          "rank": 1,
+          "rating": 168.7636321109247
+        },
+        {
+          "ci95": [
+            158.7621007672613,
+            173.10584164289685
+          ],
+          "name": "Fu-2.3M-HKMA-1",
+          "rank": 1,
+          "rating": 165.51201259310102
+        },
+        {
+          "ci95": [
+            61.492674470932684,
+            74.91970571543841
+          ],
+          "name": "faan_aware",
+          "rank": 3,
+          "rating": 68.24003996924985
+        },
+        {
+          "ci95": [
+            40.30298275460568,
+            52.50860138684334
+          ],
+          "name": "ukeire",
+          "rank": 4,
+          "rating": 46.50454842361055
+        },
+        {
+          "ci95": [
+            28.539648282561732,
+            41.170163183738815
+          ],
+          "name": "deficiency",
+          "rank": 4,
+          "rating": 34.80813544602835
+        },
+        {
+          "ci95": [
+            -19.317800280293945,
+            -6.735281446812545
+          ],
+          "name": "LuckyCat-JorgeYau",
+          "rank": 6,
+          "rating": -13.279634415791396
+        },
+        {
+          "ci95": [
+            -39.851159910116266,
+            -27.48271318559592
+          ],
+          "name": "NeuralCat-NC10",
+          "rank": 7,
+          "rating": -33.68092748819728
+        },
+        {
+          "ci95": [
+            -42.56499207936667,
+            -29.13469017031027
+          ],
+          "name": "LuckyCat-lc34",
+          "rank": 7,
+          "rating": -35.93976916299519
+        },
+        {
+          "ci95": [
+            -56.93619381065509,
+            -42.8620249617976
+          ],
+          "name": "LuckyCat-lc32",
+          "rank": 9,
+          "rating": -49.76200509377741
+        },
+        {
+          "ci95": [
+            -59.815714406581755,
+            -47.06117630759317
+          ],
+          "name": "NeuralCat-NC9",
+          "rank": 9,
+          "rating": -53.74072089185961
+        },
+        {
+          "ci95": [
+            -89.6622623539692,
+            -76.56710328456225
+          ],
+          "name": "python_example",
+          "rank": 11,
+          "rating": -83.05387169730244
+        },
+        {
+          "ci95": [
+            -220.63468292136574,
+            -208.3414762743462
+          ],
+          "name": "random",
+          "rank": 12,
+          "rating": -214.37143979299123
+        }
+      ],
+      "created_utc": "2026-11-22T06:51:16Z",
+      "deals": 100,
+      "result": "results/hk-chicken-v1__h2h__private__20261122T065116.json",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__h2h__private__20261122T065116",
       "seed_tag": "private",
       "table": "hk-chicken-v1",
       "verification": "verified"
@@ -260,6 +380,126 @@
       "bots": [
         {
           "ci95": [
+            106.65900303814438,
+            119.02366991534393
+          ],
+          "name": "hk-mahjong-lab-value",
+          "rank": 1,
+          "rating": 112.81092879997676
+        },
+        {
+          "ci95": [
+            99.80908446582355,
+            112.42279193002446
+          ],
+          "name": "Fu-2.3M-HKMA-1",
+          "rank": 1,
+          "rating": 105.77792304370291
+        },
+        {
+          "ci95": [
+            49.463308653299265,
+            61.61495125722952
+          ],
+          "name": "LuckyCat-lc34",
+          "rank": 3,
+          "rating": 55.27670427792849
+        },
+        {
+          "ci95": [
+            41.402064137039254,
+            53.1125620216769
+          ],
+          "name": "LuckyCat-lc32",
+          "rank": 3,
+          "rating": 47.40576430727958
+        },
+        {
+          "ci95": [
+            24.56755159798912,
+            35.42432302155068
+          ],
+          "name": "NeuralCat-NC10",
+          "rank": 5,
+          "rating": 30.001440852224317
+        },
+        {
+          "ci95": [
+            17.717390097492906,
+            29.55561488362129
+          ],
+          "name": "LuckyCat-JorgeYau",
+          "rank": 5,
+          "rating": 23.809417532667805
+        },
+        {
+          "ci95": [
+            17.19370069115538,
+            27.793848444945173
+          ],
+          "name": "NeuralCat-NC9",
+          "rank": 5,
+          "rating": 22.643595289935433
+        },
+        {
+          "ci95": [
+            -34.90293943635623,
+            -25.28967444471555
+          ],
+          "name": "faan_aware",
+          "rank": 8,
+          "rating": -30.179979200527605
+        },
+        {
+          "ci95": [
+            -64.10491817933261,
+            -53.58244178562216
+          ],
+          "name": "python_example",
+          "rank": 9,
+          "rating": -58.74332598991955
+        },
+        {
+          "ci95": [
+            -94.09779394384093,
+            -85.35750190585732
+          ],
+          "name": "ukeire",
+          "rank": 10,
+          "rating": -89.46630786009248
+        },
+        {
+          "ci95": [
+            -95.70400527046435,
+            -87.17911456103104
+          ],
+          "name": "deficiency",
+          "rank": 10,
+          "rating": -91.5571880036469
+        },
+        {
+          "ci95": [
+            -132.3480448805298,
+            -123.4456047543856
+          ],
+          "name": "random",
+          "rank": 12,
+          "rating": -127.77897304952873
+        }
+      ],
+      "created_utc": "2026-11-22T00:44:09Z",
+      "deals": 100,
+      "result": "results/hk-hkma-v1__h2h__private__20261122T004409.json",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__h2h__private__20261122T004409",
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "verification": "verified"
+    },
+    {
+      "bots": [
+        {
+          "ci95": [
             55.0220280736293,
             62.70886070004535
           ],
@@ -449,6 +689,126 @@
       "bots": [
         {
           "ci95": [
+            76.0757591627106,
+            88.49140007150876
+          ],
+          "name": "hk-mahjong-lab-value",
+          "rank": 1,
+          "rating": 81.85515065302606
+        },
+        {
+          "ci95": [
+            67.17748024983429,
+            78.98712985434061
+          ],
+          "name": "Fu-2.3M-HKMA-1",
+          "rank": 1,
+          "rating": 72.46153523548878
+        },
+        {
+          "ci95": [
+            26.044049008191603,
+            39.69491510295935
+          ],
+          "name": "LuckyCat-lc34",
+          "rank": 3,
+          "rating": 32.568743185128255
+        },
+        {
+          "ci95": [
+            23.519118189758146,
+            35.80171295016527
+          ],
+          "name": "LuckyCat-JorgeYau",
+          "rank": 3,
+          "rating": 29.96525233850344
+        },
+        {
+          "ci95": [
+            21.672355636339624,
+            34.487690825406084
+          ],
+          "name": "LuckyCat-lc32",
+          "rank": 3,
+          "rating": 27.91449852893933
+        },
+        {
+          "ci95": [
+            17.833988607077746,
+            29.718391242558578
+          ],
+          "name": "NeuralCat-NC10",
+          "rank": 3,
+          "rating": 23.66793359761783
+        },
+        {
+          "ci95": [
+            16.9288769606274,
+            28.70474129959314
+          ],
+          "name": "NeuralCat-NC9",
+          "rank": 3,
+          "rating": 23.068910144420432
+        },
+        {
+          "ci95": [
+            4.317040183850331,
+            16.014155451772513
+          ],
+          "name": "faan_aware",
+          "rank": 8,
+          "rating": 10.211463699429059
+        },
+        {
+          "ci95": [
+            -47.67514121443217,
+            -36.78903180047775
+          ],
+          "name": "ukeire",
+          "rank": 9,
+          "rating": -42.1584381337285
+        },
+        {
+          "ci95": [
+            -56.107594879664575,
+            -43.88904918807096
+          ],
+          "name": "python_example",
+          "rank": 9,
+          "rating": -49.552938419859785
+        },
+        {
+          "ci95": [
+            -60.66199753073905,
+            -50.02180962510884
+          ],
+          "name": "deficiency",
+          "rank": 10,
+          "rating": -55.35637130689088
+        },
+        {
+          "ci95": [
+            -159.76696629613215,
+            -149.42820558202166
+          ],
+          "name": "random",
+          "rank": 12,
+          "rating": -154.64573952207385
+        }
+      ],
+      "created_utc": "2026-11-22T03:58:01Z",
+      "deals": 100,
+      "result": "results/hk-house-v1__h2h__private__20261122T035801.json",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__h2h__private__20261122T035801",
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "verification": "verified"
+    },
+    {
+      "bots": [
+        {
+          "ci95": [
             69.34871526374592,
             79.21170689921932
           ],
@@ -572,6 +932,251 @@
   "hkbench_version": "1.1.0",
   "rows": [
     {
+      "average_win_faan": 4.28430296377607,
+      "average_win_points": 27.59385290889133,
+      "bot": {
+        "description": "Lucky Cat Mahjong's lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-lc34",
+        "sha256": "68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        1.8420594383937634,
+        2.4669405616062368
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_lc34' --name LuckyCat-lc34 --kind external --bot-hash 68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T04:57:07Z",
+      "deal_in_rate": 0.220875,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 27,
+      "log": "results/logs/hk-chicken-v1__LuckyCat-lc34__private__20261122T045707.jsonl.gz",
+      "points_per_hand": 2.1545,
+      "rank": 1,
+      "result": "results/hk-chicken-v1__LuckyCat-lc34__private__20261122T045707.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__LuckyCat-lc34__private__20261122T045707",
+      "se": 0.15931485880833132,
+      "seed_tag": "private",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.113875
+    },
+    {
+      "average_win_faan": 3.4482758620689653,
+      "average_win_points": 25.983314794215794,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Neural Cat NC10 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "NeuralCat-NC10",
+        "sha256": "e2e8dd34991e6f7613c95fe2d88db9c7414dd94e4ff6631700ceeb2bdf8429b3",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        1.5771264980479553,
+        2.2948735019520443
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_nc10' --name NeuralCat-NC10 --kind external --bot-hash e2e8dd34991e6f7613c95fe2d88db9c7414dd94e4ff6631700ceeb2bdf8429b3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s Neural Cat NC10 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T05:10:42Z",
+      "deal_in_rate": 0.20775,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 59,
+      "log": "results/logs/hk-chicken-v1__NeuralCat-NC10__private__20261122T051042.jsonl.gz",
+      "points_per_hand": 1.936,
+      "rank": 1,
+      "result": "results/hk-chicken-v1__NeuralCat-NC10__private__20261122T051042.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__NeuralCat-NC10__private__20261122T051042",
+      "se": 0.18299122559380315,
+      "seed_tag": "private",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.112375
+    },
+    {
+      "average_win_faan": 3.7154963680387407,
+      "average_win_points": 27.0544794188862,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Neural Cat NC9 bot, a network that scores Jorge Yau's options, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "NeuralCat-NC9",
+        "sha256": "82ccf436e142679aaf78f55ad234a0f57d8dececebbc8c9bd39b7a6a4bd064a7",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        1.5510806012632186,
+        2.2549193987367815
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_nc9' --name NeuralCat-NC9 --kind external --bot-hash 82ccf436e142679aaf78f55ad234a0f57d8dececebbc8c9bd39b7a6a4bd064a7 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s Neural Cat NC9 bot, a network that scores Jorge Yau'\"'\"'s options, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T05:03:53Z",
+      "deal_in_rate": 0.204125,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 52,
+      "log": "results/logs/hk-chicken-v1__NeuralCat-NC9__private__20261122T050353.jsonl.gz",
+      "points_per_hand": 1.903,
+      "rank": 1,
+      "result": "results/hk-chicken-v1__NeuralCat-NC9__private__20261122T050353.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__NeuralCat-NC9__private__20261122T050353",
+      "se": 0.1794452968380021,
+      "seed_tag": "private",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.10325
+    },
+    {
+      "average_win_faan": 4.14390756302521,
+      "average_win_points": 24.660714285714285,
+      "bot": {
+        "description": "Lucky Cat Mahjong's lc32 bot, a neural network with Jorge Yau's contradiction check, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-lc32",
+        "sha256": "aa5d3ec75054d230ec063fa9ae2eccc77f962ba2a87b39dab8b85e9067ee51f1",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        1.6002221075963974,
+        2.155277892403603
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_lc32' --name LuckyCat-lc32 --kind external --bot-hash aa5d3ec75054d230ec063fa9ae2eccc77f962ba2a87b39dab8b85e9067ee51f1 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc32 bot, a neural network with Jorge Yau'\"'\"'s contradiction check, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T04:50:40Z",
+      "deal_in_rate": 0.220375,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 15,
+      "log": "results/logs/hk-chicken-v1__LuckyCat-lc32__private__20261122T045040.jsonl.gz",
+      "points_per_hand": 1.87775,
+      "rank": 1,
+      "result": "results/hk-chicken-v1__LuckyCat-lc32__private__20261122T045040.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__LuckyCat-lc32__private__20261122T045040",
+      "se": 0.14151273050576663,
+      "seed_tag": "private",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.119
+    },
+    {
+      "average_win_faan": 2.7928571428571427,
+      "average_win_points": 16.347619047619048,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-JorgeYau",
+        "sha256": "7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce",
+        "trained_on": "none (rule-based)"
+      },
+      "ci95": [
+        1.4076878296367956,
+        1.9870621703632045
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_jy' --name LuckyCat-JorgeYau --kind external --bot-hash 7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce --trained-on 'none (rule-based)' --description 'Lucky Cat Mahjong'\"'\"'s Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T05:16:59Z",
+      "deal_in_rate": 0.1865,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 20,
+      "log": "results/logs/hk-chicken-v1__LuckyCat-JorgeYau__private__20261122T051659.jsonl.gz",
+      "points_per_hand": 1.697375,
+      "rank": 1,
+      "result": "results/hk-chicken-v1__LuckyCat-JorgeYau__private__20261122T051659.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__LuckyCat-JorgeYau__private__20261122T051659",
+      "se": 0.14771280146129948,
+      "seed_tag": "private",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.1575
+    },
+    {
+      "average_win_faan": 1.0186567164179106,
+      "average_win_points": 3.243781094527363,
+      "bot": {
+        "description": "hk-mahjong-lab's PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-PIMC-128",
+        "sha256": "7e58349801c8b73e9554d9058a4b6f293fd33e7542d417fb61f1d30f9c49e20a",
+        "trained_on": "hk-mahjong-lab's own table (10 faan cap, single East hand)"
+      },
+      "ci95": [
+        0.8602643112368853,
+        1.2647356887631147
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_pimc128' --name hk-mahjong-lab-PIMC-128 --kind external --bot-hash 7e58349801c8b73e9554d9058a4b6f293fd33e7542d417fb61f1d30f9c49e20a --trained-on 'hk-mahjong-lab'\"'\"'s own table (10 faan cap, single East hand)' --description 'hk-mahjong-lab'\"'\"'s PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 400 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T09:19:49Z",
+      "deal_in_rate": 0.12,
+      "deals": 400,
+      "games": 1600,
+      "isolation": "sandbox",
+      "limit_hands": 0,
+      "log": "results/logs/hk-chicken-v1__hk-mahjong-lab-PIMC-128__private__20261122T091949.jsonl.gz",
+      "points_per_hand": 1.0625,
+      "rank": 6,
+      "result": "results/hk-chicken-v1__hk-mahjong-lab-PIMC-128__private__20261122T091949.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__hk-mahjong-lab-PIMC-128__private__20261122T091949",
+      "se": 0.10287038039643515,
+      "seed_tag": "private",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.5025
+    },
+    {
+      "average_win_faan": 0.8691796008869179,
+      "average_win_points": 2.755112096575511,
+      "bot": {
+        "description": "hk-mahjong-lab's value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-value",
+        "sha256": "f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe",
+        "trained_on": "none (rule-based)"
+      },
+      "ci95": [
+        0.7570168894626774,
+        0.9259831105373226
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_value' --name hk-mahjong-lab-value --kind external --bot-hash f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe --trained-on 'none (rule-based)' --description 'hk-mahjong-lab'\"'\"'s value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T05:22:03Z",
+      "deal_in_rate": 0.125625,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 2,
+      "log": "results/logs/hk-chicken-v1__hk-mahjong-lab-value__private__20261122T052203.jsonl.gz",
+      "points_per_hand": 0.8415,
+      "rank": 6,
+      "result": "results/hk-chicken-v1__hk-mahjong-lab-value__private__20261122T052203.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__hk-mahjong-lab-value__private__20261122T052203",
+      "se": 0.04307832106608769,
+      "seed_tag": "private",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.507375
+    },
+    {
       "average_win_faan": 0.7237048665620094,
       "average_win_points": 2.551282051282051,
       "bot": {
@@ -594,7 +1199,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-chicken-v1__Fu-2.3M-HKMA-1__private__20261121T083021.jsonl.gz",
       "points_per_hand": 0.6415,
-      "rank": 1,
+      "rank": 8,
       "result": "results/hk-chicken-v1__Fu-2.3M-HKMA-1__private__20261121T083021.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -629,7 +1234,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-chicken-v1__faan_aware__private__20261121T075356.jsonl.gz",
       "points_per_hand": 0.411125,
-      "rank": 2,
+      "rank": 9,
       "result": "results/hk-chicken-v1__faan_aware__private__20261121T075356.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -664,7 +1269,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-chicken-v1__shallow_search__private__20261121T080634.jsonl.gz",
       "points_per_hand": 0.1325,
-      "rank": 3,
+      "rank": 10,
       "result": "results/hk-chicken-v1__shallow_search__private__20261121T080634.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -699,7 +1304,7 @@
       "limit_hands": 18,
       "log": "results/logs/hk-chicken-v1__python_example__private__20261121T080017.jsonl.gz",
       "points_per_hand": -0.144875,
-      "rank": 3,
+      "rank": 10,
       "result": "results/hk-chicken-v1__python_example__private__20261121T080017.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -734,7 +1339,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-chicken-v1__ukeire__private__20261121T075248.jsonl.gz",
       "points_per_hand": -0.169625,
-      "rank": 4,
+      "rank": 11,
       "result": "results/hk-chicken-v1__ukeire__private__20261121T075248.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -769,7 +1374,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-chicken-v1__deficiency__private__20261121T075142.jsonl.gz",
       "points_per_hand": -0.17525,
-      "rank": 4,
+      "rank": 11,
       "result": "results/hk-chicken-v1__deficiency__private__20261121T075142.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -804,7 +1409,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-chicken-v1__random__private__20261121T075043.jsonl.gz",
       "points_per_hand": -1.19375,
-      "rank": 7,
+      "rank": 14,
       "result": "results/hk-chicken-v1__random__private__20261121T075043.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -815,6 +1420,251 @@
       "track": "bots",
       "verification": "verified",
       "win_rate": 0.00375
+    },
+    {
+      "average_win_faan": 4.328140214216163,
+      "average_win_points": 28.04576436222006,
+      "bot": {
+        "description": "Lucky Cat Mahjong's lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-lc34",
+        "sha256": "68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        2.2865114107328965,
+        2.928238589267104
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_lc34' --name LuckyCat-lc34 --kind external --bot-hash 68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T04:13:03Z",
+      "deal_in_rate": 0.2095,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 20,
+      "log": "results/logs/hk-chicken-v1__LuckyCat-lc34__public__20261122T041303.jsonl.gz",
+      "points_per_hand": 2.607375,
+      "rank": 1,
+      "result": "results/hk-chicken-v1__LuckyCat-lc34__public__20261122T041303.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__LuckyCat-lc34__public__20261122T041303",
+      "se": 0.16360979879829632,
+      "seed_tag": "public",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.128375
+    },
+    {
+      "average_win_faan": 3.54071661237785,
+      "average_win_points": 27.017372421281216,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Neural Cat NC10 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "NeuralCat-NC10",
+        "sha256": "e2e8dd34991e6f7613c95fe2d88db9c7414dd94e4ff6631700ceeb2bdf8429b3",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        1.7778817428679705,
+        2.5526182571320293
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_nc10' --name NeuralCat-NC10 --kind external --bot-hash e2e8dd34991e6f7613c95fe2d88db9c7414dd94e4ff6631700ceeb2bdf8429b3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s Neural Cat NC10 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T04:32:51Z",
+      "deal_in_rate": 0.198125,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 58,
+      "log": "results/logs/hk-chicken-v1__NeuralCat-NC10__public__20261122T043251.jsonl.gz",
+      "points_per_hand": 2.16525,
+      "rank": 1,
+      "result": "results/hk-chicken-v1__NeuralCat-NC10__public__20261122T043251.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__NeuralCat-NC10__public__20261122T043251",
+      "se": 0.19752083044068752,
+      "seed_tag": "public",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.115125
+    },
+    {
+      "average_win_faan": 4.12882096069869,
+      "average_win_points": 25.75764192139738,
+      "bot": {
+        "description": "Lucky Cat Mahjong's lc32 bot, a neural network with Jorge Yau's contradiction check, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-lc32",
+        "sha256": "aa5d3ec75054d230ec063fa9ae2eccc77f962ba2a87b39dab8b85e9067ee51f1",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        1.5515065367926635,
+        2.1424934632073365
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_lc32' --name LuckyCat-lc32 --kind external --bot-hash aa5d3ec75054d230ec063fa9ae2eccc77f962ba2a87b39dab8b85e9067ee51f1 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc32 bot, a neural network with Jorge Yau'\"'\"'s contradiction check, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T04:05:32Z",
+      "deal_in_rate": 0.219,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 17,
+      "log": "results/logs/hk-chicken-v1__LuckyCat-lc32__public__20261122T040532.jsonl.gz",
+      "points_per_hand": 1.847,
+      "rank": 2,
+      "result": "results/hk-chicken-v1__LuckyCat-lc32__public__20261122T040532.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__LuckyCat-lc32__public__20261122T040532",
+      "se": 0.15067345650527714,
+      "seed_tag": "public",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.1145
+    },
+    {
+      "average_win_faan": 2.7797716150081566,
+      "average_win_points": 16.297716150081566,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-JorgeYau",
+        "sha256": "7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce",
+        "trained_on": "none (rule-based)"
+      },
+      "ci95": [
+        1.2713254065519752,
+        1.870174593448025
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_jy' --name LuckyCat-JorgeYau --kind external --bot-hash 7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce --trained-on 'none (rule-based)' --description 'Lucky Cat Mahjong'\"'\"'s Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T04:39:06Z",
+      "deal_in_rate": 0.179375,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 31,
+      "log": "results/logs/hk-chicken-v1__LuckyCat-JorgeYau__public__20261122T043906.jsonl.gz",
+      "points_per_hand": 1.57075,
+      "rank": 2,
+      "result": "results/hk-chicken-v1__LuckyCat-JorgeYau__public__20261122T043906.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__LuckyCat-JorgeYau__public__20261122T043906",
+      "se": 0.1526779576367331,
+      "seed_tag": "public",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.15325
+    },
+    {
+      "average_win_faan": 3.447334200260078,
+      "average_win_points": 25.911573472041614,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Neural Cat NC9 bot, a network that scores Jorge Yau's options, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "NeuralCat-NC9",
+        "sha256": "82ccf436e142679aaf78f55ad234a0f57d8dececebbc8c9bd39b7a6a4bd064a7",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        1.2216618571371436,
+        1.8943381428628565
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_nc9' --name NeuralCat-NC9 --kind external --bot-hash 82ccf436e142679aaf78f55ad234a0f57d8dececebbc8c9bd39b7a6a4bd064a7 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s Neural Cat NC9 bot, a network that scores Jorge Yau'\"'\"'s options, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T04:21:06Z",
+      "deal_in_rate": 0.199875,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 51,
+      "log": "results/logs/hk-chicken-v1__NeuralCat-NC9__public__20261122T042106.jsonl.gz",
+      "points_per_hand": 1.558,
+      "rank": 2,
+      "result": "results/hk-chicken-v1__NeuralCat-NC9__public__20261122T042106.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__NeuralCat-NC9__public__20261122T042106",
+      "se": 0.17150034383046237,
+      "seed_tag": "public",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.096125
+    },
+    {
+      "average_win_faan": 1.008905852417303,
+      "average_win_points": 3.6412213740458017,
+      "bot": {
+        "description": "hk-mahjong-lab's PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-PIMC-128",
+        "sha256": "7e58349801c8b73e9554d9058a4b6f293fd33e7542d417fb61f1d30f9c49e20a",
+        "trained_on": "hk-mahjong-lab's own table (10 faan cap, single East hand)"
+      },
+      "ci95": [
+        0.8337032255953418,
+        1.557546774404658
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_pimc128' --name hk-mahjong-lab-PIMC-128 --kind external --bot-hash 7e58349801c8b73e9554d9058a4b6f293fd33e7542d417fb61f1d30f9c49e20a --trained-on 'hk-mahjong-lab'\"'\"'s own table (10 faan cap, single East hand)' --description 'hk-mahjong-lab'\"'\"'s PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 400 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T09:11:15Z",
+      "deal_in_rate": 0.134375,
+      "deals": 400,
+      "games": 1600,
+      "isolation": "sandbox",
+      "limit_hands": 1,
+      "log": "results/logs/hk-chicken-v1__hk-mahjong-lab-PIMC-128__public__20261122T091115.jsonl.gz",
+      "points_per_hand": 1.195625,
+      "rank": 3,
+      "result": "results/hk-chicken-v1__hk-mahjong-lab-PIMC-128__public__20261122T091115.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__hk-mahjong-lab-PIMC-128__public__20261122T091115",
+      "se": 0.1840972324640973,
+      "seed_tag": "public",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.49125
+    },
+    {
+      "average_win_faan": 0.8785574092247301,
+      "average_win_points": 2.8167320902845927,
+      "bot": {
+        "description": "hk-mahjong-lab's value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-value",
+        "sha256": "f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe",
+        "trained_on": "none (rule-based)"
+      },
+      "ci95": [
+        0.7790897247691085,
+        0.9866602752308914
+      ],
+      "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_value' --name hk-mahjong-lab-value --kind external --bot-hash f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe --trained-on 'none (rule-based)' --description 'hk-mahjong-lab'\"'\"'s value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T04:44:12Z",
+      "deal_in_rate": 0.125125,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 3,
+      "log": "results/logs/hk-chicken-v1__hk-mahjong-lab-value__public__20261122T044412.jsonl.gz",
+      "points_per_hand": 0.882875,
+      "rank": 6,
+      "result": "results/hk-chicken-v1__hk-mahjong-lab-value__public__20261122T044412.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "Chicken hand",
+      "run_id": "hk-chicken-v1__hk-mahjong-lab-value__public__20261122T044412",
+      "se": 0.05292058234945647,
+      "seed_tag": "public",
+      "table": "hk-chicken-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.5095
     },
     {
       "average_win_faan": 0.756833419288293,
@@ -839,7 +1689,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-chicken-v1__Fu-2.3M-HKMA-1__public__20261121T074943.jsonl.gz",
       "points_per_hand": 0.66775,
-      "rank": 1,
+      "rank": 8,
       "result": "results/hk-chicken-v1__Fu-2.3M-HKMA-1__public__20261121T074943.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -874,7 +1724,7 @@
       "limit_hands": 6,
       "log": "results/logs/hk-chicken-v1__faan_aware__public__20261121T071254.jsonl.gz",
       "points_per_hand": 0.369875,
-      "rank": 2,
+      "rank": 9,
       "result": "results/hk-chicken-v1__faan_aware__public__20261121T071254.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -909,7 +1759,7 @@
       "limit_hands": 27,
       "log": "results/logs/hk-chicken-v1__python_example__public__20261121T071919.jsonl.gz",
       "points_per_hand": 0.21975,
-      "rank": 2,
+      "rank": 9,
       "result": "results/hk-chicken-v1__python_example__public__20261121T071919.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -944,7 +1794,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-chicken-v1__shallow_search__public__20261121T072546.jsonl.gz",
       "points_per_hand": 0.143125,
-      "rank": 2,
+      "rank": 9,
       "result": "results/hk-chicken-v1__shallow_search__public__20261121T072546.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -979,7 +1829,7 @@
       "limit_hands": 1,
       "log": "results/logs/hk-chicken-v1__ukeire__public__20261121T071144.jsonl.gz",
       "points_per_hand": -0.222375,
-      "rank": 5,
+      "rank": 12,
       "result": "results/hk-chicken-v1__ukeire__public__20261121T071144.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -1014,7 +1864,7 @@
       "limit_hands": 1,
       "log": "results/logs/hk-chicken-v1__deficiency__public__20261121T071033.jsonl.gz",
       "points_per_hand": -0.2825,
-      "rank": 5,
+      "rank": 12,
       "result": "results/hk-chicken-v1__deficiency__public__20261121T071033.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -1049,7 +1899,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-chicken-v1__random__public__20261121T070932.jsonl.gz",
       "points_per_hand": -1.19,
-      "rank": 7,
+      "rank": 14,
       "result": "results/hk-chicken-v1__random__public__20261121T070932.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "Chicken hand",
@@ -1097,6 +1947,286 @@
       "win_rate": 0.472375
     },
     {
+      "average_win_faan": 4.668632075471698,
+      "average_win_points": 28.014150943396228,
+      "bot": {
+        "description": "hk-mahjong-lab's PIMC player with 256 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-PIMC-256",
+        "sha256": "44112aa51a6d623bf18d0b60daa5777f4dacc621b3de8b135449271ab951d62d",
+        "trained_on": "hk-mahjong-lab's own table (10 faan cap, single East hand)"
+      },
+      "ci95": [
+        12.500850721806694,
+        14.869149278193307
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_pimc256' --name hk-mahjong-lab-PIMC-256 --kind external --bot-hash 44112aa51a6d623bf18d0b60daa5777f4dacc621b3de8b135449271ab951d62d --trained-on 'hk-mahjong-lab'\"'\"'s own table (10 faan cap, single East hand)' --description 'hk-mahjong-lab'\"'\"'s PIMC player with 256 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 400 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T08:30:43Z",
+      "deal_in_rate": 0.024375,
+      "deals": 400,
+      "games": 1600,
+      "isolation": "sandbox",
+      "limit_hands": 16,
+      "log": "results/logs/hk-hkma-v1__hk-mahjong-lab-PIMC-256__private__20261122T083043.jsonl.gz",
+      "points_per_hand": 13.685,
+      "rank": 2,
+      "result": "results/hk-hkma-v1__hk-mahjong-lab-PIMC-256__private__20261122T083043.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__hk-mahjong-lab-PIMC-256__private__20261122T083043",
+      "se": 0.6023362515238058,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.53
+    },
+    {
+      "average_win_faan": 4.58,
+      "average_win_points": 27.52,
+      "bot": {
+        "description": "hk-mahjong-lab's PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-PIMC-128",
+        "sha256": "7e58349801c8b73e9554d9058a4b6f293fd33e7542d417fb61f1d30f9c49e20a",
+        "trained_on": "hk-mahjong-lab's own table (10 faan cap, single East hand)"
+      },
+      "ci95": [
+        12.229745234768995,
+        14.695254765231006
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_pimc128' --name hk-mahjong-lab-PIMC-128 --kind external --bot-hash 7e58349801c8b73e9554d9058a4b6f293fd33e7542d417fb61f1d30f9c49e20a --trained-on 'hk-mahjong-lab'\"'\"'s own table (10 faan cap, single East hand)' --description 'hk-mahjong-lab'\"'\"'s PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 400 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T07:57:27Z",
+      "deal_in_rate": 0.030625,
+      "deals": 400,
+      "games": 1600,
+      "isolation": "sandbox",
+      "limit_hands": 15,
+      "log": "results/logs/hk-hkma-v1__hk-mahjong-lab-PIMC-128__private__20261122T075727.jsonl.gz",
+      "points_per_hand": 13.4625,
+      "rank": 2,
+      "result": "results/hk-hkma-v1__hk-mahjong-lab-PIMC-128__private__20261122T075727.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__hk-mahjong-lab-PIMC-128__private__20261122T075727",
+      "se": 0.6270602009488686,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.53125
+    },
+    {
+      "average_win_faan": 5.106332543176431,
+      "average_win_points": 34.55469014561463,
+      "bot": {
+        "description": "Lucky Cat Mahjong's lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-lc34",
+        "sha256": "68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        10.858051354468937,
+        12.053948645531062
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_lc34' --name LuckyCat-lc34 --kind external --bot-hash 68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-21T22:30:54Z",
+      "deal_in_rate": 0.036,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 87,
+      "log": "results/logs/hk-hkma-v1__LuckyCat-lc34__private__20261121T223054.jsonl.gz",
+      "points_per_hand": 11.456,
+      "rank": 4,
+      "result": "results/hk-hkma-v1__LuckyCat-lc34__private__20261121T223054.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__LuckyCat-lc34__private__20261121T223054",
+      "se": 0.3048967251488662,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.369125
+    },
+    {
+      "average_win_faan": 5.8962635201573255,
+      "average_win_points": 49.57915437561455,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Neural Cat NC10 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "NeuralCat-NC10",
+        "sha256": "e2e8dd34991e6f7613c95fe2d88db9c7414dd94e4ff6631700ceeb2bdf8429b3",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        10.675074147984851,
+        12.077925852015149
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_nc10' --name NeuralCat-NC10 --kind external --bot-hash e2e8dd34991e6f7613c95fe2d88db9c7414dd94e4ff6631700ceeb2bdf8429b3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s Neural Cat NC10 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-21T22:47:51Z",
+      "deal_in_rate": 0.029625,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 244,
+      "log": "results/logs/hk-hkma-v1__NeuralCat-NC10__private__20261121T224751.jsonl.gz",
+      "points_per_hand": 11.3765,
+      "rank": 4,
+      "result": "results/hk-hkma-v1__NeuralCat-NC10__private__20261121T224751.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__NeuralCat-NC10__private__20261121T224751",
+      "se": 0.3576602218477011,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.25425
+    },
+    {
+      "average_win_faan": 4.2966849511089915,
+      "average_win_points": 23.738611972334844,
+      "bot": {
+        "description": "hk-mahjong-lab's value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-value",
+        "sha256": "f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe",
+        "trained_on": "none (rule-based)"
+      },
+      "ci95": [
+        10.745345847837775,
+        11.706654152162226
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_value' --name hk-mahjong-lab-value --kind external --bot-hash f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe --trained-on 'none (rule-based)' --description 'hk-mahjong-lab'\"'\"'s value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-21T23:01:18Z",
+      "deal_in_rate": 0.0345,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 62,
+      "log": "results/logs/hk-hkma-v1__hk-mahjong-lab-value__private__20261121T230118.jsonl.gz",
+      "points_per_hand": 11.226,
+      "rank": 4,
+      "result": "results/hk-hkma-v1__hk-mahjong-lab-value__private__20261121T230118.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__hk-mahjong-lab-value__private__20261121T230118",
+      "se": 0.245087731227003,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.524125
+    },
+    {
+      "average_win_faan": 5.906797116374872,
+      "average_win_points": 50.6735324407827,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Neural Cat NC9 bot, a network that scores Jorge Yau's options, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "NeuralCat-NC9",
+        "sha256": "82ccf436e142679aaf78f55ad234a0f57d8dececebbc8c9bd39b7a6a4bd064a7",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        10.45398140253271,
+        11.86901859746729
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_nc9' --name NeuralCat-NC9 --kind external --bot-hash 82ccf436e142679aaf78f55ad234a0f57d8dececebbc8c9bd39b7a6a4bd064a7 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s Neural Cat NC9 bot, a network that scores Jorge Yau'\"'\"'s options, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-21T22:39:23Z",
+      "deal_in_rate": 0.0295,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 251,
+      "log": "results/logs/hk-hkma-v1__NeuralCat-NC9__private__20261121T223923.jsonl.gz",
+      "points_per_hand": 11.1615,
+      "rank": 4,
+      "result": "results/hk-hkma-v1__NeuralCat-NC9__private__20261121T223923.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__NeuralCat-NC9__private__20261121T223923",
+      "se": 0.3607669403751325,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.24275
+    },
+    {
+      "average_win_faan": 5.054317548746518,
+      "average_win_points": 33.54874651810585,
+      "bot": {
+        "description": "Lucky Cat Mahjong's lc32 bot, a neural network with Jorge Yau's contradiction check, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-lc32",
+        "sha256": "aa5d3ec75054d230ec063fa9ae2eccc77f962ba2a87b39dab8b85e9067ee51f1",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        10.031977452699694,
+        11.172022547300307
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_lc32' --name LuckyCat-lc32 --kind external --bot-hash aa5d3ec75054d230ec063fa9ae2eccc77f962ba2a87b39dab8b85e9067ee51f1 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc32 bot, a neural network with Jorge Yau'\"'\"'s contradiction check, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-21T22:23:06Z",
+      "deal_in_rate": 0.04,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 89,
+      "log": "results/logs/hk-hkma-v1__LuckyCat-lc32__private__20261121T222306.jsonl.gz",
+      "points_per_hand": 10.602,
+      "rank": 4,
+      "result": "results/hk-hkma-v1__LuckyCat-lc32__private__20261121T222306.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__LuckyCat-lc32__private__20261121T222306",
+      "se": 0.29065708105839233,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.359
+    },
+    {
+      "average_win_faan": 5.214319138979878,
+      "average_win_points": 38.043986897519886,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-JorgeYau",
+        "sha256": "7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce",
+        "trained_on": "none (rule-based)"
+      },
+      "ci95": [
+        8.3318074924993,
+        9.483192507500702
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_jy' --name LuckyCat-JorgeYau --kind external --bot-hash 7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce --trained-on 'none (rule-based)' --description 'Lucky Cat Mahjong'\"'\"'s Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-21T22:55:25Z",
+      "deal_in_rate": 0.030625,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 124,
+      "log": "results/logs/hk-hkma-v1__LuckyCat-JorgeYau__private__20261121T225525.jsonl.gz",
+      "points_per_hand": 8.9075,
+      "rank": 9,
+      "result": "results/hk-hkma-v1__LuckyCat-JorgeYau__private__20261121T225525.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__LuckyCat-JorgeYau__private__20261121T225525",
+      "se": 0.2935482194692667,
+      "seed_tag": "private",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.267125
+    },
+    {
       "average_win_faan": 5.24234693877551,
       "average_win_points": 41.33163265306123,
       "bot": {
@@ -1119,7 +2249,7 @@
       "limit_hands": 99,
       "log": "results/logs/hk-hkma-v1__python_example__private__20261121T005620.jsonl.gz",
       "points_per_hand": 2.5375,
-      "rank": 2,
+      "rank": 10,
       "result": "results/hk-hkma-v1__python_example__private__20261121T005620.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "HKMA Classical",
@@ -1154,7 +2284,7 @@
       "limit_hands": 6,
       "log": "results/logs/hk-hkma-v1__faan_aware__private__20261121T005018.jsonl.gz",
       "points_per_hand": 1.6055,
-      "rank": 3,
+      "rank": 11,
       "result": "results/hk-hkma-v1__faan_aware__private__20261121T005018.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "HKMA Classical",
@@ -1189,7 +2319,7 @@
       "limit_hands": 3,
       "log": "results/logs/hk-hkma-v1__ukeire__private__20261121T004858.jsonl.gz",
       "points_per_hand": -0.7155,
-      "rank": 4,
+      "rank": 12,
       "result": "results/hk-hkma-v1__ukeire__private__20261121T004858.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "HKMA Classical",
@@ -1224,7 +2354,7 @@
       "limit_hands": 1,
       "log": "results/logs/hk-hkma-v1__deficiency__private__20261121T004738.jsonl.gz",
       "points_per_hand": -0.91,
-      "rank": 4,
+      "rank": 12,
       "result": "results/hk-hkma-v1__deficiency__private__20261121T004738.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "HKMA Classical",
@@ -1259,7 +2389,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-hkma-v1__shallow_search__private__20261121T010257.jsonl.gz",
       "points_per_hand": -0.945,
-      "rank": 4,
+      "rank": 12,
       "result": "results/hk-hkma-v1__shallow_search__private__20261121T010257.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "HKMA Classical",
@@ -1294,7 +2424,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-hkma-v1__random__private__20261121T004622.jsonl.gz",
       "points_per_hand": -1.8095,
-      "rank": 7,
+      "rank": 15,
       "result": "results/hk-hkma-v1__random__private__20261121T004622.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "HKMA Classical",
@@ -1342,6 +2472,286 @@
       "win_rate": 0.465875
     },
     {
+      "average_win_faan": 4.692579505300353,
+      "average_win_points": 29.37102473498233,
+      "bot": {
+        "description": "hk-mahjong-lab's PIMC player with 256 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-PIMC-256",
+        "sha256": "44112aa51a6d623bf18d0b60daa5777f4dacc621b3de8b135449271ab951d62d",
+        "trained_on": "hk-mahjong-lab's own table (10 faan cap, single East hand)"
+      },
+      "ci95": [
+        13.22678640820357,
+        15.79321359179643
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_pimc256' --name hk-mahjong-lab-PIMC-256 --kind external --bot-hash 44112aa51a6d623bf18d0b60daa5777f4dacc621b3de8b135449271ab951d62d --trained-on 'hk-mahjong-lab'\"'\"'s own table (10 faan cap, single East hand)' --description 'hk-mahjong-lab'\"'\"'s PIMC player with 256 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 400 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T07:41:25Z",
+      "deal_in_rate": 0.03,
+      "deals": 400,
+      "games": 1600,
+      "isolation": "sandbox",
+      "limit_hands": 17,
+      "log": "results/logs/hk-hkma-v1__hk-mahjong-lab-PIMC-256__public__20261122T074125.jsonl.gz",
+      "points_per_hand": 14.51,
+      "rank": 2,
+      "result": "results/hk-hkma-v1__hk-mahjong-lab-PIMC-256__public__20261122T074125.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__hk-mahjong-lab-PIMC-256__public__20261122T074125",
+      "se": 0.6527268808256489,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.530625
+    },
+    {
+      "average_win_faan": 4.5794504181600955,
+      "average_win_points": 27.612903225806452,
+      "bot": {
+        "description": "hk-mahjong-lab's PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-PIMC-128",
+        "sha256": "7e58349801c8b73e9554d9058a4b6f293fd33e7542d417fb61f1d30f9c49e20a",
+        "trained_on": "hk-mahjong-lab's own table (10 faan cap, single East hand)"
+      },
+      "ci95": [
+        11.979132143877246,
+        14.600867856122752
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_pimc128' --name hk-mahjong-lab-PIMC-128 --kind external --bot-hash 7e58349801c8b73e9554d9058a4b6f293fd33e7542d417fb61f1d30f9c49e20a --trained-on 'hk-mahjong-lab'\"'\"'s own table (10 faan cap, single East hand)' --description 'hk-mahjong-lab'\"'\"'s PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 400 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T07:08:13Z",
+      "deal_in_rate": 0.033125,
+      "deals": 400,
+      "games": 1600,
+      "isolation": "sandbox",
+      "limit_hands": 15,
+      "log": "results/logs/hk-hkma-v1__hk-mahjong-lab-PIMC-128__public__20261122T070813.jsonl.gz",
+      "points_per_hand": 13.29,
+      "rank": 2,
+      "result": "results/hk-hkma-v1__hk-mahjong-lab-PIMC-128__public__20261122T070813.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__hk-mahjong-lab-PIMC-128__public__20261122T070813",
+      "se": 0.6667936595837972,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.523125
+    },
+    {
+      "average_win_faan": 5.943341404358353,
+      "average_win_points": 51.28135593220339,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Neural Cat NC10 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "NeuralCat-NC10",
+        "sha256": "e2e8dd34991e6f7613c95fe2d88db9c7414dd94e4ff6631700ceeb2bdf8429b3",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        11.278261236508538,
+        12.744738763491462
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_nc10' --name NeuralCat-NC10 --kind external --bot-hash e2e8dd34991e6f7613c95fe2d88db9c7414dd94e4ff6631700ceeb2bdf8429b3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s Neural Cat NC10 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-21T21:49:33Z",
+      "deal_in_rate": 0.0315,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 270,
+      "log": "results/logs/hk-hkma-v1__NeuralCat-NC10__public__20261121T214933.jsonl.gz",
+      "points_per_hand": 12.0115,
+      "rank": 3,
+      "result": "results/hk-hkma-v1__NeuralCat-NC10__public__20261121T214933.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__NeuralCat-NC10__public__20261121T214933",
+      "se": 0.3738817696329031,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.258125
+    },
+    {
+      "average_win_faan": 5.129660178159024,
+      "average_win_points": 34.711976245463546,
+      "bot": {
+        "description": "Lucky Cat Mahjong's lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-lc34",
+        "sha256": "68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        11.089076233981007,
+        12.286923766018994
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_lc34' --name LuckyCat-lc34 --kind external --bot-hash 68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-21T21:31:45Z",
+      "deal_in_rate": 0.042625,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 93,
+      "log": "results/logs/hk-hkma-v1__LuckyCat-lc34__public__20261121T213145.jsonl.gz",
+      "points_per_hand": 11.688,
+      "rank": 3,
+      "result": "results/hk-hkma-v1__LuckyCat-lc34__public__20261121T213145.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__LuckyCat-lc34__public__20261121T213145",
+      "se": 0.30539394350635896,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.378875
+    },
+    {
+      "average_win_faan": 4.313026727666747,
+      "average_win_points": 24.1271370093908,
+      "bot": {
+        "description": "hk-mahjong-lab's value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-value",
+        "sha256": "f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe",
+        "trained_on": "none (rule-based)"
+      },
+      "ci95": [
+        10.882119766223369,
+        11.868880233776633
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_value' --name hk-mahjong-lab-value --kind external --bot-hash f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe --trained-on 'none (rule-based)' --description 'hk-mahjong-lab'\"'\"'s value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-21T22:15:16Z",
+      "deal_in_rate": 0.032125,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 64,
+      "log": "results/logs/hk-hkma-v1__hk-mahjong-lab-value__public__20261121T221516.jsonl.gz",
+      "points_per_hand": 11.3755,
+      "rank": 4,
+      "result": "results/hk-hkma-v1__hk-mahjong-lab-value__public__20261121T221516.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__hk-mahjong-lab-value__public__20261121T221516",
+      "se": 0.2515768179357179,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.519125
+    },
+    {
+      "average_win_faan": 5.9007128309572305,
+      "average_win_points": 51.35641547861507,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Neural Cat NC9 bot, a network that scores Jorge Yau's options, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "NeuralCat-NC9",
+        "sha256": "82ccf436e142679aaf78f55ad234a0f57d8dececebbc8c9bd39b7a6a4bd064a7",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        10.58025629099936,
+        12.014743709000639
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_nc9' --name NeuralCat-NC9 --kind external --bot-hash 82ccf436e142679aaf78f55ad234a0f57d8dececebbc8c9bd39b7a6a4bd064a7 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s Neural Cat NC9 bot, a network that scores Jorge Yau'\"'\"'s options, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-21T21:41:01Z",
+      "deal_in_rate": 0.03375,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 275,
+      "log": "results/logs/hk-hkma-v1__NeuralCat-NC9__public__20261121T214101.jsonl.gz",
+      "points_per_hand": 11.2975,
+      "rank": 3,
+      "result": "results/hk-hkma-v1__NeuralCat-NC9__public__20261121T214101.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__NeuralCat-NC9__public__20261121T214101",
+      "se": 0.3657258188346561,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.2455
+    },
+    {
+      "average_win_faan": 5.03806474564212,
+      "average_win_points": 33.27499110636784,
+      "bot": {
+        "description": "Lucky Cat Mahjong's lc32 bot, a neural network with Jorge Yau's contradiction check, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-lc32",
+        "sha256": "aa5d3ec75054d230ec063fa9ae2eccc77f962ba2a87b39dab8b85e9067ee51f1",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        9.634781558531204,
+        10.765218441468795
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_lc32' --name LuckyCat-lc32 --kind external --bot-hash aa5d3ec75054d230ec063fa9ae2eccc77f962ba2a87b39dab8b85e9067ee51f1 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc32 bot, a neural network with Jorge Yau'\"'\"'s contradiction check, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-21T21:23:47Z",
+      "deal_in_rate": 0.0435,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 89,
+      "log": "results/logs/hk-hkma-v1__LuckyCat-lc32__public__20261121T212347.jsonl.gz",
+      "points_per_hand": 10.2,
+      "rank": 7,
+      "result": "results/hk-hkma-v1__LuckyCat-lc32__public__20261121T212347.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__LuckyCat-lc32__public__20261121T212347",
+      "se": 0.28820744571555296,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.351375
+    },
+    {
+      "average_win_faan": 5.395091434071222,
+      "average_win_points": 41.262752646775745,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-JorgeYau",
+        "sha256": "7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce",
+        "trained_on": "none (rule-based)"
+      },
+      "ci95": [
+        8.84870263802892,
+        10.09229736197108
+      ],
+      "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_jy' --name LuckyCat-JorgeYau --kind external --bot-hash 7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce --trained-on 'none (rule-based)' --description 'Lucky Cat Mahjong'\"'\"'s Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-21T21:57:09Z",
+      "deal_in_rate": 0.029375,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 164,
+      "log": "results/logs/hk-hkma-v1__LuckyCat-JorgeYau__public__20261121T215709.jsonl.gz",
+      "points_per_hand": 9.4705,
+      "rank": 8,
+      "result": "results/hk-hkma-v1__LuckyCat-JorgeYau__public__20261121T215709.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "HKMA Classical",
+      "run_id": "hk-hkma-v1__LuckyCat-JorgeYau__public__20261121T215709",
+      "se": 0.3170572937794838,
+      "seed_tag": "public",
+      "table": "hk-hkma-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.25975
+    },
+    {
       "average_win_faan": 5.225287356321839,
       "average_win_points": 40.68045977011494,
       "bot": {
@@ -1364,7 +2774,7 @@
       "limit_hands": 101,
       "log": "results/logs/hk-hkma-v1__python_example__public__20261121T001201.jsonl.gz",
       "points_per_hand": 2.8665,
-      "rank": 2,
+      "rank": 10,
       "result": "results/hk-hkma-v1__python_example__public__20261121T001201.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "HKMA Classical",
@@ -1399,7 +2809,7 @@
       "limit_hands": 3,
       "log": "results/logs/hk-hkma-v1__faan_aware__public__20261121T000455.jsonl.gz",
       "points_per_hand": 1.561,
-      "rank": 3,
+      "rank": 11,
       "result": "results/hk-hkma-v1__faan_aware__public__20261121T000455.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "HKMA Classical",
@@ -1434,7 +2844,7 @@
       "limit_hands": 4,
       "log": "results/logs/hk-hkma-v1__ukeire__public__20261121T000312.jsonl.gz",
       "points_per_hand": -0.933,
-      "rank": 4,
+      "rank": 12,
       "result": "results/hk-hkma-v1__ukeire__public__20261121T000312.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "HKMA Classical",
@@ -1469,7 +2879,7 @@
       "limit_hands": 4,
       "log": "results/logs/hk-hkma-v1__deficiency__public__20261121T000132.jsonl.gz",
       "points_per_hand": -0.983,
-      "rank": 4,
+      "rank": 12,
       "result": "results/hk-hkma-v1__deficiency__public__20261121T000132.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "HKMA Classical",
@@ -1504,7 +2914,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-hkma-v1__shallow_search__public__20261121T001918.jsonl.gz",
       "points_per_hand": -1.015,
-      "rank": 4,
+      "rank": 12,
       "result": "results/hk-hkma-v1__shallow_search__public__20261121T001918.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "HKMA Classical",
@@ -1539,7 +2949,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-hkma-v1__random__public__20261121T000004.jsonl.gz",
       "points_per_hand": -1.892,
-      "rank": 7,
+      "rank": 15,
       "result": "results/hk-hkma-v1__random__public__20261121T000004.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "HKMA Classical",
@@ -1587,6 +2997,251 @@
       "win_rate": 0.374125
     },
     {
+      "average_win_faan": 5.975456919060052,
+      "average_win_points": 62.90130548302872,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Neural Cat NC9 bot, a network that scores Jorge Yau's options, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "NeuralCat-NC9",
+        "sha256": "82ccf436e142679aaf78f55ad234a0f57d8dececebbc8c9bd39b7a6a4bd064a7",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        11.622968391974261,
+        13.992031608025737
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_nc9' --name NeuralCat-NC9 --kind external --bot-hash 82ccf436e142679aaf78f55ad234a0f57d8dececebbc8c9bd39b7a6a4bd064a7 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s Neural Cat NC9 bot, a network that scores Jorge Yau'\"'\"'s options, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T01:53:25Z",
+      "deal_in_rate": 0.045625,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 71,
+      "log": "results/logs/hk-house-v1__NeuralCat-NC9__private__20261122T015325.jsonl.gz",
+      "points_per_hand": 12.8075,
+      "rank": 2,
+      "result": "results/hk-house-v1__NeuralCat-NC9__private__20261122T015325.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__NeuralCat-NC9__private__20261122T015325",
+      "se": 0.6039980369912998,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.239375
+    },
+    {
+      "average_win_faan": 5.950100806451613,
+      "average_win_points": 60.189516129032256,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Neural Cat NC10 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "NeuralCat-NC10",
+        "sha256": "e2e8dd34991e6f7613c95fe2d88db9c7414dd94e4ff6631700ceeb2bdf8429b3",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        11.667721681079207,
+        13.905278318920793
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_nc10' --name NeuralCat-NC10 --kind external --bot-hash e2e8dd34991e6f7613c95fe2d88db9c7414dd94e4ff6631700ceeb2bdf8429b3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s Neural Cat NC10 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T02:01:44Z",
+      "deal_in_rate": 0.04325,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 62,
+      "log": "results/logs/hk-house-v1__NeuralCat-NC10__private__20261122T020144.jsonl.gz",
+      "points_per_hand": 12.7865,
+      "rank": 2,
+      "result": "results/hk-house-v1__NeuralCat-NC10__private__20261122T020144.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__NeuralCat-NC10__private__20261122T020144",
+      "se": 0.570470136784988,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.248
+    },
+    {
+      "average_win_faan": 5.15592203898051,
+      "average_win_points": 35.04047976011994,
+      "bot": {
+        "description": "hk-mahjong-lab's PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-PIMC-128",
+        "sha256": "7e58349801c8b73e9554d9058a4b6f293fd33e7542d417fb61f1d30f9c49e20a",
+        "trained_on": "hk-mahjong-lab's own table (10 faan cap, single East hand)"
+      },
+      "ci95": [
+        11.188548941394707,
+        14.246451058605292
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_pimc128' --name hk-mahjong-lab-PIMC-128 --kind external --bot-hash 7e58349801c8b73e9554d9058a4b6f293fd33e7542d417fb61f1d30f9c49e20a --trained-on 'hk-mahjong-lab'\"'\"'s own table (10 faan cap, single East hand)' --description 'hk-mahjong-lab'\"'\"'s PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 400 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T09:03:21Z",
+      "deal_in_rate": 0.043125,
+      "deals": 400,
+      "games": 1600,
+      "isolation": "sandbox",
+      "limit_hands": 2,
+      "log": "results/logs/hk-house-v1__hk-mahjong-lab-PIMC-128__private__20261122T090321.jsonl.gz",
+      "points_per_hand": 12.7175,
+      "rank": 2,
+      "result": "results/hk-house-v1__hk-mahjong-lab-PIMC-128__private__20261122T090321.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__hk-mahjong-lab-PIMC-128__private__20261122T090321",
+      "se": 0.7777251283797404,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.416875
+    },
+    {
+      "average_win_faan": 4.834169371496016,
+      "average_win_points": 32.25848332841546,
+      "bot": {
+        "description": "hk-mahjong-lab's value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-value",
+        "sha256": "f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe",
+        "trained_on": "none (rule-based)"
+      },
+      "ci95": [
+        10.904013725101374,
+        12.492986274898625
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_value' --name hk-mahjong-lab-value --kind external --bot-hash f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe --trained-on 'none (rule-based)' --description 'hk-mahjong-lab'\"'\"'s value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T02:15:01Z",
+      "deal_in_rate": 0.042875,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 31,
+      "log": "results/logs/hk-house-v1__hk-mahjong-lab-value__private__20261122T021501.jsonl.gz",
+      "points_per_hand": 11.6985,
+      "rank": 2,
+      "result": "results/hk-house-v1__hk-mahjong-lab-value__private__20261122T021501.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__hk-mahjong-lab-value__private__20261122T021501",
+      "se": 0.40511215336422973,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.423625
+    },
+    {
+      "average_win_faan": 5.639162561576355,
+      "average_win_points": 43.5632183908046,
+      "bot": {
+        "description": "Lucky Cat Mahjong's lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-lc34",
+        "sha256": "68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        10.129719066248601,
+        11.616280933751398
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_lc34' --name LuckyCat-lc34 --kind external --bot-hash 68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T01:45:00Z",
+      "deal_in_rate": 0.054,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 3,
+      "log": "results/logs/hk-house-v1__LuckyCat-lc34__private__20261122T014500.jsonl.gz",
+      "points_per_hand": 10.873,
+      "rank": 4,
+      "result": "results/hk-house-v1__LuckyCat-lc34__private__20261122T014500.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__LuckyCat-lc34__private__20261122T014500",
+      "se": 0.37900231777449545,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.3045
+    },
+    {
+      "average_win_faan": 5.586728265434691,
+      "average_win_points": 43.249055018899625,
+      "bot": {
+        "description": "Lucky Cat Mahjong's lc32 bot, a neural network with Jorge Yau's contradiction check, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-lc32",
+        "sha256": "aa5d3ec75054d230ec063fa9ae2eccc77f962ba2a87b39dab8b85e9067ee51f1",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        9.666706014228934,
+        11.141293985771066
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_lc32' --name LuckyCat-lc32 --kind external --bot-hash aa5d3ec75054d230ec063fa9ae2eccc77f962ba2a87b39dab8b85e9067ee51f1 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc32 bot, a neural network with Jorge Yau'\"'\"'s contradiction check, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T01:37:16Z",
+      "deal_in_rate": 0.053125,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 7,
+      "log": "results/logs/hk-house-v1__LuckyCat-lc32__private__20261122T013716.jsonl.gz",
+      "points_per_hand": 10.404,
+      "rank": 5,
+      "result": "results/hk-house-v1__LuckyCat-lc32__private__20261122T013716.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__LuckyCat-lc32__private__20261122T013716",
+      "se": 0.3759495458575713,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.297625
+    },
+    {
+      "average_win_faan": 5.355638745905475,
+      "average_win_points": 45.853065044454844,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-JorgeYau",
+        "sha256": "7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce",
+        "trained_on": "none (rule-based)"
+      },
+      "ci95": [
+        9.110643722097079,
+        10.965356277902922
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_jy' --name LuckyCat-JorgeYau --kind external --bot-hash 7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce --trained-on 'none (rule-based)' --description 'Lucky Cat Mahjong'\"'\"'s Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+      "created_utc": "2026-11-22T02:09:09Z",
+      "deal_in_rate": 0.045625,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 26,
+      "log": "results/logs/hk-house-v1__LuckyCat-JorgeYau__private__20261122T020909.jsonl.gz",
+      "points_per_hand": 10.038,
+      "rank": 5,
+      "result": "results/hk-house-v1__LuckyCat-JorgeYau__private__20261122T020909.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__LuckyCat-JorgeYau__private__20261122T020909",
+      "se": 0.4728631702605881,
+      "seed_tag": "private",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "verified",
+      "win_rate": 0.267125
+    },
+    {
       "average_win_faan": 5.090415913200723,
       "average_win_points": 39.142857142857146,
       "bot": {
@@ -1609,7 +3264,7 @@
       "limit_hands": 3,
       "log": "results/logs/hk-house-v1__python_example__private__20261121T042116.jsonl.gz",
       "points_per_hand": 2.789,
-      "rank": 2,
+      "rank": 9,
       "result": "results/hk-house-v1__python_example__private__20261121T042116.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "House",
@@ -1644,7 +3299,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__faan_aware__private__20261121T041517.jsonl.gz",
       "points_per_hand": 1.5655,
-      "rank": 3,
+      "rank": 10,
       "result": "results/hk-house-v1__faan_aware__private__20261121T041517.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "House",
@@ -1679,7 +3334,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__shallow_search__private__20261121T042717.jsonl.gz",
       "points_per_hand": -0.3525,
-      "rank": 4,
+      "rank": 11,
       "result": "results/hk-house-v1__shallow_search__private__20261121T042717.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "House",
@@ -1714,7 +3369,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__ukeire__private__20261121T041402.jsonl.gz",
       "points_per_hand": -0.8485,
-      "rank": 4,
+      "rank": 11,
       "result": "results/hk-house-v1__ukeire__private__20261121T041402.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "House",
@@ -1749,7 +3404,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__deficiency__private__20261121T041244.jsonl.gz",
       "points_per_hand": -0.925,
-      "rank": 4,
+      "rank": 11,
       "result": "results/hk-house-v1__deficiency__private__20261121T041244.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "House",
@@ -1784,7 +3439,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__random__private__20261121T041134.jsonl.gz",
       "points_per_hand": -2.821,
-      "rank": 7,
+      "rank": 14,
       "result": "results/hk-house-v1__random__private__20261121T041134.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "House",
@@ -1832,6 +3487,251 @@
       "win_rate": 0.3695
     },
     {
+      "average_win_faan": 6.094516971279373,
+      "average_win_points": 66.26840731070496,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Neural Cat NC9 bot, a network that scores Jorge Yau's options, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "NeuralCat-NC9",
+        "sha256": "82ccf436e142679aaf78f55ad234a0f57d8dececebbc8c9bd39b7a6a4bd064a7",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        12.395908768825043,
+        14.831091231174957
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_nc9' --name NeuralCat-NC9 --kind external --bot-hash 82ccf436e142679aaf78f55ad234a0f57d8dececebbc8c9bd39b7a6a4bd064a7 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s Neural Cat NC9 bot, a network that scores Jorge Yau'\"'\"'s options, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T01:07:53Z",
+      "deal_in_rate": 0.0465,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 79,
+      "log": "results/logs/hk-house-v1__NeuralCat-NC9__public__20261122T010753.jsonl.gz",
+      "points_per_hand": 13.6135,
+      "rank": 2,
+      "result": "results/hk-house-v1__NeuralCat-NC9__public__20261122T010753.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__NeuralCat-NC9__public__20261122T010753",
+      "se": 0.6208552887104677,
+      "seed_tag": "public",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.239375
+    },
+    {
+      "average_win_faan": 5.116448326055313,
+      "average_win_points": 36.13973799126637,
+      "bot": {
+        "description": "hk-mahjong-lab's PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-PIMC-128",
+        "sha256": "7e58349801c8b73e9554d9058a4b6f293fd33e7542d417fb61f1d30f9c49e20a",
+        "trained_on": "hk-mahjong-lab's own table (10 faan cap, single East hand)"
+      },
+      "ci95": [
+        11.818916188634088,
+        15.306083811365912
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_pimc128' --name hk-mahjong-lab-PIMC-128 --kind external --bot-hash 7e58349801c8b73e9554d9058a4b6f293fd33e7542d417fb61f1d30f9c49e20a --trained-on 'hk-mahjong-lab'\"'\"'s own table (10 faan cap, single East hand)' --description 'hk-mahjong-lab'\"'\"'s PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 400 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T08:46:54Z",
+      "deal_in_rate": 0.040625,
+      "deals": 400,
+      "games": 1600,
+      "isolation": "sandbox",
+      "limit_hands": 6,
+      "log": "results/logs/hk-house-v1__hk-mahjong-lab-PIMC-128__public__20261122T084654.jsonl.gz",
+      "points_per_hand": 13.5625,
+      "rank": 2,
+      "result": "results/hk-house-v1__hk-mahjong-lab-PIMC-128__public__20261122T084654.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__hk-mahjong-lab-PIMC-128__public__20261122T084654",
+      "se": 0.8869014713736876,
+      "seed_tag": "public",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.429375
+    },
+    {
+      "average_win_faan": 5.986934673366834,
+      "average_win_points": 61.051256281407035,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Neural Cat NC10 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "NeuralCat-NC10",
+        "sha256": "e2e8dd34991e6f7613c95fe2d88db9c7414dd94e4ff6631700ceeb2bdf8429b3",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        11.973876441110125,
+        14.169123558889876
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_nc10' --name NeuralCat-NC10 --kind external --bot-hash e2e8dd34991e6f7613c95fe2d88db9c7414dd94e4ff6631700ceeb2bdf8429b3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s Neural Cat NC10 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T01:16:08Z",
+      "deal_in_rate": 0.045875,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 58,
+      "log": "results/logs/hk-house-v1__NeuralCat-NC10__public__20261122T011608.jsonl.gz",
+      "points_per_hand": 13.0715,
+      "rank": 2,
+      "result": "results/hk-house-v1__NeuralCat-NC10__public__20261122T011608.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__NeuralCat-NC10__public__20261122T011608",
+      "se": 0.5596832287403884,
+      "seed_tag": "public",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.24875
+    },
+    {
+      "average_win_faan": 5.6722861842105265,
+      "average_win_points": 44.088815789473685,
+      "bot": {
+        "description": "Lucky Cat Mahjong's lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-lc34",
+        "sha256": "68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        10.24432811031653,
+        11.742671889683468
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_lc34' --name LuckyCat-lc34 --kind external --bot-hash 68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T00:59:32Z",
+      "deal_in_rate": 0.052,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 6,
+      "log": "results/logs/hk-house-v1__LuckyCat-lc34__public__20261122T005932.jsonl.gz",
+      "points_per_hand": 10.9935,
+      "rank": 5,
+      "result": "results/hk-house-v1__LuckyCat-lc34__public__20261122T005932.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__LuckyCat-lc34__public__20261122T005932",
+      "se": 0.3820061429108317,
+      "seed_tag": "public",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.304
+    },
+    {
+      "average_win_faan": 4.7809208546494135,
+      "average_win_points": 30.341257899488415,
+      "bot": {
+        "description": "hk-mahjong-lab's value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "hk-mahjong-lab-value",
+        "sha256": "f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe",
+        "trained_on": "none (rule-based)"
+      },
+      "ci95": [
+        9.888945455555787,
+        11.247054544444213
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_value' --name hk-mahjong-lab-value --kind external --bot-hash f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe --trained-on 'none (rule-based)' --description 'hk-mahjong-lab'\"'\"'s value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T01:29:27Z",
+      "deal_in_rate": 0.044375,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 23,
+      "log": "results/logs/hk-house-v1__hk-mahjong-lab-value__public__20261122T012927.jsonl.gz",
+      "points_per_hand": 10.568,
+      "rank": 5,
+      "result": "results/hk-house-v1__hk-mahjong-lab-value__public__20261122T012927.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__hk-mahjong-lab-value__public__20261122T012927",
+      "se": 0.3462529906972427,
+      "seed_tag": "public",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.415375
+    },
+    {
+      "average_win_faan": 5.409774436090226,
+      "average_win_points": 47.57706766917293,
+      "bot": {
+        "description": "Lucky Cat Mahjong's Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-JorgeYau",
+        "sha256": "7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce",
+        "trained_on": "none (rule-based)"
+      },
+      "ci95": [
+        9.362728640416679,
+        11.25227135958332
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_jy' --name LuckyCat-JorgeYau --kind external --bot-hash 7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce --trained-on 'none (rule-based)' --description 'Lucky Cat Mahjong'\"'\"'s Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T01:23:35Z",
+      "deal_in_rate": 0.049,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 36,
+      "log": "results/logs/hk-house-v1__LuckyCat-JorgeYau__public__20261122T012335.jsonl.gz",
+      "points_per_hand": 10.3075,
+      "rank": 5,
+      "result": "results/hk-house-v1__LuckyCat-JorgeYau__public__20261122T012335.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__LuckyCat-JorgeYau__public__20261122T012335",
+      "se": 0.48174319936047455,
+      "seed_tag": "public",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.266
+    },
+    {
+      "average_win_faan": 5.626086956521739,
+      "average_win_points": 43.017391304347825,
+      "bot": {
+        "description": "Lucky Cat Mahjong's lc32 bot, a neural network with Jorge Yau's contradiction check, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+        "kind": "external",
+        "name": "LuckyCat-lc32",
+        "sha256": "aa5d3ec75054d230ec063fa9ae2eccc77f962ba2a87b39dab8b85e9067ee51f1",
+        "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+      },
+      "ci95": [
+        9.25561906837154,
+        10.69838093162846
+      ],
+      "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_lc32' --name LuckyCat-lc32 --kind external --bot-hash aa5d3ec75054d230ec063fa9ae2eccc77f962ba2a87b39dab8b85e9067ee51f1 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc32 bot, a neural network with Jorge Yau'\"'\"'s contradiction check, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+      "created_utc": "2026-11-22T00:51:49Z",
+      "deal_in_rate": 0.056375,
+      "deals": 2000,
+      "games": 8000,
+      "isolation": "sandbox",
+      "limit_hands": 6,
+      "log": "results/logs/hk-house-v1__LuckyCat-lc32__public__20261122T005149.jsonl.gz",
+      "points_per_hand": 9.977,
+      "rank": 5,
+      "result": "results/hk-house-v1__LuckyCat-lc32__public__20261122T005149.json",
+      "rng_scheme": "hmac-sha256-v2",
+      "rules_track": "House",
+      "run_id": "hk-house-v1__LuckyCat-lc32__public__20261122T005149",
+      "se": 0.36783540740862836,
+      "seed_tag": "public",
+      "table": "hk-house-v1",
+      "track": "bots",
+      "verification": "unverified",
+      "win_rate": 0.2875
+    },
+    {
       "average_win_faan": 4.947224749772521,
       "average_win_points": 36.53139217470428,
       "bot": {
@@ -1854,7 +3754,7 @@
       "limit_hands": 2,
       "log": "results/logs/hk-house-v1__python_example__public__20261121T034023.jsonl.gz",
       "points_per_hand": 2.349,
-      "rank": 2,
+      "rank": 9,
       "result": "results/hk-house-v1__python_example__public__20261121T034023.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "House",
@@ -1889,7 +3789,7 @@
       "limit_hands": 1,
       "log": "results/logs/hk-house-v1__faan_aware__public__20261121T033407.jsonl.gz",
       "points_per_hand": 1.651,
-      "rank": 2,
+      "rank": 9,
       "result": "results/hk-house-v1__faan_aware__public__20261121T033407.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "House",
@@ -1924,7 +3824,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__ukeire__public__20261121T033235.jsonl.gz",
       "points_per_hand": -0.761,
-      "rank": 4,
+      "rank": 11,
       "result": "results/hk-house-v1__ukeire__public__20261121T033235.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "House",
@@ -1959,7 +3859,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__shallow_search__public__20261121T034656.jsonl.gz",
       "points_per_hand": -0.785,
-      "rank": 4,
+      "rank": 11,
       "result": "results/hk-house-v1__shallow_search__public__20261121T034656.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "House",
@@ -1994,7 +3894,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__deficiency__public__20261121T033114.jsonl.gz",
       "points_per_hand": -0.8475,
-      "rank": 4,
+      "rank": 11,
       "result": "results/hk-house-v1__deficiency__public__20261121T033114.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "House",
@@ -2029,7 +3929,7 @@
       "limit_hands": 0,
       "log": "results/logs/hk-house-v1__random__public__20261121T033004.jsonl.gz",
       "points_per_hand": -2.948,
-      "rank": 7,
+      "rank": 14,
       "result": "results/hk-house-v1__random__public__20261121T033004.json",
       "rng_scheme": "hmac-sha256-v2",
       "rules_track": "House",

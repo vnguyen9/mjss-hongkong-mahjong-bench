@@ -1,0 +1,132 @@
+{
+  "bot": {
+    "description": "Lucky Cat Mahjong's lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+    "kind": "external",
+    "name": "LuckyCat-lc34",
+    "sha256": "68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3",
+    "track": "bots",
+    "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+  },
+  "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_lc34' --name LuckyCat-lc34 --kind external --bot-hash 68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+  "created_utc": "2026-11-22T00:59:32Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "40776e78617bb1ec4df7d98caa83e70a9bf3f7b0db5c825007d5fac74aa93637",
+    "hkbench_version": "1.1.0",
+    "python": "3.9.6",
+    "rules_sha256": "6318ed16cdaf40f09692c5873ae58400513b9fbaffe0da7efe1a20464a2872e6"
+  },
+  "fairplay": {
+    "asks": 300,
+    "decision_changes": 0,
+    "faults": 0,
+    "points": 100,
+    "reshuffles": 2,
+    "status": "passed",
+    "view_mismatches": 0
+  },
+  "faults": {
+    "decisions": 181863,
+    "faults": {},
+    "limit_per_1000": 1.0,
+    "ok": true,
+    "per_1000_decisions": 0.0
+  },
+  "headline": {
+    "ci95": [
+      10.24432811031653,
+      11.742671889683468
+    ],
+    "deals": 2000,
+    "games": 8000,
+    "metric": "points per hand against the frozen field",
+    "points_per_hand": 10.9935,
+    "se": 0.3820061429108317
+  },
+  "isolation": "sandbox",
+  "kind": "duplicate",
+  "log": "logs/hk-house-v1__LuckyCat-lc34__public__20261122T005932.jsonl.gz",
+  "rng_scheme": "hmac-sha256-v2",
+  "run_id": "hk-house-v1__LuckyCat-lc34__public__20261122T005932",
+  "schema": "hkbench-result-1",
+  "seeds": {
+    "deals": 2000,
+    "offset": 0,
+    "public_range": {
+      "count": 100000,
+      "start": 2000000
+    },
+    "tag": "public"
+  },
+  "stats": {
+    "average_win_faan": 5.6722861842105265,
+    "average_win_points": 44.088815789473685,
+    "deal_in_rate": {
+      "ci95": [
+        0.04706246513644361,
+        0.056937534863556384
+      ],
+      "mean": 0.052,
+      "n": 2000,
+      "se": 0.002517671411178891
+    },
+    "draw_rate": {
+      "ci95": [
+        0.25364975945696006,
+        0.27435024054303997
+      ],
+      "mean": 0.264,
+      "n": 2000,
+      "se": 0.005277634575579905
+    },
+    "limit_hand_rate": {
+      "ci95": [
+        0.00015027390661785222,
+        0.0013497260933821478
+      ],
+      "mean": 0.00075,
+      "n": 2000,
+      "se": 0.00030580305386617205
+    },
+    "limit_hands": 6,
+    "self_draw_win_rate": {
+      "ci95": [
+        0.06654133971220853,
+        0.07770866028779146
+      ],
+      "mean": 0.072125,
+      "n": 2000,
+      "se": 0.00284713369419775
+    },
+    "win_rate": {
+      "ci95": [
+        0.29408603964614577,
+        0.3139139603538542
+      ],
+      "mean": 0.304,
+      "n": 2000,
+      "se": 0.005055173329243415
+    },
+    "wins": 2432
+  },
+  "table": {
+    "field": [
+      {
+        "bot": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+      },
+      {
+        "bot": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      },
+      {
+        "bot": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      }
+    ],
+    "id": "hk-house-v1",
+    "rules_sha256": "6318ed16cdaf40f09692c5873ae58400513b9fbaffe0da7efe1a20464a2872e6",
+    "rules_track": "House"
+  },
+  "verification": "unverified"
+}

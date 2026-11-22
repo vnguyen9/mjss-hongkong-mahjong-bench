@@ -1,0 +1,129 @@
+{
+  "bot": {
+    "description": "Lucky Cat Mahjong's Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+    "kind": "external",
+    "name": "LuckyCat-JorgeYau",
+    "sha256": "7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce",
+    "track": "bots",
+    "trained_on": "none (rule-based)"
+  },
+  "command": "hkbench score --table hk-house-v1 --bot '~/hkbench_v11/outside_jy' --name LuckyCat-JorgeYau --kind external --bot-hash 7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce --trained-on 'none (rule-based)' --description 'Lucky Cat Mahjong'\"'\"'s Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results' --private-seeds '<private deck>'",
+  "created_utc": "2026-11-22T02:09:09Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "40776e78617bb1ec4df7d98caa83e70a9bf3f7b0db5c825007d5fac74aa93637",
+    "hkbench_version": "1.1.0",
+    "python": "3.9.6",
+    "rules_sha256": "6318ed16cdaf40f09692c5873ae58400513b9fbaffe0da7efe1a20464a2872e6"
+  },
+  "fairplay": {
+    "asks": 300,
+    "decision_changes": 0,
+    "faults": 0,
+    "points": 100,
+    "reshuffles": 2,
+    "status": "passed",
+    "view_mismatches": 0
+  },
+  "faults": {
+    "decisions": 188844,
+    "faults": {},
+    "limit_per_1000": 1.0,
+    "ok": true,
+    "per_1000_decisions": 0.0
+  },
+  "headline": {
+    "ci95": [
+      9.110643722097079,
+      10.965356277902922
+    ],
+    "deals": 2000,
+    "games": 8000,
+    "metric": "points per hand against the frozen field",
+    "points_per_hand": 10.038,
+    "se": 0.4728631702605881
+  },
+  "isolation": "sandbox",
+  "kind": "duplicate",
+  "log": "logs/hk-house-v1__LuckyCat-JorgeYau__private__20261122T020909.jsonl.gz",
+  "rng_scheme": "hmac-sha256-v2",
+  "run_id": "hk-house-v1__LuckyCat-JorgeYau__private__20261122T020909",
+  "schema": "hkbench-result-1",
+  "seeds": {
+    "deals": 2000,
+    "offset": 0,
+    "public_range": null,
+    "tag": "private"
+  },
+  "stats": {
+    "average_win_faan": 5.355638745905475,
+    "average_win_points": 45.853065044454844,
+    "deal_in_rate": {
+      "ci95": [
+        0.040995959589425285,
+        0.05025404041057471
+      ],
+      "mean": 0.045625,
+      "n": 2000,
+      "se": 0.0023603686910478577
+    },
+    "draw_rate": {
+      "ci95": [
+        0.31097817518750037,
+        0.3332718248124996
+      ],
+      "mean": 0.322125,
+      "n": 2000,
+      "se": 0.005683816505882033
+    },
+    "limit_hand_rate": {
+      "ci95": [
+        0.0020078472909446426,
+        0.004492152709055357
+      ],
+      "mean": 0.00325,
+      "n": 2000,
+      "se": 0.0006333792976308311
+    },
+    "limit_hands": 26,
+    "self_draw_win_rate": {
+      "ci95": [
+        0.08374462265811394,
+        0.09625537734188605
+      ],
+      "mean": 0.09,
+      "n": 2000,
+      "se": 0.0031896452653012992
+    },
+    "win_rate": {
+      "ci95": [
+        0.2575852383560877,
+        0.2766647616439123
+      ],
+      "mean": 0.267125,
+      "n": 2000,
+      "se": 0.00486436771061892
+    },
+    "wins": 2137
+  },
+  "table": {
+    "field": [
+      {
+        "bot": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+      },
+      {
+        "bot": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      },
+      {
+        "bot": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      }
+    ],
+    "id": "hk-house-v1",
+    "rules_sha256": "6318ed16cdaf40f09692c5873ae58400513b9fbaffe0da7efe1a20464a2872e6",
+    "rules_track": "House"
+  },
+  "verification": "verified"
+}

@@ -1,0 +1,132 @@
+{
+  "bot": {
+    "description": "hk-mahjong-lab's value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+    "kind": "external",
+    "name": "hk-mahjong-lab-value",
+    "sha256": "f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe",
+    "track": "bots",
+    "trained_on": "none (rule-based)"
+  },
+  "command": "hkbench score --table hk-hkma-v1 --bot '~/hkbench_v11/outside_value' --name hk-mahjong-lab-value --kind external --bot-hash f15ffc6bffc523abc41db5c54e6ea660b0737081d4184e618e0783608869f4fe --trained-on 'none (rule-based)' --description 'hk-mahjong-lab'\"'\"'s value bot, a hand-written rule-based player, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --' --results-dir '~/hkbench_rows/results'",
+  "created_utc": "2026-11-21T22:15:16Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "c22def21b784b7f30b671ba90c8ed3f4a62277f97f758c312913e2d290a7187c",
+    "hkbench_version": "1.1.0",
+    "python": "3.9.6",
+    "rules_sha256": "43e4e01c50dce4d3dde5ba4f07d728e533e8c92ddb095372b3d718933ae16882"
+  },
+  "fairplay": {
+    "asks": 300,
+    "decision_changes": 0,
+    "faults": 0,
+    "points": 100,
+    "reshuffles": 2,
+    "status": "passed",
+    "view_mismatches": 0
+  },
+  "faults": {
+    "decisions": 187329,
+    "faults": {},
+    "limit_per_1000": 1.0,
+    "ok": true,
+    "per_1000_decisions": 0.0
+  },
+  "headline": {
+    "ci95": [
+      10.882119766223369,
+      11.868880233776633
+    ],
+    "deals": 2000,
+    "games": 8000,
+    "metric": "points per hand against the frozen field",
+    "points_per_hand": 11.3755,
+    "se": 0.2515768179357179
+  },
+  "isolation": "sandbox",
+  "kind": "duplicate",
+  "log": "logs/hk-hkma-v1__hk-mahjong-lab-value__public__20261121T221516.jsonl.gz",
+  "rng_scheme": "hmac-sha256-v2",
+  "run_id": "hk-hkma-v1__hk-mahjong-lab-value__public__20261121T221516",
+  "schema": "hkbench-result-1",
+  "seeds": {
+    "deals": 2000,
+    "offset": 0,
+    "public_range": {
+      "count": 100000,
+      "start": 1000000
+    },
+    "tag": "public"
+  },
+  "stats": {
+    "average_win_faan": 4.313026727666747,
+    "average_win_points": 24.1271370093908,
+    "deal_in_rate": {
+      "ci95": [
+        0.02824815477175708,
+        0.03600184522824292
+      ],
+      "mean": 0.032125,
+      "n": 2000,
+      "se": 0.0019768209575095888
+    },
+    "draw_rate": {
+      "ci95": [
+        0.28079467042769846,
+        0.3014553295723016
+      ],
+      "mean": 0.291125,
+      "n": 2000,
+      "se": 0.005267481881334276
+    },
+    "limit_hand_rate": {
+      "ci95": [
+        0.006069999568108862,
+        0.009930000431891139
+      ],
+      "mean": 0.008,
+      "n": 2000,
+      "se": 0.0009841159698536967
+    },
+    "limit_hands": 64,
+    "self_draw_win_rate": {
+      "ci95": [
+        0.11882604736338004,
+        0.13317395263661996
+      ],
+      "mean": 0.126,
+      "n": 2000,
+      "se": 0.00365803097243553
+    },
+    "win_rate": {
+      "ci95": [
+        0.508337932807939,
+        0.5299120671920609
+      ],
+      "mean": 0.519125,
+      "n": 2000,
+      "se": 0.0055003744642637305
+    },
+    "wins": 4153
+  },
+  "table": {
+    "field": [
+      {
+        "bot": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+      },
+      {
+        "bot": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      },
+      {
+        "bot": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      }
+    ],
+    "id": "hk-hkma-v1",
+    "rules_sha256": "43e4e01c50dce4d3dde5ba4f07d728e533e8c92ddb095372b3d718933ae16882",
+    "rules_track": "HKMA Classical"
+  },
+  "verification": "unverified"
+}

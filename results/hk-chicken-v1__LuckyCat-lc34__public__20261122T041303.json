@@ -1,0 +1,132 @@
+{
+  "bot": {
+    "description": "Lucky Cat Mahjong's lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+    "kind": "external",
+    "name": "LuckyCat-lc34",
+    "sha256": "68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3",
+    "track": "bots",
+    "trained_on": "Lucky Cat's own table (3 faan minimum, flower faan, Seven Pairs)"
+  },
+  "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_lc34' --name LuckyCat-lc34 --kind external --bot-hash 68cda3657f14656581d8c00cad7956e4b91b4e8889b14eeea981de5446baebd3 --trained-on 'Lucky Cat'\"'\"'s own table (3 faan minimum, flower faan, Seven Pairs)' --description 'Lucky Cat Mahjong'\"'\"'s lc34 bot, the network their repository ships in the release that wrote their published games, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+  "created_utc": "2026-11-22T04:13:03Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "4f548d719647060e2eb8aceaaf81e18aaa96b336d1cb84566bb055193c158665",
+    "hkbench_version": "1.1.0",
+    "python": "3.9.6",
+    "rules_sha256": "d577a8f1e4a0275cad62c974a534a75f6e87789e88772cebf414290368f9e0e5"
+  },
+  "fairplay": {
+    "asks": 300,
+    "decision_changes": 0,
+    "faults": 0,
+    "points": 100,
+    "reshuffles": 2,
+    "status": "passed",
+    "view_mismatches": 0
+  },
+  "faults": {
+    "decisions": 133655,
+    "faults": {},
+    "limit_per_1000": 1.0,
+    "ok": true,
+    "per_1000_decisions": 0.0
+  },
+  "headline": {
+    "ci95": [
+      2.2865114107328965,
+      2.928238589267104
+    ],
+    "deals": 2000,
+    "games": 8000,
+    "metric": "points per hand against the frozen field",
+    "points_per_hand": 2.607375,
+    "se": 0.16360979879829632
+  },
+  "isolation": "sandbox",
+  "kind": "duplicate",
+  "log": "logs/hk-chicken-v1__LuckyCat-lc34__public__20261122T041303.jsonl.gz",
+  "rng_scheme": "hmac-sha256-v2",
+  "run_id": "hk-chicken-v1__LuckyCat-lc34__public__20261122T041303",
+  "schema": "hkbench-result-1",
+  "seeds": {
+    "deals": 2000,
+    "offset": 0,
+    "public_range": {
+      "count": 100000,
+      "start": 3000000
+    },
+    "tag": "public"
+  },
+  "stats": {
+    "average_win_faan": 4.328140214216163,
+    "average_win_points": 28.04576436222006,
+    "deal_in_rate": {
+      "ci95": [
+        0.20067427358926007,
+        0.2183257264107399
+      ],
+      "mean": 0.2095,
+      "n": 2000,
+      "se": 0.004500277908154685
+    },
+    "draw_rate": {
+      "ci95": [
+        0.030114368161429327,
+        0.03838563183857068
+      ],
+      "mean": 0.03425,
+      "n": 2000,
+      "se": 0.0021087774233215163
+    },
+    "limit_hand_rate": {
+      "ci95": [
+        0.0014089055776465925,
+        0.003591094422353408
+      ],
+      "mean": 0.0025,
+      "n": 2000,
+      "se": 0.0005563539924206858
+    },
+    "limit_hands": 20,
+    "self_draw_win_rate": {
+      "ci95": [
+        0.027088222089446338,
+        0.03466177791055366
+      ],
+      "mean": 0.030875,
+      "n": 2000,
+      "se": 0.0019308952239007952
+    },
+    "win_rate": {
+      "ci95": [
+        0.12115231961361583,
+        0.13559768038638415
+      ],
+      "mean": 0.128375,
+      "n": 2000,
+      "se": 0.003682877472946932
+    },
+    "wins": 1027
+  },
+  "table": {
+    "field": [
+      {
+        "bot": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+      },
+      {
+        "bot": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      },
+      {
+        "bot": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      }
+    ],
+    "id": "hk-chicken-v1",
+    "rules_sha256": "d577a8f1e4a0275cad62c974a534a75f6e87789e88772cebf414290368f9e0e5",
+    "rules_track": "Chicken hand"
+  },
+  "verification": "unverified"
+}

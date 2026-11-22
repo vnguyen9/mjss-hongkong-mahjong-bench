@@ -1,0 +1,132 @@
+{
+  "bot": {
+    "description": "Lucky Cat Mahjong's Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+    "kind": "external",
+    "name": "LuckyCat-JorgeYau",
+    "sha256": "7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce",
+    "track": "bots",
+    "trained_on": "none (rule-based)"
+  },
+  "command": "hkbench score --table hk-chicken-v1 --bot '~/hkbench_v11/outside_jy' --name LuckyCat-JorgeYau --kind external --bot-hash 7f7022add5948693027c80518e35308c42c7b2b921d436199aace0b7e0b84bce --trained-on 'none (rule-based)' --description 'Lucky Cat Mahjong'\"'\"'s Jorge Yau bot, their hand-written rule-based player, from https://huggingface.co/codenameyau/lucky-cat-mahjong, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --deals 2000 --workers 16 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-deck-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_rows/results'",
+  "created_utc": "2026-11-22T04:39:06Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "4f548d719647060e2eb8aceaaf81e18aaa96b336d1cb84566bb055193c158665",
+    "hkbench_version": "1.1.0",
+    "python": "3.9.6",
+    "rules_sha256": "d577a8f1e4a0275cad62c974a534a75f6e87789e88772cebf414290368f9e0e5"
+  },
+  "fairplay": {
+    "asks": 300,
+    "decision_changes": 0,
+    "faults": 0,
+    "points": 100,
+    "reshuffles": 2,
+    "status": "passed",
+    "view_mismatches": 0
+  },
+  "faults": {
+    "decisions": 137221,
+    "faults": {},
+    "limit_per_1000": 1.0,
+    "ok": true,
+    "per_1000_decisions": 0.0
+  },
+  "headline": {
+    "ci95": [
+      1.2713254065519752,
+      1.870174593448025
+    ],
+    "deals": 2000,
+    "games": 8000,
+    "metric": "points per hand against the frozen field",
+    "points_per_hand": 1.57075,
+    "se": 0.1526779576367331
+  },
+  "isolation": "sandbox",
+  "kind": "duplicate",
+  "log": "logs/hk-chicken-v1__LuckyCat-JorgeYau__public__20261122T043906.jsonl.gz",
+  "rng_scheme": "hmac-sha256-v2",
+  "run_id": "hk-chicken-v1__LuckyCat-JorgeYau__public__20261122T043906",
+  "schema": "hkbench-result-1",
+  "seeds": {
+    "deals": 2000,
+    "offset": 0,
+    "public_range": {
+      "count": 100000,
+      "start": 3000000
+    },
+    "tag": "public"
+  },
+  "stats": {
+    "average_win_faan": 2.7797716150081566,
+    "average_win_points": 16.297716150081566,
+    "deal_in_rate": {
+      "ci95": [
+        0.17091848496184445,
+        0.18783151503815557
+      ],
+      "mean": 0.179375,
+      "n": 2000,
+      "se": 0.004312015355458866
+    },
+    "draw_rate": {
+      "ci95": [
+        0.044816570577271904,
+        0.0546834294227281
+      ],
+      "mean": 0.04975,
+      "n": 2000,
+      "se": 0.0025155780282885842
+    },
+    "limit_hand_rate": {
+      "ci95": [
+        0.0024766957736225463,
+        0.005273304226377454
+      ],
+      "mean": 0.003875,
+      "n": 2000,
+      "se": 0.0007130016642242852
+    },
+    "limit_hands": 31,
+    "self_draw_win_rate": {
+      "ci95": [
+        0.029518524947471186,
+        0.03723147505252882
+      ],
+      "mean": 0.033375,
+      "n": 2000,
+      "se": 0.0019664341125650337
+    },
+    "win_rate": {
+      "ci95": [
+        0.14561918309882008,
+        0.16088081690117992
+      ],
+      "mean": 0.15325,
+      "n": 2000,
+      "se": 0.003890988132122989
+    },
+    "wins": 1226
+  },
+  "table": {
+    "field": [
+      {
+        "bot": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+      },
+      {
+        "bot": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      },
+      {
+        "bot": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      }
+    ],
+    "id": "hk-chicken-v1",
+    "rules_sha256": "d577a8f1e4a0275cad62c974a534a75f6e87789e88772cebf414290368f9e0e5",
+    "rules_track": "Chicken hand"
+  },
+  "verification": "unverified"
+}

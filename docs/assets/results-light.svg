@@ -6,115 +6,181 @@
 <text x="20" y="35" font-size="22" font-weight="700">HKMA Classical</text>
 <text x="20" y="61" font-size="14" fill="#576574">hk-hkma-v1</text>
 <text x="620" y="61" font-size="16" text-anchor="end" fill="#576574">Mean</text>
-<path d="M210.00 80V300" stroke="#dce4e7"/>
-<text x="210.00" y="324" font-size="18" text-anchor="middle" fill="#576574">-5</text>
-<path d="M273.60 80V300" stroke="#dce4e7"/>
-<text x="273.60" y="324" font-size="18" text-anchor="middle" fill="#576574">0</text>
-<path d="M337.20 80V300" stroke="#dce4e7"/>
-<text x="337.20" y="324" font-size="18" text-anchor="middle" fill="#576574">5</text>
-<path d="M400.80 80V300" stroke="#dce4e7"/>
-<text x="400.80" y="324" font-size="18" text-anchor="middle" fill="#576574">10</text>
-<path d="M464.40 80V300" stroke="#dce4e7"/>
-<text x="464.40" y="324" font-size="18" text-anchor="middle" fill="#576574">15</text>
-<path d="M528.00 80V300" stroke="#dce4e7"/>
-<text x="528.00" y="324" font-size="18" text-anchor="middle" fill="#576574">20</text>
-<path d="M273.60 80V300" stroke="#576574"/>
+<path d="M210.00 80V540" stroke="#dce4e7"/>
+<text x="210.00" y="564" font-size="18" text-anchor="middle" fill="#576574">-5</text>
+<path d="M273.60 80V540" stroke="#dce4e7"/>
+<text x="273.60" y="564" font-size="18" text-anchor="middle" fill="#576574">0</text>
+<path d="M337.20 80V540" stroke="#dce4e7"/>
+<text x="337.20" y="564" font-size="18" text-anchor="middle" fill="#576574">5</text>
+<path d="M400.80 80V540" stroke="#dce4e7"/>
+<text x="400.80" y="564" font-size="18" text-anchor="middle" fill="#576574">10</text>
+<path d="M464.40 80V540" stroke="#dce4e7"/>
+<text x="464.40" y="564" font-size="18" text-anchor="middle" fill="#576574">15</text>
+<path d="M528.00 80V540" stroke="#dce4e7"/>
+<text x="528.00" y="564" font-size="18" text-anchor="middle" fill="#576574">20</text>
+<path d="M273.60 80V540" stroke="#576574"/>
 <text x="20" y="101" font-size="20" fill="#20785b" font-weight="700">Fu-2.3M-HKMA-1</text>
 <g><title>Fu-2.3M-HKMA-1: +17.75 [+17.08, +18.42]</title><rect x="273.60" y="88" width="225.78" height="16" rx="3" fill="#20785b"/><path d="M490.85 96H507.91M490.85 91v10M507.91 91v10" stroke="#1f2933" stroke-width="1.5"/></g>
 <text x="620" y="101" font-size="20" text-anchor="end" font-weight="600">+17.75</text>
-<text x="20" y="131" font-size="20" fill="#1f2933" font-weight="400">python_example</text>
-<g><title>python_example: +2.54 [+2.11, +2.97]</title><rect x="273.60" y="118" width="32.28" height="16" rx="3" fill="#a1b3bc"/><path d="M300.41 126H311.35M300.41 121v10M311.35 121v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="131" font-size="20" text-anchor="end" font-weight="600">+2.54</text>
-<text x="20" y="161" font-size="20" fill="#1f2933" font-weight="400">faan_aware</text>
-<g><title>faan_aware: +1.61 [+1.37, +1.84]</title><rect x="273.60" y="148" width="20.42" height="16" rx="3" fill="#a1b3bc"/><path d="M291.08 156H296.97M291.08 151v10M296.97 151v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="161" font-size="20" text-anchor="end" font-weight="600">+1.61</text>
-<text x="20" y="191" font-size="20" fill="#1f2933" font-weight="400">ukeire</text>
-<g><title>ukeire: -0.72 [-0.88, -0.55]</title><rect x="264.50" y="178" width="9.10" height="16" rx="3" fill="#a1b3bc"/><path d="M262.46 186H266.54M262.46 181v10M266.54 181v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="191" font-size="20" text-anchor="end" font-weight="600">-0.72</text>
-<text x="20" y="221" font-size="20" fill="#1f2933" font-weight="400">deficiency</text>
-<g><title>deficiency: -0.91 [-1.07, -0.75]</title><rect x="262.02" y="208" width="11.58" height="16" rx="3" fill="#a1b3bc"/><path d="M259.98 216H264.07M259.98 211v10M264.07 211v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="221" font-size="20" text-anchor="end" font-weight="600">-0.91</text>
-<text x="20" y="251" font-size="20" fill="#1f2933" font-weight="400">shallow_search</text>
-<g><title>shallow_search: -0.94 [-1.24, -0.65]</title><rect x="261.58" y="238" width="12.02" height="16" rx="3" fill="#a1b3bc"/><path d="M257.84 246H265.32M257.84 241v10M265.32 241v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="251" font-size="20" text-anchor="end" font-weight="600">-0.94</text>
-<text x="20" y="281" font-size="20" fill="#1f2933" font-weight="400">random</text>
-<g><title>random: -1.81 [-1.95, -1.67]</title><rect x="250.58" y="268" width="23.02" height="16" rx="3" fill="#a1b3bc"/><path d="M248.86 276H252.31M248.86 271v10M252.31 271v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="281" font-size="20" text-anchor="end" font-weight="600">-1.81</text>
-<text x="369" y="347" font-size="18" text-anchor="middle" fill="#576574">Points a hand · 95% interval</text>
+<text x="20" y="131" font-size="20" fill="#1f2933" font-weight="400">hk-mahjong-lab-PIMC-256</text>
+<g><title>hk-mahjong-lab-PIMC-256: +13.69 [+12.50, +14.87]</title><rect x="273.60" y="118" width="174.07" height="16" rx="3" fill="#a1b3bc"/><path d="M432.61 126H462.74M432.61 121v10M462.74 121v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="131" font-size="20" text-anchor="end" font-weight="600">+13.69</text>
+<text x="20" y="161" font-size="20" fill="#1f2933" font-weight="400">hk-mahjong-lab-PIMC-128</text>
+<g><title>hk-mahjong-lab-PIMC-128: +13.46 [+12.23, +14.70]</title><rect x="273.60" y="148" width="171.24" height="16" rx="3" fill="#a1b3bc"/><path d="M429.16 156H460.52M429.16 151v10M460.52 151v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="161" font-size="20" text-anchor="end" font-weight="600">+13.46</text>
+<text x="20" y="191" font-size="20" fill="#1f2933" font-weight="400">LuckyCat-lc34</text>
+<g><title>LuckyCat-lc34: +11.46 [+10.86, +12.05]</title><rect x="273.60" y="178" width="145.72" height="16" rx="3" fill="#a1b3bc"/><path d="M411.71 186H426.93M411.71 181v10M426.93 181v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="191" font-size="20" text-anchor="end" font-weight="600">+11.46</text>
+<text x="20" y="221" font-size="20" fill="#1f2933" font-weight="400">NeuralCat-NC10</text>
+<g><title>NeuralCat-NC10: +11.38 [+10.68, +12.08]</title><rect x="273.60" y="208" width="144.71" height="16" rx="3" fill="#a1b3bc"/><path d="M409.39 216H427.23M409.39 211v10M427.23 211v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="221" font-size="20" text-anchor="end" font-weight="600">+11.38</text>
+<text x="20" y="251" font-size="20" fill="#1f2933" font-weight="400">hk-mahjong-lab-value</text>
+<g><title>hk-mahjong-lab-value: +11.23 [+10.75, +11.71]</title><rect x="273.60" y="238" width="142.79" height="16" rx="3" fill="#a1b3bc"/><path d="M410.28 246H422.51M410.28 241v10M422.51 241v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="251" font-size="20" text-anchor="end" font-weight="600">+11.23</text>
+<text x="20" y="281" font-size="20" fill="#1f2933" font-weight="400">NeuralCat-NC9</text>
+<g><title>NeuralCat-NC9: +11.16 [+10.45, +11.87]</title><rect x="273.60" y="268" width="141.97" height="16" rx="3" fill="#a1b3bc"/><path d="M406.57 276H424.57M406.57 271v10M424.57 271v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="281" font-size="20" text-anchor="end" font-weight="600">+11.16</text>
+<text x="20" y="311" font-size="20" fill="#1f2933" font-weight="400">LuckyCat-lc32</text>
+<g><title>LuckyCat-lc32: +10.60 [+10.03, +11.17]</title><rect x="273.60" y="298" width="134.86" height="16" rx="3" fill="#a1b3bc"/><path d="M401.21 306H415.71M401.21 301v10M415.71 301v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="311" font-size="20" text-anchor="end" font-weight="600">+10.60</text>
+<text x="20" y="341" font-size="20" fill="#1f2933" font-weight="400">LuckyCat-JorgeYau</text>
+<g><title>LuckyCat-JorgeYau: +8.91 [+8.33, +9.48]</title><rect x="273.60" y="328" width="113.30" height="16" rx="3" fill="#a1b3bc"/><path d="M379.58 336H394.23M379.58 331v10M394.23 331v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="341" font-size="20" text-anchor="end" font-weight="600">+8.91</text>
+<text x="20" y="371" font-size="20" fill="#1f2933" font-weight="400">python_example</text>
+<g><title>python_example: +2.54 [+2.11, +2.97]</title><rect x="273.60" y="358" width="32.28" height="16" rx="3" fill="#a1b3bc"/><path d="M300.41 366H311.35M300.41 361v10M311.35 361v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="371" font-size="20" text-anchor="end" font-weight="600">+2.54</text>
+<text x="20" y="401" font-size="20" fill="#1f2933" font-weight="400">faan_aware</text>
+<g><title>faan_aware: +1.61 [+1.37, +1.84]</title><rect x="273.60" y="388" width="20.42" height="16" rx="3" fill="#a1b3bc"/><path d="M291.08 396H296.97M291.08 391v10M296.97 391v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="401" font-size="20" text-anchor="end" font-weight="600">+1.61</text>
+<text x="20" y="431" font-size="20" fill="#1f2933" font-weight="400">ukeire</text>
+<g><title>ukeire: -0.72 [-0.88, -0.55]</title><rect x="264.50" y="418" width="9.10" height="16" rx="3" fill="#a1b3bc"/><path d="M262.46 426H266.54M262.46 421v10M266.54 421v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="431" font-size="20" text-anchor="end" font-weight="600">-0.72</text>
+<text x="20" y="461" font-size="20" fill="#1f2933" font-weight="400">deficiency</text>
+<g><title>deficiency: -0.91 [-1.07, -0.75]</title><rect x="262.02" y="448" width="11.58" height="16" rx="3" fill="#a1b3bc"/><path d="M259.98 456H264.07M259.98 451v10M264.07 451v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="461" font-size="20" text-anchor="end" font-weight="600">-0.91</text>
+<text x="20" y="491" font-size="20" fill="#1f2933" font-weight="400">shallow_search</text>
+<g><title>shallow_search: -0.94 [-1.24, -0.65]</title><rect x="261.58" y="478" width="12.02" height="16" rx="3" fill="#a1b3bc"/><path d="M257.84 486H265.32M257.84 481v10M265.32 481v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="491" font-size="20" text-anchor="end" font-weight="600">-0.94</text>
+<text x="20" y="521" font-size="20" fill="#1f2933" font-weight="400">random</text>
+<g><title>random: -1.81 [-1.95, -1.67]</title><rect x="250.58" y="508" width="23.02" height="16" rx="3" fill="#a1b3bc"/><path d="M248.86 516H252.31M248.86 511v10M252.31 511v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="521" font-size="20" text-anchor="end" font-weight="600">-1.81</text>
+<text x="369" y="587" font-size="18" text-anchor="middle" fill="#576574">Points a hand · 95% interval</text>
 <text x="20" y="395" font-size="22" font-weight="700">House</text>
 <text x="20" y="421" font-size="14" fill="#576574">hk-house-v1</text>
 <text x="620" y="421" font-size="16" text-anchor="end" fill="#576574">Mean</text>
-<path d="M210.00 440V660" stroke="#dce4e7"/>
-<text x="210.00" y="684" font-size="18" text-anchor="middle" fill="#576574">-5</text>
-<path d="M273.60 440V660" stroke="#dce4e7"/>
-<text x="273.60" y="684" font-size="18" text-anchor="middle" fill="#576574">0</text>
-<path d="M337.20 440V660" stroke="#dce4e7"/>
-<text x="337.20" y="684" font-size="18" text-anchor="middle" fill="#576574">5</text>
-<path d="M400.80 440V660" stroke="#dce4e7"/>
-<text x="400.80" y="684" font-size="18" text-anchor="middle" fill="#576574">10</text>
-<path d="M464.40 440V660" stroke="#dce4e7"/>
-<text x="464.40" y="684" font-size="18" text-anchor="middle" fill="#576574">15</text>
-<path d="M528.00 440V660" stroke="#dce4e7"/>
-<text x="528.00" y="684" font-size="18" text-anchor="middle" fill="#576574">20</text>
-<path d="M273.60 440V660" stroke="#576574"/>
+<path d="M210.00 440V870" stroke="#dce4e7"/>
+<text x="210.00" y="894" font-size="18" text-anchor="middle" fill="#576574">-5</text>
+<path d="M273.60 440V870" stroke="#dce4e7"/>
+<text x="273.60" y="894" font-size="18" text-anchor="middle" fill="#576574">0</text>
+<path d="M337.20 440V870" stroke="#dce4e7"/>
+<text x="337.20" y="894" font-size="18" text-anchor="middle" fill="#576574">5</text>
+<path d="M400.80 440V870" stroke="#dce4e7"/>
+<text x="400.80" y="894" font-size="18" text-anchor="middle" fill="#576574">10</text>
+<path d="M464.40 440V870" stroke="#dce4e7"/>
+<text x="464.40" y="894" font-size="18" text-anchor="middle" fill="#576574">15</text>
+<path d="M528.00 440V870" stroke="#dce4e7"/>
+<text x="528.00" y="894" font-size="18" text-anchor="middle" fill="#576574">20</text>
+<path d="M273.60 440V870" stroke="#576574"/>
 <text x="20" y="461" font-size="20" fill="#20785b" font-weight="700">Fu-2.3M-HKMA-1</text>
 <g><title>Fu-2.3M-HKMA-1: +17.67 [+16.76, +18.58]</title><rect x="273.60" y="448" width="224.74" height="16" rx="3" fill="#20785b"/><path d="M486.77 456H509.91M486.77 451v10M509.91 451v10" stroke="#1f2933" stroke-width="1.5"/></g>
 <text x="620" y="461" font-size="20" text-anchor="end" font-weight="600">+17.67</text>
-<text x="20" y="491" font-size="20" fill="#1f2933" font-weight="400">python_example</text>
-<g><title>python_example: +2.79 [+2.25, +3.33]</title><rect x="273.60" y="478" width="35.48" height="16" rx="3" fill="#a1b3bc"/><path d="M302.20 486H315.95M302.20 481v10M315.95 481v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="491" font-size="20" text-anchor="end" font-weight="600">+2.79</text>
-<text x="20" y="521" font-size="20" fill="#1f2933" font-weight="400">faan_aware</text>
-<g><title>faan_aware: +1.57 [+1.30, +1.83]</title><rect x="273.60" y="508" width="19.91" height="16" rx="3" fill="#a1b3bc"/><path d="M290.09 516H296.93M290.09 511v10M296.93 511v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="521" font-size="20" text-anchor="end" font-weight="600">+1.57</text>
-<text x="20" y="551" font-size="20" fill="#1f2933" font-weight="400">shallow_search</text>
-<g><title>shallow_search: -0.35 [-0.73, +0.03]</title><rect x="269.12" y="538" width="4.48" height="16" rx="3" fill="#a1b3bc"/><path d="M264.27 546H273.96M264.27 541v10M273.96 541v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="551" font-size="20" text-anchor="end" font-weight="600">-0.35</text>
-<text x="20" y="581" font-size="20" fill="#1f2933" font-weight="400">ukeire</text>
-<g><title>ukeire: -0.85 [-1.04, -0.66]</title><rect x="262.81" y="568" width="10.79" height="16" rx="3" fill="#a1b3bc"/><path d="M260.36 576H265.26M260.36 571v10M265.26 571v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="581" font-size="20" text-anchor="end" font-weight="600">-0.85</text>
-<text x="20" y="611" font-size="20" fill="#1f2933" font-weight="400">deficiency</text>
-<g><title>deficiency: -0.93 [-1.14, -0.71]</title><rect x="261.83" y="598" width="11.77" height="16" rx="3" fill="#a1b3bc"/><path d="M259.14 606H264.53M259.14 601v10M264.53 601v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="611" font-size="20" text-anchor="end" font-weight="600">-0.93</text>
-<text x="20" y="641" font-size="20" fill="#1f2933" font-weight="400">random</text>
-<g><title>random: -2.82 [-2.95, -2.69]</title><rect x="237.72" y="628" width="35.88" height="16" rx="3" fill="#a1b3bc"/><path d="M236.02 636H239.41M236.02 631v10M239.41 631v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="641" font-size="20" text-anchor="end" font-weight="600">-2.82</text>
-<text x="369" y="707" font-size="18" text-anchor="middle" fill="#576574">Points a hand · 95% interval</text>
+<text x="20" y="491" font-size="20" fill="#1f2933" font-weight="400">NeuralCat-NC9</text>
+<g><title>NeuralCat-NC9: +12.81 [+11.62, +13.99]</title><rect x="273.60" y="478" width="162.91" height="16" rx="3" fill="#a1b3bc"/><path d="M421.44 486H451.58M421.44 481v10M451.58 481v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="491" font-size="20" text-anchor="end" font-weight="600">+12.81</text>
+<text x="20" y="521" font-size="20" fill="#1f2933" font-weight="400">NeuralCat-NC10</text>
+<g><title>NeuralCat-NC10: +12.79 [+11.67, +13.91]</title><rect x="273.60" y="508" width="162.64" height="16" rx="3" fill="#a1b3bc"/><path d="M422.01 516H450.48M422.01 511v10M450.48 511v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="521" font-size="20" text-anchor="end" font-weight="600">+12.79</text>
+<text x="20" y="551" font-size="20" fill="#1f2933" font-weight="400">hk-mahjong-lab-PIMC-128</text>
+<g><title>hk-mahjong-lab-PIMC-128: +12.72 [+11.19, +14.25]</title><rect x="273.60" y="538" width="161.77" height="16" rx="3" fill="#a1b3bc"/><path d="M415.92 546H454.81M415.92 541v10M454.81 541v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="551" font-size="20" text-anchor="end" font-weight="600">+12.72</text>
+<text x="20" y="581" font-size="20" fill="#1f2933" font-weight="400">hk-mahjong-lab-value</text>
+<g><title>hk-mahjong-lab-value: +11.70 [+10.90, +12.49]</title><rect x="273.60" y="568" width="148.80" height="16" rx="3" fill="#a1b3bc"/><path d="M412.30 576H432.51M412.30 571v10M432.51 571v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="581" font-size="20" text-anchor="end" font-weight="600">+11.70</text>
+<text x="20" y="611" font-size="20" fill="#1f2933" font-weight="400">LuckyCat-lc34</text>
+<g><title>LuckyCat-lc34: +10.87 [+10.13, +11.62]</title><rect x="273.60" y="598" width="138.30" height="16" rx="3" fill="#a1b3bc"/><path d="M402.45 606H421.36M402.45 601v10M421.36 601v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="611" font-size="20" text-anchor="end" font-weight="600">+10.87</text>
+<text x="20" y="641" font-size="20" fill="#1f2933" font-weight="400">LuckyCat-lc32</text>
+<g><title>LuckyCat-lc32: +10.40 [+9.67, +11.14]</title><rect x="273.60" y="628" width="132.34" height="16" rx="3" fill="#a1b3bc"/><path d="M396.56 636H415.32M396.56 631v10M415.32 631v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="641" font-size="20" text-anchor="end" font-weight="600">+10.40</text>
+<text x="20" y="671" font-size="20" fill="#1f2933" font-weight="400">LuckyCat-JorgeYau</text>
+<g><title>LuckyCat-JorgeYau: +10.04 [+9.11, +10.97]</title><rect x="273.60" y="658" width="127.68" height="16" rx="3" fill="#a1b3bc"/><path d="M389.49 666H413.08M389.49 661v10M413.08 661v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="671" font-size="20" text-anchor="end" font-weight="600">+10.04</text>
+<text x="20" y="701" font-size="20" fill="#1f2933" font-weight="400">python_example</text>
+<g><title>python_example: +2.79 [+2.25, +3.33]</title><rect x="273.60" y="688" width="35.48" height="16" rx="3" fill="#a1b3bc"/><path d="M302.20 696H315.95M302.20 691v10M315.95 691v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="701" font-size="20" text-anchor="end" font-weight="600">+2.79</text>
+<text x="20" y="731" font-size="20" fill="#1f2933" font-weight="400">faan_aware</text>
+<g><title>faan_aware: +1.57 [+1.30, +1.83]</title><rect x="273.60" y="718" width="19.91" height="16" rx="3" fill="#a1b3bc"/><path d="M290.09 726H296.93M290.09 721v10M296.93 721v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="731" font-size="20" text-anchor="end" font-weight="600">+1.57</text>
+<text x="20" y="761" font-size="20" fill="#1f2933" font-weight="400">shallow_search</text>
+<g><title>shallow_search: -0.35 [-0.73, +0.03]</title><rect x="269.12" y="748" width="4.48" height="16" rx="3" fill="#a1b3bc"/><path d="M264.27 756H273.96M264.27 751v10M273.96 751v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="761" font-size="20" text-anchor="end" font-weight="600">-0.35</text>
+<text x="20" y="791" font-size="20" fill="#1f2933" font-weight="400">ukeire</text>
+<g><title>ukeire: -0.85 [-1.04, -0.66]</title><rect x="262.81" y="778" width="10.79" height="16" rx="3" fill="#a1b3bc"/><path d="M260.36 786H265.26M260.36 781v10M265.26 781v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="791" font-size="20" text-anchor="end" font-weight="600">-0.85</text>
+<text x="20" y="821" font-size="20" fill="#1f2933" font-weight="400">deficiency</text>
+<g><title>deficiency: -0.93 [-1.14, -0.71]</title><rect x="261.83" y="808" width="11.77" height="16" rx="3" fill="#a1b3bc"/><path d="M259.14 816H264.53M259.14 811v10M264.53 811v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="821" font-size="20" text-anchor="end" font-weight="600">-0.93</text>
+<text x="20" y="851" font-size="20" fill="#1f2933" font-weight="400">random</text>
+<g><title>random: -2.82 [-2.95, -2.69]</title><rect x="237.72" y="838" width="35.88" height="16" rx="3" fill="#a1b3bc"/><path d="M236.02 846H239.41M236.02 841v10M239.41 841v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="851" font-size="20" text-anchor="end" font-weight="600">-2.82</text>
+<text x="369" y="917" font-size="18" text-anchor="middle" fill="#576574">Points a hand · 95% interval</text>
 <text x="20" y="755" font-size="22" font-weight="700">Chicken hand</text>
 <text x="20" y="781" font-size="14" fill="#576574">hk-chicken-v1</text>
 <text x="620" y="781" font-size="16" text-anchor="end" fill="#576574">Mean</text>
-<path d="M210.00 800V1020" stroke="#dce4e7"/>
-<text x="210.00" y="1044" font-size="18" text-anchor="middle" fill="#576574">-1.5</text>
-<path d="M273.60 800V1020" stroke="#dce4e7"/>
-<text x="273.60" y="1044" font-size="18" text-anchor="middle" fill="#576574">-1</text>
-<path d="M337.20 800V1020" stroke="#dce4e7"/>
-<text x="337.20" y="1044" font-size="18" text-anchor="middle" fill="#576574">-0.5</text>
-<path d="M400.80 800V1020" stroke="#dce4e7"/>
-<text x="400.80" y="1044" font-size="18" text-anchor="middle" fill="#576574">0</text>
-<path d="M464.40 800V1020" stroke="#dce4e7"/>
-<text x="464.40" y="1044" font-size="18" text-anchor="middle" fill="#576574">0.5</text>
-<path d="M528.00 800V1020" stroke="#dce4e7"/>
-<text x="528.00" y="1044" font-size="18" text-anchor="middle" fill="#576574">1</text>
-<path d="M400.80 800V1020" stroke="#576574"/>
-<text x="20" y="821" font-size="20" fill="#20785b" font-weight="700">Fu-2.3M-HKMA-1</text>
-<g><title>Fu-2.3M-HKMA-1: +0.64 [+0.55, +0.73]</title><rect x="400.80" y="808" width="81.60" height="16" rx="3" fill="#20785b"/><path d="M471.29 816H493.50M471.29 811v10M493.50 811v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="821" font-size="20" text-anchor="end" font-weight="600">+0.64</text>
-<text x="20" y="851" font-size="20" fill="#1f2933" font-weight="400">faan_aware</text>
-<g><title>faan_aware: +0.41 [+0.30, +0.52]</title><rect x="400.80" y="838" width="52.30" height="16" rx="3" fill="#a1b3bc"/><path d="M438.81 846H467.38M438.81 841v10M467.38 841v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="851" font-size="20" text-anchor="end" font-weight="600">+0.41</text>
-<text x="20" y="881" font-size="20" fill="#1f2933" font-weight="400">shallow_search</text>
-<g><title>shallow_search: +0.13 [+0.00, +0.26]</title><rect x="400.80" y="868" width="16.85" height="16" rx="3" fill="#a1b3bc"/><path d="M400.83 876H434.48M400.83 871v10M434.48 871v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="881" font-size="20" text-anchor="end" font-weight="600">+0.13</text>
-<text x="20" y="911" font-size="20" fill="#1f2933" font-weight="400">python_example</text>
-<g><title>python_example: -0.14 [-0.34, +0.05]</title><rect x="382.37" y="898" width="18.43" height="16" rx="3" fill="#a1b3bc"/><path d="M357.87 906H406.87M357.87 901v10M406.87 901v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="911" font-size="20" text-anchor="end" font-weight="600">-0.14</text>
-<text x="20" y="941" font-size="20" fill="#1f2933" font-weight="400">ukeire</text>
-<g><title>ukeire: -0.17 [-0.25, -0.09]</title><rect x="379.22" y="928" width="21.58" height="16" rx="3" fill="#a1b3bc"/><path d="M368.57 936H389.88M368.57 931v10M389.88 931v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="941" font-size="20" text-anchor="end" font-weight="600">-0.17</text>
-<text x="20" y="971" font-size="20" fill="#1f2933" font-weight="400">deficiency</text>
-<g><title>deficiency: -0.18 [-0.26, -0.10]</title><rect x="378.51" y="958" width="22.29" height="16" rx="3" fill="#a1b3bc"/><path d="M368.32 966H388.70M368.32 961v10M388.70 961v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="971" font-size="20" text-anchor="end" font-weight="600">-0.18</text>
-<text x="20" y="1001" font-size="20" fill="#1f2933" font-weight="400">random</text>
-<g><title>random: -1.19 [-1.27, -1.12]</title><rect x="248.95" y="988" width="151.84" height="16" rx="3" fill="#a1b3bc"/><path d="M239.03 996H258.88M239.03 991v10M258.88 991v10" stroke="#1f2933" stroke-width="1.5"/></g>
-<text x="620" y="1001" font-size="20" text-anchor="end" font-weight="600">-1.19</text>
-<text x="369" y="1067" font-size="18" text-anchor="middle" fill="#576574">Points a hand · 95% interval</text>
+<path d="M210.00 800V1230" stroke="#dce4e7"/>
+<text x="210.00" y="1254" font-size="18" text-anchor="middle" fill="#576574">-2</text>
+<path d="M273.60 800V1230" stroke="#dce4e7"/>
+<text x="273.60" y="1254" font-size="18" text-anchor="middle" fill="#576574">-1</text>
+<path d="M337.20 800V1230" stroke="#dce4e7"/>
+<text x="337.20" y="1254" font-size="18" text-anchor="middle" fill="#576574">0</text>
+<path d="M400.80 800V1230" stroke="#dce4e7"/>
+<text x="400.80" y="1254" font-size="18" text-anchor="middle" fill="#576574">1</text>
+<path d="M464.40 800V1230" stroke="#dce4e7"/>
+<text x="464.40" y="1254" font-size="18" text-anchor="middle" fill="#576574">2</text>
+<path d="M528.00 800V1230" stroke="#dce4e7"/>
+<text x="528.00" y="1254" font-size="18" text-anchor="middle" fill="#576574">3</text>
+<path d="M337.20 800V1230" stroke="#576574"/>
+<text x="20" y="821" font-size="20" fill="#1f2933" font-weight="400">LuckyCat-lc34</text>
+<g><title>LuckyCat-lc34: +2.15 [+1.84, +2.47]</title><rect x="337.20" y="808" width="137.03" height="16" rx="3" fill="#a1b3bc"/><path d="M454.35 816H494.10M454.35 811v10M494.10 811v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="821" font-size="20" text-anchor="end" font-weight="600">+2.15</text>
+<text x="20" y="851" font-size="20" fill="#1f2933" font-weight="400">NeuralCat-NC10</text>
+<g><title>NeuralCat-NC10: +1.94 [+1.58, +2.29]</title><rect x="337.20" y="838" width="123.13" height="16" rx="3" fill="#a1b3bc"/><path d="M437.51 846H483.15M437.51 841v10M483.15 841v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="851" font-size="20" text-anchor="end" font-weight="600">+1.94</text>
+<text x="20" y="881" font-size="20" fill="#1f2933" font-weight="400">NeuralCat-NC9</text>
+<g><title>NeuralCat-NC9: +1.90 [+1.55, +2.25]</title><rect x="337.20" y="868" width="121.03" height="16" rx="3" fill="#a1b3bc"/><path d="M435.85 876H480.61M435.85 871v10M480.61 871v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="881" font-size="20" text-anchor="end" font-weight="600">+1.90</text>
+<text x="20" y="911" font-size="20" fill="#1f2933" font-weight="400">LuckyCat-lc32</text>
+<g><title>LuckyCat-lc32: +1.88 [+1.60, +2.16]</title><rect x="337.20" y="898" width="119.42" height="16" rx="3" fill="#a1b3bc"/><path d="M438.97 906H474.28M438.97 901v10M474.28 901v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="911" font-size="20" text-anchor="end" font-weight="600">+1.88</text>
+<text x="20" y="941" font-size="20" fill="#1f2933" font-weight="400">LuckyCat-JorgeYau</text>
+<g><title>LuckyCat-JorgeYau: +1.70 [+1.41, +1.99]</title><rect x="337.20" y="928" width="107.95" height="16" rx="3" fill="#a1b3bc"/><path d="M426.73 936H463.58M426.73 931v10M463.58 931v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="941" font-size="20" text-anchor="end" font-weight="600">+1.70</text>
+<text x="20" y="971" font-size="20" fill="#1f2933" font-weight="400">hk-mahjong-lab-PIMC-128</text>
+<g><title>hk-mahjong-lab-PIMC-128: +1.06 [+0.86, +1.26]</title><rect x="337.20" y="958" width="67.57" height="16" rx="3" fill="#a1b3bc"/><path d="M391.91 966H417.64M391.91 961v10M417.64 961v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="971" font-size="20" text-anchor="end" font-weight="600">+1.06</text>
+<text x="20" y="1001" font-size="20" fill="#1f2933" font-weight="400">hk-mahjong-lab-value</text>
+<g><title>hk-mahjong-lab-value: +0.84 [+0.76, +0.93]</title><rect x="337.20" y="988" width="53.52" height="16" rx="3" fill="#a1b3bc"/><path d="M385.35 996H396.09M385.35 991v10M396.09 991v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="1001" font-size="20" text-anchor="end" font-weight="600">+0.84</text>
+<text x="20" y="1031" font-size="20" fill="#20785b" font-weight="700">Fu-2.3M-HKMA-1</text>
+<g><title>Fu-2.3M-HKMA-1: +0.64 [+0.55, +0.73]</title><rect x="337.20" y="1018" width="40.80" height="16" rx="3" fill="#20785b"/><path d="M372.45 1026H383.55M372.45 1021v10M383.55 1021v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="1031" font-size="20" text-anchor="end" font-weight="600">+0.64</text>
+<text x="20" y="1061" font-size="20" fill="#1f2933" font-weight="400">faan_aware</text>
+<g><title>faan_aware: +0.41 [+0.30, +0.52]</title><rect x="337.20" y="1048" width="26.15" height="16" rx="3" fill="#a1b3bc"/><path d="M356.20 1056H370.49M356.20 1051v10M370.49 1051v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="1061" font-size="20" text-anchor="end" font-weight="600">+0.41</text>
+<text x="20" y="1091" font-size="20" fill="#1f2933" font-weight="400">shallow_search</text>
+<g><title>shallow_search: +0.13 [+0.00, +0.26]</title><rect x="337.20" y="1078" width="8.43" height="16" rx="3" fill="#a1b3bc"/><path d="M337.22 1086H354.04M337.22 1081v10M354.04 1081v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="1091" font-size="20" text-anchor="end" font-weight="600">+0.13</text>
+<text x="20" y="1121" font-size="20" fill="#1f2933" font-weight="400">python_example</text>
+<g><title>python_example: -0.14 [-0.34, +0.05]</title><rect x="327.99" y="1108" width="9.21" height="16" rx="3" fill="#a1b3bc"/><path d="M315.74 1116H340.23M315.74 1111v10M340.23 1111v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="1121" font-size="20" text-anchor="end" font-weight="600">-0.14</text>
+<text x="20" y="1151" font-size="20" fill="#1f2933" font-weight="400">ukeire</text>
+<g><title>ukeire: -0.17 [-0.25, -0.09]</title><rect x="326.41" y="1138" width="10.79" height="16" rx="3" fill="#a1b3bc"/><path d="M321.08 1146H331.74M321.08 1141v10M331.74 1141v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="1151" font-size="20" text-anchor="end" font-weight="600">-0.17</text>
+<text x="20" y="1181" font-size="20" fill="#1f2933" font-weight="400">deficiency</text>
+<g><title>deficiency: -0.18 [-0.26, -0.10]</title><rect x="326.05" y="1168" width="11.15" height="16" rx="3" fill="#a1b3bc"/><path d="M320.96 1176H331.15M320.96 1171v10M331.15 1171v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="1181" font-size="20" text-anchor="end" font-weight="600">-0.18</text>
+<text x="20" y="1211" font-size="20" fill="#1f2933" font-weight="400">random</text>
+<g><title>random: -1.19 [-1.27, -1.12]</title><rect x="261.28" y="1198" width="75.92" height="16" rx="3" fill="#a1b3bc"/><path d="M256.32 1206H266.24M256.32 1201v10M266.24 1201v10" stroke="#1f2933" stroke-width="1.5"/></g>
+<text x="620" y="1211" font-size="20" text-anchor="end" font-weight="600">-1.19</text>
+<text x="369" y="1277" font-size="18" text-anchor="middle" fill="#576574">Points a hand · 95% interval</text>
 </g></svg>
