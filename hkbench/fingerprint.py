@@ -20,6 +20,7 @@ from typing import Any, Dict, List
 
 from hkbench.engine.game import GameState
 from hkbench.engine.profile import RulesProfile
+from hkbench.engine.payment import table_payments
 from hkbench.engine.scorer import score_hand
 from hkbench.engine.tiles import BONUS_NAMES, parse_tile
 from hkbench.engine.types import Meld, MeldKind, PlayerState, WinSource
@@ -120,7 +121,7 @@ def score_corpus_hand(profile: RulesProfile, case: Dict[str, Any]) -> Dict[str, 
         "faan": res.capped_faan,
         "ok": res.meets_minimum,
         "limit": res.is_limit,
-        "payments": list(res.payments),
+        "payments": table_payments(res.payments, WinSource[case["win_source"]], res.winner, profile),
     }
 
 

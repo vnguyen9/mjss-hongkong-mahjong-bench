@@ -39,6 +39,7 @@ from hkbench.engine.types import (
     PlayerState,
     WinSource,
 )
+from hkbench.engine.payment import table_payments
 from hkbench.engine.scorer import can_declare_win, score_hand
 from hkbench.engine.win import can_win_structurally, is_seven_pairs
 from hkbench.engine.game_types import (
@@ -894,7 +895,7 @@ class GameState:
             profile=self.profile,
             **kwargs,
         )
-        payments = list(score.payments)
+        payments = table_payments(score.payments, source, seat, self.profile)
         if sum(payments) != 0:
             # A scorer that loses or invents points is a bug in the engine. Stop the run.
             raise RuntimeError(f"settlement does not sum to zero: {payments}")

@@ -58,6 +58,11 @@ class RulesProfile:
         return float(self.data["payments"]["self_draw_multiplier"])
 
     @property
+    def discarder_pays(self) -> str:
+        """``"all"`` (the discarder pays the whole hand) or ``"equal"`` (all three losers pay the same)."""
+        return str(self.data["payments"].get("discarder_pays", "all"))
+
+    @property
     def limit_hands(self) -> Set[str]:
         return set(self.data["exclusions"]["limit_hands"])
 

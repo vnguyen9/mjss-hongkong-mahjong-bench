@@ -6,7 +6,7 @@ The rulebook is the Hong Kong Mahjong Association's *Hong Kong Mahjong (Classica
 
 ## How a hand is played (every table)
 
-* The game is 13-tile Hong Kong Mahjong with 144 tiles: 4 each of 27 suit tiles and 7 honour tiles, and 8 flowers and seasons. There are four players. A winning hand is four melds and a pair, or Thirteen Orphans. Seven Pairs is not a hand in `hk-hkma-v1` or `hk-chicken-v1`.
+* The game is 13-tile Hong Kong Mahjong with 144 tiles: 4 each of 27 suit tiles and 7 honour tiles, and 8 flowers and seasons. There are four players. A winning hand is four melds and a pair, or Thirteen Orphans. Seven Pairs is not a hand in `hk-hkma-v1` or `hk-chicken-v2`.
 * The bench plays single hands. Each deal fixes the dealer and the prevailing wind (`dealer = deal number mod 4`, `prevailing wind = (deal number / 4) mod 4`). There is no dealer rotation, no match score and no penalty system.
 * The dealer is East and discards first, after drawing a 14th tile. Each seat is dealt 13 tiles.
 * After the deal, flowers and seasons in the opening hands are shown and replaced with tiles from the back of the wall. The dealer replaces first, then the next seat, and so on in turn order. Each seat keeps replacing until it holds no flower (a replacement that is a flower is replaced again), and the rounds repeat until no seat holds one.
@@ -14,7 +14,7 @@ The rulebook is the Hong Kong Mahjong Association's *Hong Kong Mahjong (Classica
 * On your turn, draw, then win, declare a kong, or discard. Concealed and added kongs are declared on your own turn and draw a replacement from the back of the wall.
 * For claims on a discard, win beats pong and kong; pong and kong beat chow. A chow can only be claimed from the player who acts just before you. If two players can win on the same tile, only the nearest after the discarder wins. A fourth tile added to a pong can be robbed by a player who wins on it.
 * There is no dead wall. The hand ends in a draw when there is no tile left to draw. A draw pays nothing. The very last discard can still be claimed.
-* The win action is only offered when the hand is complete and reaches the table's minimum (3 faan on HKMA and House, 0 on `hk-chicken-v1`). A bot cannot make a false win.
+* The win action is only offered when the hand is complete and reaches the table's minimum (3 faan on HKMA and House, 0 on `hk-chicken-v2`). A bot cannot make a false win.
 * The hand is scored in the way that gives the most faan. Every faan item that applies is counted (rulebook: the Total Compound Principle), except where a limit hand replaces them. The total is capped, then looked up in the payment table.
 * Concealed kongs are shown to every player in the protocol (at a real table they are placed in the meld area).
 
@@ -184,13 +184,13 @@ Minimum to win: **3 faan**. Cap: **13 faan**.
 * Flowers score one faan for the player's own seat flower or season, one for having none, two for all four flowers or all four seasons, three for seven, and eight is a limit hand worth 13.
 * House follows its own rules. The engine behaves the same way: there is no 包, and gaps 2 to 11 above describe it too.
 
-## `hk-chicken-v1`: Chicken hand
+## `hk-chicken-v2`: Chicken hand
 
-This table uses HKMA Classical with exactly one change: **the minimum to win is 0 faan.** A complete hand with no scoring pattern, a chicken hand (雞糊, "chicken win"), wins, and everything else is as on `hk-hkma-v1`: cap 10, flowers score nothing, no Seven Pairs, the discarder pays the whole hand, the same faan values and the same payment table. The rules file is `tables/hk-chicken-v1/rules.json`, and it says in `derived_from` that it came from `hk-hkma-v1` (rules hash 43e4e01c50dce4d3) and what changed.
+This table uses HKMA Classical with two changes. **The minimum to win is 0 faan, and every win pays the same, whatever its faan.** A complete hand with no scoring pattern, a chicken hand (雞糊, "chicken win"), wins. Everything else is as on `hk-hkma-v1`: cap 10, flowers score nothing, no Seven Pairs. Only the payment differs: the discarder does not pay the whole hand here. The rules file is `tables/hk-chicken-v2/rules.json`, and it says in `derived_from` that it came from `hk-hkma-v1` (rules hash 43e4e01c50dce4d3) and what changed.
 
-A table where any complete hand may win plays differently from one with a 3-faan bar, because a hand is never stuck below the minimum and a cheap win is always available. It shows whether a bot, an LLM or a human is built for a 3-faan game or can play the quick game too. Win values still vary, unlike the no-minimum "hit and run" game: here a 3-faan hand still pays 8, a limit hand 128, and a chicken hand 1, so building a big hand still pays.
+A table where any complete hand may win plays differently from one with a 3-faan bar, because a hand is never stuck below the minimum and a cheap win is always available. On a table like that the aim is to win, not to build a big hand, so the payment is flat and the table is ranked by win rate. It shows whether a bot, an LLM or a human is built for a 3-faan game or can play the quick game too.
 
-<!-- rules:hk-chicken-v1:begin -->
+<!-- rules:hk-chicken-v2:begin -->
 Minimum to win: **0 faan**. Cap: **10 faan**.
 
 | Faan item | Faan |
@@ -234,22 +234,21 @@ Minimum to win: **0 faan**. Cap: **10 faan**.
 | Seven flowers or seasons (instant win) | 0 |
 | Eight flowers and seasons (instant win) | 0 |
 
-| Faan | Discarder pays everything | Self-drawn: each of the three pays | Self-drawn: winner collects |
-|---|---|---|---|
-| 0 (a chicken hand) | 1 | not possible | not possible |
-| 1 | 2 | 1 | 3 |
-| 2 | 4 | 2 | 6 |
-| 3 | 8 | 4 | 12 |
-| 4 | 16 | 8 | 24 |
-| 5 | 24 | 12 | 36 |
-| 6 | 32 | 16 | 48 |
-| 7 | 48 | 24 | 72 |
-| 8 | 64 | 32 | 96 |
-| 9 | 96 | 48 | 144 |
-| 10 | 128 | 64 | 192 |
-<!-- rules:hk-chicken-v1:end -->
+Every win pays the same, whatever its faan, and whoever paid for the tile. Faan are still found and logged, but they do not change the payment.
 
+| How the hand was won | Who pays | Winner collects |
+|---|---|---|
+| Off a discard | Each of the other three pays 1 (the discarder pays no more) | 3 |
+| Self-drawn | Each of the other three pays 1 | 3 |
+<!-- rules:hk-chicken-v2:end -->
+
+* The payment is fixed. Whoever wins collects 3 and each of the other three seats pays 1. It is the same whether the win was self-drawn or off a discard: the discarder pays no more than the others. Faan are still found and logged for every win, and the cap still applies to them, but they do not change what is paid. The rules file has a payment table with every row at 1, a self-draw multiplier of 3 and `discarder_pays` set to `equal`. It is the payment of the no-faan table the hosted bot was trained on.
+* The table is ranked by **win rate**: the share of games the scored bot won, with a 95% interval that counts each deal as one sample. The deal-in rate is shown beside it. Points a hand are a straight-line function of win rate here: in a game someone wins, a seat scores 3 if it won and -1 if not, so points a hand are 4 x win rate - (1 - draw rate). They add nothing, so the headline is win rate. HKMA Classical and House keep points a hand. Rows, bars and shared ranks on the board use win rate on this table only.
+* Head-to-heads on this table rank by wins too. A team wins a hand when one of its two seats wins it, whoever pays. A drawn hand is a tie. Bradley-Terry ratings are fitted to those results.
 * A chicken hand consists of four melds and a pair that score no faan item at all: not all sequences, not all triplets, no dragon triplet, no triplet of the player's own wind or the prevailing wind, no flush, no limit hand, and flowers score nothing. Self-Drawn and Closed Hand are one faan each, so a chicken hand is always won on a discard, with at least one meld claimed from another player. A hand that is not complete is still not a win: a lower minimum does not make Seven Pairs, or a hand one tile short, a hand.
-* The discarder pays 1 point for a chicken hand (the 0-faan row of the same table), and the rest as on HKMA: 8 for 3 faan up to 128 at the cap.
 * Gaps 1 to 11 above describe this table too.
-* The reference field is the same three bots, unchanged. They take a win whenever the engine offers one, so on this table they declare a chicken hand, and they read the table's rules, so what counts as a hand ready to win moves with the minimum.
+* The reference field is the same three bots, unchanged. They take a win whenever the engine offers one, so on this table they declare a chicken hand, and they read the table's rules, so what counts as a hand ready to win moves with the minimum. Their play does not change with the payment, because they do not read it.
+
+### `hk-chicken-v1`, retired
+
+`hk-chicken-v1` had the same 0-faan minimum but paid by faan like HKMA (1 for a chicken hand, 8 for 3 faan, up to 128 at the cap), and it was ranked by points a hand. It rewarded big hands on a table whose point is to win, so it was replaced by `hk-chicken-v2` on 22 November 2026. Its rules, fingerprint, result files and logs stay in the repository and its logs still replay with `verify-log`. It is off the board, the chart and the results page.

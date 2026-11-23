@@ -19,7 +19,7 @@ from hkbench import bench, site  # noqa: E402
 class RulesDocument(unittest.TestCase):
     def test_rules_md_tables_are_generated_from_the_rules_files(self):
         text = (ROOT / "RULES.md").read_text(encoding="utf-8")
-        for tid in ("hk-hkma-v1", "hk-house-v1", "hk-chicken-v1"):
+        for tid in ("hk-hkma-v1", "hk-house-v1", "hk-chicken-v2"):
             m = re.search(r"<!-- rules:%s:begin -->\n(.*?)\n<!-- rules:%s:end -->" % (tid, tid), text, re.S)
             self.assertIsNotNone(m, tid)
             self.assertEqual(m.group(1), render(tid), "RULES.md is out of date for %s: run scripts/render_rules.py" % tid)
@@ -60,10 +60,10 @@ class Leaderboard(unittest.TestCase):
         data = json.loads((out / "leaderboard.json").read_text())
         self.assertEqual(data["schema"], "hkbench-leaderboard-1")
         self.assertEqual([t["id"] for t in data["tracks"]], ["bots", "llms", "humans"])
-        self.assertEqual({t["id"]: t["status"] for t in data["tables"]}, {"hk-chicken-v1": "active", "hk-hkma-v1": "active", "hk-house-v1": "active"})
+        self.assertEqual({t["id"]: t["status"] for t in data["tables"]}, {"hk-chicken-v2": "active", "hk-hkma-v1": "active", "hk-house-v1": "active"})
         self.assertEqual(len(data["rows"]), 2)
         for row in data["rows"]:
-            for key in ("rank", "track", "table", "rules_track", "verification", "seed_tag", "ci95", "points_per_hand", "games"):
+            for key in ("rank", "track", "table", "rules_track", "verification", "seed_tag", "ci95", "metric", "value", "points_per_hand", "games"):
                 self.assertIn(key, row)
             self.assertEqual(row["verification"], "unverified")
         html = index.read_text()
@@ -75,13 +75,13 @@ class Leaderboard(unittest.TestCase):
 
     def test_latest_run_per_bot_wins_and_ranks_are_shared_when_intervals_overlap(self):
         rows = [
-            {"run_id": "a", "created_utc": "1", "track": "bots", "table": "t", "seed_tag": "public", "points_per_hand": 5.0,
+            {"run_id": "a", "created_utc": "1", "track": "bots", "table": "t", "seed_tag": "public", "value": 5.0, "points_per_hand": 5.0,
              "ci95": [3.0, 7.0], "bot": {"name": "x", "sha256": "1"}},
-            {"run_id": "b", "created_utc": "2", "track": "bots", "table": "t", "seed_tag": "public", "points_per_hand": 4.0,
+            {"run_id": "b", "created_utc": "2", "track": "bots", "table": "t", "seed_tag": "public", "value": 4.0, "points_per_hand": 4.0,
              "ci95": [2.0, 6.0], "bot": {"name": "y", "sha256": "2"}},
-            {"run_id": "c", "created_utc": "3", "track": "bots", "table": "t", "seed_tag": "public", "points_per_hand": -9.0,
+            {"run_id": "c", "created_utc": "3", "track": "bots", "table": "t", "seed_tag": "public", "value": -9.0, "points_per_hand": -9.0,
              "ci95": [-11.0, -7.0], "bot": {"name": "z", "sha256": "3"}},
-            {"run_id": "d", "created_utc": "9", "track": "bots", "table": "t", "seed_tag": "public", "points_per_hand": -8.0,
+            {"run_id": "d", "created_utc": "9", "track": "bots", "table": "t", "seed_tag": "public", "value": -8.0, "points_per_hand": -8.0,
              "ci95": [-10.0, -6.0], "bot": {"name": "z", "sha256": "3"}},
         ]
         latest = site._latest(rows)

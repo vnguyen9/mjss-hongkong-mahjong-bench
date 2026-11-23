@@ -10,7 +10,7 @@ A fair way to compare Hong Kong Mahjong players: bots today, LLMs and humans.
 <p>
   <a href="LICENSE"><img src="https://img.shields.io/badge/licence-MIT-20785b" alt="MIT licence"></a>
   <img src="https://img.shields.io/badge/Python-3.9%2B-20785b" alt="Python 3.9+">
-  <img src="https://img.shields.io/badge/version-1.1.0-20785b" alt="Version 1.1.0">
+  <img src="https://img.shields.io/badge/version-1.2.0-20785b" alt="Version 1.2.0">
   <img src="https://img.shields.io/badge/protocol-hkbench--1-20785b" alt="Protocol hkbench-1">
 </p>
 <p><a href="site/index.html">Leaderboard</a> · <a href="RESULTS.md">Results</a> · <a href="BENCHMARK_CARD.md">Benchmark card</a> · <a href="RULES.md">Rules</a> · <a href="SUBMITTING.md">Submit a bot</a> · <a href="https://mahjongsensei.co">Mahjong Sensei</a></p>
@@ -20,7 +20,7 @@ A fair way to compare Hong Kong Mahjong players: bots today, LLMs and humans.
 
 We make [Mahjong Sensei](https://mahjongsensei.co), a Hong Kong Mahjong app ([App Store](https://apps.apple.com/us/app/mahjong-sensei/id6792996894)), and `Fu-2.3M-HKMA-1` is the bot you play against in it. Each time we trained a new version, we needed to know whether it really played better. There was no benchmark for Hong Kong Mahjong; most public mahjong AI work is about Japanese Riichi. So we built this rules engine, scorer and harness for our own bot, and we're opening it up so anyone can measure theirs the same way. It's MIT licensed. LLM and human tracks are coming soon.
 
-Mahjong is noisy. A strong player can lose a whole session on bad tiles, so counting wins takes an enormous number of games. Duplicate play takes most of that luck out: every wall is played four times, with the bot in each seat once. The score is points a hand against a fixed field of reference bots, with a 95% confidence interval (CI). House rules vary a lot in Hong Kong Mahjong, so we bench against three rule sets: HKMA Classical, House and Chicken hand. [RULES.md](RULES.md) has the details.
+Mahjong is noisy. A strong player can lose a whole session on bad tiles, so counting wins takes an enormous number of games. Duplicate play takes most of that luck out: every wall is played four times, with the bot in each seat once. The score is points a hand against a fixed field of reference bots, with a 95% confidence interval (CI). On Chicken hand, where every win pays the same, the score is win rate instead. House rules vary a lot in Hong Kong Mahjong, so we bench against three rule sets: HKMA Classical, House and Chicken hand. [RULES.md](RULES.md) has the details.
 
 Scores only mean something if a bot can't cheat or tune itself to the test. Verified rows are played on a private deck that only the maintainers hold. A bot is told only what its own seat can see, and the fair-play check re-deals the hidden tiles and asks again, so a bot that peeks gets caught. Every bot starts fresh each game, and program bots run in a sandbox. Version 1.1.0 [closed a hole](CHANGELOG.md#110-2026-11-21) that could have let a bot rebuild the private walls.
 
@@ -32,13 +32,13 @@ It helps with training too. The yardstick never moves, so you can compare saved 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/results-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="docs/assets/results-light.svg">
-  <img src="docs/assets/results-light.svg" alt="Verified private-deck points a hand for every bot on HKMA Classical, House and Chicken hand." width="640">
+  <img src="docs/assets/results-light.svg" alt="Verified private-deck results for every bot: points a hand on HKMA Classical and House, win rate on Chicken hand." width="640">
 </picture>
 </div>
 
-Each panel has its own scale, because rules and payouts differ between tables. The whiskers are 95% CIs. [Rebuild the chart](scripts/render_charts.py) with `python3 scripts/render_charts.py`.
+Each panel has its own scale, because rules and payouts differ between tables. HKMA Classical and House show points a hand. Chicken hand shows win rate, with deal-in rate beside each bar, because every win pays the same there. The whiskers are 95% CIs. [Rebuild the chart](scripts/render_charts.py) with `python3 scripts/render_charts.py`.
 
-Verified private-deck results from 20 to 22 November 2026, on version 1.1.0. For each table: `Fu-2.3M-HKMA-1` and the best of the other bots.
+Verified private-deck results from 20 to 23 November 2026 (Chicken hand on version 1.2.0). For each table: `Fu-2.3M-HKMA-1` and the best of the other bots.
 
 | Table | Bot | Points a hand [95% CI] | Win | Deal-in |
 |---|---|---|---|---|
@@ -46,10 +46,15 @@ Verified private-deck results from 20 to 22 November 2026, on version 1.1.0. For
 | `hk-hkma-v1` | `hk-mahjong-lab-PIMC-256` | +13.69 [+12.50, +14.87] | 53.0% | 2.4% |
 | `hk-house-v1` | `Fu-2.3M-HKMA-1` | +17.67 [+16.76, +18.58] | 37.4% | 4.9% |
 | `hk-house-v1` | `hk-mahjong-lab-PIMC-256` | +15.09 [+13.03, +17.16] | 42.5% | 4.2% |
-| `hk-chicken-v1` | `Fu-2.3M-HKMA-1` | +0.64 [+0.55, +0.73] | 47.8% | 13.5% |
-| `hk-chicken-v1` | `LuckyCat-lc34` | +2.15 [+1.84, +2.47] | 11.4% | 22.1% |
 
-`Fu-2.3M-HKMA-1` leads on HKMA Classical and House. On Chicken hand, every outside bot beats it. Fu was trained only on HKMA rules.
+Chicken hand is ranked by win rate, because every win pays the same:
+
+| Table | Bot | Win rate [95% CI] | Deal-in |
+|---|---|---|---|
+| `hk-chicken-v2` | `Fu-2.3M-HKMA-1` | 49.0% [48.0%, 50.1%] | 13.5% |
+| `hk-chicken-v2` | `hk-mahjong-lab-PIMC-128` | 52.1% [49.7%, 54.6%] | 12.4% |
+
+`Fu-2.3M-HKMA-1` leads on HKMA Classical and House. On Chicken hand it shares first place with the three hk-mahjong-lab bots, whose intervals overlap its own. Lucky Cat's five bots, which led the retired points-a-hand ranking on this table, win only 10% to 16% of games. Fu was trained only on HKMA rules.
 
 ### Outside bots
 
@@ -57,7 +62,7 @@ Eight bots from two other projects are on the leaderboard and the chart. Five co
 
 ## Why the run is fair
 
-The private deck stayed secret. Program bots ran in a sandbox with no network and no way to read the deck. Lucky Cat's bots start a JavaScript process from Python, so their sandbox allows that one child process. Every run passed the fair-play check, no bot went over the fault limit, and every private run is verified. Every public game replays exactly: 283,800 from the 1.1.0 re-score and 153,600 from the outside bots. Before scoring, the bench checked the reference bots' pinned hashes and the engine's fingerprint.
+The private deck stayed secret. Program bots ran in a sandbox with no network and no way to read the deck. Lucky Cat's bots start a JavaScript process from Python, so their sandbox allows that one child process. Every run passed the fair-play check, no bot went over the fault limit, and every private run is verified. Every public game replays exactly: 265,800 from the original bots and 153,600 from the outside bots. Before scoring, the bench checked the reference bots' pinned hashes and the engine's fingerprint.
 
 [RESULTS.md](RESULTS.md) has every bot on both decks, the head-to-head ratings, what the verified tag does and doesn't prove, and the commands to check the public runs yourself.
 
@@ -67,9 +72,9 @@ The private deck stayed secret. Program bots ran in a sandbox with no network an
 |---|---|---|
 | `hk-hkma-v1` | HKMA Classical: 3 faan to win, cap 10, discarder pays the whole hand, flowers do not score | scoring |
 | `hk-house-v1` | House: flowers score, limit hands graded, cap 13, Seven Pairs is a hand | scoring |
-| `hk-chicken-v1` | Chicken hand: HKMA Classical with a 0-faan minimum, so a hand with no scoring pattern wins; faan still score and pay | scoring |
+| `hk-chicken-v2` | Chicken hand: HKMA Classical with a 0-faan minimum, so a hand with no scoring pattern wins, and every win pays the same (winner +3, each other seat -1); ranked by win rate | scoring |
 
-HKMA Classical is the headline because it has a citable rulebook. `RULES.md` lists every faan value, the payout, and the places where `hk-hkma-v1` is not the rulebook.
+HKMA Classical is the headline because it has a citable rulebook. Chicken hand replaced `hk-chicken-v1`, which paid by faan, on 22 November 2026; [the changelog](CHANGELOG.md#120-2026-11-22) says why. `RULES.md` lists every faan value, the payout, and the places where `hk-hkma-v1` is not the rulebook.
 
 ## Quick start
 
@@ -87,7 +92,7 @@ Reproduce a row of the leaderboard with one command (about a minute for the fast
 python -m hkbench score --table hk-hkma-v1 --bot ref:ukeire --deals 200 --workers 2
 ```
 
-It prints points a hand with its 95% CI, win rate, deal-in rate, average win and limit hands. It also writes one result file and a compressed log of every game to `results/`. The run is tagged **unverified**, because it used the public deals.
+It prints points a hand with its 95% CI, win rate, deal-in rate, average win and limit hands (on a win-rate table such as `hk-chicken-v2`, the win rate with its 95% CI and the deal-in rate). It also writes one result file and a compressed log of every game to `results/`. The run is tagged **unverified**, because it used the public deals.
 
 Each log line is one game: the deal, the arrangement, who won and how, the faan and its `patterns` (`[name, faan]` pairs), the payments, and on public deals the seed and the full action list, so `verify-log` can replay it. To train on the games, add `--training-log` (to `score` or `h2h`; off by default, and with it off the logs are unchanged). Each won game's line then also carries the winner's `melds` (`[kind, tiles, seat the claimed tile came from]`), `concealed` tiles with the winning tile in them, `winning_tile` (null for a flower win), `flowers`, and `winner_draws`, the winner's own draw count from the engine's events. Tiles use the engine's names (`m1`..`m9`, `s1`.., `p1`.., `E S W N`, `C F P`). Seed plus actions rebuild any state, so nothing else is stored. The setting is for public deals: on a private deck the flag is ignored and the log stays outcome-only. The `game_over` message a bot receives (`protocol/PROTOCOL.md`) does not change.
 
@@ -154,6 +159,6 @@ The leaderboard has three tracks: **Bots**, **LLMs** and **Humans**. Only the Bo
   title = {Hong Kong Mahjong Bench},
   year = {2026},
   howpublished = {\url{https://github.com/vnguyen9/mjss-hongkong-mahjong-bench}},
-  note = {Version 1.1.0}
+  note = {Version 1.2.0}
 }
 ```

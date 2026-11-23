@@ -39,5 +39,6 @@
     "max_per_1000_decisions": 1
   },
   "fingerprint": "fingerprint.json",
-  "released": "2026-11-19"
+  "released": "2026-11-19",
+  "superseded_by": "hk-chicken-v2"
 }

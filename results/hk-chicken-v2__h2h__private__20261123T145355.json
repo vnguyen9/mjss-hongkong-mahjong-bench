@@ -1,0 +1,1530 @@
+{
+  "bots": [
+    {
+      "description": "",
+      "display": "random",
+      "kind": "reference",
+      "name": "random",
+      "sha256": "9c1c37dc49ebf5f63bb87cc87f83e332e4e10d7b31b97f77cd7aceacdf56dfd1",
+      "track": "bots",
+      "trained_on": "none (scripted)"
+    },
+    {
+      "description": "",
+      "display": "deficiency",
+      "kind": "reference",
+      "name": "deficiency",
+      "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648",
+      "track": "bots",
+      "trained_on": "none (scripted)"
+    },
+    {
+      "description": "",
+      "display": "ukeire",
+      "kind": "reference",
+      "name": "ukeire",
+      "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648",
+      "track": "bots",
+      "trained_on": "none (scripted)"
+    },
+    {
+      "description": "",
+      "display": "faan_aware",
+      "kind": "reference",
+      "name": "faan_aware",
+      "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6",
+      "track": "bots",
+      "trained_on": "none (scripted)"
+    },
+    {
+      "description": "",
+      "display": "python_example",
+      "kind": "external",
+      "name": "python_example",
+      "sha256": "3859ed375135c5876f39b3b80c5c2e51af7282a855fbd47ed251a222f892c2c3",
+      "track": "bots",
+      "trained_on": "unknown"
+    },
+    {
+      "description": "",
+      "display": "Fu-2.3M-HKMA-1",
+      "kind": "external",
+      "name": "Fu-2.3M-HKMA-1",
+      "sha256": "47b95b9af733514c92a2c67770eed287f447d3926c479ed0fcd1cab7506cdd51",
+      "track": "bots",
+      "trained_on": "unknown"
+    },
+    {
+      "description": "",
+      "display": "LuckyCat-lc32",
+      "kind": "external",
+      "name": "LuckyCat-lc32",
+      "sha256": "665b5f2eef3bb177ed54008a644cedce0ac83c3f2d8fb0afb8a668d944927434",
+      "track": "bots",
+      "trained_on": "unknown"
+    },
+    {
+      "description": "",
+      "display": "LuckyCat-lc34",
+      "kind": "external",
+      "name": "LuckyCat-lc34",
+      "sha256": "641b4d141a0a0872f1acf9f0606360ceb29d2d14ac30835672ab3f50ae50e863",
+      "track": "bots",
+      "trained_on": "unknown"
+    },
+    {
+      "description": "",
+      "display": "NeuralCat-NC9",
+      "kind": "external",
+      "name": "NeuralCat-NC9",
+      "sha256": "3de2af172d2b91d6f4306b6d8c4d3b946157934fc905aa99fd491a4083b1f94e",
+      "track": "bots",
+      "trained_on": "unknown"
+    },
+    {
+      "description": "",
+      "display": "NeuralCat-NC10",
+      "kind": "external",
+      "name": "NeuralCat-NC10",
+      "sha256": "9788668bd387ac6b637e4a66485dd59e971439cd070243910cd99dc431319c6d",
+      "track": "bots",
+      "trained_on": "unknown"
+    },
+    {
+      "description": "",
+      "display": "LuckyCat-JorgeYau",
+      "kind": "external",
+      "name": "LuckyCat-JorgeYau",
+      "sha256": "f0be68fa328db0ed8f4a71dae088f4f575e5b612daf7bdeaa341dbdd923f59a4",
+      "track": "bots",
+      "trained_on": "unknown"
+    },
+    {
+      "description": "",
+      "display": "hk-mahjong-lab-value",
+      "kind": "external",
+      "name": "hk-mahjong-lab-value",
+      "sha256": "646b4c99015d56ba12fd12a3f89459f42cb8de02444780265a7f4b94ab011a0b",
+      "track": "bots",
+      "trained_on": "unknown"
+    }
+  ],
+  "bradley_terry": {
+    "Fu-2.3M-HKMA-1": {
+      "ci95": [
+        244.43571599434134,
+        263.3253329323281
+      ],
+      "rank": 1,
+      "rating": 253.81765490163016
+    },
+    "LuckyCat-JorgeYau": {
+      "ci95": [
+        -31.055423624480937,
+        -14.68971053122933
+      ],
+      "rank": 6,
+      "rating": -22.811982935439996
+    },
+    "LuckyCat-lc32": {
+      "ci95": [
+        -68.03649969128664,
+        -52.093671055026725
+      ],
+      "rank": 7,
+      "rating": -59.697014565308464
+    },
+    "LuckyCat-lc34": {
+      "ci95": [
+        -62.89343493151095,
+        -46.26223302656732
+      ],
+      "rank": 7,
+      "rating": -54.469166996837124
+    },
+    "NeuralCat-NC10": {
+      "ci95": [
+        -69.0552734966132,
+        -52.690974188509266
+      ],
+      "rank": 7,
+      "rating": -60.617976276884534
+    },
+    "NeuralCat-NC9": {
+      "ci95": [
+        -93.97729120616542,
+        -77.05770351522665
+      ],
+      "rank": 10,
+      "rating": -85.4918661833883
+    },
+    "deficiency": {
+      "ci95": [
+        39.45532733280042,
+        53.21143719454078
+      ],
+      "rank": 5,
+      "rating": 46.539273919504645
+    },
+    "faan_aware": {
+      "ci95": [
+        96.38806738160368,
+        113.05457967079084
+      ],
+      "rank": 3,
+      "rating": 104.76421658488387
+    },
+    "hk-mahjong-lab-value": {
+      "ci95": [
+        258.8699555821973,
+        279.5696429155858
+      ],
+      "rank": 1,
+      "rating": 269.0203024846222
+    },
+    "python_example": {
+      "ci95": [
+        -121.90981814332103,
+        -105.5954107313264
+      ],
+      "rank": 11,
+      "rating": -113.86495881164107
+    },
+    "random": {
+      "ci95": [
+        -346.4137793394671,
+        -330.7732502075019
+      ],
+      "rank": 12,
+      "rating": -338.34580724182194
+    },
+    "ukeire": {
+      "ci95": [
+        53.40214101060537,
+        69.02666417020838
+      ],
+      "rank": 4,
+      "rating": 61.15732512068059
+    }
+  },
+  "command": "hkbench h2h --table hk-chicken-v2 --bot random=ref:random --bot deficiency=ref:deficiency --bot ukeire=ref:ukeire --bot faan_aware=ref:faan_aware --bot 'python_example=python3 ~/hkbench_chicken_v2/bench/examples/bots/python_bot.py' --bot 'Fu-2.3M-HKMA-1=~/hkbench_chicken_v2/launchers/hosted_chicken' --bot 'LuckyCat-lc32=~/hkbench_chicken_v2/launchers/outside_lc32' --bot 'LuckyCat-lc34=~/hkbench_chicken_v2/launchers/outside_lc34' --bot 'NeuralCat-NC9=~/hkbench_chicken_v2/launchers/outside_nc9' --bot 'NeuralCat-NC10=~/hkbench_chicken_v2/launchers/outside_nc10' --bot 'LuckyCat-JorgeYau=~/hkbench_chicken_v2/launchers/outside_jy' --bot 'hk-mahjong-lab-value=~/hkbench_chicken_v2/launchers/outside_value' --deals 100 --workers 10 --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-chicken-v2 --deny-read ~/.hkbench/private_seeds.json --allow-fork --' --results-dir '~/hkbench_chicken_v2/results' --private-seeds '<private deck>'",
+  "created_utc": "2026-11-23T14:53:55Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "58b60b3001993b0e3c978cd83cdd68e35b7f1c8cf6961b626e66aa94a15aa732",
+    "hkbench_version": "1.2.0",
+    "python": "3.9.6",
+    "rules_sha256": "2e80b875917f5a726169cb9292db9e34025a6a6b3fd8d08d43f23d4385b06d82"
+  },
+  "fairplay": {
+    "Fu-2.3M-HKMA-1": "passed",
+    "LuckyCat-JorgeYau": "passed",
+    "LuckyCat-lc32": "passed",
+    "LuckyCat-lc34": "passed",
+    "NeuralCat-NC10": "passed",
+    "NeuralCat-NC9": "passed",
+    "deficiency": "passed",
+    "faan_aware": "passed",
+    "hk-mahjong-lab-value": "passed",
+    "python_example": "passed",
+    "random": "passed",
+    "ukeire": "passed"
+  },
+  "faults": {
+    "Fu-2.3M-HKMA-1": {
+      "decisions": 181946,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "LuckyCat-JorgeYau": {
+      "decisions": 251868,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "LuckyCat-lc32": {
+      "decisions": 253228,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "LuckyCat-lc34": {
+      "decisions": 251728,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "NeuralCat-NC10": {
+      "decisions": 254483,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "NeuralCat-NC9": {
+      "decisions": 256592,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "deficiency": {
+      "decisions": 227592,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "faan_aware": {
+      "decisions": 220930,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "hk-mahjong-lab-value": {
+      "decisions": 175988,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "python_example": {
+      "decisions": 271077,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "random": {
+      "decisions": 253300,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    },
+    "ukeire": {
+      "decisions": 225533,
+      "faults": {},
+      "limit_per_1000": 1.0,
+      "ok": true,
+      "per_1000_decisions": 0.0
+    }
+  },
+  "isolation": "sandbox",
+  "kind": "h2h",
+  "log": "logs/hk-chicken-v2__h2h__private__20261123T145355.jsonl.gz",
+  "outcome": "the team that won the hand (a drawn hand is a tie)",
+  "pairs": [
+    {
+      "a": "random",
+      "a_game_wins": 5,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.0005447611482846141,
+          0.007788572185048719
+        ],
+        "mean": 0.004166666666666667,
+        "n": 100,
+        "se": 0.0018253576129799185
+      },
+      "b": "deficiency",
+      "b_game_wins": 476,
+      "deals": 100,
+      "games": 600,
+      "ties": 119
+    },
+    {
+      "a": "random",
+      "a_game_wins": 4,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          7.679702670350397e-05,
+          0.006589869639963162
+        ],
+        "mean": 0.003333333333333333,
+        "n": 100,
+        "se": 0.0016412198797244363
+      },
+      "b": "ukeire",
+      "b_game_wins": 500,
+      "deals": 100,
+      "games": 600,
+      "ties": 96
+    },
+    {
+      "a": "random",
+      "a_game_wins": 6,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.0010533386353514008,
+          0.008946661364648598
+        ],
+        "mean": 0.004999999999999999,
+        "n": 100,
+        "se": 0.0019890271381328506
+      },
+      "b": "faan_aware",
+      "b_game_wins": 547,
+      "deals": 100,
+      "games": 600,
+      "ties": 47
+    },
+    {
+      "a": "random",
+      "a_game_wins": 3,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          -0.000334893882342958,
+          0.005334893882342958
+        ],
+        "mean": 0.0025,
+        "n": 100,
+        "se": 0.0014287217333147089
+      },
+      "b": "python_example",
+      "b_game_wins": 301,
+      "deals": 100,
+      "games": 600,
+      "ties": 296
+    },
+    {
+      "a": "random",
+      "a_game_wins": 1,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          -0.0008201807929886734,
+          0.00248684745965534
+        ],
+        "mean": 0.0008333333333333333,
+        "n": 100,
+        "se": 0.0008333333333333341
+      },
+      "b": "Fu-2.3M-HKMA-1",
+      "b_game_wins": 594,
+      "deals": 100,
+      "games": 600,
+      "ties": 5
+    },
+    {
+      "a": "random",
+      "a_game_wins": 8,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.0021581963008149288,
+          0.011175137032518403
+        ],
+        "mean": 0.006666666666666666,
+        "n": 100,
+        "se": 0.002272166036202422
+      },
+      "b": "LuckyCat-lc32",
+      "b_game_wins": 422,
+      "deals": 100,
+      "games": 600,
+      "ties": 170
+    },
+    {
+      "a": "random",
+      "a_game_wins": 5,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.0005447611482846111,
+          0.007788572185048722
+        ],
+        "mean": 0.004166666666666667,
+        "n": 100,
+        "se": 0.00182535761297992
+      },
+      "b": "LuckyCat-lc34",
+      "b_game_wins": 426,
+      "deals": 100,
+      "games": 600,
+      "ties": 169
+    },
+    {
+      "a": "random",
+      "a_game_wins": 10,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.0014813740602576397,
+          0.015185292606409027
+        ],
+        "mean": 0.008333333333333333,
+        "n": 100,
+        "se": 0.0034532308917114467
+      },
+      "b": "NeuralCat-NC9",
+      "b_game_wins": 347,
+      "deals": 100,
+      "games": 600,
+      "ties": 243
+    },
+    {
+      "a": "random",
+      "a_game_wins": 3,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          -0.0003348938823429606,
+          0.005334893882342961
+        ],
+        "mean": 0.0025,
+        "n": 100,
+        "se": 0.0014287217333147102
+      },
+      "b": "NeuralCat-NC10",
+      "b_game_wins": 368,
+      "deals": 100,
+      "games": 600,
+      "ties": 229
+    },
+    {
+      "a": "random",
+      "a_game_wins": 5,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.000544761148284615,
+          0.007788572185048718
+        ],
+        "mean": 0.004166666666666667,
+        "n": 100,
+        "se": 0.001825357612979918
+      },
+      "b": "LuckyCat-JorgeYau",
+      "b_game_wins": 431,
+      "deals": 100,
+      "games": 600,
+      "ties": 164
+    },
+    {
+      "a": "random",
+      "a_game_wins": 0,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "n": 100,
+        "se": 0.0
+      },
+      "b": "hk-mahjong-lab-value",
+      "b_game_wins": 598,
+      "deals": 100,
+      "games": 600,
+      "ties": 2
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 286,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.228926649095386,
+          0.24774001757128075
+        ],
+        "mean": 0.23833333333333337,
+        "n": 100,
+        "se": 0.0047407538930794
+      },
+      "b": "ukeire",
+      "b_game_wins": 303,
+      "deals": 100,
+      "games": 600,
+      "ties": 11
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 263,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.19927237135953269,
+          0.23906096197380083
+        ],
+        "mean": 0.21916666666666676,
+        "n": 100,
+        "se": 0.010026270207614306
+      },
+      "b": "faan_aware",
+      "b_game_wins": 332,
+      "deals": 100,
+      "games": 600,
+      "ties": 5
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 363,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.2803712477186979,
+          0.32462875228130206
+        ],
+        "mean": 0.3025,
+        "n": 100,
+        "se": 0.01115238546047592
+      },
+      "b": "python_example",
+      "b_game_wins": 159,
+      "deals": 100,
+      "games": 600,
+      "ties": 78
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 148,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.10663531309134147,
+          0.14003135357532523
+        ],
+        "mean": 0.12333333333333335,
+        "n": 100,
+        "se": 0.008415420616501438
+      },
+      "b": "Fu-2.3M-HKMA-1",
+      "b_game_wins": 452,
+      "deals": 100,
+      "games": 600,
+      "ties": 0
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 351,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.2740700051869283,
+          0.31092999481307165
+        ],
+        "mean": 0.2925,
+        "n": 100,
+        "se": 0.009288296221003795
+      },
+      "b": "LuckyCat-lc32",
+      "b_game_wins": 214,
+      "deals": 100,
+      "games": 600,
+      "ties": 35
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 372,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.29148255070219237,
+          0.32851744929780774
+        ],
+        "mean": 0.31000000000000005,
+        "n": 100,
+        "se": 0.009332371282788776
+      },
+      "b": "LuckyCat-lc34",
+      "b_game_wins": 196,
+      "deals": 100,
+      "games": 600,
+      "ties": 32
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 377,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.2915198086540338,
+          0.3368135246792996
+        ],
+        "mean": 0.3141666666666667,
+        "n": 100,
+        "se": 0.011413498909242982
+      },
+      "b": "NeuralCat-NC9",
+      "b_game_wins": 152,
+      "deals": 100,
+      "games": 600,
+      "ties": 71
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 349,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.27096126164026557,
+          0.310705405026401
+        ],
+        "mean": 0.2908333333333333,
+        "n": 100,
+        "se": 0.010015070013981966
+      },
+      "b": "NeuralCat-NC10",
+      "b_game_wins": 175,
+      "deals": 100,
+      "games": 600,
+      "ties": 76
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 343,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.2658559196558492,
+          0.30581074701081756
+        ],
+        "mean": 0.2858333333333334,
+        "n": 100,
+        "se": 0.01006815996683829
+      },
+      "b": "LuckyCat-JorgeYau",
+      "b_game_wins": 196,
+      "deals": 100,
+      "games": 600,
+      "ties": 61
+    },
+    {
+      "a": "deficiency",
+      "a_game_wins": 137,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.09663361939974426,
+          0.13169971393358923
+        ],
+        "mean": 0.11416666666666674,
+        "n": 100,
+        "se": 0.008836255154913677
+      },
+      "b": "hk-mahjong-lab-value",
+      "b_game_wins": 462,
+      "deals": 100,
+      "games": 600,
+      "ties": 1
+    },
+    {
+      "a": "ukeire",
+      "a_game_wins": 268,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.20299627061671832,
+          0.24367039604994833
+        ],
+        "mean": 0.22333333333333333,
+        "n": 100,
+        "se": 0.010249414863810768
+      },
+      "b": "faan_aware",
+      "b_game_wins": 327,
+      "deals": 100,
+      "games": 600,
+      "ties": 5
+    },
+    {
+      "a": "ukeire",
+      "a_game_wins": 379,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.2946430273551814,
+          0.33702363931148543
+        ],
+        "mean": 0.3158333333333334,
+        "n": 100,
+        "se": 0.010679429969192694
+      },
+      "b": "python_example",
+      "b_game_wins": 152,
+      "deals": 100,
+      "games": 600,
+      "ties": 69
+    },
+    {
+      "a": "ukeire",
+      "a_game_wins": 154,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.11006513699600559,
+          0.14660152967066123
+        ],
+        "mean": 0.1283333333333334,
+        "n": 100,
+        "se": 0.009206753486669977
+      },
+      "b": "Fu-2.3M-HKMA-1",
+      "b_game_wins": 446,
+      "deals": 100,
+      "games": 600,
+      "ties": 0
+    },
+    {
+      "a": "ukeire",
+      "a_game_wins": 384,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.3027744414905962,
+          0.3372255585094037
+        ],
+        "mean": 0.31999999999999995,
+        "n": 100,
+        "se": 0.008681287847899767
+      },
+      "b": "LuckyCat-lc32",
+      "b_game_wins": 180,
+      "deals": 100,
+      "games": 600,
+      "ties": 36
+    },
+    {
+      "a": "ukeire",
+      "a_game_wins": 374,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.2939822702086414,
+          0.3293510631246921
+        ],
+        "mean": 0.31166666666666676,
+        "n": 100,
+        "se": 0.00891253168857692
+      },
+      "b": "LuckyCat-lc34",
+      "b_game_wins": 191,
+      "deals": 100,
+      "games": 600,
+      "ties": 35
+    },
+    {
+      "a": "ukeire",
+      "a_game_wins": 388,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.3018858831218567,
+          0.34478078354481023
+        ],
+        "mean": 0.3233333333333335,
+        "n": 100,
+        "se": 0.010809024786492852
+      },
+      "b": "NeuralCat-NC9",
+      "b_game_wins": 137,
+      "deals": 100,
+      "games": 600,
+      "ties": 75
+    },
+    {
+      "a": "ukeire",
+      "a_game_wins": 352,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.2734633463784414,
+          0.3132033202882253
+        ],
+        "mean": 0.29333333333333333,
+        "n": 100,
+        "se": 0.0100140193535821
+      },
+      "b": "NeuralCat-NC10",
+      "b_game_wins": 176,
+      "deals": 100,
+      "games": 600,
+      "ties": 72
+    },
+    {
+      "a": "ukeire",
+      "a_game_wins": 365,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.2841726707794983,
+          0.3241606625538351
+        ],
+        "mean": 0.3041666666666667,
+        "n": 100,
+        "se": 0.01007651702158019
+      },
+      "b": "LuckyCat-JorgeYau",
+      "b_game_wins": 190,
+      "deals": 100,
+      "games": 600,
+      "ties": 45
+    },
+    {
+      "a": "ukeire",
+      "a_game_wins": 147,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.1059723764190341,
+          0.13902762358096601
+        ],
+        "mean": 0.12250000000000005,
+        "n": 100,
+        "se": 0.008329544593272379
+      },
+      "b": "hk-mahjong-lab-value",
+      "b_game_wins": 452,
+      "deals": 100,
+      "games": 600,
+      "ties": 1
+    },
+    {
+      "a": "faan_aware",
+      "a_game_wins": 455,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.36105713907475634,
+          0.39727619425857696
+        ],
+        "mean": 0.37916666666666665,
+        "n": 100,
+        "se": 0.009126788064899605
+      },
+      "b": "python_example",
+      "b_game_wins": 105,
+      "deals": 100,
+      "games": 600,
+      "ties": 40
+    },
+    {
+      "a": "faan_aware",
+      "a_game_wins": 171,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.1256677246412143,
+          0.15933227535878566
+        ],
+        "mean": 0.1425,
+        "n": 100,
+        "se": 0.00848308212734906
+      },
+      "b": "Fu-2.3M-HKMA-1",
+      "b_game_wins": 429,
+      "deals": 100,
+      "games": 600,
+      "ties": 0
+    },
+    {
+      "a": "faan_aware",
+      "a_game_wins": 431,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.3399732651551205,
+          0.3783600681782131
+        ],
+        "mean": 0.3591666666666668,
+        "n": 100,
+        "se": 0.009673035751559797
+      },
+      "b": "LuckyCat-lc32",
+      "b_game_wins": 154,
+      "deals": 100,
+      "games": 600,
+      "ties": 15
+    },
+    {
+      "a": "faan_aware",
+      "a_game_wins": 413,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.3246932841048702,
+          0.3636400492284635
+        ],
+        "mean": 0.34416666666666684,
+        "n": 100,
+        "se": 0.009814139802720367
+      },
+      "b": "LuckyCat-lc34",
+      "b_game_wins": 165,
+      "deals": 100,
+      "games": 600,
+      "ties": 22
+    },
+    {
+      "a": "faan_aware",
+      "a_game_wins": 423,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.33163012114424384,
+          0.3733698788557567
+        ],
+        "mean": 0.35250000000000026,
+        "n": 100,
+        "se": 0.01051794202195013
+      },
+      "b": "NeuralCat-NC9",
+      "b_game_wins": 124,
+      "deals": 100,
+      "games": 600,
+      "ties": 53
+    },
+    {
+      "a": "faan_aware",
+      "a_game_wins": 418,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.32847725022658936,
+          0.36818941644007763
+        ],
+        "mean": 0.3483333333333335,
+        "n": 100,
+        "se": 0.010007012131848271
+      },
+      "b": "NeuralCat-NC10",
+      "b_game_wins": 146,
+      "deals": 100,
+      "games": 600,
+      "ties": 36
+    },
+    {
+      "a": "faan_aware",
+      "a_game_wins": 384,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.3012395524966629,
+          0.3387604475033371
+        ],
+        "mean": 0.32,
+        "n": 100,
+        "se": 0.009454836825347096
+      },
+      "b": "LuckyCat-JorgeYau",
+      "b_game_wins": 177,
+      "deals": 100,
+      "games": 600,
+      "ties": 39
+    },
+    {
+      "a": "faan_aware",
+      "a_game_wins": 174,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.12610752801414604,
+          0.16389247198585405
+        ],
+        "mean": 0.14500000000000005,
+        "n": 100,
+        "se": 0.009521374147493926
+      },
+      "b": "hk-mahjong-lab-value",
+      "b_game_wins": 425,
+      "deals": 100,
+      "games": 600,
+      "ties": 1
+    },
+    {
+      "a": "python_example",
+      "a_game_wins": 60,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.03848640547200928,
+          0.06151359452799075
+        ],
+        "mean": 0.05000000000000002,
+        "n": 100,
+        "se": 0.005802588531856597
+      },
+      "b": "Fu-2.3M-HKMA-1",
+      "b_game_wins": 535,
+      "deals": 100,
+      "games": 600,
+      "ties": 5
+    },
+    {
+      "a": "python_example",
+      "a_game_wins": 196,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.14154859016158997,
+          0.1851180765050768
+        ],
+        "mean": 0.16333333333333339,
+        "n": 100,
+        "se": 0.010979012730601985
+      },
+      "b": "LuckyCat-lc32",
+      "b_game_wins": 319,
+      "deals": 100,
+      "games": 600,
+      "ties": 85
+    },
+    {
+      "a": "python_example",
+      "a_game_wins": 207,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.14992642902927217,
+          0.19507357097072753
+        ],
+        "mean": 0.17249999999999985,
+        "n": 100,
+        "se": 0.011376563914888347
+      },
+      "b": "LuckyCat-lc34",
+      "b_game_wins": 290,
+      "deals": 100,
+      "games": 600,
+      "ties": 103
+    },
+    {
+      "a": "python_example",
+      "a_game_wins": 167,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.11880585322222359,
+          0.15952748011110968
+        ],
+        "mean": 0.13916666666666663,
+        "n": 100,
+        "se": 0.01026138468788119
+      },
+      "b": "NeuralCat-NC9",
+      "b_game_wins": 238,
+      "deals": 100,
+      "games": 600,
+      "ties": 195
+    },
+    {
+      "a": "python_example",
+      "a_game_wins": 163,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.11395561012879676,
+          0.1577110565378699
+        ],
+        "mean": 0.13583333333333333,
+        "n": 100,
+        "se": 0.011025872542337197
+      },
+      "b": "NeuralCat-NC10",
+      "b_game_wins": 262,
+      "deals": 100,
+      "games": 600,
+      "ties": 175
+    },
+    {
+      "a": "python_example",
+      "a_game_wins": 152,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.10693615909257928,
+          0.14639717424075402
+        ],
+        "mean": 0.12666666666666665,
+        "n": 100,
+        "se": 0.009943724933058644
+      },
+      "b": "LuckyCat-JorgeYau",
+      "b_game_wins": 312,
+      "deals": 100,
+      "games": 600,
+      "ties": 136
+    },
+    {
+      "a": "python_example",
+      "a_game_wins": 61,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.03798329009660474,
+          0.06368337657006194
+        ],
+        "mean": 0.05083333333333334,
+        "n": 100,
+        "se": 0.006476128140350192
+      },
+      "b": "hk-mahjong-lab-value",
+      "b_game_wins": 538,
+      "deals": 100,
+      "games": 600,
+      "ties": 1
+    },
+    {
+      "a": "Fu-2.3M-HKMA-1",
+      "a_game_wins": 539,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.43631662342993793,
+          0.46201670990339516
+        ],
+        "mean": 0.44916666666666655,
+        "n": 100,
+        "se": 0.0064761281403501935
+      },
+      "b": "LuckyCat-lc32",
+      "b_game_wins": 59,
+      "deals": 100,
+      "games": 600,
+      "ties": 2
+    },
+    {
+      "a": "Fu-2.3M-HKMA-1",
+      "a_game_wins": 522,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.42117968936874783,
+          0.44882031063125183
+        ],
+        "mean": 0.43499999999999983,
+        "n": 100,
+        "se": 0.006965120734505626
+      },
+      "b": "LuckyCat-lc34",
+      "b_game_wins": 75,
+      "deals": 100,
+      "games": 600,
+      "ties": 3
+    },
+    {
+      "a": "Fu-2.3M-HKMA-1",
+      "a_game_wins": 509,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.40891839689089937,
+          0.4394149364424338
+        ],
+        "mean": 0.4241666666666666,
+        "n": 100,
+        "se": 0.007684779511421878
+      },
+      "b": "NeuralCat-NC9",
+      "b_game_wins": 85,
+      "deals": 100,
+      "games": 600,
+      "ties": 6
+    },
+    {
+      "a": "Fu-2.3M-HKMA-1",
+      "a_game_wins": 503,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.40367403530542406,
+          0.4346592980279092
+        ],
+        "mean": 0.41916666666666663,
+        "n": 100,
+        "se": 0.007807932166316806
+      },
+      "b": "NeuralCat-NC10",
+      "b_game_wins": 95,
+      "deals": 100,
+      "games": 600,
+      "ties": 2
+    },
+    {
+      "a": "Fu-2.3M-HKMA-1",
+      "a_game_wins": 487,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.3884585155211177,
+          0.4232081511455487
+        ],
+        "mean": 0.4058333333333332,
+        "n": 100,
+        "se": 0.00875651112562268
+      },
+      "b": "LuckyCat-JorgeYau",
+      "b_game_wins": 108,
+      "deals": 100,
+      "games": 600,
+      "ties": 5
+    },
+    {
+      "a": "Fu-2.3M-HKMA-1",
+      "a_game_wins": 274,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.21003492662918424,
+          0.24663174003748242
+        ],
+        "mean": 0.22833333333333333,
+        "n": 100,
+        "se": 0.009221978821176433
+      },
+      "b": "hk-mahjong-lab-value",
+      "b_game_wins": 326,
+      "deals": 100,
+      "games": 600,
+      "ties": 0
+    },
+    {
+      "a": "LuckyCat-lc32",
+      "a_game_wins": 261,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.19827784215872934,
+          0.23672215784127043
+        ],
+        "mean": 0.2174999999999999,
+        "n": 100,
+        "se": 0.009687528284597206
+      },
+      "b": "LuckyCat-lc34",
+      "b_game_wins": 283,
+      "deals": 100,
+      "games": 600,
+      "ties": 56
+    },
+    {
+      "a": "LuckyCat-lc32",
+      "a_game_wins": 267,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.20057184108054438,
+          0.24442815891945563
+        ],
+        "mean": 0.2225,
+        "n": 100,
+        "se": 0.011051290990092484
+      },
+      "b": "NeuralCat-NC9",
+      "b_game_wins": 208,
+      "deals": 100,
+      "games": 600,
+      "ties": 125
+    },
+    {
+      "a": "LuckyCat-lc32",
+      "a_game_wins": 246,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.18315196207237253,
+          0.22684803792762756
+        ],
+        "mean": 0.20500000000000004,
+        "n": 100,
+        "se": 0.011010911841147074
+      },
+      "b": "NeuralCat-NC10",
+      "b_game_wins": 228,
+      "deals": 100,
+      "games": 600,
+      "ties": 126
+    },
+    {
+      "a": "LuckyCat-lc32",
+      "a_game_wins": 202,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.14798269537809527,
+          0.18868397128857145
+        ],
+        "mean": 0.16833333333333336,
+        "n": 100,
+        "se": 0.010256256473853583
+      },
+      "b": "LuckyCat-JorgeYau",
+      "b_game_wins": 303,
+      "deals": 100,
+      "games": 600,
+      "ties": 95
+    },
+    {
+      "a": "LuckyCat-lc32",
+      "a_game_wins": 77,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.05111193091507087,
+          0.07722140241826247
+        ],
+        "mean": 0.06416666666666668,
+        "n": 100,
+        "se": 0.006579288490181671
+      },
+      "b": "hk-mahjong-lab-value",
+      "b_game_wins": 521,
+      "deals": 100,
+      "games": 600,
+      "ties": 2
+    },
+    {
+      "a": "LuckyCat-lc34",
+      "a_game_wins": 260,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.1946198116490399,
+          0.23871352168429333
+        ],
+        "mean": 0.21666666666666662,
+        "n": 100,
+        "se": 0.011111111111111105
+      },
+      "b": "NeuralCat-NC9",
+      "b_game_wins": 213,
+      "deals": 100,
+      "games": 600,
+      "ties": 127
+    },
+    {
+      "a": "LuckyCat-lc34",
+      "a_game_wins": 257,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.192981574517954,
+          0.23535175881537934
+        ],
+        "mean": 0.21416666666666667,
+        "n": 100,
+        "se": 0.010676802318302408
+      },
+      "b": "NeuralCat-NC10",
+      "b_game_wins": 237,
+      "deals": 100,
+      "games": 600,
+      "ties": 106
+    },
+    {
+      "a": "LuckyCat-lc34",
+      "a_game_wins": 224,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.16536911009967326,
+          0.20796422323366004
+        ],
+        "mean": 0.18666666666666665,
+        "n": 100,
+        "se": 0.010733481815063487
+      },
+      "b": "LuckyCat-JorgeYau",
+      "b_game_wins": 293,
+      "deals": 100,
+      "games": 600,
+      "ties": 83
+    },
+    {
+      "a": "LuckyCat-lc34",
+      "a_game_wins": 84,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.05655651219454983,
+          0.08344348780545012
+        ],
+        "mean": 0.06999999999999998,
+        "n": 100,
+        "se": 0.006775210641508688
+      },
+      "b": "hk-mahjong-lab-value",
+      "b_game_wins": 514,
+      "deals": 100,
+      "games": 600,
+      "ties": 2
+    },
+    {
+      "a": "NeuralCat-NC9",
+      "a_game_wins": 186,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.1329506398002712,
+          0.1770493601997287
+        ],
+        "mean": 0.15499999999999994,
+        "n": 100,
+        "se": 0.011112373665641759
+      },
+      "b": "NeuralCat-NC10",
+      "b_game_wins": 233,
+      "deals": 100,
+      "games": 600,
+      "ties": 181
+    },
+    {
+      "a": "NeuralCat-NC9",
+      "a_game_wins": 167,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.1194957373079118,
+          0.15883759602542158
+        ],
+        "mean": 0.1391666666666667,
+        "n": 100,
+        "se": 0.009913698874020676
+      },
+      "b": "LuckyCat-JorgeYau",
+      "b_game_wins": 249,
+      "deals": 100,
+      "games": 600,
+      "ties": 184
+    },
+    {
+      "a": "NeuralCat-NC9",
+      "a_game_wins": 65,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.03886776808401101,
+          0.06946556524932232
+        ],
+        "mean": 0.05416666666666666,
+        "n": 100,
+        "se": 0.007710295273117182
+      },
+      "b": "hk-mahjong-lab-value",
+      "b_game_wins": 534,
+      "deals": 100,
+      "games": 600,
+      "ties": 1
+    },
+    {
+      "a": "NeuralCat-NC10",
+      "a_game_wins": 195,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.14142993851010954,
+          0.18357006148989047
+        ],
+        "mean": 0.1625,
+        "n": 100,
+        "se": 0.010618829494952499
+      },
+      "b": "LuckyCat-JorgeYau",
+      "b_game_wins": 250,
+      "deals": 100,
+      "games": 600,
+      "ties": 155
+    },
+    {
+      "a": "NeuralCat-NC10",
+      "a_game_wins": 71,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.04520420791289893,
+          0.07312912542043436
+        ],
+        "mean": 0.059166666666666645,
+        "n": 100,
+        "se": 0.007036760139865026
+      },
+      "b": "hk-mahjong-lab-value",
+      "b_game_wins": 526,
+      "deals": 100,
+      "games": 600,
+      "ties": 3
+    },
+    {
+      "a": "LuckyCat-JorgeYau",
+      "a_game_wins": 104,
+      "a_win_rate_per_seat": {
+        "ci95": [
+          0.07238640530027675,
+          0.10094692803305656
+        ],
+        "mean": 0.08666666666666666,
+        "n": 100,
+        "se": 0.007196925394157461
+      },
+      "b": "hk-mahjong-lab-value",
+      "b_game_wins": 493,
+      "deals": 100,
+      "games": 600,
+      "ties": 3
+    }
+  ],
+  "rank_rule": "rank = 1 + the number of bots whose 95% interval lies entirely above this bot's; overlapping bots share a rank",
+  "ranked_by": "wins",
+  "rng_scheme": "hmac-sha256-v2",
+  "run_id": "hk-chicken-v2__h2h__private__20261123T145355",
+  "schema": "hkbench-h2h-1",
+  "seeds": {
+    "deals": 100,
+    "offset": 0,
+    "public_range": null,
+    "tag": "private"
+  },
+  "table": {
+    "id": "hk-chicken-v2",
+    "rules_sha256": "2e80b875917f5a726169cb9292db9e34025a6a6b3fd8d08d43f23d4385b06d82",
+    "rules_track": "Chicken hand"
+  },
+  "verification": "verified"
+}

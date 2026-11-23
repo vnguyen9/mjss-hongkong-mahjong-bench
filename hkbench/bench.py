@@ -290,14 +290,7 @@ def score(
         "verification": "verified" if verified else "unverified",
         "fairplay": {k: fair[k] for k in ("status", "points", "reshuffles", "asks", "view_mismatches",
                                           "decision_changes", "faults") if k in fair},
-        "headline": {
-            "metric": "points per hand against the frozen field",
-            "points_per_hand": summary["points_per_hand"]["mean"],
-            "se": summary["points_per_hand"]["se"],
-            "ci95": summary["points_per_hand"]["ci95"],
-            "deals": summary["deals"],
-            "games": summary["games"],
-        },
+        "headline": headline(table, summary),
         "stats": {k: summary[k] for k in ("win_rate", "deal_in_rate", "self_draw_win_rate", "draw_rate",
                                           "limit_hand_rate", "wins", "limit_hands", "average_win_points",
                                           "average_win_faan")},
@@ -317,6 +310,23 @@ def score(
         (results_dir / (run_id + ".json")).write_text(json.dumps(result, indent=2, sort_keys=True) + "\n",
                                                       encoding="utf-8")
     return result
+
+
+def headline(table: Table, summary: Dict[str, Any]) -> Dict[str, Any]:
+    """The number a table ranks by. Most tables rank by points a hand; a table whose payment is flat ranks by win rate."""
+    if table.metric == "win_rate":
+        key, label = "win_rate", "win rate against the frozen field"
+    else:
+        key, label = "points_per_hand", "points per hand against the frozen field"
+    return {
+        "metric": label,
+        "metric_id": key,
+        key: summary[key]["mean"],
+        "se": summary[key]["se"],
+        "ci95": summary[key]["ci95"],
+        "deals": summary["deals"],
+        "games": summary["games"],
+    }
 
 
 def _slug(name: str) -> str:
@@ -371,6 +381,7 @@ def h2h(
     names = [b[0] for b in bots]
     if len(set(names)) != len(names):
         raise ValueError("bot names must be different")
+    by_wins = table.metric == "win_rate"  # a flat-payment table ranks head-to-heads by who won the hand, not by points
     tag, deck = _deck(table, deals, offset, private_seeds)
     training_log = training_log and tag == "public"  # a private deck's log stays outcome-only
     isolation = isolation_for(tag, [b[1] for b in bots], sandbox, native_unsafe)
@@ -409,15 +420,23 @@ def h2h(
                     for k, n in r["faults"][seat].items():
                         fault_counts[nm][k] = fault_counts[nm].get(k, 0) + n
             all_records.extend(recs)
-            team = stats.per_deal(recs, lambda r: _team_points(r, "A") / 2.0)
+            if by_wins:
+                outcome = lambda r: stats.team_win_outcome(r, "A")
+                seat_value = lambda r: sum(1.0 for s, k in enumerate(r["seats"]) if k == "A" and r["winner"] == s) / 2.0
+                seat_key = "a_win_rate_per_seat"
+            else:
+                outcome = lambda r: stats.team_outcome(_team_points(r, "A"))
+                seat_value = lambda r: _team_points(r, "A") / 2.0
+                seat_key = "a_points_per_hand_per_seat"
+            team = stats.per_deal(recs, seat_value)
             by_deal: Dict[int, List[float]] = {}
             for r in recs:
-                by_deal.setdefault(r["deal"], []).append(stats.team_outcome(_team_points(r, "A")))
+                by_deal.setdefault(r["deal"], []).append(outcome(r))
             pair_deals[(a_name, b_name)] = [(sum(v), float(len(v))) for _, v in sorted(by_deal.items())]
-            outcomes = [stats.team_outcome(_team_points(r, "A")) for r in recs]
+            outcomes = [outcome(r) for r in recs]
             pairs.append({
                 "a": a_name, "b": b_name, "games": len(recs), "deals": len(deck),
-                "a_points_per_hand_per_seat": stats.mean_ci(team),
+                seat_key: stats.mean_ci(team),
                 "a_game_wins": sum(1 for o in outcomes if o == 1.0),
                 "b_game_wins": sum(1 for o in outcomes if o == 0.0),
                 "ties": sum(1 for o in outcomes if o == 0.5),
@@ -446,6 +465,8 @@ def h2h(
         "fairplay": fair_status,
         "pairs": pairs,
         "bradley_terry": {n: dict(bt[n], rank=ranks[n]) for n in names},
+        "ranked_by": "wins" if by_wins else "points",
+        "outcome": "the team that won the hand (a drawn hand is a tie)" if by_wins else "the team with more points (a net of zero is a tie)",
         "rank_rule": "rank = 1 + the number of bots whose 95% interval lies entirely above this bot's; overlapping bots share a rank",
         "faults": faults_ok,
         "command": reproduce_command(argv, private_seeds),

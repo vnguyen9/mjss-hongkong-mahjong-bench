@@ -124,10 +124,16 @@ def _table(args):
 def _print_result(result) -> None:
     h = result["headline"]
     lo, hi = h["ci95"] if h["ci95"] else (float("nan"), float("nan"))
+    st = result["stats"]
+    if h.get("metric_id") == "win_rate":
+        print("%s on %s (%s deck, %s): win rate %.1f%% [%.1f%%, %.1f%%], deal-in %.1f%%, %d deals, %d games"
+              % (result["bot"]["name"], result["table"]["id"], result["seeds"]["tag"], result["verification"],
+                 100 * h["win_rate"], 100 * lo, 100 * hi, 100 * st["deal_in_rate"]["mean"], h["deals"], h["games"]))
+        print("  average win %.2f faan  limit hands %d" % (st["average_win_faan"] or 0.0, st["limit_hands"]))
+        return
     print("%s on %s (%s deck, %s): %+.2f points a hand [%+.2f, %+.2f], %d deals, %d games"
           % (result["bot"]["name"], result["table"]["id"], result["seeds"]["tag"], result["verification"],
              h["points_per_hand"], lo, hi, h["deals"], h["games"]))
-    st = result["stats"]
     print("  win %.1f%%  deal-in %.1f%%  average win %.1f points, %.2f faan  limit hands %d"
           % (100 * st["win_rate"]["mean"], 100 * st["deal_in_rate"]["mean"],
              st["average_win_points"] or 0.0, st["average_win_faan"] or 0.0, st["limit_hands"]))

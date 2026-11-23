@@ -74,6 +74,17 @@ class Table:
         return str(self.data["rules_track"])
 
     @property
+    def metric(self) -> str:
+        """What the table is ranked by: ``points_per_hand`` (the default) or ``win_rate``."""
+        return str(self.data.get("metric", "points_per_hand"))
+
+    @property
+    def superseded_by(self) -> Optional[str]:
+        """The id of the table that replaced this one, or None. A superseded table's rows are off the board."""
+        value = self.data.get("superseded_by")
+        return str(value) if value else None
+
+    @property
     def decision_timeout_s(self) -> float:
         return float(self.data["timeouts"]["decision_s"])
 

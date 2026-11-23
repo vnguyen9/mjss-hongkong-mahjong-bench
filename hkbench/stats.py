@@ -164,6 +164,17 @@ def team_outcome(payment: float) -> float:
     return 0.5
 
 
+def team_win_outcome(record: Dict[str, Any], team: str) -> float:
+    """1 if a seat of the team won the hand, 0 if a seat of the other team did, 0.5 for a drawn hand.
+
+    Who paid does not matter: a team that wins off its own partner's discard still won the hand.
+    """
+    winner = record["winner"]
+    if winner is None:
+        return 0.5
+    return 1.0 if record["seats"][winner] == team else 0.0
+
+
 def bradley_terry(names: Sequence[str], wins: Dict[Tuple[str, str], float], iterations: int = 500) -> Dict[str, float]:
     """Bradley-Terry strengths by the MM algorithm (Hunter, 2004).
 

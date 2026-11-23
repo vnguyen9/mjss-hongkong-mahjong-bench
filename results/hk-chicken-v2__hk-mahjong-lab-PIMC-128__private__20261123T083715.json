@@ -1,0 +1,130 @@
+{
+  "bot": {
+    "description": "hk-mahjong-lab's PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors' public code, not submitted by the authors.",
+    "kind": "external",
+    "name": "hk-mahjong-lab-PIMC-128",
+    "sha256": "9084aede3f64e809adb45eda5a1cee4ace4da3ff8a6fa66488a7b374cae7d434",
+    "track": "bots",
+    "trained_on": "hk-mahjong-lab's own table (10 faan cap, single East hand)"
+  },
+  "command": "hkbench score --table hk-chicken-v2 --bot '~/hkbench_chicken_v2/launchers/outside_pimc128' --name hk-mahjong-lab-PIMC-128 --deals 400 --workers 10 --results-dir '~/hkbench_chicken_v2/results' --kind external --bot-hash 9084aede3f64e809adb45eda5a1cee4ace4da3ff8a6fa66488a7b374cae7d434 --trained-on 'hk-mahjong-lab'\"'\"'s own table (10 faan cap, single East hand)' --description 'hk-mahjong-lab'\"'\"'s PIMC player with 128 sampled deals per decision, from https://github.com/bpy13/hk-mahjong-lab, run by the bench maintainers from the authors'\"'\"' public code, not submitted by the authors.' --sandbox 'scripts/sandbox/macos.sh --deny-read ~/.hkbench-chicken-v2 --deny-read ~/.hkbench/private_seeds.json --' --private-seeds '<private deck>'",
+  "created_utc": "2026-11-23T08:37:15Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "58b60b3001993b0e3c978cd83cdd68e35b7f1c8cf6961b626e66aa94a15aa732",
+    "hkbench_version": "1.2.0",
+    "python": "3.9.6",
+    "rules_sha256": "2e80b875917f5a726169cb9292db9e34025a6a6b3fd8d08d43f23d4385b06d82"
+  },
+  "fairplay": {
+    "asks": 300,
+    "decision_changes": 0,
+    "faults": 0,
+    "points": 100,
+    "reshuffles": 2,
+    "status": "passed",
+    "view_mismatches": 0
+  },
+  "faults": {
+    "decisions": 23418,
+    "faults": {},
+    "limit_per_1000": 1.0,
+    "ok": true,
+    "per_1000_decisions": 0.0
+  },
+  "headline": {
+    "ci95": [
+      0.4969200913694696,
+      0.5455799086305304
+    ],
+    "deals": 400,
+    "games": 1600,
+    "metric": "win rate against the frozen field",
+    "metric_id": "win_rate",
+    "se": 0.012375792676063308,
+    "win_rate": 0.52125
+  },
+  "isolation": "sandbox",
+  "kind": "duplicate",
+  "log": "logs/hk-chicken-v2__hk-mahjong-lab-PIMC-128__private__20261123T083715.jsonl.gz",
+  "rng_scheme": "hmac-sha256-v2",
+  "run_id": "hk-chicken-v2__hk-mahjong-lab-PIMC-128__private__20261123T083715",
+  "schema": "hkbench-result-1",
+  "seeds": {
+    "deals": 400,
+    "offset": 0,
+    "public_range": null,
+    "tag": "private"
+  },
+  "stats": {
+    "average_win_faan": 1.0275779376498801,
+    "average_win_points": 3.0,
+    "deal_in_rate": {
+      "ci95": [
+        0.10752244230437366,
+        0.13997755769562634
+      ],
+      "mean": 0.12375,
+      "n": 400,
+      "se": 0.00825440377642507
+    },
+    "draw_rate": {
+      "ci95": [
+        0.0024912060940373622,
+        0.011258793905962638
+      ],
+      "mean": 0.006875,
+      "n": 400,
+      "se": 0.002229886077200637
+    },
+    "limit_hand_rate": {
+      "ci95": [
+        -0.0004854717796827638,
+        0.0029854717796827636
+      ],
+      "mean": 0.00125,
+      "n": 400,
+      "se": 0.0008827751582084042
+    },
+    "limit_hands": 2,
+    "self_draw_win_rate": {
+      "ci95": [
+        0.11754267813772018,
+        0.15245732186227984
+      ],
+      "mean": 0.135,
+      "n": 400,
+      "se": 0.008879942762126709
+    },
+    "win_rate": {
+      "ci95": [
+        0.4969200913694696,
+        0.5455799086305304
+      ],
+      "mean": 0.52125,
+      "n": 400,
+      "se": 0.012375792676063308
+    },
+    "wins": 834
+  },
+  "table": {
+    "field": [
+      {
+        "bot": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+      },
+      {
+        "bot": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      },
+      {
+        "bot": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      }
+    ],
+    "id": "hk-chicken-v2",
+    "rules_sha256": "2e80b875917f5a726169cb9292db9e34025a6a6b3fd8d08d43f23d4385b06d82",
+    "rules_track": "Chicken hand"
+  },
+  "verification": "verified"
+}

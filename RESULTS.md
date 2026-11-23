@@ -1,12 +1,12 @@
-# Results: 20 to 22 November 2026
+# Results: 20 to 23 November 2026
 
-The 1.1.0 re-score finished at 05:34 EST on 21 November 2026, on bench version 1.1.0 (`hmac-sha256-v2`), Python 3.9.6 and 10 workers on one Apple-silicon Mac. It has 42 duplicate runs and nine head-to-heads across the three tables, on both decks. Eight outside bots were added on 21 and 22 November ([below](#outside-bots-on-the-bench)).
+The 1.1.0 re-score finished at 05:34 EST on 21 November 2026, on bench version 1.1.0 (`hmac-sha256-v2`), Python 3.9.6 and 10 workers on one Apple-silicon Mac. It has 28 duplicate runs and six head-to-heads on HKMA Classical and House, on both decks. Eight outside bots were added on 21 and 22 November ([below](#outside-bots-on-the-bench)). Chicken hand was replaced on 22 November by `hk-chicken-v2`, where every win pays the same and the table is ranked by win rate. It was re-scored in full on 22 and 23 November, on bench version 1.2.0 and a new private deck: 14 duplicate runs and two head-to-heads for the original bots, 16 more runs for the outside bots, and a 12-bot head-to-head ([below](#hk-chicken-v2)).
 
-Among the original bots, `Fu-2.3M-HKMA-1` came first on points a hand on every table and deck. With the outside bots added, it still leads on HKMA and House, but every outside bot beats it on Chicken hand. We host it ourselves, so its results carry only a supplied hash, not its start command. It was trained on HKMA Classical rules; House and Chicken hand are rules it never trained on.
+Among the original bots, `Fu-2.3M-HKMA-1` came first on every table and deck: on points a hand on HKMA Classical and House, and on win rate on Chicken hand. With the outside bots added, it still leads on HKMA and House. On Chicken hand it shares first place with the three hk-mahjong-lab bots, whose intervals overlap its own, and Lucky Cat's five bots, which led the old points-a-hand ranking of the retired table, are far behind. We host it ourselves, so its results carry only a supplied hash, not its start command. It was trained on HKMA Classical rules; House and Chicken hand are rules it never trained on.
 
 ## Duplicate results
 
-Each deal is played four times on the same wall, once from each seat. Points a hand are measured against the frozen reference field. The 95% confidence intervals (CI) count each deal as one sample, because its four games share a wall. Points cannot be compared across tables because their payouts differ. Draw rate is the fraction of games that ended without a winner. Limit hands counts hands that reached the table's cap.
+Each deal is played four times on the same wall, once from each seat. Points a hand are measured against the frozen reference field, except on Chicken hand, where every win pays the same and the table is ranked by win rate instead. The 95% confidence intervals (CI) count each deal as one sample, because its four games share a wall. Scores cannot be compared across tables because their payouts and rankings differ. Draw rate is the fraction of games that ended without a winner. Limit hands counts hands that reached the table's cap.
 
 The source links identify each run. `native` is the recorded isolation for the in-process reference bots; program bots used `sandbox`.
 
@@ -62,35 +62,61 @@ The following rows use the private deck.
 | `deficiency` | -0.93 [-1.14, -0.71] | 11.9% | 5.7% | 40.1% | 0 | 2,000 | verified | native | [20261121T041244](results/hk-house-v1__deficiency__private__20261121T041244.json) |
 | `random` | -2.82 [-2.95, -2.69] | 0.1% | 7.0% | 47.4% | 0 | 2,000 | verified | native | [20261121T041134](results/hk-house-v1__random__private__20261121T041134.json) |
 
-### `hk-chicken-v1`
+### `hk-chicken-v2`
+
+Chicken hand. The minimum is 0 faan and every win pays the same: the winner collects 3 and each other seat pays 1, whether the win was self-drawn or off a discard. Rows are ranked by win rate, the share of games the bot won. Because the payment is flat, points a hand would only be 4 x win rate - (1 - draw rate). This table replaced `hk-chicken-v1` (see [what changed](#what-changed-from-hk-chicken-v1)).
 
 The following rows use the public deck.
 
-| Bot | Points a hand [95% CI] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
-|---|---|---|---|---|---|---|---|---|---|
-| `Fu-2.3M-HKMA-1` | +0.67 [+0.58, +0.76] | 48.5% | 13.0% | 0.5% | 0 | 2,000 | unverified | sandbox | [20261121T074943](results/hk-chicken-v1__Fu-2.3M-HKMA-1__public__20261121T074943.json) |
-| `faan_aware` | +0.37 [+0.22, +0.52] | 27.2% | 17.8% | 2.2% | 6 | 2,000 | unverified | native | [20261121T071254](results/hk-chicken-v1__faan_aware__public__20261121T071254.json) |
-| `python_example` | +0.22 [-0.00, +0.44] | 8.9% | 23.2% | 4.9% | 27 | 2,000 | unverified | sandbox | [20261121T071919](results/hk-chicken-v1__python_example__public__20261121T071919.json) |
-| `shallow_search` | +0.14 [+0.00, +0.28] | 33.4% | 16.6% | 1.3% | 0 | 400 | unverified | native | [20261121T072546](results/hk-chicken-v1__shallow_search__public__20261121T072546.json) |
-| `ukeire` | -0.22 [-0.31, -0.14] | 23.5% | 18.5% | 2.9% | 1 | 2,000 | unverified | native | [20261121T071144](results/hk-chicken-v1__ukeire__public__20261121T071144.json) |
-| `deficiency` | -0.28 [-0.37, -0.19] | 22.2% | 19.0% | 2.9% | 1 | 2,000 | unverified | native | [20261121T071033](results/hk-chicken-v1__deficiency__public__20261121T071033.json) |
-| `random` | -1.19 [-1.28, -1.10] | 0.2% | 24.5% | 5.8% | 0 | 2,000 | unverified | native | [20261121T070932](results/hk-chicken-v1__random__public__20261121T070932.json) |
+| Bot | Win rate [95% CI] | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
+|---|---|---|---|---|---|---|---|---|
+| `Fu-2.3M-HKMA-1` | 49.3% [48.2%, 50.3%] | 13.2% | 0.6% | 1 | 2,000 | unverified | sandbox | [20261123T040306](results/hk-chicken-v2__Fu-2.3M-HKMA-1__public__20261123T040306.json) |
+| `shallow_search` | 33.4% [31.0%, 35.8%] | 17.4% | 1.5% | 0 | 400 | unverified | native | [20261123T031225](results/hk-chicken-v2__shallow_search__public__20261123T031225.json) |
+| `faan_aware` | 27.4% [26.5%, 28.3%] | 18.9% | 2.1% | 3 | 2,000 | unverified | native | [20261123T025154](results/hk-chicken-v2__faan_aware__public__20261123T025154.json) |
+| `ukeire` | 23.2% [22.4%, 24.1%] | 18.7% | 2.8% | 0 | 2,000 | unverified | native | [20261123T024932](results/hk-chicken-v2__ukeire__public__20261123T024932.json) |
+| `deficiency` | 22.1% [21.3%, 23.0%] | 19.0% | 2.9% | 0 | 2,000 | unverified | native | [20261123T024558](results/hk-chicken-v2__deficiency__public__20261123T024558.json) |
+| `python_example` | 8.4% [7.8%, 9.0%] | 23.8% | 5.1% | 23 | 2,000 | unverified | sandbox | [20261123T025948](results/hk-chicken-v2__python_example__public__20261123T025948.json) |
+| `random` | 0.2% [0.1%, 0.3%] | 25.2% | 5.8% | 0 | 2,000 | unverified | native | [20261123T024352](results/hk-chicken-v2__random__public__20261123T024352.json) |
 
 The following rows use the private deck.
 
-| Bot | Points a hand [95% CI] | Win | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
-|---|---|---|---|---|---|---|---|---|---|
-| `Fu-2.3M-HKMA-1` | +0.64 [+0.55, +0.73] | 47.8% | 13.5% | 0.5% | 0 | 2,000 | verified | sandbox | [20261121T083021](results/hk-chicken-v1__Fu-2.3M-HKMA-1__private__20261121T083021.json) |
-| `faan_aware` | +0.41 [+0.30, +0.52] | 27.4% | 18.0% | 2.0% | 0 | 2,000 | verified | native | [20261121T075356](results/hk-chicken-v1__faan_aware__private__20261121T075356.json) |
-| `shallow_search` | +0.13 [+0.00, +0.26] | 32.5% | 15.1% | 1.1% | 0 | 400 | verified | native | [20261121T080634](results/hk-chicken-v1__shallow_search__private__20261121T080634.json) |
-| `python_example` | -0.14 [-0.34, +0.05] | 8.8% | 23.1% | 4.9% | 18 | 2,000 | verified | sandbox | [20261121T080017](results/hk-chicken-v1__python_example__private__20261121T080017.json) |
-| `ukeire` | -0.17 [-0.25, -0.09] | 24.0% | 19.0% | 2.8% | 0 | 2,000 | verified | native | [20261121T075248](results/hk-chicken-v1__ukeire__private__20261121T075248.json) |
-| `deficiency` | -0.18 [-0.26, -0.10] | 22.1% | 18.2% | 3.1% | 0 | 2,000 | verified | native | [20261121T075142](results/hk-chicken-v1__deficiency__private__20261121T075142.json) |
-| `random` | -1.19 [-1.27, -1.12] | 0.4% | 25.7% | 5.6% | 0 | 2,000 | verified | native | [20261121T075043](results/hk-chicken-v1__random__private__20261121T075043.json) |
+| Bot | Win rate [95% CI] | Deal-in | Draw | Limit hands | Deals | Verification | Isolation | Source |
+|---|---|---|---|---|---|---|---|---|
+| `Fu-2.3M-HKMA-1` | 49.0% [48.0%, 50.1%] | 13.5% | 0.6% | 3 | 2,000 | verified | sandbox | [20261123T070750](results/hk-chicken-v2__Fu-2.3M-HKMA-1__private__20261123T070750.json) |
+| `shallow_search` | 31.4% [29.2%, 33.7%] | 17.5% | 1.9% | 0 | 400 | verified | native | [20261123T062619](results/hk-chicken-v2__shallow_search__private__20261123T062619.json) |
+| `faan_aware` | 26.8% [25.9%, 27.7%] | 18.6% | 2.1% | 2 | 2,000 | verified | native | [20261123T061213](results/hk-chicken-v2__faan_aware__private__20261123T061213.json) |
+| `ukeire` | 23.4% [22.5%, 24.3%] | 18.7% | 2.7% | 1 | 2,000 | verified | native | [20261123T061027](results/hk-chicken-v2__ukeire__private__20261123T061027.json) |
+| `deficiency` | 22.7% [21.8%, 23.6%] | 20.1% | 2.6% | 1 | 2,000 | verified | native | [20261123T060844](results/hk-chicken-v2__deficiency__private__20261123T060844.json) |
+| `python_example` | 8.4% [7.8%, 9.0%] | 22.8% | 5.1% | 11 | 2,000 | verified | sandbox | [20261123T061714](results/hk-chicken-v2__python_example__private__20261123T061714.json) |
+| `random` | 0.2% [0.1%, 0.4%] | 26.4% | 5.3% | 0 | 2,000 | verified | native | [20261123T060712](results/hk-chicken-v2__random__private__20261123T060712.json) |
+
+#### What changed from `hk-chicken-v1`
+
+`hk-chicken-v1` paid by faan, so a bot that built big hands scored more than a bot that won more often. Its files stay in `results/` and its logs still replay, but it is off the board, the chart and this page. The bots play the same on both tables, because a bot is never told the payment; the order moves because the ranking changed. This table gives the private-deck rows for every bot that was on the old table, old rank by points a hand beside new rank by win rate. Ranks follow the rule used everywhere on this page: 1 plus the number of bots whose 95% interval lies entirely above the bot's.
+
+| Bot | v1: points a hand | v1 rank | v2: win rate | v2 rank | v2 deal-in |
+|---|---|---|---|---|---|
+| `hk-mahjong-lab-PIMC-128` | +1.06 | 6 | 52.1% | 1 | 12.4% |
+| `hk-mahjong-lab-value` | +0.84 | 6 | 50.8% | 1 | 12.2% |
+| `Fu-2.3M-HKMA-1` | +0.64 | 9 | 49.0% | 1 | 13.5% |
+| `hk-mahjong-lab-PIMC-256` | +1.13 | 5 | 48.8% | 1 | 12.2% |
+| `shallow_search` | +0.13 | 11 | 31.4% | 5 | 17.5% |
+| `faan_aware` | +0.41 | 10 | 26.8% | 6 | 18.6% |
+| `ukeire` | -0.17 | 12 | 23.4% | 7 | 18.7% |
+| `deficiency` | -0.18 | 12 | 22.7% | 7 | 20.1% |
+| `LuckyCat-JorgeYau` | +1.70 | 1 | 16.3% | 9 | 17.4% |
+| `LuckyCat-lc34` | +2.15 | 1 | 11.9% | 10 | 22.5% |
+| `NeuralCat-NC10` | +1.94 | 1 | 11.5% | 10 | 19.8% |
+| `LuckyCat-lc32` | +1.88 | 1 | 11.2% | 10 | 22.8% |
+| `NeuralCat-NC9` | +1.90 | 1 | 9.9% | 12 | 21.0% |
+| `python_example` | -0.14 | 11 | 8.4% | 14 | 22.8% |
+| `random` | -1.19 | 15 | 0.2% | 15 | 26.4% |
+
+The five Lucky Cat bots held the top rank by points a hand, because their wins included big hands. They win only 10% to 16% of games. By win rate they are in the lower half, and `LuckyCat-JorgeYau` is the best of them. The three hk-mahjong-lab bots and `Fu-2.3M-HKMA-1` win about half of all games, and their intervals overlap, so they share first place.
 
 ## Head-to-head results
 
-Each pair plays 300 deals in all six seat pairs. Ratings use Bradley-Terry on the Elo scale, with 95% CIs from bootstrapping whole deals. Rank is 1 plus the number of bots whose interval lies entirely above that bot's interval. Overlapping intervals share a rank. The public five-bot runs and public six-bot runs are separate runs; ratings belong to the field in that run.
+Each pair plays 300 deals in all six seat pairs. Ratings use Bradley-Terry on the Elo scale, with 95% CIs from bootstrapping whole deals. On HKMA Classical and House a team wins a hand when it has more points. On Chicken hand a team wins a hand when one of its two seats wins it, whoever pays, and a drawn hand is a tie. Rank is 1 plus the number of bots whose interval lies entirely above that bot's interval. Overlapping intervals share a rank. The public five-bot runs and public six-bot runs are separate runs; ratings belong to the field in that run. Chicken hand has one public six-bot run and one private six-bot run.
 
 ### `hk-hkma-v1`, public, 5 bots
 
@@ -168,43 +194,31 @@ This run is verified with isolation `sandbox`. It used 300 deals per pair. [Sour
 | `deficiency` | -21.4 [-24.8, -18.1] | 5 |
 | `random` | -114.6 [-118.2, -111.0] | 6 |
 
-### `hk-chicken-v1`, public, 5 bots
+### `hk-chicken-v2`, public, 6 bots
 
-This run is unverified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-chicken-v1__h2h__public__20261121T084217.json).
-
-| Bot | Rating [95% CI] | Rank |
-|---|---|---|
-| `faan_aware` | +93.1 [+88.4, +98.2] | 1 |
-| `ukeire` | +75.0 [+70.4, +80.0] | 2 |
-| `deficiency` | +62.2 [+57.3, +66.9] | 3 |
-| `python_example` | -51.9 [-57.3, -46.6] | 4 |
-| `random` | -178.4 [-183.4, -173.2] | 5 |
-
-### `hk-chicken-v1`, public, 6 bots
-
-This run is unverified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-chicken-v1__h2h__public__20261121T093909.json).
+This run is unverified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-chicken-v2__h2h__public__20261123T104306.json).
 
 | Bot | Rating [95% CI] | Rank |
 |---|---|---|
-| `Fu-2.3M-HKMA-1` | +156.4 [+150.3, +162.0] | 1 |
-| `faan_aware` | +60.0 [+54.6, +65.5] | 2 |
-| `ukeire` | +41.8 [+37.1, +45.7] | 3 |
-| `deficiency` | +29.3 [+25.0, +33.7] | 4 |
-| `python_example` | -80.7 [-85.6, -75.7] | 5 |
-| `random` | -206.8 [-211.3, -201.9] | 6 |
+| `Fu-2.3M-HKMA-1` | +259.2 [+252.0, +266.7] | 1 |
+| `faan_aware` | +97.7 [+90.9, +104.6] | 2 |
+| `ukeire` | +58.8 [+53.1, +66.0] | 3 |
+| `deficiency` | +42.1 [+36.6, +48.1] | 4 |
+| `python_example` | -121.0 [-127.2, -114.1] | 5 |
+| `random` | -336.8 [-344.7, -330.0] | 6 |
 
-### `hk-chicken-v1`, private, 6 bots
+### `hk-chicken-v2`, private, 6 bots
 
-This run is verified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-chicken-v1__h2h__private__20261121T103422.json).
+This run is verified with isolation `sandbox`. It used 300 deals per pair. [Source JSON](results/hk-chicken-v2__h2h__private__20261123T121813.json).
 
 | Bot | Rating [95% CI] | Rank |
 |---|---|---|
-| `Fu-2.3M-HKMA-1` | +164.6 [+158.0, +170.8] | 1 |
-| `faan_aware` | +60.1 [+54.6, +65.4] | 2 |
-| `ukeire` | +36.1 [+31.2, +41.1] | 3 |
-| `deficiency` | +25.6 [+21.0, +30.1] | 4 |
-| `python_example` | -78.4 [-83.6, -73.2] | 5 |
-| `random` | -208.0 [-212.6, -203.5] | 6 |
+| `Fu-2.3M-HKMA-1` | +258.7 [+250.3, +267.5] | 1 |
+| `faan_aware` | +91.3 [+85.0, +97.7] | 2 |
+| `ukeire` | +58.8 [+52.7, +64.9] | 3 |
+| `deficiency` | +46.7 [+41.9, +52.7] | 3 |
+| `python_example` | -118.1 [-125.5, -111.4] | 5 |
+| `random` | -337.4 [-344.7, -330.7] | 6 |
 
 ## Fairness checks
 
@@ -214,7 +228,7 @@ For private runs, each decision's `rng_seed` and each game's `game_id` came from
 
 Every program bot in the original run (`python_example` and `Fu-2.3M-HKMA-1`) started fresh for every game and ran under `scripts/sandbox/macos.sh`. It had no network or child processes, could write only to its own empty folder, and could not read the deck file. Reference bots ran inside the bench.
 
-All 51 original runs passed the fair-play check with 0 decision changes and 0 view mismatches, and none exceeded the fault limit. Every private run is tagged verified. All 283,800 public games in 27 public logs replayed with `hkbench verify-log` with 0 mismatches.
+All 50 original runs (the 28 HKMA and House duplicate runs, six head-to-heads, and the 14 duplicate runs and two head-to-heads on `hk-chicken-v2`) passed the fair-play check with 0 decision changes and 0 view mismatches, and none exceeded the fault limit. Every private run is tagged verified. All 265,800 public games in 26 public logs replayed with `hkbench verify-log` with 0 mismatches. (The 1.1.0 re-score had 283,800 in 27 logs; the 94,600 on the retired Chicken hand table are replaced by the 76,600 on `hk-chicken-v2`, which has one public head-to-head, not two.)
 
 The table below gives the evidence recorded in each result JSON. Duplicate runs record the full fair-play counts and used two reshuffles at each checked point. Head-to-head files record only `passed` for each bot, so their counts are shown as “not recorded” rather than inferred from another run. Faults are summed across bots for head-to-head runs. Fair-play faults and scored-play faults are separate counts.
 
@@ -254,23 +268,22 @@ The table below gives the evidence recorded in each result JSON. Duplicate runs 
 | `hk-house-v1` | public | Fu-2.3M-HKMA-1 | [20261121T041028](results/hk-house-v1__Fu-2.3M-HKMA-1__public__20261121T041028.json) | passed | 300 | 0 | 0 | 0 | 0 |
 | `hk-house-v1` | public | 5-bot head-to-head | [20261121T050310](results/hk-house-v1__h2h__public__20261121T050310.json) | passed (all bots) | not recorded | not recorded | not recorded | not recorded | 0 |
 | `hk-house-v1` | public | 6-bot head-to-head | [20261121T060610](results/hk-house-v1__h2h__public__20261121T060610.json) | passed (all bots) | not recorded | not recorded | not recorded | not recorded | 0 |
-| `hk-chicken-v1` | private | random | [20261121T075043](results/hk-chicken-v1__random__private__20261121T075043.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | private | deficiency | [20261121T075142](results/hk-chicken-v1__deficiency__private__20261121T075142.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | private | ukeire | [20261121T075248](results/hk-chicken-v1__ukeire__private__20261121T075248.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | private | faan_aware | [20261121T075356](results/hk-chicken-v1__faan_aware__private__20261121T075356.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | private | python_example | [20261121T080017](results/hk-chicken-v1__python_example__private__20261121T080017.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | private | shallow_search | [20261121T080634](results/hk-chicken-v1__shallow_search__private__20261121T080634.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | private | Fu-2.3M-HKMA-1 | [20261121T083021](results/hk-chicken-v1__Fu-2.3M-HKMA-1__private__20261121T083021.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | private | 6-bot head-to-head | [20261121T103422](results/hk-chicken-v1__h2h__private__20261121T103422.json) | passed (all bots) | not recorded | not recorded | not recorded | not recorded | 0 |
-| `hk-chicken-v1` | public | random | [20261121T070932](results/hk-chicken-v1__random__public__20261121T070932.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | public | deficiency | [20261121T071033](results/hk-chicken-v1__deficiency__public__20261121T071033.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | public | ukeire | [20261121T071144](results/hk-chicken-v1__ukeire__public__20261121T071144.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | public | faan_aware | [20261121T071254](results/hk-chicken-v1__faan_aware__public__20261121T071254.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | public | python_example | [20261121T071919](results/hk-chicken-v1__python_example__public__20261121T071919.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | public | shallow_search | [20261121T072546](results/hk-chicken-v1__shallow_search__public__20261121T072546.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | public | Fu-2.3M-HKMA-1 | [20261121T074943](results/hk-chicken-v1__Fu-2.3M-HKMA-1__public__20261121T074943.json) | passed | 300 | 0 | 0 | 0 | 0 |
-| `hk-chicken-v1` | public | 5-bot head-to-head | [20261121T084217](results/hk-chicken-v1__h2h__public__20261121T084217.json) | passed (all bots) | not recorded | not recorded | not recorded | not recorded | 0 |
-| `hk-chicken-v1` | public | 6-bot head-to-head | [20261121T093909](results/hk-chicken-v1__h2h__public__20261121T093909.json) | passed (all bots) | not recorded | not recorded | not recorded | not recorded | 0 |
+| `hk-chicken-v2` | private | random | [20261123T060712](results/hk-chicken-v2__random__private__20261123T060712.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | private | deficiency | [20261123T060844](results/hk-chicken-v2__deficiency__private__20261123T060844.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | private | ukeire | [20261123T061027](results/hk-chicken-v2__ukeire__private__20261123T061027.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | private | faan_aware | [20261123T061213](results/hk-chicken-v2__faan_aware__private__20261123T061213.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | private | python_example | [20261123T061714](results/hk-chicken-v2__python_example__private__20261123T061714.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | private | shallow_search | [20261123T062619](results/hk-chicken-v2__shallow_search__private__20261123T062619.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | private | Fu-2.3M-HKMA-1 | [20261123T070750](results/hk-chicken-v2__Fu-2.3M-HKMA-1__private__20261123T070750.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | public | random | [20261123T024352](results/hk-chicken-v2__random__public__20261123T024352.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | public | deficiency | [20261123T024558](results/hk-chicken-v2__deficiency__public__20261123T024558.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | public | ukeire | [20261123T024932](results/hk-chicken-v2__ukeire__public__20261123T024932.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | public | faan_aware | [20261123T025154](results/hk-chicken-v2__faan_aware__public__20261123T025154.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | public | python_example | [20261123T025948](results/hk-chicken-v2__python_example__public__20261123T025948.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | public | shallow_search | [20261123T031225](results/hk-chicken-v2__shallow_search__public__20261123T031225.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | public | Fu-2.3M-HKMA-1 | [20261123T040306](results/hk-chicken-v2__Fu-2.3M-HKMA-1__public__20261123T040306.json) | passed | 300 | 0 | 0 | 0 | 0 |
+| `hk-chicken-v2` | private | 6-bot head-to-head | [20261123T121813](results/hk-chicken-v2__h2h__private__20261123T121813.json) | passed (all bots) | not recorded | not recorded | not recorded | not recorded | 0 |
+| `hk-chicken-v2` | public | 6-bot head-to-head | [20261123T104306](results/hk-chicken-v2__h2h__public__20261123T104306.json) | passed (all bots) | not recorded | not recorded | not recorded | not recorded | 0 |
 
 A verified tag means the run used private deals, passed the hidden-tile fair-play check and stayed within the fault limit. Program bots also need a sandbox. The check changes hidden tiles while keeping the bot's view unchanged and asks for the decision again. It mainly checks the harness; it can also catch a bot that accesses hidden state through another channel or ignores the supplied random seed.
 
@@ -304,7 +317,7 @@ Each bot played all three tables, on the public deck and then the secret deck, 2
 
 Before scoring, we checked each adapter against the harness we had used for our earlier matches with these bots. Lucky Cat made the same move on all of about 139,000 decisions, and hk-mahjong-lab's value bot on all of about 30,000. PIMC differed on 0.6% to 1.7% of decisions. Every difference came from two facts the bench's message doesn't carry (see below): with the same two facts hidden from the old harness, the differences went away.
 
-The tables give points a hand on the secret deck against the reference field, as everywhere else on this page. Each bot links to its result file. For comparison, `Fu-2.3M-HKMA-1` scores +17.75 on HKMA, +17.67 on House and +0.64 on Chicken hand.
+The tables give points a hand on the secret deck against the reference field, as everywhere else on this page, except Chicken hand, which gives win rate. Each bot links to its result file. For comparison, `Fu-2.3M-HKMA-1` scores +17.75 on HKMA, +17.67 on House and a 49.0% win rate on Chicken hand.
 
 ### HKMA Classical, secret deck
 
@@ -334,39 +347,41 @@ The tables give points a hand on the secret deck against the reference field, as
 
 ### Chicken hand, secret deck
 
-| Bot | Points a hand | 95% CI | Deals | Faults/decisions |
-|---|---|---|---|---|
-| [`LuckyCat-lc34`](results/hk-chicken-v1__LuckyCat-lc34__private__20261122T045707.json) | +2.15 | [+1.84, +2.47] | 2,000 | 0/135,355 |
-| [`NeuralCat-NC10`](results/hk-chicken-v1__NeuralCat-NC10__private__20261122T051042.json) | +1.94 | [+1.58, +2.29] | 2,000 | 0/137,024 |
-| [`NeuralCat-NC9`](results/hk-chicken-v1__NeuralCat-NC9__private__20261122T050353.json) | +1.90 | [+1.55, +2.25] | 2,000 | 0/137,658 |
-| [`LuckyCat-lc32`](results/hk-chicken-v1__LuckyCat-lc32__private__20261122T045040.json) | +1.88 | [+1.60, +2.16] | 2,000 | 0/136,162 |
-| [`LuckyCat-JorgeYau`](results/hk-chicken-v1__LuckyCat-JorgeYau__private__20261122T051659.json) | +1.70 | [+1.41, +1.99] | 2,000 | 0/139,764 |
-| [`hk-mahjong-lab-PIMC-256`](results/hk-chicken-v1__hk-mahjong-lab-PIMC-256__private__20261122T153252.json) | +1.13 | [+0.84, +1.41] | 400 | 0/22,913 |
-| [`hk-mahjong-lab-PIMC-128`](results/hk-chicken-v1__hk-mahjong-lab-PIMC-128__private__20261122T091949.json) | +1.06 | [+0.86, +1.26] | 400 | 0/23,001 |
-| [`hk-mahjong-lab-value`](results/hk-chicken-v1__hk-mahjong-lab-value__private__20261122T052203.json) | +0.84 | [+0.76, +0.93] | 2,000 | 0/114,844 |
+Win rate and deal-in rate on `hk-chicken-v2`, ranked by win rate. Every win pays the same there.
+
+| Bot | Win rate | 95% CI | Deal-in | Deals | Faults/decisions |
+|---|---|---|---|---|---|
+| [`hk-mahjong-lab-PIMC-128`](results/hk-chicken-v2__hk-mahjong-lab-PIMC-128__private__20261123T083715.json) | 52.1% | [49.7%, 54.6%] | 12.4% | 400 | 0/23,418 |
+| [`hk-mahjong-lab-value`](results/hk-chicken-v2__hk-mahjong-lab-value__private__20261123T082010.json) | 50.8% | [49.8%, 51.9%] | 12.2% | 2,000 | 0/114,158 |
+| [`hk-mahjong-lab-PIMC-256`](results/hk-chicken-v2__hk-mahjong-lab-PIMC-256__private__20261123T090829.json) | 48.8% | [46.4%, 51.2%] | 12.2% | 400 | 0/23,114 |
+| [`LuckyCat-JorgeYau`](results/hk-chicken-v2__LuckyCat-JorgeYau__private__20261123T081321.json) | 16.3% | [15.6%, 17.1%] | 17.4% | 2,000 | 0/138,286 |
+| [`LuckyCat-lc34`](results/hk-chicken-v2__LuckyCat-lc34__private__20261123T073326.json) | 11.9% | [11.2%, 12.6%] | 22.5% | 2,000 | 0/135,103 |
+| [`NeuralCat-NC10`](results/hk-chicken-v2__NeuralCat-NC10__private__20261123T080146.json) | 11.5% | [10.8%, 12.2%] | 19.8% | 2,000 | 0/135,992 |
+| [`LuckyCat-lc32`](results/hk-chicken-v2__LuckyCat-lc32__private__20261123T072045.json) | 11.2% | [10.5%, 11.9%] | 22.8% | 2,000 | 0/135,656 |
+| [`NeuralCat-NC9`](results/hk-chicken-v2__NeuralCat-NC9__private__20261123T074744.json) | 9.9% | [9.2%, 10.5%] | 21.0% | 2,000 | 0/136,577 |
 
 ### Secret-deck head-to-heads
 
-Here the bots play each other: five reference bots, `Fu-2.3M-HKMA-1` and the six outside bots other than PIMC, which is too slow for a field this size. Bradley-Terry ratings compare them directly. `hk-mahjong-lab-value` and Fu share first place on all three tables; value's rating is a little higher, but the intervals overlap.
+Here the bots play each other: five reference bots, `Fu-2.3M-HKMA-1` and the six outside bots other than PIMC, which is too slow for a field this size. Bradley-Terry ratings compare them directly. `hk-mahjong-lab-value` and Fu share first place on all three tables; value's rating is a little higher, but the intervals overlap. The Chicken hand table rates bots by who won the hand, not by points.
 
-#### `hk-chicken-v1`
+#### `hk-chicken-v2`
 
-[Source JSON](results/hk-chicken-v1__h2h__private__20261122T065116.json).
+This run is verified with isolation `sandbox`. It used 100 deals per pair. [Source JSON](results/hk-chicken-v2__h2h__private__20261123T145355.json).
 
-| Bot | Rating | 95% CI | Rank |
-|---|---|---|---|
-| `hk-mahjong-lab-value` | +168.76 | [+161.84, +176.81] | 1 |
-| `Fu-2.3M-HKMA-1` | +165.51 | [+158.76, +173.11] | 1 |
-| `faan_aware` | +68.24 | [+61.49, +74.92] | 3 |
-| `ukeire` | +46.50 | [+40.30, +52.51] | 4 |
-| `deficiency` | +34.81 | [+28.54, +41.17] | 4 |
-| `LuckyCat-JorgeYau` | -13.28 | [-19.32, -6.74] | 6 |
-| `NeuralCat-NC10` | -33.68 | [-39.85, -27.48] | 7 |
-| `LuckyCat-lc34` | -35.94 | [-42.56, -29.13] | 7 |
-| `LuckyCat-lc32` | -49.76 | [-56.94, -42.86] | 9 |
-| `NeuralCat-NC9` | -53.74 | [-59.82, -47.06] | 9 |
-| `python_example` | -83.05 | [-89.66, -76.57] | 11 |
-| `random` | -214.37 | [-220.63, -208.34] | 12 |
+| Bot | Rating [95% CI] | Rank |
+|---|---|---|
+| `hk-mahjong-lab-value` | +269.0 [+258.9, +279.6] | 1 |
+| `Fu-2.3M-HKMA-1` | +253.8 [+244.4, +263.3] | 1 |
+| `faan_aware` | +104.8 [+96.4, +113.1] | 3 |
+| `ukeire` | +61.2 [+53.4, +69.0] | 4 |
+| `deficiency` | +46.5 [+39.5, +53.2] | 5 |
+| `LuckyCat-JorgeYau` | -22.8 [-31.1, -14.7] | 6 |
+| `LuckyCat-lc34` | -54.5 [-62.9, -46.3] | 7 |
+| `LuckyCat-lc32` | -59.7 [-68.0, -52.1] | 7 |
+| `NeuralCat-NC10` | -60.6 [-69.1, -52.7] | 7 |
+| `NeuralCat-NC9` | -85.5 [-94.0, -77.1] | 10 |
+| `python_example` | -113.9 [-121.9, -105.6] | 11 |
+| `random` | -338.3 [-346.4, -330.8] | 12 |
 
 #### `hk-hkma-v1`
 

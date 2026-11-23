@@ -1,0 +1,130 @@
+{
+  "bot": {
+    "description": "Mahjong Sensei's shipped bot: 2.3M parameters, trained on 1.3B decisions. Hosted; its weights and code stay private. On this table it is told the rules the way the app's Beginner table tells it: the no-faan bit on, and the win-out planes counted under this table's own rules (minimum 0 faan, cap 10). Chosen once, from the app's rule; the other setting was not run.",
+    "kind": "hosted",
+    "name": "Fu-2.3M-HKMA-1",
+    "sha256": "23b55cd5dad506661d55b4b4ffd158cdbc1a28a6efe36487413adf1c2c5985b7",
+    "track": "bots",
+    "trained_on": "HKMA Classical rules (no flower faan, no Seven Pairs)"
+  },
+  "command": "hkbench score --table hk-chicken-v2 --bot '<hosted>' --name Fu-2.3M-HKMA-1 --deals 2000 --workers 10 --results-dir '~/hkbench_chicken_v2/results' --kind hosted --bot-hash 23b55cd5dad506661d55b4b4ffd158cdbc1a28a6efe36487413adf1c2c5985b7 --trained-on 'HKMA Classical rules (no flower faan, no Seven Pairs)' --description 'Mahjong Sensei'\"'\"'s shipped bot: 2.3M parameters, trained on 1.3B decisions. Hosted; its weights and code stay private. On this table it is told the rules the way the app'\"'\"'s Beginner table tells it: the no-faan bit on, and the win-out planes counted under this table'\"'\"'s own rules (minimum 0 faan, cap 10). Chosen once, from the app'\"'\"'s rule; the other setting was not run.' --sandbox '<hosted>' --private-seeds '<private deck>'",
+  "created_utc": "2026-11-23T07:07:50Z",
+  "engine": {
+    "fingerprint_deals": 300,
+    "fingerprint_sha256": "58b60b3001993b0e3c978cd83cdd68e35b7f1c8cf6961b626e66aa94a15aa732",
+    "hkbench_version": "1.2.0",
+    "python": "3.9.6",
+    "rules_sha256": "2e80b875917f5a726169cb9292db9e34025a6a6b3fd8d08d43f23d4385b06d82"
+  },
+  "fairplay": {
+    "asks": 300,
+    "decision_changes": 0,
+    "faults": 0,
+    "points": 100,
+    "reshuffles": 2,
+    "status": "passed",
+    "view_mismatches": 0
+  },
+  "faults": {
+    "decisions": 115690,
+    "faults": {},
+    "limit_per_1000": 1.0,
+    "ok": true,
+    "per_1000_decisions": 0.0
+  },
+  "headline": {
+    "ci95": [
+      0.4796494228418908,
+      0.5008505771581092
+    ],
+    "deals": 2000,
+    "games": 8000,
+    "metric": "win rate against the frozen field",
+    "metric_id": "win_rate",
+    "se": 0.005405282350501579,
+    "win_rate": 0.49025
+  },
+  "isolation": "sandbox",
+  "kind": "duplicate",
+  "log": "logs/hk-chicken-v2__Fu-2.3M-HKMA-1__private__20261123T070750.jsonl.gz",
+  "rng_scheme": "hmac-sha256-v2",
+  "run_id": "hk-chicken-v2__Fu-2.3M-HKMA-1__private__20261123T070750",
+  "schema": "hkbench-result-1",
+  "seeds": {
+    "deals": 2000,
+    "offset": 0,
+    "public_range": null,
+    "tag": "private"
+  },
+  "stats": {
+    "average_win_faan": 0.7113717491075982,
+    "average_win_points": 3.0,
+    "deal_in_rate": {
+      "ci95": [
+        0.12776164725736167,
+        0.14273835274263835
+      ],
+      "mean": 0.13525,
+      "n": 2000,
+      "se": 0.0038183450118231916
+    },
+    "draw_rate": {
+      "ci95": [
+        0.004069995151509633,
+        0.007430004848490367
+      ],
+      "mean": 0.00575,
+      "n": 2000,
+      "se": 0.0008566420885258465
+    },
+    "limit_hand_rate": {
+      "ci95": [
+        -4.9389277406639595e-05,
+        0.0007993892774066396
+      ],
+      "mean": 0.000375,
+      "n": 2000,
+      "se": 0.00021639801651303575
+    },
+    "limit_hands": 3,
+    "self_draw_win_rate": {
+      "ci95": [
+        0.10477831015822141,
+        0.1187216898417786
+      ],
+      "mean": 0.11175,
+      "n": 2000,
+      "se": 0.0035548962563901106
+    },
+    "win_rate": {
+      "ci95": [
+        0.4796494228418908,
+        0.5008505771581092
+      ],
+      "mean": 0.49025,
+      "n": 2000,
+      "se": 0.005405282350501579
+    },
+    "wins": 3922
+  },
+  "table": {
+    "field": [
+      {
+        "bot": "faan_aware",
+        "sha256": "972ea29c307f20fd5a3b68468d82e32865ead34267e49023d5f02372154fc1c6"
+      },
+      {
+        "bot": "ukeire",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      },
+      {
+        "bot": "deficiency",
+        "sha256": "6f07353dbde5ac9b90193266241103304b5ae2281480f53f6c6273cfef72e648"
+      }
+    ],
+    "id": "hk-chicken-v2",
+    "rules_sha256": "2e80b875917f5a726169cb9292db9e34025a6a6b3fd8d08d43f23d4385b06d82",
+    "rules_track": "Chicken hand"
+  },
+  "verification": "verified"
+}

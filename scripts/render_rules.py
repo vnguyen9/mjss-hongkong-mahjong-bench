@@ -7,6 +7,7 @@ document cannot drift from the rules file.
     python scripts/render_rules.py hk-hkma-v1
     python scripts/render_rules.py hk-house-v1
     python scripts/render_rules.py hk-chicken-v1
+    python scripts/render_rules.py hk-chicken-v2
 """
 
 import json
@@ -85,6 +86,23 @@ def render(table_id: str) -> str:
     lines.append("")
     table = {int(k): v for k, v in rules["payments"]["table"].items()}
     mult = rules["payments"]["self_draw_multiplier"]
+    if len(set(table.values())) == 1:
+        # A flat table: every win is worth the same, so there is nothing to list by faan.
+        base = table[rules["win"]["minimum_faan"]]
+        total = int(base * mult)
+        lines.append("Every win pays the same, whatever its faan, and whoever paid for the tile. Faan are still found and logged, but they do not change the payment.")
+        lines.append("")
+        if rules["payments"].get("discarder_pays") == "equal":
+            lines.append("| How the hand was won | Who pays | Winner collects |")
+            lines.append("|---|---|---|")
+            lines.append("| Off a discard | Each of the other three pays %d (the discarder pays no more) | %d |" % (base, 3 * base))
+            lines.append("| Self-drawn | Each of the other three pays %d | %d |" % (total // 3, total))
+        else:
+            lines.append("| How the hand was won | Who pays | Winner collects |")
+            lines.append("|---|---|---|")
+            lines.append("| Off a discard | The discarder pays %d | %d |" % (base, base))
+            lines.append("| Self-drawn | Each of the other three pays %d | %d |" % (total // 3, total))
+        return "\n".join(lines)
     lines.append("| Faan | Discarder pays everything | Self-drawn: each of the three pays | Self-drawn: winner collects |")
     lines.append("|---|---|---|---|")
     for faan in range(rules["win"]["minimum_faan"], rules["win"]["faan_cap"] + 1):
